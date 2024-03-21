@@ -1,0 +1,47 @@
+:root{
+    --Grey-grey-600: #5D6679;
+}
+
+.tabla{
+    position: absolute;
+    top: 29rem;
+    left: 85.6rem;    
+    width: 33.65rem;
+    height: 27.4rem;
+    border-radius: 0.8rem;
+    background: #FFF;
+    flex-shrink: 0;   
+}
+
+ thead {
+    text-align: center;
+    font-family: "Verdana", Sans-serif;
+    font-size: 0.875rem;
+    font-style:normal;
+    font-weight:bold;
+    border: solid 1px #d8d8d8;
+    border-left: 0;
+    border-right: 0;
+    font-weight: normal;    
+    border-bottom: solid 2px #d8d8d8;    
+    top: 0;  
+ }
+
+ tbody{
+    text-align: center;
+    color: var(--Grey-grey-600, #5D6679);
+    font-family: "Verdana", Sans-serif;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.25rem; 
+    border: solid 1px #d8d8d8;
+    border-left: 0;
+    border-right: 0;
+    font-weight: normal;    
+    border-bottom: solid 2px #d8d8d8;    
+    top: 0;   
+ }
+
+ 
+ 

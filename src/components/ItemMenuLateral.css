@@ -1,0 +1,61 @@
+:root{
+
+    --Primary-primary-500: #1570EF;
+    --Grey-grey-600: #5D6679;
+
+}
+
+.tittlenosel{
+    color: var(--Grey-grey-600, #5D6679);    
+    font-family: "Verdana", Sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.5rem; 
+    list-style-type:none;
+    text-decoration: none;
+}
+
+.iconitem{
+    display: flex;
+    width: 2.8rem;
+    height: 2.8rem;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.itempack{
+    display: flex;
+    width: 11.625rem;
+    height: 1.5rem;
+    align-items: center;
+    gap: 2rem;
+}
+
+.contitembar{
+    width: 11.625rem;
+    height: 3.5rem;
+    display: flex;        
+    flex-direction: column;
+    align-items:baseline;
+    padding-top: 0.6rem;
+    gap: 0.625rem;
+    align-self: stretch;
+    border-radius: 0.5rem;
+}
+
+.contitembarover{
+    width: 12.625rem;
+    height: 3.9rem;
+    display: flex;        
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0.4rem;
+    gap: 0.625rem;
+    align-self: stretch;
+    border-radius: 0.5rem;    
+    border-width: 0.1rem;    
+    border-color: #1570EF;
+    border-style:groove;
+}

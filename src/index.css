@@ -1,0 +1,10 @@
+:root{
+  --Grey-grey-50: #F0F1F3;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background: var(--Grey-grey-50, #F0F1F3);
+}
+

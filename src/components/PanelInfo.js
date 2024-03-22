@@ -1,11 +1,12 @@
 import './PanelInfo.css';
 import IconoInfo from './IconoInfo';
+import Card from './Card';
 
 function PanelInfo (props) {
 
     return (     
         
-        <div className={props.estilo}>
+        <Card className={props.estilo}>
             <p className='titlepanel'>{props.title}</p>            
             {props.dato.map((concepto) => (
                 <IconoInfo 
@@ -15,7 +16,7 @@ function PanelInfo (props) {
                 nombre={concepto.nombre} 
                 />                       
             ))}            
-        </div>                
+        </Card>                
     );
 }
 

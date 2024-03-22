@@ -1,47 +1,57 @@
 :root{
     --Grey-grey-600: #5D6679;
+    --Azultabla: #007aa5;
 }
 
 .tabla{
     position: absolute;
     top: 29rem;
-    left: 85.6rem;    
+    left: 85.9rem;    
     width: 33.65rem;
-    height: 27.4rem;
+    height: 27.5rem;
     border-radius: 0.8rem;
+    box-shadow: 0.5rem 0.5rem 0.25rem lightblue;
     background: #FFF;
     flex-shrink: 0;   
-}
+} 
 
  thead {
-    text-align: center;
+    text-align: center;        
     font-family: "Verdana", Sans-serif;
+    color: var(--Azultabla, #007aa5);
     font-size: 0.875rem;
     font-style:normal;
-    font-weight:bold;
-    border: solid 1px #d8d8d8;
+    font-weight:bold;      
     border-left: 0;
     border-right: 0;
-    font-weight: normal;    
-    border-bottom: solid 2px #d8d8d8;    
+    font-weight: normal;            
     top: 0;  
  }
 
  tbody{
-    text-align: center;
+    text-align: center;    
     color: var(--Grey-grey-600, #5D6679);
     font-family: "Verdana", Sans-serif;
     font-size: 0.875rem;
     font-style: normal;
-    font-weight: 500;
-    line-height: 1.25rem; 
-    border: solid 1px #d8d8d8;
+    font-weight: 500;         
     border-left: 0;
     border-right: 0;
-    font-weight: normal;    
-    border-bottom: solid 2px #d8d8d8;    
+    font-weight: normal;          
     top: 0;   
  }
 
+ th {
+    vertical-align:middle;    
+    border-radius: 0.8rem;
+ }
+
+ td {
+    vertical-align:middle;    
+ }
+
+ tfoot{
+    border-radius: 0.8rem;
+ }
  
  

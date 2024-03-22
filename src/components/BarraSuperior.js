@@ -1,8 +1,7 @@
 import './BarraSuperior.css';
 import BarraBusqueda from './BarraBusqueda';
-import ic_notif from './images/notification.svg';
 import ima_ava from './images/fotoavatar.jpg';
-
+import { NotificationIcono } from './Iconos';
 
 function BarraSuperior () {
 
@@ -13,10 +12,10 @@ function BarraSuperior () {
                 <BarraBusqueda/>  
                 <div id="notifav">
                     <div id="ic_notif">
-                        <img id="icn_svg" src = {ic_notif}></img>
+                        <NotificationIcono id="icn_svg" fill="#979aaa"/>                        
                     </div>
                     <div id="avatar">
-                        <img id="img_ava" src={ima_ava}></img>
+                        <img id="img_ava" src={ima_ava} alt='avatar'></img>
                     </div>
                 </div>              
             </div>            

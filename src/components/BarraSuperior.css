@@ -10,6 +10,7 @@
     background: #FFF;
     flex-shrink: 0;
     border-radius: 0.8rem 0.8rem 0.8rem 0.8rem;
+    box-shadow: 0.5rem 0.5rem 0.25rem lightblue;
 }
 
 #cont_av_busq{

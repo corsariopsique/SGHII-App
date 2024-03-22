@@ -9,12 +9,13 @@ import OperarioIcono from './Iconos/OperarioIcono';
 import ReportesIcono from './Iconos/ReportesIcono';
 import SettingsIcono from './Iconos/SettingsIcono';
 import LogoutIcono from './Iconos/LogoutIcono';
+import Card from './Card';
 
 
 function BarraLateral(){
     
     return (
-        <nav className ="barralateral">
+        <Card className ="barralateral">
 
             <div>
                 <ItemMenuLateral textitem = "Ingeniar Inoxidables">
@@ -75,7 +76,7 @@ function BarraLateral(){
 
             </ul>          
             
-        </nav>
+        </Card>
     );   
 }
 

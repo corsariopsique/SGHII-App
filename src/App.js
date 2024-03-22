@@ -3,6 +3,7 @@ import BarraSuperior from "./components/BarraSuperior";
 import PanelInfo from "./components/PanelInfo";
 import Graficos from "./components/Graficos";
 import Tablas from "./components/Tablas";
+import PanelListado from "./components/PanelListado";
 
 
 function App() {
@@ -105,16 +106,40 @@ function App() {
 
   const columns = [
     { key: 'id', title: 'ID' },
-    { key: 'name', title: 'Name' },
-    { key: 'age', title: 'Age' },
+    { key: 'name', title: 'Nombre' },
+    { key: 'tool', title: 'Herramienta' },
+    { key: 'oper',title: 'Operación'},
   ];
   
   const data = [
-    { id: 1, name: 'Alice', age: 25 },
-    { id: 2, name: 'Bob', age: 30 },
-    { id: 3, name: 'Charlie', age: 35 },
-    { id: 4, name: 'Perrito', age:2000},
+    { id: 'S1', name: 'Jose', tool: "Martillo", oper:"Prestamo"},
+    { id: 'A3', name: 'Carlos', tool: "Pulidora", oper:"Prestamo"},
+    { id: 'S8', name: 'Roberto', tool: "Tijera", oper:"Entrega"},
+    { id: 'D5', name: 'Jose Maria', tool:"Escuadra", oper:"Prestamo"},
   ];  
+
+  const lista = [
+    {
+      imagen:"martillo",
+      tipo:"muchos",
+      nombre:"Martillo",
+      cantidad:10,
+    },
+
+    {
+      imagen:"lima",
+      tipo:"pocos",
+      nombre:"Lima",
+      cantidad:1,
+    },
+
+    {
+      imagen:"pulidora",
+      tipo:"pocos",
+      nombre:"Pulidora",
+      cantidad:0,
+    }
+  ]
 
   return (
     <div>
@@ -136,7 +161,10 @@ function App() {
       title ="Resumen Operarios" 
       estilo ="panelres2" 
       dato={resumen_operarios}/>           
-      <Graficos></Graficos>      
+      <Graficos></Graficos>   
+      <PanelListado
+      title="Cantidades en inventario"
+      tool_list={lista}/>   
       <Tablas
       estilo='tabla'
       columns={columns} 

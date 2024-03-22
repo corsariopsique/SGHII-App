@@ -5,6 +5,7 @@
     width: 63.65rem;
     height: 27.35rem;
     border-radius: 0.8rem;
+    box-shadow: 0.5rem 0.5rem 0.25rem lightblue;
     background: #FFF;
     flex-shrink: 0;    
 }

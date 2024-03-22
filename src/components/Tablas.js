@@ -1,7 +1,7 @@
 import React from 'react';
 import './Tablas.css';
 
-class Tablas extends React.Component {
+class Tablas extends React.Component {    
 
     renderHeader() {
 
@@ -26,11 +26,15 @@ class Tablas extends React.Component {
         }
         
         render() {
+
+            const clases = "tabla table table-striped table-hover" + this.props.estilo;
+
             return (
-            <table className={this.props.estilo}>
-                <thead>{this.renderHeader()}</thead>
-                <tbody>{this.renderRows()}</tbody>
-            </table>
+
+                    <table className={clases}>
+                        <thead>{this.renderHeader()}</thead>                    
+                        <tbody>{this.renderRows()}</tbody>                    
+                    </table>                
             );
         }
 }

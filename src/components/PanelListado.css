@@ -1,0 +1,27 @@
+.panelListaP{    
+    display: flex;
+    flex-direction: column;     
+    top: 7.3rem;
+    left: 85.9rem;   
+    padding: 3.8rem 2.1rem 1rem 2.1rem;    
+    align-items: center;
+    width: 33.65rem;
+    height: 20.9rem;
+    overflow: hidden;        
+    flex-shrink: 0;        
+}
+
+.titlepanel{
+    position: absolute;
+    margin-top: 6px;
+    width:max-content;
+    height: 30px;
+    top: 5px;
+    left: 16px;    
+    color: var(--Grey-grey-800, #383E49);    
+    font-family: "Verdana", Sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.875rem;
+}

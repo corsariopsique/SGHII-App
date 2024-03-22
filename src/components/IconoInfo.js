@@ -8,8 +8,7 @@ function IconoInfo (props) {
 
     return(
         <div className ="iconoinfo"> 
-            <IcoFun className='iconopanel' fill={props.colico}/>          
-
+            <IcoFun className='iconopanel' fill={props.colico}/>  
             <div className='texticopanel'>
                 <p className='canttextpanel'>{props.cantidad}</p>
                 <p className='nametextpanel'>{props.nombre}</p>

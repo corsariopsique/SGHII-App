@@ -2,7 +2,7 @@ import './PanelInfo.css';
 import IconoInfo from './IconoInfo';
 import Card from './Card';
 
-function PanelInfo (props) {
+function PanelInfo (props) {    
 
     return (     
         
@@ -17,7 +17,7 @@ function PanelInfo (props) {
                 />                       
             ))}            
         </Card>                
-    );
+    );   
 }
 
 export default PanelInfo;

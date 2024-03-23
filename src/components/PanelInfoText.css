@@ -1,0 +1,83 @@
+:root{
+    --Grey-grey-800: #383E49;
+}
+
+.panelinv{
+    display:flex;        
+    position: absolute;
+    padding-top: 3%;
+    padding-left: 2%;    
+    padding-right: 2%;
+    justify-content: space-between;
+    top: 7.3rem;
+    left:21.5rem;    
+    align-items: center;
+    width: 60rem;
+    height: 10.1875rem;
+    overflow: hidden;
+    border-radius: 0.8rem;
+    background: #FFF;
+    flex-shrink: 0;    
+    gap: 6.5%;   
+}
+
+.panelinfo2{
+    display:flex;        
+    position: absolute;
+    top: 18rem;
+    left:21.5rem;    
+    align-items: center;
+    width: 43.125rem;
+    height: 10.1875rem;
+    overflow: hidden;
+    border-radius: 0.8rem;
+    background: #FFF;
+    flex-shrink: 0;    
+    gap: 6.5%;   
+}
+
+.panelres1{
+    display:flex;  
+    flex-direction: row;      
+    position: absolute;
+    top: 7.3rem;
+    left: 65.2em;    
+    align-items: center;
+    width: 20.125rem;
+    height: 10.1875rem;
+    overflow: hidden;
+    border-radius: 0.8rem;
+    background: #FFF;    
+    gap: 6.5%;   
+}
+
+.panelres2{
+    display:flex;  
+    flex-direction: row;      
+    position: absolute;
+    top: 18rem;
+    left: 65.2em;    
+    align-items: center;
+    width: 20.125rem;
+    height: 10.1875rem;
+    overflow: hidden;
+    border-radius: 0.8rem;
+    background: #FFF;    
+    gap: 6.5%;   
+}
+
+
+.titlepanel{
+    position: absolute;
+    margin-top: 6px;
+    width: 220px;
+    height: 30px;
+    top: 5px;
+    left: 16px;    
+    color: var(--Grey-grey-800, #383E49);    
+    font-family: "Verdana", Sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.875rem;
+}

@@ -18,7 +18,7 @@ function BarraLateral(){
         <Card className ="barralateral">
 
             <div>
-                <ItemMenuLateral textitem = "Ingeniar Inoxidables">
+                <ItemMenuLateral textitem = "Ingeniar Inoxidables" enlace="https://www.ingeniarinoxidables.com/">
                     <LogoIcono fill="#1570EF"></LogoIcono>
                 </ItemMenuLateral>
             </div>
@@ -27,49 +27,49 @@ function BarraLateral(){
             <ul className="nav flex-column opmenu">
 
                 <li className="nav-item contitembar">
-                    <ItemMenuLateral textitem = "Panel Principal">
+                    <ItemMenuLateral textitem = "Panel Principal" enlace="/panelprincipal">
                         <PanelPrincipalIcono fill="#1570EF" stroke='#ffffff'/>
                     </ItemMenuLateral>
                 </li>
             
                 <li className="nav-item contitembar">
-                    <ItemMenuLateral textitem = "Inventario">
+                    <ItemMenuLateral textitem = "Inventario" enlace="/inventario">
                         <InventarioIcono fill='#ffffff' stroke="#1570EF"/>                        
                     </ItemMenuLateral>
                 </li>
             
                 <li className="nav-item contitembar">
-                    <ItemMenuLateral textitem = "Kits">
+                    <ItemMenuLateral textitem = "Kits" enlace="/kits">
                         <KitsIcono fill="#1570EF" stroke='#5D667'/>
                     </ItemMenuLateral>
                 </li>
             
                 <li className="nav-item contitembar">
-                    <ItemMenuLateral textitem = "Operaciones">
+                    <ItemMenuLateral textitem = "Operaciones" enlace="/operaciones">
                         <OperacionesIcono fill="#1570EF" stroke='#5D667'/>
                     </ItemMenuLateral>
                 </li>
             
                 <li className="nav-item contitembar">
-                    <ItemMenuLateral textitem = "Operario">
+                    <ItemMenuLateral textitem = "Operario" enlace="/operario">
                         <OperarioIcono fill="#1570EF" stroke='#5D667'/>
                     </ItemMenuLateral>
                 </li>
             
                 <li className="nav-item contitembar">
-                    <ItemMenuLateral textitem = "Reportes">
+                    <ItemMenuLateral textitem = "Reportes" enlace="/reportes">
                         <ReportesIcono fill="#1570EF" stroke='#5D667'/>
                     </ItemMenuLateral>
                 </li>
             
                 <li className="nav-item contitembar">
-                    <ItemMenuLateral textitem = "Configuración">
+                    <ItemMenuLateral textitem = "Configuración" enlace="/configuracion">
                         <SettingsIcono stroke="#1570EF"/>
                     </ItemMenuLateral>
                 </li>
             
                 <li className="nav-item contitembar">
-                    <ItemMenuLateral textitem = "Cerrar Sesión">
+                    <ItemMenuLateral textitem = "Cerrar Sesión" enlace="/logout">
                         <LogoutIcono fill="#1570EF" stroke='#5D667'/>
                     </ItemMenuLateral>
                 </li>

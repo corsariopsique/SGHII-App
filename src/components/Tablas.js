@@ -12,30 +12,32 @@ class Tablas extends React.Component {
                 <th key={column.key}>{column.title}</th>
                 ))}
             </tr>
-            );
-        }
+        );
+    }
         
-        renderRows() {
-            return this.props.data.map((row, index) => (
-            <tr key={index}>
-                {this.props.columns.map(column => (
-                <td key={column.key}>{row[column.key]}</td>
-                ))}
-            </tr>
-            ));
-        }
+    renderRows() {
+
+        return this.props.data.map((row, index) => (
+        <tr key={index}>
+            {this.props.columns.map(column => (
+            <td key={column.key}>{row[column.key]}</td>
+            ))}
+        </tr>
+        ));
+    }
         
-        render() {
+    render() {
 
-            const clases = "tabla table table-striped table-hover" + this.props.estilo;
+        const clases = "tabla table table-striped table-hover" + this.props.estilo;
 
-            return (
+        return (
 
-                    <table className={clases}>
-                        <thead>{this.renderHeader()}</thead>                    
-                        <tbody>{this.renderRows()}</tbody>                    
-                    </table>                
-            );
-        }
+                <table className={clases}>
+                    <thead>{this.renderHeader()}</thead>                    
+                    <tbody>{this.renderRows()}</tbody>                    
+                </table>                
+        );
+    }
 }
+
 export default Tablas;

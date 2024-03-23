@@ -1,4 +1,5 @@
 import { useState} from 'react';
+import { Link } from 'react-router-dom';
 import './ItemMenuLateral.css';
 
 
@@ -17,14 +18,14 @@ function ItemMenuLateral(props){
     }
     
     return (        
-        <div className ={seleccion} onMouseOver={handleronMouseOver} onMouseOut={handleronMouseOut}>
+        <Link className ={seleccion} onMouseOver={handleronMouseOver} onMouseOut={handleronMouseOut} to={props.enlace}>
             <div className ="itempack">
                 <div className ="iconitem">                    
                     {props.children}                           
                 </div>
-                <a className="tittlenosel">{textitem}</a>
+                <p className="tittlenosel">{textitem}</p>
             </div>            
-        </div>         
+        </Link>         
     );   
 }
 

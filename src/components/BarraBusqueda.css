@@ -36,20 +36,3 @@
     font-weight: 400;
     line-height: 1.5rem;        
 }
-
-#b_busca{
-    display: flex;
-    padding: 0.625rem 1.5625rem 0.625rem 1rem;
-    border-radius: 0.25rem;
-    background: var(--Primary-primary-600, #1366D9);
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    color: #FFF;
-    font-family: "Verdana", Sans-serif;
-    font-size: 0.875rem;
-    font-style: normal;
-    font-weight: bold;
-    line-height: 1.25rem;
-    border-color: #FFF;
-}

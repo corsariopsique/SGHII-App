@@ -28,14 +28,19 @@ class Tablas extends React.Component {
         
     render() {
 
-        const clases = "tabla table table-striped table-hover" + this.props.estilo;
+        const clases = "tabla table table-striped table-hover"
 
         return (
+
+            <div className={this.props.estilo}>
 
                 <table className={clases}>
                     <thead>{this.renderHeader()}</thead>                    
                     <tbody>{this.renderRows()}</tbody>                    
-                </table>                
+                </table>            
+
+            </div>        
+                
         );
     }
 }

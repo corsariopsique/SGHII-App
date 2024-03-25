@@ -1,6 +1,9 @@
+import './Inventario.css';
 import BarraSuperior from '../BarraSuperior';
 import BarraLateral from '../BarraLateral';
 import PanelInfoText from '../PanelInfoText';
+import Modal from '../Modal';
+import Tablas from '../Tablas';
 
 
 function Inventario(){
@@ -36,6 +39,20 @@ function Inventario(){
         }
     ]
 
+    const columnas = [
+        { key: 'id', title: 'ID' },
+        { key: 'name', title: 'Nombre' },
+        { key: 'tool', title: 'Herramienta' },
+        { key: 'oper',title: 'Operación'},
+      ];
+      
+      const numeros = [
+        { id: 'S1', name: 'Jose', tool: "Martillo", oper:"Prestamo"},
+        { id: 'A3', name: 'Carlos', tool: "Pulidora", oper:"Prestamo"},
+        { id: 'S8', name: 'Roberto', tool: "Tijera", oper:"Entrega"},
+        { id: 'D5', name: 'Jose Maria', tool:"Escuadra", oper:"Prestamo"},
+      ];  
+
     return(
         <div>
             <BarraSuperior/>
@@ -45,6 +62,13 @@ function Inventario(){
              estilo ="panelinv" 
              info={datos}
             />
+            <Modal title='Herramientas'>                
+                <Tablas
+                    estilo='tabla_Inventario'
+                    columns={columnas} 
+                    data={numeros}
+                />                
+            </Modal>
         </div>
     );
 }

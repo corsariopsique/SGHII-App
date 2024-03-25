@@ -4,16 +4,28 @@
 }
 
 .tabla{
+   border-radius: 0.8rem;   
+   background: #FFF;   
+   height: 100%;
+   color-scheme: var(--Azultabla);
+}
+
+.tabla_Panel{
     position: absolute;
-    top: 29rem;
-    left: 85.9rem;    
-    width: 33.65rem;
-    height: 27.5rem;
-    border-radius: 0.8rem;
     box-shadow: 0.5rem 0.5rem 0.25rem lightblue;
-    background: #FFF;
-    flex-shrink: 0;   
+    top: 29.1rem;
+    left: 85.8rem;    
+    width: 33.65rem;   
+    height: 27.45rem;     
 } 
+
+.tabla_Inventario{
+   position: absolute;
+   top: 3.8rem;
+   left: 1rem;    
+   width: 96rem;
+   height: 27.5rem;   
+}
 
  thead {
     text-align: center;        
@@ -39,7 +51,7 @@
     border-right: 0;
     font-weight: normal;          
     top: 0;   
- }
+ } 
 
  th {
     vertical-align:middle;    
@@ -48,6 +60,9 @@
 
  td {
     vertical-align:middle;    
+ }
+ tr{
+   height:auto;   
  }
 
  tfoot{

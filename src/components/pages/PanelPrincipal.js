@@ -166,7 +166,7 @@ function PanelPrincipal () {
         title="Cantidades en inventario"
         tool_list={lista}/>   
         <Tablas
-        estilo='tabla'
+        estilo='tabla_Panel'
         columns={columns} 
         data={data}
         />

@@ -27,10 +27,10 @@ const BarraBusqueda = () => {
         />        
       </form>
       <input 
-            id="b_busca"
             type="submit"
             value="Buscar"
             form='entratexto'
+            className='btn btn-outline-primary'
         />
         
     </div>

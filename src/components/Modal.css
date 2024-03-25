@@ -1,0 +1,33 @@
+.modal{
+    position: absolute;
+    left:21.5rem;
+    top:18rem;
+    display: flex;
+    width: 98rem;
+    height: 38.3rem;    
+    border-radius: 0.5rem;
+    background: #FFF;
+    align-items: flex-start;
+    align-content: flex-start;    
+    flex-wrap: wrap;
+}
+
+.btn_Modal{
+    position:absolute;
+    top:0.5rem;
+    left: 82rem;
+}
+
+.titlepanel{
+    position: absolute;    
+    width:max-content;
+    height:max-content;
+    top: 0.5rem;
+    left: 1rem;    
+    color: var(--Grey-grey-800, #383E49);    
+    font-family: "Verdana", Sans-serif;
+    font-size:larger;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.875rem;
+}

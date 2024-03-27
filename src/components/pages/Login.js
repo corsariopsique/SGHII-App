@@ -17,7 +17,7 @@ function Login () {
                     <p className='comment_Login'>Bienvenido, por favor ingrese sus datos de usuario.</p>
                 </div>   
 
-                <form id="login">
+                <form id="login" action='/panelprincipal'>
 
                     <label for="username" class="form-label">Nombre de usuario:</label>
 

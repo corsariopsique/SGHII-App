@@ -6,8 +6,7 @@
 .tabla{
    border-radius: 0.8rem;   
    background: #FFF;   
-   height: 100%;
-   color-scheme: var(--Azultabla);
+   height: 100%;   
 }
 
 .tabla_Panel{
@@ -21,10 +20,10 @@
 
 .tabla_Inventario{
    position: absolute;
-   top: 3.8rem;
+   top: 5.5rem;
    left: 1rem;    
    width: 96rem;
-   height: 27.5rem;   
+   height: 15.5rem;   
 }
 
  thead {
@@ -50,7 +49,7 @@
     border-left: 0;
     border-right: 0;
     font-weight: normal;          
-    top: 0;   
+    top: 0;       
  } 
 
  th {
@@ -61,12 +60,9 @@
  td {
     vertical-align:middle;    
  }
- tr{
-   height:auto;   
+ tr {
+    min-height: 10px;
  }
 
- tfoot{
-    border-radius: 0.8rem;
- }
- 
+
  

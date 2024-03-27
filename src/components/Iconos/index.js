@@ -18,3 +18,5 @@ export { default as FlechaAbajoIcono} from "./FlechaAbajoIcono";
 export { default as Tool1Icono} from "./Tool1Icono";
 export { default as Tool2Icono} from "./Tool2Icono";
 export { default as LogoCompletoIcono} from "./LogoCompletoIcono";
+export { default as FiltrosIcono} from './FiltrosIcono';
+export { default as DownloadIcono} from './DownloadIcono';

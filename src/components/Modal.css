@@ -14,8 +14,11 @@
 
 .btn_Modal{
     position:absolute;
-    top:0.5rem;
-    left: 82rem;
+    top: 0.8rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: row;        
+    width: max-content;
 }
 
 .titlepanel{

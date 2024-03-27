@@ -41,17 +41,51 @@ function Inventario(){
 
     const columnas = [
         { key: 'id', title: 'ID' },
-        { key: 'name', title: 'Nombre' },
-        { key: 'tool', title: 'Herramienta' },
-        { key: 'oper',title: 'Operación'},
+        { key: 'name', title: 'Herramienta' },
+        { key: 'date', title: 'Fecha Ingreso' },
+        { key: 'disp',title: 'Disponibilidad'},
       ];
       
       const numeros = [
-        { id: 'S1', name: 'Jose', tool: "Martillo", oper:"Prestamo"},
-        { id: 'A3', name: 'Carlos', tool: "Pulidora", oper:"Prestamo"},
-        { id: 'S8', name: 'Roberto', tool: "Tijera", oper:"Entrega"},
-        { id: 'D5', name: 'Jose Maria', tool:"Escuadra", oper:"Prestamo"},
+        { id: 'M1', name: 'Martillo', date: "06/08/2021", disp:"Disponible"},
+        { id: 'E1', name: 'Escuadra', date: "09/07/2021", disp:"Sin Inventario"},
+        { id: 'P4', name: 'Pulidora', date: "14/05/2021", disp:"Disponible"},
+        { id: 'XD6', name: 'Escoriador', date: "06/08/2021", disp:"Disponible"},
+        { id: 'M1', name: 'Martillo', date: "06/08/2021", disp:"Disponible"},
+        { id: 'E1', name: 'Escuadra', date: "09/07/2021", disp:"Sin Inventario"},
+        { id: 'P4', name: 'Pulidora', date: "14/05/2021", disp:"Disponible"},
+        { id: 'XD6', name: 'Escoriador', date: "06/08/2021", disp:"Disponible"},
+        { id: 'M1', name: 'Martillo', date: "06/08/2021", disp:"Disponible"},
+        { id: 'E1', name: 'Escuadra', date: "09/07/2021", disp:"Sin Inventario"},
+        { id: 'P4', name: 'Pulidora', date: "14/05/2021", disp:"Disponible"},
+        { id: 'XD6', name: 'Escoriador', date: "06/08/2021", disp:"Disponible"},
+        { id: 'M1', name: 'Martillo', date: "06/08/2021", disp:"Disponible"},
+        { id: 'E1', name: 'Escuadra', date: "09/07/2021", disp:"Sin Inventario"},
+        { id: 'P4', name: 'Pulidora', date: "14/05/2021", disp:"Disponible"},
+        { id: 'XD6', name: 'Escoriador', date: "06/08/2021", disp:"Disponible"},
+        { id: 'M1', name: 'Martillo', date: "06/08/2021", disp:"Disponible"},
+        { id: 'E1', name: 'Escuadra', date: "09/07/2021", disp:"Sin Inventario"},
+        { id: 'P4', name: 'Pulidora', date: "14/05/2021", disp:"Disponible"},
+        { id: 'XD6', name: 'Escoriador', date: "06/08/2021", disp:"Disponible"},
       ];  
+
+
+      const btns = [
+        {
+            btnname:"Agregar Herramienta",
+            icobtn:"Tool1Icono"
+        },
+
+        {
+            btnname:"Filtros",
+            icobtn:"FiltrosIcono"
+        },
+
+        {
+            btnname:"Descargar",
+            icobtn:"DownloadIcono"
+        }
+      ];
 
     return(
         <div>
@@ -62,12 +96,16 @@ function Inventario(){
              estilo ="panelinv" 
              info={datos}
             />
-            <Modal title='Herramientas'>                
+            <Modal 
+            title='Herramientas'
+            botones={btns}
+            >                         
                 <Tablas
                     estilo='tabla_Inventario'
                     columns={columnas} 
                     data={numeros}
-                />                
+                />   
+
             </Modal>
         </div>
     );

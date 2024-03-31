@@ -5,17 +5,24 @@ import BotonIcono from './BotonIcono';
 
 function Modal(props){
 
+    const boton_Clase = "btn-group "  + props.botoncss;
+    const modal_clase = "modal "+ props.estilo;
+
     return (
-        <Card className="modal">
+        <Card className={modal_clase}>
             
             <p className='titlepanel'>{props.title}</p>            
 
-            <div class="btn-group btn-group-lg btn_Modal" role="group" aria-label="Large button group">
+            <div class={boton_Clase} role="group" aria-label="Large button group">
 
                 {props.botones.map((btninv) => (
                     <BotonIcono 
                         btnname={btninv.btnname}
                         icobtn={btninv.icobtn}
+                        estilo={btninv.estilo}
+                        tipo={btninv.tipo}
+                        formulario={btninv.formulario}
+                        accion={btninv.accion}
                     />
                 ))}         
                 

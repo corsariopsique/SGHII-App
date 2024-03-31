@@ -1,0 +1,15 @@
+export { default as BarraLateral} from './BarraLateral';
+export { default as BarraSuperior} from './BarraSuperior';
+export { default as BarraBusqueda} from './BarraBusqueda';
+export { default as BotonIcono} from './BotonIcono';
+export { default as Card} from './Card';
+export { default as Graficos} from './Graficos';
+export { default as IconoInfo} from './IconoInfo';
+export { default as InfoCont} from './InfoCont';
+export { default as ItemListado} from './ItemListado';
+export { default as ItemMenuLateral} from './ItemMenuLateral';
+export { default as Modal} from './Modal';
+export { default as PanelInfo} from './PanelInfo';
+export { default as PanelInfoText} from './PanelInfoText';
+export { default as PanelListado} from './PanelListado';
+export { default as Tablas} from './Tablas';

@@ -73,31 +73,44 @@ function Inventario(){
       const btns = [
         {
             btnname:"Agregar Herramienta",
-            icobtn:"Tool1Icono"
+            icobtn:"Tool1Icono",
+            estilo:"btn-outline-primary",
+            tipo:"submit",            
+            accion: "/inventario/agregarherramienta"
         },
 
         {
             btnname:"Filtros",
-            icobtn:"FiltrosIcono"
+            icobtn:"FiltrosIcono",
+            estilo:"btn-outline-primary",
+            tipo:"button",            
         },
 
         {
             btnname:"Descargar",
-            icobtn:"DownloadIcono"
+            icobtn:"DownloadIcono",
+            estilo:"btn-outline-primary",
+            tipo:"button",            
         }
       ];
 
     return(
+
         <div>
+
             <BarraSuperior/>
             <BarraLateral/>
+
             <PanelInfoText
              title ="Inventario General" 
              estilo ="panelinv" 
              info={datos}
             />
+
             <Modal 
             title='Herramientas'
+            estilo="modal_completo"
+            botoncss="btn_ModalCompleto"
             botones={btns}
             >                         
                 <Tablas
@@ -106,7 +119,8 @@ function Inventario(){
                     data={numeros}
                 />   
 
-            </Modal>
+            </Modal>           
+
         </div>
     );
 }

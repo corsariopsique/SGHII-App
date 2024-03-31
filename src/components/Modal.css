@@ -1,4 +1,4 @@
-.modal{
+.modal_completo{
     position: absolute;
     left:21.5rem;
     top:18rem;
@@ -12,13 +12,37 @@
     flex-wrap: wrap;
 }
 
-.btn_Modal{
+.btn_ModalCompleto{
     position:absolute;
     top: 0.8rem;
     right: 1rem;
     display: flex;
     flex-direction: row;        
     width: max-content;
+}
+
+.modal_Form{
+    position: absolute;
+    padding-top: 4rem;
+    left:21.5rem;
+    top:8rem;
+    display: flex;
+    flex-direction: column;        
+    width: 40rem;
+    height: 45.3rem;    
+    border-radius: 0.5rem;
+    background: #FFF;
+    align-items:center;          
+}
+
+.btn_Modal_Form{
+    position:absolute;
+    bottom: 1.5rem;
+    justify-self: center;    
+    display: flex;
+    flex-direction: row;        
+    width: max-content;
+    gap: 10%;
 }
 
 .titlepanel{

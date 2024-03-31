@@ -20,3 +20,4 @@ export { default as Tool2Icono} from "./Tool2Icono";
 export { default as LogoCompletoIcono} from "./LogoCompletoIcono";
 export { default as FiltrosIcono} from './FiltrosIcono';
 export { default as DownloadIcono} from './DownloadIcono';
+export { default as CancelIcono} from './CancelIcono';

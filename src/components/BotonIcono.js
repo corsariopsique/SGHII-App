@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import * as Icons from './Iconos/index';
 import './BotonIcono.css';
 
@@ -12,19 +11,19 @@ function BotonIcono (props){
     const tipo = props.tipo;  
     
 
-    return (  
-        
-        <Link to={props.accion}>
+    return (         
 
-            <button form={props.formulario} 
-            type={tipo} 
-            class={clasebtn}            
-            >                
-                <Icono id="icobtn"/>{name}                
-                
-            </button>        
-
-        </Link>
+        <button form={props.formulario} 
+        type={tipo} 
+        class={clasebtn}                  
+        data-bs-toggle={props.d_toggle}   
+        data-bs-target={props.d_target}      
+        data-bs-dismiss={props.d_dismiss}  
+        onClick={props.on_Click} 
+        >                
+            <Icono id="icobtn"/>{name}                
+            
+        </button>               
         
     );
 }

@@ -6,10 +6,10 @@ import BotonIcono from './BotonIcono';
 function Modal(props){
 
     const boton_Clase = "btn-group "  + props.botoncss;
-    const modal_clase = "modal "+ props.estilo;
+    const modal_clase = props.estilo;
 
     return (
-        <Card className={modal_clase}>
+        <Card className={modal_clase} id={props.id}>
             
             <p className='titlepanel'>{props.title}</p>            
 
@@ -22,7 +22,11 @@ function Modal(props){
                         estilo={btninv.estilo}
                         tipo={btninv.tipo}
                         formulario={btninv.formulario}
-                        accion={btninv.accion}
+                        accion={btninv.accion}  
+                        on_Click={btninv.on_Click}
+                        d_toggle={btninv.d_toggle}
+                        d_target={btninv.d_target}   
+                        d_dismiss={btninv.d_dismiss}                   
                     />
                 ))}         
                 

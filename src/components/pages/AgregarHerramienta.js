@@ -1,7 +1,9 @@
+import { Form } from "react-router-dom";
 import './AgregarHerramienta.css';
 import Modal from '../Modal';
 
 function AgregarHerramienta () {
+  
 
     const btns = [
         {
@@ -9,26 +11,29 @@ function AgregarHerramienta () {
             icobtn:"Tool1Icono",
             estilo:"btn-primary",
             formulario:"add_tool",
-            tipo:"submit",
-            accion:"/"
+            d_dismiss:"modal",
+            tipo:"submit"                   
         },
 
         {
             btnname:"Cancelar",
             icobtn:"CancelIcono",
-            estilo:"btn-secondary"
+            estilo:"btn-secondary",
+            accion:"/inventario",
+            d_dismiss:"modal"
         }        
       ];
 
     return (
 
-        <Modal 
+        <Modal         
         title="Agregar Herramienta"
-        estilo="modal_Form"
+        estilo="modal_Form modal-content"
         botoncss="btn_Modal_Form"
         botones={btns}
-        >
-            <form id="add_tool">
+        >            
+
+            <Form id="add_tool" action="/inventario">
 
                 <label for="name_tool" class="form-label">Nombre:</label>
 
@@ -84,7 +89,7 @@ function AgregarHerramienta () {
                     placeholder='Ingrese marca de la herramienta'
                 />               
 
-            </form>        
+            </Form>                 
         
         </Modal>       
 

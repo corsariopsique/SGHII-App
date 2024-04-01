@@ -1,23 +1,43 @@
-import { Route, Routes} from "react-router-dom";
+
 import PanelPrincipal from "./components/pages/PanelPrincipal";
 import Login from "./components/pages/Login";
 import Inventario from "./components/pages/Inventario";
-import AgregarHerramienta from "./components/pages/AgregarHerramienta";
+import {
+  createBrowserRouter,  
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
 
-function App() { 
 
-  return (
+  const router = createBrowserRouter([
+    { path: "*", Component: Root },
+    { path: "/", Component: Login },    
+  ]);
 
-    <div>   
-      <Routes>        
-        <Route path="/" element={<Login />}/>   
-        <Route path="/panelprincipal" element={<PanelPrincipal/>} exact/>   
-        <Route path="/inventario" element={<Inventario/>} exact/>    
-        <Route path="/inventario/agregarherramienta" element={<AgregarHerramienta/>} exact/>             
-      </Routes>   
-    </div>
-     
-  );
-}
+  export default function App() {
+    return <RouterProvider router={router} />;
+  }
 
-export default App;
+  function Root() {
+
+    return (
+    
+      <div>   
+        <Routes>        
+          <Route path="/" element={<Login />} exact/>   
+          <Route path="/panelprincipal" element={<PanelPrincipal/>} exact/>   
+          <Route path="/inventario" element={<Inventario/>}/>                           
+        </Routes>   
+      </div>  
+       
+    );
+
+  }
+
+
+ 
+
+
+
+

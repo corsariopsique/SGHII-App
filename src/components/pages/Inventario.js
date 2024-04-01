@@ -4,9 +4,10 @@ import BarraLateral from '../BarraLateral';
 import PanelInfoText from '../PanelInfoText';
 import Modal from '../Modal';
 import Tablas from '../Tablas';
+import AgregarHerramienta from './AgregarHerramienta';
 
 
-function Inventario(){
+function Inventario(){      
 
     const datos = [
 
@@ -75,8 +76,9 @@ function Inventario(){
             btnname:"Agregar Herramienta",
             icobtn:"Tool1Icono",
             estilo:"btn-outline-primary",
-            tipo:"submit",            
-            accion: "/inventario/agregarherramienta"
+            tipo:"button",            
+            d_toggle:"modal",
+            d_target:"#add_t_modal"
         },
 
         {
@@ -119,7 +121,13 @@ function Inventario(){
                     data={numeros}
                 />   
 
-            </Modal>           
+            </Modal>  
+
+            <div className='modal' id="add_t_modal">
+                <div className="modal-dialog">
+                    <AgregarHerramienta />         
+                </div>
+            </div>
 
         </div>
     );

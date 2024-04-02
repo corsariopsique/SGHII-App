@@ -1,0 +1,16 @@
+.img_Preview{
+    display: flex;
+    flex-direction: row;
+    gap:5%;
+}
+
+#img_Pre{
+    max-height: 110px;   
+    border-radius: 0.5rem; 
+}   
+
+#in_img{
+    display:flex;
+    flex-direction: column;
+    gap:1%;
+}

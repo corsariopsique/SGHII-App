@@ -111,8 +111,8 @@ function Inventario(){
 
             <Modal 
             title='Herramientas'
-            estilo="modal_completo"
-            botoncss="btn_ModalCompleto"
+            estilo="modal_intermedio"
+            botoncss="btn_ModalIntermedio"
             botones={btns}
             >                         
                 <Tablas

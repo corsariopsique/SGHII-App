@@ -1,0 +1,26 @@
+#nav-tab{
+    position: absolute;
+    top:4rem;
+    left:0.5rem;
+}
+
+#nav-tabContent{
+    position: absolute;
+    top:8rem;
+    left:2rem;
+}
+
+.valor_atributo{
+    font-weight: lighter;    
+}
+
+.atributo_lista{
+    display: flex;
+    font-weight: bolder;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tarjeta_tool{
+    width: 30rem;
+}

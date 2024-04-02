@@ -1,9 +1,9 @@
-.modal_completo{
+.modal_intermedio{
     position: absolute;
-    left:21.5rem;
+    left:21.6rem;
     top:18rem;
     display: flex;
-    width: 98rem;
+    width: 97.9rem;
     height: 38.3rem;    
     border-radius: 0.5rem;
     background: #FFF;
@@ -13,7 +13,22 @@
     overflow: auto;
 }
 
-.btn_ModalCompleto{
+.modal_completo{
+    position: absolute;
+    left:21.6rem;
+    top:7.4125rem;
+    display: flex;
+    width: 97.9rem;
+    height: 48.88rem;    
+    border-radius: 0.5rem;
+    background: #FFF;
+    align-items: flex-start;
+    align-content: flex-start;    
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.btn_ModalIntermedio{
     position:absolute;
     top: 0.8rem;
     right: 1rem;
@@ -22,27 +37,28 @@
     width: max-content;    
 }
 
-.modal_Form{    
+.modal_Form_add_tool{    
     padding-top: 4rem;
-    left: 0rem;  
-    top:5rem;    
+    left: -5rem;  
+    top:2rem;    
     display: flex;
     flex-direction: column;        
-    width: 40rem;
-    height: 45.3rem;    
+    width: 50rem;
+    height: 50.3rem;    
     border-radius: 0.5rem;
     background: #FFF;
-    align-items:center;          
+    align-items:center;        
+    overflow:auto;  
 }
 
-.btn_Modal_Form{
-    position:absolute;
+.btn_Modal_Form_add_tool{
+    position:absolute;    
     bottom: 1.5rem;
     justify-self: center;    
     display: flex;
     flex-direction: row;        
-    width: max-content;
-    gap: 10%;
+    width: max-content;    
+    gap: 15%;
 }
 
 .titlepanel{

@@ -1,9 +1,26 @@
 import { Form } from "react-router-dom";
-import './AgregarHerramienta.css';
+import { useState } from "react";
 import Modal from '../Modal';
+import './AgregarHerramienta.css';
 
-function AgregarHerramienta () {
-  
+
+function AgregarHerramienta () {    
+
+    const [img_pre, setImg_Pre] = useState(null);
+
+    const handleronChange = (event) => {
+
+        const file = event.target.files[0];
+        const reader = new FileReader();
+
+        reader.onloadend = () => {
+            setImg_Pre(reader.result);
+        };    
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }    
 
     const btns = [
         {
@@ -28,12 +45,32 @@ function AgregarHerramienta () {
 
         <Modal         
         title="Agregar Herramienta"
-        estilo="modal_Form modal-content"
-        botoncss="btn_Modal_Form"
+        estilo="modal_Form_add_tool modal-content"
+        botoncss="btn_Modal_Form_add_tool"
         botones={btns}
         >            
 
             <Form id="add_tool" action="/inventario">
+
+                <div className="img_Preview">
+
+                    <div>
+                    {img_pre && (<img id="img_Pre" className= "img-thumbnail" src={img_pre} alt="Preview"></img>)}
+                    </div>
+
+                    <div id="in_img">
+                        <label for="tool_image" class="form-label">Imagen:</label> 
+                        <input 
+                            type="file" 
+                            id="tool_image" 
+                            name="tool_image"
+                            accept="image/*"
+                            onChange={handleronChange}
+                        />
+                    </div>
+
+                </div>              
+                
 
                 <label for="name_tool" class="form-label">Nombre:</label>
 

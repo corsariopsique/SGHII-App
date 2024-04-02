@@ -69,7 +69,7 @@ function BarraLateral(){
                 </li>
             
                 <li className="nav-item contitembar">
-                    <ItemMenuLateral textitem = "Cerrar Sesión" enlace="/logout">
+                    <ItemMenuLateral textitem = "Cerrar Sesión" enlace="/">
                         <LogoutIcono fill="#1570EF" stroke='#5D667'/>
                     </ItemMenuLateral>
                 </li>

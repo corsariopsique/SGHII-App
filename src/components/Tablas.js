@@ -19,14 +19,14 @@ class Tablas extends React.Component {
         
     renderRows() {
 
-        const l_clases = "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover";
+        const l_clases = "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover";        
 
         return (this.props.data.map((row, index) => (                
             
             <tr key={index}>           
                 
                 {this.props.columns.map(column => (
-                <td><Link className={l_clases} to={"tool"+row.id} key={column.key}>{row[column.key]}</Link></td>
+                <td><Link className={l_clases} to={row.id} key={column.key}>{row[column.key]}</Link></td>
                 ))}
                 
             </tr>           

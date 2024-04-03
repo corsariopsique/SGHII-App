@@ -116,6 +116,7 @@ function Inventario(){
             botones={btns}
             >                         
                 <Tablas
+                    listado='tool'
                     estilo='tabla_Inventario'
                     columns={columnas} 
                     data={numeros}

@@ -1,8 +1,7 @@
 import * as Icons from './Iconos/index';
 import './BotonIcono.css';
 
-
-function BotonIcono (props){
+function BotonIcono (props){        
 
     const name = props.btnname;
     const iconame = props.icobtn;
@@ -18,8 +17,7 @@ function BotonIcono (props){
         class={clasebtn}                  
         data-bs-toggle={props.d_toggle}   
         data-bs-target={props.d_target}      
-        data-bs-dismiss={props.d_dismiss}  
-        onClick={props.on_Click} 
+        data-bs-dismiss={props.d_dismiss}          
         >                
             <Icono id="icobtn"/>{name}                
             

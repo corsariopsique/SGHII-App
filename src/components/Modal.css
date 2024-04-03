@@ -53,12 +53,10 @@
 
 .btn_Modal_Form_add_tool{
     position:absolute;    
-    bottom: 1.5rem;
-    justify-self: center;    
+    bottom: 1.5rem;    
     display: flex;
     flex-direction: row;        
     width: max-content;    
-    gap: 15%;
 }
 
 .titlepanel{

@@ -22,3 +22,4 @@ export { default as FiltrosIcono} from './FiltrosIcono';
 export { default as DownloadIcono} from './DownloadIcono';
 export { default as CancelIcono} from './CancelIcono';
 export { default as EditarIcono} from './EditarIcono';
+export { default as EliminarIcono} from './EliminarIcono';

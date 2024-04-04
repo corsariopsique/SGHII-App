@@ -1,5 +1,5 @@
 import { useState } from "react";
-import * as Icons from '../Iconos/index';
+import * as Icons from '../Iconos/IndexIcons';
 import Inventario from './Inventario';
 
 

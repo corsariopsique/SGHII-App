@@ -1,5 +1,5 @@
 import './IconoInfo.css';
-import * as icons from './Iconos/index';
+import * as icons from './Iconos/IndexIcons';
 
 function IconoInfo (props) {  
 

@@ -1,0 +1,32 @@
+{
+    "itemstexto": [
+
+        {
+            "titulo": "Kits",
+            "cantidad": 14,
+            "periodo": 7,
+            "estilo": "total_Kits"
+        },
+
+        {
+            "titulo": "Herramientas Total",
+            "cantidad": 622,
+            "periodo": 7,
+            "estilo": "total_Tools"
+        },
+
+        {
+            "titulo": "Top Salidas",
+            "cantidad": 5,
+            "periodo": 7,
+            "estilo": "total_Out"
+        },
+
+        {
+            "titulo": "Inventarios Bajos",
+            "cantidad": 7,
+            "periodo": 7,
+            "estilo": "bajos_Inven"
+        }
+    ]
+}

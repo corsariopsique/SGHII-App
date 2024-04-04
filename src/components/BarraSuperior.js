@@ -1,7 +1,7 @@
 import './BarraSuperior.css';
 import BarraBusqueda from './BarraBusqueda';
 import ima_ava from './images/fotoavatar.jpg';
-import { NotificationIcono } from './Iconos';
+import { NotificationIcono } from './Iconos/IndexIcons';
 
 function BarraSuperior () {
 

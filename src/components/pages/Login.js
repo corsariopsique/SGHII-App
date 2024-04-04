@@ -1,5 +1,5 @@
 import './Login.css';
-import { LogoCompletoIcono } from "../Iconos";
+import { LogoCompletoIcono } from "../Iconos/IndexIcons";
 
 function Login () {
     

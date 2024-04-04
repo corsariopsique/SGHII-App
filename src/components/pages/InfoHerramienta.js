@@ -1,5 +1,5 @@
 import './InfoHerramienta.css';
-import {Modal, BarraLateral, BarraSuperior, Tablas} from '../Index';
+import {Modal, BarraLateral, BarraSuperior, Tablas} from '../IndexComponents';
 import EditarHerramienta from './EditarHerramienta';
 import AlertBorra from './AlertBorra';
 

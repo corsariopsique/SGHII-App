@@ -1,17 +1,21 @@
+import {
+  createBrowserRouter,  
+  createRoutesFromElements,  
+  Route,
+  RouterProvider,
+  Routes,
+} from "react-router-dom";
+
 
 import PanelPrincipal from "./components/pages/PanelPrincipal";
 import Login from "./components/pages/Login";
 import Inventario from "./components/pages/Inventario";
 import InfoHerramienta from "./components/pages/InfoHerramienta";
 
-import {
-  createBrowserRouter,  
-  Route,
-  RouterProvider,
-  Routes,
-} from "react-router-dom";
+
 import EditarHerramienta from "./components/pages/EditarHerramienta";
 import AgregarHerramienta from "./components/pages/AgregarHerramienta";
+import RootLayout from "./components/Layouts/RootLayout";
 
   const router = createBrowserRouter([
     { path: "*", Component: Root },
@@ -21,6 +25,18 @@ import AgregarHerramienta from "./components/pages/AgregarHerramienta";
     { path: "/inventario/:toolId", Component:InfoHerramienta},    
     { path: "inventario/agregarherramienta", Component:AgregarHerramienta}
   ]);
+
+  {/*const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<PanelPrincipal />} />
+        <Route path="inventario" element={<Inventario />} />
+        <Route path=
+      </Route>
+    )
+  )
+    */}
+
 
   export default function App() {
     return <RouterProvider router={router} />;

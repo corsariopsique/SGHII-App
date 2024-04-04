@@ -2,7 +2,7 @@ import './EditarHerramienta.css';
 import './AgregarHerramienta.css';
 import { Form } from "react-router-dom";
 import { useState } from "react";
-import {Modal} from '../Index';
+import {Modal} from '../IndexComponents';
 
 function EditarHerramienta(){    
 

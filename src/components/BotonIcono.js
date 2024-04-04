@@ -1,4 +1,4 @@
-import * as Icons from './Iconos/index';
+import * as Icons from './Iconos/IndexIcons';
 import './BotonIcono.css';
 
 function BotonIcono (props){        

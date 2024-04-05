@@ -1,15 +1,41 @@
 import './Inventario.css';
-import BarraSuperior from '../BarraSuperior';
-import BarraLateral from '../BarraLateral';
 import PanelInfoText from '../PanelInfoText';
 import Modal from '../Modal';
-import Tablas from '../Tablas';
+import Tablas2 from '../Tablas2';
 import AgregarHerramienta from './AgregarHerramienta';
+import { useLoaderData } from 'react-router-dom';
 
 
-function Inventario(){      
+export default function Inventario(){   
+    
+    const data_inventario = useLoaderData()    
 
-    const datos = [
+    const btns = [
+        {
+            btnname:"Agregar Herramienta",
+            icobtn:"Tool1Icono",
+            estilo:"btn-outline-primary",
+            tipo:"button",            
+            d_toggle:"modal",
+            d_target:"#add_t_modal"
+        },
+
+        {
+            btnname:"Filtros",
+            icobtn:"FiltrosIcono",
+            estilo:"btn-outline-primary",
+            tipo:"button",            
+        },
+
+        {
+            btnname:"Descargar",
+            icobtn:"DownloadIcono",
+            estilo:"btn-outline-primary",
+            tipo:"button",            
+        }
+      ];
+
+      const datos = [
 
         {
             titulo: "Kits",
@@ -38,70 +64,23 @@ function Inventario(){
             periodo: 7,
             estilo: "bajos_Inven"
         }
-    ]
+    ];       
+   
 
-    const columnas = [
+    const col_data = [
         { key: 'id', title: 'ID' },
-        { key: 'name', title: 'Herramienta' },
-        { key: 'date', title: 'Fecha Ingreso' },
-        { key: 'disp',title: 'Disponibilidad'},
-      ];
+        { key: 'tool', title: 'Herramienta' },
+        { key: 'brand', title: 'Marca' },
+        { key: 'cat', title: 'Categoria'},
+        { key: 'rol', title: 'Rol Herramienta'},
+        { key: 'date_in', title: 'Fecha Ingreso'},
+        { key: 'prove', title: 'Proveedor'}
+      ];      
       
-      const numeros = [
-        { id: 'M1', name: 'Martillo', date: "06/08/2021", disp:"Disponible"},
-        { id: 'E1', name: 'Escuadra', date: "09/07/2021", disp:"Sin Inventario"},
-        { id: 'P4', name: 'Pulidora', date: "14/05/2021", disp:"Disponible"},
-        { id: 'XD6', name: 'Escoriador', date: "06/08/2021", disp:"Disponible"},
-        { id: 'M1', name: 'Martillo', date: "06/08/2021", disp:"Disponible"},
-        { id: 'E1', name: 'Escuadra', date: "09/07/2021", disp:"Sin Inventario"},
-        { id: 'P4', name: 'Pulidora', date: "14/05/2021", disp:"Disponible"},
-        { id: 'XD6', name: 'Escoriador', date: "06/08/2021", disp:"Disponible"},
-        { id: 'M1', name: 'Martillo', date: "06/08/2021", disp:"Disponible"},
-        { id: 'E1', name: 'Escuadra', date: "09/07/2021", disp:"Sin Inventario"},
-        { id: 'P4', name: 'Pulidora', date: "14/05/2021", disp:"Disponible"},
-        { id: 'XD6', name: 'Escoriador', date: "06/08/2021", disp:"Disponible"},
-        { id: 'M1', name: 'Martillo', date: "06/08/2021", disp:"Disponible"},
-        { id: 'E1', name: 'Escuadra', date: "09/07/2021", disp:"Sin Inventario"},
-        { id: 'P4', name: 'Pulidora', date: "14/05/2021", disp:"Disponible"},
-        { id: 'XD6', name: 'Escoriador', date: "06/08/2021", disp:"Disponible"},
-        { id: 'M1', name: 'Martillo', date: "06/08/2021", disp:"Disponible"},
-        { id: 'E1', name: 'Escuadra', date: "09/07/2021", disp:"Sin Inventario"},
-        { id: 'P4', name: 'Pulidora', date: "14/05/2021", disp:"Disponible"},
-        { id: 'XD6', name: 'Escoriador', date: "06/08/2021", disp:"Disponible"},
-      ];  
-
-
-      const btns = [
-        {
-            btnname:"Agregar Herramienta",
-            icobtn:"Tool1Icono",
-            estilo:"btn-outline-primary",
-            tipo:"button",            
-            d_toggle:"modal",
-            d_target:"#add_t_modal"
-        },
-
-        {
-            btnname:"Filtros",
-            icobtn:"FiltrosIcono",
-            estilo:"btn-outline-primary",
-            tipo:"button",            
-        },
-
-        {
-            btnname:"Descargar",
-            icobtn:"DownloadIcono",
-            estilo:"btn-outline-primary",
-            tipo:"button",            
-        }
-      ];
 
     return(
 
-        <div>
-
-            <BarraSuperior/>
-            <BarraLateral/>
+        <div>            
 
             <PanelInfoText
              title ="Inventario General" 
@@ -115,11 +94,11 @@ function Inventario(){
             botoncss="btn_ModalIntermedio"
             botones={btns}
             >                         
-                <Tablas
+                <Tablas2
                     listado='tool'
                     estilo='tabla_Inventario'
-                    columns={columnas} 
-                    data={numeros}
+                    columns={col_data} 
+                    data={data_inventario}
                 />   
 
             </Modal>  
@@ -134,4 +113,16 @@ function Inventario(){
     );
 }
 
-export default Inventario;
+
+export const inventarioLoader = async () => {
+    
+    const itms = await fetch('http://localhost:4000/tools')   
+    
+
+    if (!itms.ok) {
+        throw Error('Could not fetch the list of careers')
+      }
+    
+      return itms.json()
+};
+

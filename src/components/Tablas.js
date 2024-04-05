@@ -21,17 +21,19 @@ class Tablas extends React.Component {
 
         const l_clases = "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover";        
 
-        return (this.props.data.map((row, index) => (                
+        return (            
             
-            <tr key={index}>           
-                
-                {this.props.columns.map(column => (
-                <td><Link className={l_clases} to={row.id} key={column.key}>{row[column.key]}</Link></td>
-                ))}
-                
-            </tr>           
+            this.props.data.map((row, index) => (                                    
             
-        ))); 
+                <tr key={index}>           
+                    
+                    {this.props.columns.map(column => (
+                    <td><Link className={l_clases} to={row.id} key={column.key}>{row[column.key]}</Link></td>
+                    ))}
+                    
+                </tr>                    
+            ))            
+        ); 
     }
         
     render() {

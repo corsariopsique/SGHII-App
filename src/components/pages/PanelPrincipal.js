@@ -1,5 +1,3 @@
-import BarraLateral from '../BarraLateral';
-import BarraSuperior from "../BarraSuperior";
 import PanelInfo from "../PanelInfo";
 import Graficos from "../Graficos";
 import Tablas from "../Tablas";
@@ -142,9 +140,7 @@ function PanelPrincipal () {
     
     return (
 
-        <div>
-        <BarraSuperior></BarraSuperior>
-        <BarraLateral></BarraLateral>
+        <div>        
         <PanelInfo 
         title ="Salida de Herramienta" 
         estilo ="panelinfo1" 

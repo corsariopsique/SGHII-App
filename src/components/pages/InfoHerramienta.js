@@ -1,10 +1,13 @@
 import './InfoHerramienta.css';
-import {Modal, BarraLateral, BarraSuperior, Tablas} from '../IndexComponents';
+import {Modal, Tablas} from '../IndexComponents';
 import EditarHerramienta from './EditarHerramienta';
 import AlertBorra from './AlertBorra';
+import { useLoaderData, useParams } from 'react-router-dom'
 
-
-function InfoHerramienta(props){    
+export default function InfoHerramienta(props){   
+    
+    const {id} = useParams()    
+    const data_infoTool = useLoaderData()
 
     const ruta_img = require('../images/martillo.png'); 
 
@@ -48,33 +51,32 @@ function InfoHerramienta(props){
             botones={btns}
             >
 
-                <nav class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Descripción</a>                    
-                    <a class="nav-link disabled" id="nav-disabled-tab" data-bs-toggle="tab" href="#nav-disabled" role="tab" aria-controls="nav-disabled" tabindex="-1" aria-disabled="true"> </a>
+                <nav className="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Descripción</a>                    
+                    <a className="nav-link disabled" id="nav-disabled-tab" data-bs-toggle="tab" href="#nav-disabled" role="tab" aria-controls="nav-disabled" tabindex="-1" aria-disabled="true"> </a>
                 </nav>
 
-                <div class="tab-content" id="nav-tabContent">
+                <div className="tab-content" id="nav-tabContent">
 
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <div class="card tarjeta_tool text-secondary">
-                            <div class="card-header bg-transparent text-primary">Detalles Primarios</div>
-                                <div class="card-body">
-                                    <h5 class="card-title">Martillo</h5>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item atributo_lista text-secondary">ID: <span className='valor_atributo'>M4</span></li>
-                                        <li class="list-group-item atributo_lista text-secondary">Categoria: <span className='valor_atributo'>Manual</span></li>
-                                        <li class="list-group-item atributo_lista text-secondary">Marca: <span className='valor_atributo'>Colima</span></li>
-                                        <li class="list-group-item atributo_lista text-secondary">Modelo: <span className='valor_atributo'>25mm</span></li>
-                                        <li class="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>2021-07-15</span></li>
-                                        <li class="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>---</span></li>
+                    <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div className="card tarjeta_tool text-secondary">
+                            <div className="card-header bg-transparent text-primary">Detalles Primarios</div>
+                                <div className="card-body">
+                                    <h5 className="card-title">{data_infoTool.tool}</h5>
+                                    <ul className="list-group list-group-flush">
+                                        <li className="list-group-item atributo_lista text-secondary">ID: <span className='valor_atributo'>{data_infoTool.id}</span></li>
+                                        <li className="list-group-item atributo_lista text-secondary">Categoria: <span className='valor_atributo'>{data_infoTool.cat}</span></li>
+                                        <li className="list-group-item atributo_lista text-secondary">Marca: <span className='valor_atributo'>{data_infoTool.brand}</span></li>                                        
+                                        <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoTool.date_in}</span></li>
+                                        <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>---</span></li>
                                     </ul>
                                 </div>
-                            <div class="card-footer bg-transparent"><li class="list-group-item atributo_lista">Cantidad Total: <span>38</span></li></div>
+                            <div className="card-footer bg-transparent"><li class="list-group-item atributo_lista">Cantidad Total: <span></span></li></div>
                         </div>    
 
-                        <div class="card text-secondary last_oper">
-                            <div class="card-header bg-transparent text-primary">Ultimas Operaciones</div>
-                            <div class="card-body">
+                        <div className="card text-secondary last_oper">
+                            <div className="card-header bg-transparent text-primary">Ultimas Operaciones</div>
+                            <div className="card-body">
                                 <Tablas
                                 listado='transaccion'
                                 estilo="tabla_info_tool"
@@ -84,22 +86,21 @@ function InfoHerramienta(props){
                             </div>
                         </div>  
 
-                        <div class="card tarjeta_img_tool">
-                            <img src={ruta_img} class="card-img-top img_info" alt="card-img-top"/>
-                            <div class="card-body">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item atributo_lista text-secondary">En prestamo: <span className='valor_atributo'>15</span></li>
-                                    <li class="list-group-item atributo_lista text-secondary">En inventario: <span className='valor_atributo'>6</span></li>
+                        <div className="card tarjeta_img_tool">
+                            <img src={ruta_img} className="card-img-top img_info" alt="card-img-top"/>
+                            <div className="card-body">
+                                <ul className="list-group list-group-flush">
+                                    <li className="list-group-item atributo_lista text-secondary">En prestamo: <span className='valor_atributo'>15</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">En inventario: <span className='valor_atributo'>6</span></li>
                                 </ul>
                             </div>
                         </div> 
 
-                        <div class="card text-secondary proveedor">
-                            <div class="card-header bg-transparent text-primary">Proveedores</div>
-                            <div class="card-body">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item atributo_lista text-secondary">Distribuciones J&S: <span className='valor_atributo'>12345678</span></li>
-                                    <li class="list-group-item atributo_lista text-secondary">FerreColombia: <span className='valor_atributo'>98765421</span></li>
+                        <div className="card text-secondary proveedor">
+                            <div className="card-header bg-transparent text-primary">Proveedores</div>
+                            <div className="card-body">
+                                <ul className="list-group list-group-flush">                                    
+                                    <li className="list-group-item atributo_lista text-secondary">{data_infoTool.prove}<span className='valor_atributo'>12345678</span></li>                                    
                                 </ul>                                                         
                             </div>
                         </div>   
@@ -107,10 +108,7 @@ function InfoHerramienta(props){
                     </div>                    
                 </div>
 
-            </Modal>
-
-            <BarraLateral/>
-            <BarraSuperior/>
+            </Modal>          
 
             <div className='modal' id="edit_t_modal">
                 <div className="modal-dialog">
@@ -127,4 +125,19 @@ function InfoHerramienta(props){
         </div>
     );
 }
-export default InfoHerramienta;
+
+export const InfoherramientaLoader = async ({params}) => {    
+    
+    const { id } = params
+    
+    const detail = await fetch(`http://localhost:4000/tools/` + id)           
+
+    if (!detail.ok) {
+        throw Error('Could not fetch the list of careers')
+      }
+    
+      return detail.json()
+}
+
+
+

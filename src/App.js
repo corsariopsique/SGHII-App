@@ -2,45 +2,53 @@ import {
   createBrowserRouter,  
   createRoutesFromElements,  
   Route,
-  RouterProvider,
-  Routes,
+  RouterProvider    
 } from "react-router-dom";
-
 
 import PanelPrincipal from "./components/pages/PanelPrincipal";
 import Login from "./components/pages/Login";
-import Inventario from "./components/pages/Inventario";
-import InfoHerramienta from "./components/pages/InfoHerramienta";
+import Inventario, { inventarioLoader } from "./components/pages/Inventario";
+import InfoHerramienta, {InfoherramientaLoader} from "./components/pages/InfoHerramienta";
 
-
-import EditarHerramienta from "./components/pages/EditarHerramienta";
-import AgregarHerramienta from "./components/pages/AgregarHerramienta";
 import RootLayout from "./components/Layouts/RootLayout";
+import InventarioLayout from "./components/Layouts/InventarioLayout";
 
-  const router = createBrowserRouter([
+  {/*const router = createBrowserRouter([
     { path: "*", Component: Root },
     { path: "/", Component: Login },  
     { path: "/panelprincipal", Component:PanelPrincipal},
     { path: "/inventario",Component:Inventario},
     { path: "/inventario/:toolId", Component:InfoHerramienta},    
     { path: "inventario/agregarherramienta", Component:AgregarHerramienta}
-  ]);
+  ]);*/}
 
-  {/*const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/" element={<RootLayout />}>
-        <Route index element={<PanelPrincipal />} />
-        <Route path="inventario" element={<Inventario />} />
-        <Route path=
-      </Route>
+   const router = createBrowserRouter(
+    createRoutesFromElements(      
+      
+      <Route path="/" element={<RootLayout />}>        
+        <Route path="panelprincipal" element={<PanelPrincipal />} />       
+        <Route path="inventario" element={<InventarioLayout />}>
+          <Route 
+          index 
+          element={<Inventario />}
+          loader={inventarioLoader}/>
+          <Route 
+          path=":toolid"
+          element={<InfoHerramienta />}   
+          loader ={InfoherramientaLoader} 
+          />    
+        </Route>
+      </Route>      
     )
-  )
-    */}
+  )    
 
 
   export default function App() {
     return <RouterProvider router={router} />;
   }
+
+
+  {/*
 
   function Root() {
 
@@ -64,6 +72,8 @@ import RootLayout from "./components/Layouts/RootLayout";
             </Route>
           </Route>
 
+            */}
+
 
 
 
@@ -80,10 +90,12 @@ import RootLayout from "./components/Layouts/RootLayout";
           }}
           action={({ params }) => {}} 
           element={<InfoHerramienta/>}          
-        />*/}
+        />
         </Routes>   
       </div>  
 
     );
 
   }
+
+*/}

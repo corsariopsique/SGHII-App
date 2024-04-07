@@ -28,30 +28,34 @@
 
  thead{
    position: sticky;
-    text-align: center;        
-    font-family: "Verdana", Sans-serif;
-    color: var(--Azultabla, #007aa5);
-    font-size: 0.875rem;
-    font-style:normal;
-    font-weight:bold;      
+    text-align: center;            
     border-left: 0;
     border-right: 0;
     font-weight: normal;            
     top: 0;      
  }
 
- tbody{
-    text-align: center;    
-    color: var(--Grey-grey-600, #5D6679);
-    font-family: "Verdana", Sans-serif;
+ thead > td{
+   font-family: "Verdana", Sans-serif;    
     font-size: 0.875rem;
-    font-style: normal;
-    font-weight: 500;         
+    font-style:normal;
+    font-weight:bold;      
+ }
+
+ tbody{
+    text-align: center;                
     border-left: 0;
     border-right: 0;
     font-weight: normal;          
     top: 0;       
  } 
+
+ tbody > td {
+   font-family: "Verdana", Sans-serif;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;   
+ }
 
  th {
     vertical-align:middle;        

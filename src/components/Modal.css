@@ -6,10 +6,7 @@
     width: 97.9rem;
     height: 38.3rem;    
     border-radius: 0.5rem;
-    background: #FFF;
-    align-items: flex-start;
-    align-content: flex-start;    
-    flex-wrap: wrap;
+    background: #FFF;    
     overflow: auto;
 }
 
@@ -21,10 +18,7 @@
     width: 97.9rem;
     height: 48.88rem;    
     border-radius: 0.5rem;
-    background: #FFF;
-    align-items: flex-start;
-    align-content: flex-start;    
-    flex-wrap: wrap;
+    background: #FFF;        
     overflow: auto;
 }
 
@@ -59,6 +53,10 @@
     width: max-content;    
 }
 
+.icono-root{
+    align-items: center;
+}
+
 .titlepanel{
     position: absolute;    
     width:max-content;
@@ -71,4 +69,8 @@
     font-style: normal;
     font-weight: 500;
     line-height: 1.875rem;
+}
+
+.icono-root{
+    justify-content: center;
 }

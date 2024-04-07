@@ -2,57 +2,46 @@ import React from 'react';
 import './Tablas.css';
 import {Link} from 'react-router-dom';
 
-class Tablas extends React.Component {       
-    
+function Tablas (props) {       
 
-    renderHeader() {
+    const l_clases = "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover";        
+    const clases = "tabla table table-striped table-hover"           
 
-        return (
+    return (
 
-            <tr>
-                {this.props.columns.map(column => (
-                <th key={column.key}>{column.title}</th>
-                ))}
-            </tr>
-        );
-    }
-        
-    renderRows() {
+        <div className={props.estiloTabla}>
 
-        const l_clases = "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover";        
+            <table className={clases}>
 
-        return (            
-            
-            this.props.data.map((row, index) => (                                    
-            
-                <tr key={index}>           
-                    
-                    {this.props.columns.map(column => (
-                    <td><Link className={l_clases} to={row.id} key={column.key}>{row[column.key]}</Link></td>
-                    ))}
-                    
-                </tr>                    
-            ))            
-        ); 
-    }
-        
-    render() {
+                <thead className='text-primary'>
 
-        const clases = "tabla table table-striped table-hover"        
+                    <tr>
+                        {props.columns.map(column => (
+                        <th key={column.key}>{column.title}</th>
+                        ))}
+                    </tr>
 
-        return (
+                </thead>
 
-            <div className={this.props.estilo}>
-
-                <table className={clases}>
-                    <thead>{this.renderHeader()}</thead>                    
-                    <tbody>{this.renderRows()}</tbody>                    
-                </table>            
-
-            </div>        
+                <tbody>
                 
-        );
-    }
+                    {props.data.map((row, index) => (                                   
+                    
+                        <tr key={index}>           
+
+                            {props.columns.map(column => (
+                            <td><Link className={l_clases} to={row.id.toString()} key={column.key}>{row[column.key]}</Link></td>
+                            ))}
+                            
+                        </tr>                     
+                    ))}
+
+                </tbody>
+
+            </table>            
+
+        </div>
+    ); 
 }
 
 export default Tablas;

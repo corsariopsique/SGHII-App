@@ -1,6 +1,6 @@
 import { useState } from "react";
 import * as Icons from '../Iconos/IndexIcons';
-import Inventario from './Inventario';
+import { redirect } from "react-router-dom";
 
 
 const AlertBorra = () => {
@@ -14,15 +14,15 @@ const AlertBorra = () => {
     return(
 
         <div>
-            <div class="card text-white bg-danger modal-content delete_alert">
-                <div class="card-header">Eliminar Herramienta</div>
-                <div class="card-body verificacion">                    
-                    <p class="card-text text-start">¿Esta usted segur@ de eliminar esta herramienta?</p>
-                    <div class="btn-group" role="group" aria-label="Large button group">
+            <div className="card text-white bg-danger modal-content delete_alert">
+                <div className="card-header">Eliminar Herramienta</div>
+                <div className="card-body verificacion">                    
+                    <p className="card-text text-start">¿Esta usted segur@ de eliminar esta herramienta?</p>
+                    <div className="btn-group" role="group" aria-label="Large button group">
 
                         <button  
                             type="button" 
-                            class="btn boton btn-danger" 
+                            className="btn boton btn-danger" 
                             data-bs-dismiss="modal"                                                                
                             onClick={HandleronClickEliminar}        
                         >                
@@ -31,7 +31,7 @@ const AlertBorra = () => {
                         </button> 
                         <button  
                             type="button" 
-                            class="btn boton btn-secondary" 
+                            className="btn boton btn-secondary" 
                             data-bs-dismiss="modal"                                                      
                         >                
                             <Icons.CancelIcono id="icobtn"/>Cancelar              
@@ -41,7 +41,7 @@ const AlertBorra = () => {
                 </div>
             </div>
 
-            {toolinfo ? <></>: <Inventario/>}
+            {toolinfo ? <></>: redirect("/inventario")}
 
         </div>
     );

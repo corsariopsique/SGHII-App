@@ -1,17 +1,15 @@
 import './InfoHerramienta.css';
 import {Modal, Tablas} from '../IndexComponents';
-import EditarHerramienta from './EditarHerramienta';
-import AlertBorra from './AlertBorra';
-import { useLoaderData, useParams } from 'react-router-dom'
+import {EditarHerramienta, AlertBorra} from './IndexPages';
+import { useLoaderData } from 'react-router-dom'
 
-export default function InfoHerramienta(props){   
-    
-    const {id} = useParams()    
+export default function InfoHerramienta(props){       
+     
     const data_infoTool = useLoaderData()
 
     const ruta_img = require('../images/martillo.png'); 
 
-    const btns = [
+    const btnsInfoHerramienta = [
         {
             btnname:"Editar",
             icobtn:"EditarIcono",
@@ -46,14 +44,14 @@ export default function InfoHerramienta(props){
         <div>
             <Modal 
             title="Información Herramienta"
-            estilo="modal_completo"
+            estiloModal="modal_completo"
             botoncss="btn_ModalIntermedio"
-            botones={btns}
+            botones={btnsInfoHerramienta}
             >
 
                 <nav className="nav nav-tabs" id="nav-tab" role="tablist">
                     <a className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Descripción</a>                    
-                    <a className="nav-link disabled" id="nav-disabled-tab" data-bs-toggle="tab" href="#nav-disabled" role="tab" aria-controls="nav-disabled" tabindex="-1" aria-disabled="true"> </a>
+                    <a className="nav-link disabled" id="nav-disabled-tab" data-bs-toggle="tab" href="#nav-disabled" role="tab" aria-controls="nav-disabled" tabIndex="-1" aria-disabled="true"> </a>
                 </nav>
 
                 <div className="tab-content" id="nav-tabContent">
@@ -62,7 +60,7 @@ export default function InfoHerramienta(props){
                         <div className="card tarjeta_tool text-secondary">
                             <div className="card-header bg-transparent text-primary">Detalles Primarios</div>
                                 <div className="card-body">
-                                    <h5 className="card-title">{data_infoTool.tool}</h5>
+                                    <h5 className="card-title text-primary text-center">{data_infoTool.tool}</h5>
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item atributo_lista text-secondary">ID: <span className='valor_atributo'>{data_infoTool.id}</span></li>
                                         <li className="list-group-item atributo_lista text-secondary">Categoria: <span className='valor_atributo'>{data_infoTool.cat}</span></li>
@@ -79,7 +77,7 @@ export default function InfoHerramienta(props){
                             <div className="card-body">
                                 <Tablas
                                 listado='transaccion'
-                                estilo="tabla_info_tool"
+                                estiloTabla="tabla_info_tool"
                                 columns={columns}
                                 data={data}
                                 />                                
@@ -126,14 +124,12 @@ export default function InfoHerramienta(props){
     );
 }
 
-export const InfoherramientaLoader = async ({params}) => {    
+export const InfoherramientaLoader = async ({params}) => {        
     
-    const { id } = params
-    
-    const detail = await fetch(`http://localhost:4000/tools/` + id)           
+    const detail = await fetch(`http://localhost:4000/tools/${params.toolId}`)           
 
     if (!detail.ok) {
-        throw Error('Could not fetch the list of careers')
+        throw Error('No se pudo cargar la herramienta indicada')
       }
     
       return detail.json()

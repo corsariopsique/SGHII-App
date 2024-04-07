@@ -7,14 +7,14 @@ function PanelInfoText(props) {
 
     return (     
         
-        <Card className={props.estilo}>
+        <Card className={props.estiloPanelInfoText}>
             <p className='titlepanel'>{props.title}</p>            
             {props.info.map((atributo) => (
-                <InfoCont 
+                <InfoCont                 
                 titulo={atributo.titulo}
                 cantidad={atributo.cantidad}
                 periodo={atributo.periodo}
-                estilo={atributo.estilo} 
+                estiloItemInfo={atributo.estiloItemInfo} 
                 />                       
             ))}            
         </Card>                

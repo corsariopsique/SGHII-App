@@ -143,19 +143,19 @@ function PanelPrincipal () {
         <div>        
         <PanelInfo 
         title ="Salida de Herramienta" 
-        estilo ="panelinfo1" 
+        estiloPanelInfo ="panelinfo1" 
         dato={salida_h}/>      
         <PanelInfo 
         title ="Entrada de herramienta" 
-        estilo ="panelinfo2" 
+        estiloPanelInfo ="panelinfo2" 
         dato={entrada_h}/> 
         <PanelInfo 
         title ="Resumen Inventario" 
-        estilo ="panelres1" 
+        estiloPanelInfo ="panelres1" 
         dato={resumen_inventario}/>           
         <PanelInfo 
         title ="Resumen Operarios" 
-        estilo ="panelres2" 
+        estiloPanelInfo ="panelres2" 
         dato={resumen_operarios}/>           
         <Graficos></Graficos>   
         <PanelListado
@@ -163,7 +163,7 @@ function PanelPrincipal () {
         tool_list={lista}/>   
         <Tablas
         listado='transaccion'
-        estilo='tabla_Panel'
+        estiloTabla='tabla_Panel'
         columns={columns} 
         data={data}
         />

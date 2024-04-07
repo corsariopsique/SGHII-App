@@ -6,7 +6,7 @@ function PanelInfo (props) {
 
     return (     
         
-        <Card className={props.estilo}>
+        <Card className={props.estiloPanelInfo}>
             <p className='titlepanel'>{props.title}</p>            
             {props.dato.map((concepto) => (
                 <IconoInfo 

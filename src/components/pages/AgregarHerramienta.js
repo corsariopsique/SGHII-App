@@ -22,11 +22,11 @@ function AgregarHerramienta () {
         }
     }    
 
-    const btns = [
+    const btnsAgregarHerramienta = [
         {
             btnname:"Registar",
             icobtn:"Tool1Icono",
-            estilo:"btn-primary",
+            estiloBoton:"btn-primary",
             formulario:"add_tool",
             d_dismiss:"modal",
             tipo:"submit"                   
@@ -35,7 +35,7 @@ function AgregarHerramienta () {
         {
             btnname:"Cancelar",
             icobtn:"CancelIcono",
-            estilo:"btn-secondary",
+            estiloBoton:"btn-secondary",
             accion:"/inventario",
             d_dismiss:"modal"
         }        
@@ -45,9 +45,9 @@ function AgregarHerramienta () {
 
         <Modal         
         title="Agregar Herramienta"
-        estilo="modal_Form_add_tool modal-content"
+        estiloModal="modal_Form_add_tool modal-content"
         botoncss="btn_Modal_Form_add_tool"
-        botones={btns}
+        botones={btnsAgregarHerramienta}
         >            
 
             <Form id="add_tool" action="/inventario">
@@ -59,7 +59,7 @@ function AgregarHerramienta () {
                     </div>
 
                     <div id="in_img">
-                        <label for="tool_image" class="form-label">Imagen:</label> 
+                        <label htmlFor="tool_image" className="form-label">Imagen:</label> 
                         <input 
                             type="file" 
                             id="tool_image" 
@@ -72,56 +72,56 @@ function AgregarHerramienta () {
                 </div>              
                 
 
-                <label for="name_tool" class="form-label">Nombre:</label>
+                <label htmlFor="name_tool" className="form-label">Nombre:</label>
 
                 <input 
                     type='text' 
-                    class="form-control"
+                    className="form-control"
                     id="name_tool" 
                     placeholder='Ingrese nombre de herramienta'
                 />
 
-                <label for="id_tool" class="form-label">ID Herramienta:</label>
+                <label htmlFor="id_tool" className="form-label">ID Herramienta:</label>
 
                 <input 
                     type="text" 
-                    class="form-control"
+                    className="form-control"
                     id="id_tool" 
                     placeholder='Ingrese ID de herramienta'
                 />
 
-                <label for="cat_tool" class="form-label">Categoria:</label>
+                <label htmlFor="cat_tool" className="form-label">Categoria:</label>
                 
                 <input 
                     type="text" 
-                    class="form-control"
+                    className="form-control"
                     id="cat_tool" 
                     placeholder='Ingrese categoria de herramienta'
                 />
 
-                <label for="cantidad_tool" class="form-label">Cantidad:</label>
+                <label htmlFor="cantidad_tool" className="form-label">Cantidad:</label>
                 
                 <input 
                     type="number" 
-                    class="form-control"
+                    className="form-control"
                     id="cantidad_tool" 
                     placeholder='Ingrese numero de unidades'
                 />
 
-                <label for="model_tool" class="form-label">Modelo:</label>
+                <label htmlFor="model_tool" className="form-label">Modelo:</label>
                 
                 <input 
                     type="text" 
-                    class="form-control"
+                    className="form-control"
                     id="model_tool" 
                     placeholder='Ingrese modelo de herramienta'
                 />
 
-                <label for="brand_tool" class="form-label">Marca:</label>
+                <label htmlFor="brand_tool" className="form-label">Marca:</label>
                 
                 <input 
                     type="text" 
-                    class="form-control"
+                    className="form-control"
                     id="brand_tool" 
                     placeholder='Ingrese marca de la herramienta'
                 />               

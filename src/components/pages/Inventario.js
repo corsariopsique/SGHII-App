@@ -1,7 +1,5 @@
 import './Inventario.css';
-import PanelInfoText from '../PanelInfoText';
-import Modal from '../Modal';
-import Tablas2 from '../Tablas2';
+import { PanelInfoText, Modal, Tablas } from '../IndexComponents';
 import AgregarHerramienta from './AgregarHerramienta';
 import { useLoaderData } from 'react-router-dom';
 
@@ -10,11 +8,11 @@ export default function Inventario(){
     
     const data_inventario = useLoaderData()    
 
-    const btns = [
+    const btnsInventario = [
         {
             btnname:"Agregar Herramienta",
             icobtn:"Tool1Icono",
-            estilo:"btn-outline-primary",
+            estiloBoton:"btn-outline-primary",
             tipo:"button",            
             d_toggle:"modal",
             d_target:"#add_t_modal"
@@ -23,14 +21,14 @@ export default function Inventario(){
         {
             btnname:"Filtros",
             icobtn:"FiltrosIcono",
-            estilo:"btn-outline-primary",
+            estiloBoton:"btn-outline-primary",
             tipo:"button",            
         },
 
         {
             btnname:"Descargar",
             icobtn:"DownloadIcono",
-            estilo:"btn-outline-primary",
+            estiloBoton:"btn-outline-primary",
             tipo:"button",            
         }
       ];
@@ -41,28 +39,28 @@ export default function Inventario(){
             titulo: "Kits",
             cantidad: 14,
             periodo: 7,
-            estilo: "total_Kits"
+            estiloItemInfo: "total_Kits"
         },
 
         {
             titulo: "Herramientas Total",
             cantidad: 622,
             periodo: 7,
-            estilo: "total_Tools"
+            estiloItemInfo: "total_Tools"
         },
 
         {
             titulo: "Top Salidas",
             cantidad: 5,
             periodo: 7,
-            estilo: "total_Out"
+            estiloItemInfo: "total_Out"
         },
 
         {
             titulo: "Inventarios Bajos",
             cantidad: 7,
             periodo: 7,
-            estilo: "bajos_Inven"
+            estiloItemInfo: "bajos_Inven"
         }
     ];       
    
@@ -84,19 +82,18 @@ export default function Inventario(){
 
             <PanelInfoText
              title ="Inventario General" 
-             estilo ="panelinv" 
+             estiloPanelInfoText ="panelinv" 
              info={datos}
             />
 
             <Modal 
             title='Herramientas'
-            estilo="modal_intermedio"
+            estiloModal="modal_intermedio"
             botoncss="btn_ModalIntermedio"
-            botones={btns}
+            botones={btnsInventario}
             >                         
-                <Tablas2
-                    listado='tool'
-                    estilo='tabla_Inventario'
+                <Tablas                    
+                    estiloTabla='tabla_Inventario'
                     columns={col_data} 
                     data={data_inventario}
                 />   
@@ -120,7 +117,7 @@ export const inventarioLoader = async () => {
     
 
     if (!itms.ok) {
-        throw Error('Could not fetch the list of careers')
+        throw Error('No se pudo cargar el listado de herramientas')
       }
     
       return itms.json()

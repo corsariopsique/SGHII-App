@@ -19,20 +19,20 @@ function Login () {
 
                 <form id="login" action='/panelprincipal'>
 
-                    <label for="username" class="form-label">Nombre de usuario:</label>
+                    <label htmlFor="username" class="form-label">Nombre de usuario:</label>
 
                     <input 
                         type='text' 
-                        class="form-control"
+                        className="form-control"
                         id="username" 
                         placeholder='Ingrese su nombre de usuario'
                     />
 
-                    <label for="password" class="form-label">Contraseña:</label>
+                    <label htmlFor="password" class="form-label">Contraseña:</label>
 
                     <input 
                         type="password" 
-                        class="form-control"
+                        className="form-control"
                         id="password" 
                         placeholder='Ingrese su contraseña'
                     />
@@ -42,7 +42,7 @@ function Login () {
 
                     <input 
                         type="submit" 
-                        class="btn btn-primary" 
+                        className="btn btn-primary" 
                         id="btn-form" 
                         value="Ingresar"
                     />

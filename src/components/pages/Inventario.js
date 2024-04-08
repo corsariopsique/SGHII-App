@@ -71,10 +71,8 @@ export default function Inventario(){
         { key: 'brand', title: 'Marca' },
         { key: 'cat', title: 'Categoria'},
         { key: 'rol', title: 'Rol Herramienta'},
-        { key: 'date_in', title: 'Fecha Ingreso'},
-        { key: 'prove', title: 'Proveedor'}
-      ];      
-      
+        { key: 'date_in', title: 'Fecha Ingreso'},        
+    ];        
 
     return(
 

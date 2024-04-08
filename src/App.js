@@ -10,8 +10,8 @@ import Login from "./components/pages/Login";
 import Inventario, { inventarioLoader } from "./components/pages/Inventario";
 import InfoHerramienta, {InfoherramientaLoader} from "./components/pages/InfoHerramienta";
 
-import RootLayout from './components/layouts/RootLayout';
-import InventarioLayout from "./components/layouts/InventarioLayout";
+import RootLayout from './components/Layouts/RootLayout';
+import InventarioLayout from "./components/Layouts/InventarioLayout";
 
    const router = createBrowserRouter(
     

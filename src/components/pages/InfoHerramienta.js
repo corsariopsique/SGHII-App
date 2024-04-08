@@ -7,13 +7,13 @@ export default function InfoHerramienta(props){
      
     const data_infoTool = useLoaderData()
 
-    const ruta_img = require('../images/martillo.png'); 
+    const ruta_img = require(`../images/tools/${data_infoTool.image}.png`); 
 
     const btnsInfoHerramienta = [
         {
             btnname:"Editar",
             icobtn:"EditarIcono",
-            estilo:"btn-outline-secondary",
+            estiloBoton:"btn-outline-secondary",
             tipo:"button",            
             d_toggle:"modal",
             d_target:"#edit_t_modal"          
@@ -22,7 +22,7 @@ export default function InfoHerramienta(props){
         {
             btnname:"Descargar",
             icobtn:"DownloadIcono",
-            estilo:"btn-outline-secondary",
+            estiloBoton:"btn-outline-secondary",
             tipo:"button",            
         }
       ];
@@ -59,18 +59,19 @@ export default function InfoHerramienta(props){
                     <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                         <div className="card tarjeta_tool text-secondary">
                             <div className="card-header bg-transparent text-primary">Detalles Primarios</div>
-                                <div className="card-body">
-                                    <h5 className="card-title text-primary text-center">{data_infoTool.tool}</h5>
-                                    <ul className="list-group list-group-flush">
-                                        <li className="list-group-item atributo_lista text-secondary">ID: <span className='valor_atributo'>{data_infoTool.id}</span></li>
-                                        <li className="list-group-item atributo_lista text-secondary">Categoria: <span className='valor_atributo'>{data_infoTool.cat}</span></li>
-                                        <li className="list-group-item atributo_lista text-secondary">Marca: <span className='valor_atributo'>{data_infoTool.brand}</span></li>                                        
-                                        <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoTool.date_in}</span></li>
-                                        <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>---</span></li>
-                                    </ul>
-                                </div>
-                            <div className="card-footer bg-transparent"><li class="list-group-item atributo_lista">Cantidad Total: <span></span></li></div>
-                        </div>    
+                            <div className="card-body">
+                                <h5 className="card-title text-primary text-center">{data_infoTool.tool}</h5>
+                                <ul className="list-group list-group-flush">
+                                    <li className="list-group-item atributo_lista text-secondary">ID: <span className='valor_atributo'>{data_infoTool.id}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Categoria: <span className='valor_atributo'>{data_infoTool.cat}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Marca: <span className='valor_atributo'>{data_infoTool.brand}</span></li>                                        
+                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoTool.date_in}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>---</span></li>
+                                </ul>
+                            </div>
+                            <div className="card-footer bg-transparent"><li class="list-group-item atributo_lista">Cantidad Total: <span>{data_infoTool.cant}</span></li></div>
+                        </div> 
+
 
                         <div className="card text-secondary last_oper">
                             <div className="card-header bg-transparent text-primary">Ultimas Operaciones</div>
@@ -97,11 +98,14 @@ export default function InfoHerramienta(props){
                         <div className="card text-secondary proveedor">
                             <div className="card-header bg-transparent text-primary">Proveedores</div>
                             <div className="card-body">
-                                <ul className="list-group list-group-flush">                                    
-                                    <li className="list-group-item atributo_lista text-secondary">{data_infoTool.prove}<span className='valor_atributo'>12345678</span></li>                                    
-                                </ul>                                                         
-                            </div>
-                        </div>   
+                                <h5 className="card-title text-primary text-center">{data_infoTool.prove.name}</h5>
+                                <ul className="list-group list-group-flush">
+                                    <li className="list-group-item atributo_lista text-secondary">ID: <span className='valor_atributo'>{data_infoTool.prove.id_prove}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Telefono: <span className='valor_atributo'>{data_infoTool.prove.phone}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Ciudad: <span className='valor_atributo'>{data_infoTool.prove.city}</span></li>                                    
+                                </ul>
+                            </div>                            
+                        </div> 
 
                     </div>                    
                 </div>

@@ -1,905 +1,487 @@
 {    
     "tools": [
+
         {
-            "id": "B214E",
-            "tool": "Sacabocados",
-            "brand": "Klein Tools",
-            "cat": "Herramientas de martilleo",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "1990-02-25",
-            "prove": "Ridgid"
-        },
-        {
-            "id": "5E34C",
-            "tool": "Barrena",
-            "brand": "Craftsman",
-            "cat": "Herramientas de medición",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "2010-10-06",
-            "prove": "Matco Tools"
-        },
-        {
-            "id": "34455",
-            "tool": "Fleje",
-            "brand": "Estwing",
-            "cat": "Herramientas de medición",
+            "id": "232D3",
+            "tool": "Arco de sierra",
+            "brand": "Channellock",
+            "cant": 49,
+            "cat": "Herramientas de corte",
             "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "1985-11-02",
-            "prove": "Apex Tool Group"
+            "date_in": "2019-08-18",
+            "prove": {
+                "id_prove": "X67Z",
+                "name": "Facom",
+                "phone": "3174960555",
+                "city": "Theresamouth"
+            },
+            "image": "232D3arcodesierra"
         },
         {
-            "id": "E5BCD",
-            "tool": "Tenaza de electricista",
-            "brand": "Husky",
-            "cat": "Herramientas de martilleo",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "1970-06-05",
-            "prove": "Wurth Group"
-        },
-        {
-            "id": "A1ACC",
-            "tool": "Tenaza de punta",
-            "brand": "DeWalt",
-            "cat": "Herramientas de sujeción",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "1972-10-13",
-            "prove": "Irwin Tools"
-        },
-        {
-            "id": "CC324",
-            "tool": "Broca",
-            "brand": "Skil",
-            "cat": "Herramientas de percusión",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "1986-09-01",
-            "prove": "Proto Industrial Tools"
-        },
-        {
-            "id": "15CC5",
-            "tool": "Llave de cadena",
-            "brand": "Wera",
-            "cat": "Herramientas de medición",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "2013-10-16",
-            "prove": "GearWrench"
-        },
-        {
-            "id": "ECDEB",
-            "tool": "Martillo de cerrajero",
-            "brand": "Makita",
+            "id": "2C1DD",
+            "tool": "Martillo pilón",
+            "brand": "Craftsman",
+            "cant": 24,
             "cat": "Herramientas de corte",
             "rol": "Operador de máquinas de corte láser",
-            "date_in": "1992-10-08",
-            "prove": "Proto Industrial Tools"
+            "date_in": "2023-10-27",
+            "prove": {
+                "id_prove": "79Z5",
+                "name": "Proto Industrial Tools",
+                "phone": "2657483113",
+                "city": "Ortizchester"
+            },
+            "image": "2C1DDmartillopilon"
         },
         {
-            "id": "C23EC",
-            "tool": "Tiralíneas láser",
-            "brand": "Ryobi",
-            "cat": "Herramientas de sujeción",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "2003-12-17",
-            "prove": "Channellock"
+            "id": "E4DBB",
+            "tool": "Llave de perno",
+            "brand": "Irwin",
+            "cant": 25,
+            "cat": "Herramientas de martilleo",
+            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
+            "date_in": "1988-09-11",
+            "prove": {
+                "id_prove": "6756",
+                "name": "Facom",
+                "phone": "8886249248",
+                "city": "Raymondtown"
+            },
+            "image": "E4DBBllavedeperno"
         },
         {
-            "id": "5DAAE",
-            "tool": "Sierra de costilla",
-            "brand": "Ryobi",
-            "cat": "Herramientas de percusión",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "1971-12-31",
-            "prove": "Channellock"
-        },
-        {
-            "id": "1E41C",
+            "id": "EE11B",
             "tool": "Clavo de paletizador",
-            "brand": "Milwaukee",
-            "cat": "Herramientas de percusión",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "2014-04-20",
-            "prove": "Craftsman"
-        },
-        {
-            "id": "B3CAE",
-            "tool": "Llave ajustable",
-            "brand": "Irwin",
-            "cat": "Herramientas de sujeción",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "2010-06-16",
-            "prove": "Apex Tool Group"
-        },
-        {
-            "id": "CDC4A",
-            "tool": "Destornillador Torx",
-            "brand": "Channellock",
-            "cat": "Herramientas de sujeción",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "2004-05-12",
-            "prove": "Ridgid"
-        },
-        {
-            "id": "CE35D",
-            "tool": "Sierra de costilla",
-            "brand": "Estwing",
-            "cat": "Herramientas de sujeción",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "2001-11-29",
-            "prove": "Apex Tool Group"
-        },
-        {
-            "id": "4ACEB",
-            "tool": "Talocha",
-            "brand": "Snap-on",
-            "cat": "Herramientas de sujeción",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "1974-12-28",
-            "prove": "Milwaukee Tool"
-        },
-        {
-            "id": "3E24D",
-            "tool": "Destornillador de estrella",
-            "brand": "Klein Tools",
-            "cat": "Herramientas de sujeción",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1999-08-26",
-            "prove": "GearWrench"
-        },
-        {
-            "id": "A3CE3",
-            "tool": "Tiralíneas",
-            "brand": "Estwing",
-            "cat": "Herramientas de corte",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "2006-04-10",
-            "prove": "Irwin Tools"
-        },
-        {
-            "id": "12D2D",
-            "tool": "Destornillador de carraca",
-            "brand": "Klein Tools",
-            "cat": "Herramientas de sujeción",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1980-08-20",
-            "prove": "Snap-on Tools"
-        },
-        {
-            "id": "C1542",
-            "tool": "Tiralíneas",
-            "brand": "Bahco",
-            "cat": "Herramientas de percusión",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "1985-06-23",
-            "prove": "Wurth Group"
-        },
-        {
-            "id": "CCD5D",
-            "tool": "Maza",
-            "brand": "Snap-on",
-            "cat": "Herramientas de sujeción",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "1971-07-10",
-            "prove": "Ridgid"
-        },
-        {
-            "id": "5ED55",
-            "tool": "Llave ajustable",
-            "brand": "Bahco",
-            "cat": "Herramientas de corte",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "1997-02-20",
-            "prove": "Proto Industrial Tools"
-        },
-        {
-            "id": "E32BD",
-            "tool": "Alicates para juntas",
-            "brand": "Snap-on",
-            "cat": "Herramientas de corte",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1975-04-18",
-            "prove": "Craftsman"
-        },
-        {
-            "id": "2B43B",
-            "tool": "Cinta métrica",
-            "brand": "Bosch",
-            "cat": "Herramientas de medición",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1970-09-21",
-            "prove": "Irwin Tools"
-        },
-        {
-            "id": "21C5E",
-            "tool": "Martillo de yesero",
-            "brand": "Channellock",
-            "cat": "Herramientas de medición",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "2014-01-10",
-            "prove": "Snap-on Tools"
-        },
-        {
-            "id": "D3D13",
-            "tool": "Destornillador Torx",
-            "brand": "Snap-on",
-            "cat": "Herramientas de percusión",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "2019-10-20",
-            "prove": "Irwin Tools"
-        },
-        {
-            "id": "CABB3",
-            "tool": "Sierra de mano",
-            "brand": "Wera",
-            "cat": "Herramientas de corte",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "2007-09-16",
-            "prove": "Craftsman"
-        },
-        {
-            "id": "1DECD",
-            "tool": "Fleje",
-            "brand": "Makita",
-            "cat": "Herramientas de sujeción",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "1975-10-30",
-            "prove": "GearWrench"
-        },
-        {
-            "id": "BDDE3",
-            "tool": "Martillo de goma",
-            "brand": "Skil",
-            "cat": "Herramientas de sujeción",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1995-05-05",
-            "prove": "Wurth Group"
-        },
-        {
-            "id": "C142E",
-            "tool": "Destornillador de impacto",
-            "brand": "Snap-on",
-            "cat": "Herramientas de martilleo",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "2004-04-05",
-            "prove": "Ridgid"
-        },
-        {
-            "id": "EE351",
-            "tool": "Aguja de albañil",
-            "brand": "Bahco",
-            "cat": "Herramientas de martilleo",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "2013-11-19",
-            "prove": "Apex Tool Group"
-        },
-        {
-            "id": "52C5A",
-            "tool": "Tiralíneas",
-            "brand": "Irwin",
-            "cat": "Herramientas de martilleo",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "2007-11-10",
-            "prove": "Snap-on Tools"
-        },
-        {
-            "id": "ECBC1",
-            "tool": "Llave de mano",
-            "brand": "Estwing",
-            "cat": "Herramientas de sujeción",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "2001-08-23",
-            "prove": "Apex Tool Group"
-        },
-        {
-            "id": "D4324",
-            "tool": "Destornillador de impacto",
-            "brand": "Black & Decker",
-            "cat": "Herramientas de corte",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "1983-05-25",
-            "prove": "Channellock"
-        },
-        {
-            "id": "2C14D",
-            "tool": "Sacabotas",
-            "brand": "Stanley",
-            "cat": "Herramientas de medición",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "1991-06-22",
-            "prove": "Estwing"
-        },
-        {
-            "id": "5D22D",
-            "tool": "Cepillo de carpintero",
-            "brand": "TTI",
-            "cat": "Herramientas de martilleo",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "2014-02-20",
-            "prove": "Wiha Tools"
-        },
-        {
-            "id": "C55A3",
-            "tool": "Martillo de goma",
             "brand": "GearWrench",
-            "cat": "Herramientas de medición",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "1986-03-07",
-            "prove": "Milwaukee Tool"
-        },
-        {
-            "id": "212C1",
-            "tool": "Destornillador de impacto",
-            "brand": "Skil",
-            "cat": "Herramientas de medición",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "2021-04-21",
-            "prove": "Facom"
-        },
-        {
-            "id": "EB23A",
-            "tool": "Herramienta multiusos",
-            "brand": "Bosch",
-            "cat": "Herramientas de corte",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "1988-09-10",
-            "prove": "TTI Group"
-        },
-        {
-            "id": "EAB1E",
-            "tool": "Formón",
-            "brand": "Stanley",
-            "cat": "Herramientas de percusión",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "1984-12-25",
-            "prove": "Kobalt"
-        },
-        {
-            "id": "A3414",
-            "tool": "Tenaza de carpintero",
-            "brand": "Ryobi",
-            "cat": "Herramientas de sujeción",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1993-05-02",
-            "prove": "GearWrench"
-        },
-        {
-            "id": "E11CD",
-            "tool": "Plomada",
-            "brand": "Milwaukee",
-            "cat": "Herramientas de percusión",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "2002-05-07",
-            "prove": "Channellock"
-        },
-        {
-            "id": "BD4EA",
-            "tool": "Taladro de percusión",
-            "brand": "Skil",
-            "cat": "Herramientas de corte",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1971-05-01",
-            "prove": "Vaughan & Bushnell"
-        },
-        {
-            "id": "42CEC",
-            "tool": "Arco de sierra",
-            "brand": "Bahco",
-            "cat": "Herramientas de percusión",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1972-04-11",
-            "prove": "Irwin Tools"
-        },
-        {
-            "id": "C15DE",
-            "tool": "Arco de sierra",
-            "brand": "Channellock",
-            "cat": "Herramientas de sujeción",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "2017-07-07",
-            "prove": "Kobalt"
-        },
-        {
-            "id": "14E1C",
-            "tool": "Cincel",
-            "brand": "Kobalt",
-            "cat": "Herramientas de percusión",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "2015-11-21",
-            "prove": "Stanley Black & Decker"
-        },
-        {
-            "id": "D2D2E",
-            "tool": "Arco de sierra de marquetería",
-            "brand": "Irwin",
-            "cat": "Herramientas de corte",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "1976-09-09",
-            "prove": "Channellock"
-        },
-        {
-            "id": "ED15E",
-            "tool": "Llave de tubo",
-            "brand": "Wera",
-            "cat": "Herramientas de corte",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1979-12-23",
-            "prove": "Vaughan & Bushnell"
-        },
-        {
-            "id": "E152E",
-            "tool": "Martillo de bola",
-            "brand": "Milwaukee",
-            "cat": "Herramientas de martilleo",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "2001-09-14",
-            "prove": "Vaughan & Bushnell"
-        },
-        {
-            "id": "A3323",
-            "tool": "Cúter",
-            "brand": "Klein Tools",
-            "cat": "Herramientas de medición",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "1978-06-02",
-            "prove": "Klein Tools"
-        },
-        {
-            "id": "253C3",
-            "tool": "Sierra de costilla",
-            "brand": "Klein Tools",
+            "cant": 37,
             "cat": "Herramientas de medición",
             "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1973-04-16",
-            "prove": "Vaughan & Bushnell"
+            "date_in": "2008-12-24",
+            "prove": {
+                "id_prove": "9Z7Y",
+                "name": "Kobalt",
+                "phone": "1953947156",
+                "city": "Melissaside"
+            },
+            "image": "EE11Bclavodepaletizador"
         },
         {
-            "id": "CCB14",
-            "tool": "Tenaza de punta",
-            "brand": "Stanley",
-            "cat": "Herramientas de corte",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "2013-04-12",
-            "prove": "TTI Group"
-        },
-        {
-            "id": "DDD2E",
-            "tool": "Martillo pilón",
-            "brand": "Milwaukee",
-            "cat": "Herramientas de martilleo",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1990-10-12",
-            "prove": "Vaughan & Bushnell"
-        },
-        {
-            "id": "3445B",
-            "tool": "Llave de cadena",
-            "brand": "Irwin",
-            "cat": "Herramientas de sujeción",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "2009-12-21",
-            "prove": "GearWrench"
-        },
-        {
-            "id": "CE25B",
-            "tool": "Raspador",
-            "brand": "Bahco",
-            "cat": "Herramientas de medición",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "1976-04-13",
-            "prove": "Vaughan & Bushnell"
-        },
-        {
-            "id": "AA532",
-            "tool": "Llave ajustable",
-            "brand": "Bosch",
-            "cat": "Herramientas de medición",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "2001-11-17",
-            "prove": "Craftsman"
-        },
-        {
-            "id": "A343C",
-            "tool": "Taladro manual",
-            "brand": "Skil",
-            "cat": "Herramientas de martilleo",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "1978-09-17",
-            "prove": "Craftsman"
-        },
-        {
-            "id": "22531",
-            "tool": "Llave ajustable",
-            "brand": "Wera",
-            "cat": "Herramientas de percusión",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "2013-01-05",
-            "prove": "TTI Group"
-        },
-        {
-            "id": "33443",
-            "tool": "Serrucho",
-            "brand": "Channellock",
-            "cat": "Herramientas de medición",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "1984-08-17",
-            "prove": "Milwaukee Tool"
-        },
-        {
-            "id": "A54BB",
-            "tool": "Punzón automático",
-            "brand": "Irwin",
-            "cat": "Herramientas de medición",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "2002-03-14",
-            "prove": "Ridgid"
-        },
-        {
-            "id": "B5435",
-            "tool": "Desatornillador de paletas",
-            "brand": "Skil",
-            "cat": "Herramientas de corte",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "2017-02-24",
-            "prove": "TTI Group"
-        },
-        {
-            "id": "311BA",
-            "tool": "Destornillador de precisión",
-            "brand": "Channellock",
-            "cat": "Herramientas de martilleo",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "1973-10-29",
-            "prove": "Snap-on Tools"
-        },
-        {
-            "id": "4C52E",
-            "tool": "Cepillo de carpintero",
-            "brand": "GearWrench",
-            "cat": "Herramientas de percusión",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "1998-01-01",
-            "prove": "Stanley Black & Decker"
-        },
-        {
-            "id": "332CE",
-            "tool": "Sargentos",
-            "brand": "Klein Tools",
-            "cat": "Herramientas de percusión",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "2005-07-27",
-            "prove": "Stanley Black & Decker"
-        },
-        {
-            "id": "AE3AE",
-            "tool": "Llave de gancho",
-            "brand": "Snap-on",
-            "cat": "Herramientas de percusión",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "2018-12-27",
-            "prove": "Ridgid"
-        },
-        {
-            "id": "4D321",
-            "tool": "Llave de torsión",
-            "brand": "Irwin",
-            "cat": "Herramientas de corte",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1994-09-28",
-            "prove": "Estwing"
-        },
-        {
-            "id": "C2E3C",
-            "tool": "Talocha",
-            "brand": "Stanley",
-            "cat": "Herramientas de percusión",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "1989-02-10",
-            "prove": "TTI Group"
-        },
-        {
-            "id": "E525E",
-            "tool": "Martillo pilón",
-            "brand": "GearWrench",
-            "cat": "Herramientas de corte",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "1993-10-20",
-            "prove": "Estwing"
-        },
-        {
-            "id": "1D4C3",
-            "tool": "Pinzas",
-            "brand": "Black & Decker",
-            "cat": "Herramientas de sujeción",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "2012-12-10",
-            "prove": "Proto Industrial Tools"
-        },
-        {
-            "id": "A2DA1",
-            "tool": "Taladro manual",
-            "brand": "Klein Tools",
-            "cat": "Herramientas de sujeción",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "2005-07-25",
-            "prove": "Wiha Tools"
-        },
-        {
-            "id": "5DCB5",
-            "tool": "Martillo de carpintero",
-            "brand": "TTI",
-            "cat": "Herramientas de sujeción",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "1997-08-13",
-            "prove": "Milwaukee Tool"
-        },
-        {
-            "id": "E51A2",
+            "id": "2BE2B",
             "tool": "Tijeras",
-            "brand": "Channellock",
-            "cat": "Herramientas de sujeción",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "2004-08-25",
-            "prove": "Irwin Tools"
-        },
-        {
-            "id": "3BA15",
-            "tool": "Destornillador",
-            "brand": "Snap-on",
-            "cat": "Herramientas de medición",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "1994-06-04",
-            "prove": "Wurth Group"
-        },
-        {
-            "id": "31CA2",
-            "tool": "Martillo de chapista",
-            "brand": "Husky",
-            "cat": "Herramientas de medición",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "1998-07-20",
-            "prove": "Ridgid"
-        },
-        {
-            "id": "AEDAC",
-            "tool": "Caja de cortar cristales",
-            "brand": "Wera",
-            "cat": "Herramientas de medición",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "2016-02-28",
-            "prove": "Snap-on Tools"
-        },
-        {
-            "id": "55E42",
-            "tool": "Cortatubos",
-            "brand": "Black & Decker",
-            "cat": "Herramientas de medición",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "2017-06-04",
-            "prove": "Husky"
-        },
-        {
-            "id": "AED1C",
-            "tool": "Herramienta multiusos",
-            "brand": "Craftsman",
-            "cat": "Herramientas de corte",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "2021-05-15",
-            "prove": "Stanley Black & Decker"
-        },
-        {
-            "id": "43E22",
-            "tool": "Llave de vaso",
-            "brand": "Ryobi",
-            "cat": "Herramientas de martilleo",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "1984-01-15",
-            "prove": "Channellock"
-        },
-        {
-            "id": "C545C",
-            "tool": "Llave de vaso",
             "brand": "Bosch",
-            "cat": "Herramientas de corte",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1994-07-07",
-            "prove": "Husky"
-        },
-        {
-            "id": "214AA",
-            "tool": "Llave de mano",
-            "brand": "Husky",
-            "cat": "Herramientas de corte",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1982-04-01",
-            "prove": "Husky"
-        },
-        {
-            "id": "5B13D",
-            "tool": "Destornillador Torx",
-            "brand": "Klein Tools",
-            "cat": "Herramientas de medición",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1995-08-05",
-            "prove": "Snap-on Tools"
-        },
-        {
-            "id": "B4C2C",
-            "tool": "Sierra de costilla",
-            "brand": "Black & Decker",
-            "cat": "Herramientas de medición",
+            "cant": 12,
+            "cat": "Herramientas de martilleo",
             "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "1986-09-06",
-            "prove": "Wiha Tools"
+            "date_in": "1977-02-16",
+            "prove": {
+                "id_prove": "59XY",
+                "name": "Wiha Tools",
+                "phone": "2748060753",
+                "city": "Rochaborough"
+            },
+            "image": "2BE2Btijeras"
         },
         {
-            "id": "C2A11",
+            "id": "254A5",
+            "tool": "Escuadra",
+            "brand": "Klein Tools",
+            "cant": 30,
+            "cat": "Herramientas de percusión",
+            "rol": "Técnico de mantenimiento de equipos industriales",
+            "date_in": "2014-11-25",
+            "prove": {
+                "id_prove": "7Y66",
+                "name": "Kobalt",
+                "phone": "9285464174",
+                "city": "Simmonsfort"
+            },
+            "image": "254A5escuadra"
+        },
+        {
+            "id": "CE4C1",
+            "tool": "Lima",
+            "brand": "Estwing",
+            "cant": 0,
+            "cat": "Herramientas de percusión",
+            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
+            "date_in": "2017-08-14",
+            "prove": {
+                "id_prove": "7ZY6",
+                "name": "Facom",
+                "phone": "4135811058",
+                "city": "Jamesfurt"
+            },
+            "image": "CE4C1lima"
+        },
+        {
+            "id": "A5C5B",
             "tool": "Llave de cruz",
-            "brand": "Irwin",
-            "cat": "Herramientas de sujeción",
-            "rol": "Inspector de calidad de productos de acero inoxidable",
-            "date_in": "1972-10-02",
-            "prove": "Milwaukee Tool"
-        },
-        {
-            "id": "54343",
-            "tool": "Llave inglesa",
             "brand": "Snap-on",
-            "cat": "Herramientas de sujeción",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1984-06-05",
-            "prove": "Estwing"
-        },
-        {
-            "id": "5EA1B",
-            "tool": "Nivel",
-            "brand": "Estwing",
-            "cat": "Herramientas de percusión",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "2000-03-07",
-            "prove": "Apex Tool Group"
-        },
-        {
-            "id": "22AC4",
-            "tool": "Espátula",
-            "brand": "Kobalt",
-            "cat": "Herramientas de martilleo",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "2011-02-28",
-            "prove": "Craftsman"
-        },
-        {
-            "id": "CCBC4",
-            "tool": "Herramienta multiusos",
-            "brand": "Black & Decker",
-            "cat": "Herramientas de sujeción",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "2005-06-09",
-            "prove": "Estwing"
-        },
-        {
-            "id": "1BB24",
-            "tool": "Talocha",
-            "brand": "Snap-on",
-            "cat": "Herramientas de percusión",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "1999-06-01",
-            "prove": "Craftsman"
-        },
-        {
-            "id": "425BC",
-            "tool": "Martillo de goma",
-            "brand": "Wera",
-            "cat": "Herramientas de medición",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "2020-08-04",
-            "prove": "Kobalt"
-        },
-        {
-            "id": "AEDCD",
-            "tool": "Taladro de mano",
-            "brand": "Irwin",
+            "cant": 28,
             "cat": "Herramientas de corte",
-            "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "2007-01-06",
-            "prove": "Vaughan & Bushnell"
+            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
+            "date_in": "1999-07-12",
+            "prove": {
+                "id_prove": "6Z76",
+                "name": "Klein Tools",
+                "phone": "6842229811",
+                "city": "East Sydney"
+            },
+            "image": "A5C5Bllavedecruz"
         },
         {
-            "id": "2ABBD",
-            "tool": "Tijeras",
-            "brand": "Skil",
+            "id": "1DB22",
+            "tool": "Sierra de mano",
+            "brand": "Bahco",
+            "cant": 47,
+            "cat": "Herramientas de sujeción",
+            "rol": "Técnico de mantenimiento de equipos industriales",
+            "date_in": "1981-07-15",
+            "prove": {
+                "id_prove": "8U76",
+                "name": "Milwaukee Tool",
+                "phone": "5393085977",
+                "city": "Angelafurt"
+            },
+            "image": "1DB22sierrademano"
+        },
+        {
+            "id": "5BEE2",
+            "tool": "Cúter",
+            "brand": "Husky",
+            "cant": 33,
+            "cat": "Herramientas de sujeción",
+            "rol": "Soldador especializado en acero inoxidable",
+            "date_in": "1980-03-24",
+            "prove": {
+                "id_prove": "XZYW",
+                "name": "Irwin Tools",
+                "phone": "4976647609",
+                "city": "Butlermouth"
+            },
+            "image": "5BEE2cuter"
+        },
+        {
+            "id": "A5A51",
+            "tool": "Tiralíneas",
+            "brand": "Milwaukee",
+            "cant": 21,
             "cat": "Herramientas de martilleo",
             "rol": "Operador de máquinas de corte láser",
-            "date_in": "2021-01-07",
-            "prove": "Facom"
+            "date_in": "1976-02-13",
+            "prove": {
+                "id_prove": "WX7Z",
+                "name": "Kobalt",
+                "phone": "7672255232",
+                "city": "Cookefurt"
+            },
+            "image": "A5A51tiralineas"
         },
         {
-            "id": "AACE3",
-            "tool": "Llave inglesa",
-            "brand": "Ryobi",
-            "cat": "Herramientas de sujeción",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "1983-05-28",
-            "prove": "Proto Industrial Tools"
-        },
-        {
-            "id": "3A254",
-            "tool": "Sacabocados",
-            "brand": "DeWalt",
-            "cat": "Herramientas de corte",
-            "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1973-12-22",
-            "prove": "TTI Group"
-        },
-        {
-            "id": "2A4EE",
-            "tool": "Regla de aluminio",
-            "brand": "Craftsman",
-            "cat": "Herramientas de corte",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "1995-05-19",
-            "prove": "Craftsman"
-        },
-        {
-            "id": "DC342",
-            "tool": "Alicate tenaza",
+            "id": "E3A3D",
+            "tool": "Cincel",
             "brand": "Klein Tools",
-            "cat": "Herramientas de martilleo",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "1993-09-29",
-            "prove": "Vaughan & Bushnell"
-        },
-        {
-            "id": "3A5EC",
-            "tool": "Tenazas",
-            "brand": "Wera",
+            "cant": 22,
             "cat": "Herramientas de medición",
             "rol": "Operador de máquinas de corte láser",
-            "date_in": "1984-08-08",
-            "prove": "Klein Tools"
+            "date_in": "2003-10-07",
+            "prove": {
+                "id_prove": "56U8",
+                "name": "Apex Tool Group",
+                "phone": "3055618826",
+                "city": "Stevenburgh"
+            },
+            "image": "E3A3Dcincel"
         },
         {
-            "id": "ADC24",
-            "tool": "Espátula rascadora",
-            "brand": "Bosch",
-            "cat": "Herramientas de medición",
+            "id": "E23DA",
+            "tool": "Tiralíneas",
+            "brand": "Kobalt",
+            "cant": 36,
+            "cat": "Herramientas de percusión",
+            "rol": "Técnico de mantenimiento de equipos industriales",
+            "date_in": "1972-06-03",
+            "prove": {
+                "id_prove": "YZU7",
+                "name": "Irwin Tools",
+                "phone": "8342659576",
+                "city": "Hoopershire"
+            },
+            "image": "E23DAtiralineas"
+        },
+        {
+            "id": "BC3DD",
+            "tool": "Martillo de chapista",
+            "brand": "Channellock",
+            "cant": 36,
+            "cat": "Herramientas de percusión",
+            "rol": "Operador de máquinas de corte láser",
+            "date_in": "1985-05-23",
+            "prove": {
+                "id_prove": "6ZUY",
+                "name": "Facom",
+                "phone": "3990861456",
+                "city": "Lake Victor"
+            },
+            "image": "BC3DDmartillodechapista"
+        },
+        {
+            "id": "DE2CA",
+            "tool": "Cúter",
+            "brand": "Craftsman",
+            "cant": 47,
+            "cat": "Herramientas de percusión",
             "rol": "Soldador especializado en acero inoxidable",
-            "date_in": "1996-11-14",
-            "prove": "Estwing"
+            "date_in": "2003-04-03",
+            "prove": {
+                "id_prove": "UZX7",
+                "name": "Milwaukee Tool",
+                "phone": "0654482730",
+                "city": "New Davidhaven"
+            },
+            "image": "DE2CAcuter"
         },
         {
-            "id": "24C4E",
-            "tool": "Llave de tubo",
-            "brand": "Husky",
+            "id": "41433",
+            "tool": "Destornillador de estrella",
+            "brand": "Bahco",
+            "cant": 3,
+            "cat": "Herramientas de medición",
+            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
+            "date_in": "2021-12-24",
+            "prove": {
+                "id_prove": "YZX9",
+                "name": "Klein Tools",
+                "phone": "2871767793",
+                "city": "Port Garychester"
+            },
+            "image": "41433destornilladordeestrella"
+        },
+        {
+            "id": "22DA1",
+            "tool": "Destornillador de precisión",
+            "brand": "DeWalt",
+            "cant": 23,
+            "cat": "Herramientas de corte",
+            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
+            "date_in": "1978-08-16",
+            "prove": {
+                "id_prove": "57UX",
+                "name": "Channellock",
+                "phone": "8493550013",
+                "city": "East Sandra"
+            },
+            "image": "22DA1destornilladordeprecision"
+        },
+        {
+            "id": "C41E4",
+            "tool": "Tijeras de hojalatero",
+            "brand": "Milwaukee",
+            "cant": 9,
+            "cat": "Herramientas de medición",
+            "rol": "Inspector de calidad de productos de acero inoxidable",
+            "date_in": "1999-08-01",
+            "prove": {
+                "id_prove": "987Y",
+                "name": "Stanley Black & Decker",
+                "phone": "4651435996",
+                "city": "Lake Jonathan"
+            },
+            "image": "C41E4tijerasdehojalatero"
+        },
+        {
+            "id": "43BCD",
+            "tool": "Destornillador de precisión",
+            "brand": "Skil",
+            "cant": 35,
+            "cat": "Herramientas de percusión",
+            "rol": "Técnico de mantenimiento de equipos industriales",
+            "date_in": "1974-04-13",
+            "prove": {
+                "id_prove": "667W",
+                "name": "Matco Tools",
+                "phone": "3250677166",
+                "city": "Erichaven"
+            },
+            "image": "43BCDdestornilladordeprecision"
+        },
+        {
+            "id": "B32AB",
+            "tool": "Cúter",
+            "brand": "Bosch",
+            "cant": 4,
+            "cat": "Herramientas de corte",
+            "rol": "Operador de máquinas de corte láser",
+            "date_in": "2023-10-18",
+            "prove": {
+                "id_prove": "8ZX9",
+                "name": "Milwaukee Tool",
+                "phone": "6235041780",
+                "city": "East Edward"
+            },
+            "image": "B32ABcuter"
+        },
+        {
+            "id": "5C22B",
+            "tool": "Taladro manual",
+            "brand": "Craftsman",
+            "cant": 29,
+            "cat": "Herramientas de medición",
+            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
+            "date_in": "1984-03-25",
+            "prove": {
+                "id_prove": "86XU",
+                "name": "Proto Industrial Tools",
+                "phone": "3906508223",
+                "city": "Port Jesse"
+            },
+            "image": "5C22Btaladromanual"
+        },
+        {
+            "id": "AE2AC",
+            "tool": "Lima",
+            "brand": "Craftsman",
+            "cant": 10,
+            "cat": "Herramientas de corte",
+            "rol": "Inspector de calidad de productos de acero inoxidable",
+            "date_in": "1981-10-11",
+            "prove": {
+                "id_prove": "U7W8",
+                "name": "GearWrench",
+                "phone": "6052762987",
+                "city": "Lake Brenda"
+            },
+            "image": "AE2AClima"
+        },
+        {
+            "id": "A4CBD",
+            "tool": "Sierra de mano",
+            "brand": "GearWrench",
+            "cant": 46,
+            "cat": "Herramientas de medición",
+            "rol": "Operador de máquinas de corte láser",
+            "date_in": "1989-05-22",
+            "prove": {
+                "id_prove": "8YU6",
+                "name": "Estwing",
+                "phone": "9277071061",
+                "city": "Kyleland"
+            },
+            "image": "A4CBDsierrademano"
+        },
+        {
+            "id": "E4434",
+            "tool": "Clavo de paletizador",
+            "brand": "Kobalt",
+            "cant": 20,
             "cat": "Herramientas de martilleo",
             "rol": "Técnico de mantenimiento de equipos industriales",
-            "date_in": "1992-02-29",
-            "prove": "Stanley Black & Decker"
+            "date_in": "2022-04-06",
+            "prove": {
+                "id_prove": "8UY8",
+                "name": "Ridgid",
+                "phone": "9479617276",
+                "city": "New Carrietown"
+            },
+            "image": "E4434clavodepaletizador"
         },
         {
-            "id": "3D1D2",
-            "tool": "Fleje",
-            "brand": "Husky",
-            "cat": "Herramientas de medición",
-            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "2018-03-19",
-            "prove": "Stanley Black & Decker"
-        },
-        {
-            "id": "134A3",
-            "tool": "Llave de tubo",
-            "brand": "Estwing",
-            "cat": "Herramientas de medición",
-            "rol": "Operador de máquinas de corte láser",
-            "date_in": "2016-11-16",
-            "prove": "TTI Group"
-        },
-        {
-            "id": "B4C53",
-            "tool": "Llave allen",
+            "id": "2B3AE",
+            "tool": "Llave inglesa",
             "brand": "Makita",
-            "cat": "Herramientas de sujeción",
+            "cant": 1,
+            "cat": "Herramientas de percusión",
+            "rol": "Inspector de calidad de productos de acero inoxidable",
+            "date_in": "1999-02-16",
+            "prove": {
+                "id_prove": "8695",
+                "name": "GearWrench",
+                "phone": "4870359297",
+                "city": "New Jenniferland"
+            },
+            "image": "2B3AEllaveinglesa"
+        },
+        {
+            "id": "552CA",
+            "tool": "Cortatubos",
+            "brand": "Milwaukee",
+            "cant": 19,
+            "cat": "Herramientas de martilleo",
+            "rol": "Soldador especializado en acero inoxidable",
+            "date_in": "1980-05-16",
+            "prove": {
+                "id_prove": "Z566",
+                "name": "Apex Tool Group",
+                "phone": "3572877629",
+                "city": "Lake Sheriburgh"
+            },
+            "image": "552CAcortatubos"
+        },
+        {
+            "id": "EDAD2",
+            "tool": "Martillo de chapista",
+            "brand": "GearWrench",
+            "cant": 8,
+            "cat": "Herramientas de martilleo",
             "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
-            "date_in": "1997-06-26",
-            "prove": "Matco Tools"
-        }
+            "date_in": "1980-11-26",
+            "prove": {
+                "id_prove": "8Y5X",
+                "name": "Snap-on Tools",
+                "phone": "8725042042",
+                "city": "West Lisabury"
+            },
+            "image": "EDAD2martillodechapista"
+        },
+        {
+            "id": "A1D33",
+            "tool": "Cinta métrica",
+            "brand": "Klein Tools",
+            "cant": 41,
+            "cat": "Herramientas de medición",
+            "rol": "Ingeniero de procesos de fabricación de acero inoxidable",
+            "date_in": "2008-07-26",
+            "prove": {
+                "id_prove": "YW79",
+                "name": "Wurth Group",
+                "phone": "0447922991",
+                "city": "West Rodneystad"
+            },
+            "image": "A1D33cintametrica"
+        },
+        {
+            "id": "555A4",
+            "tool": "Cinta métrica",
+            "brand": "Irwin",
+            "cant": 7,
+            "cat": "Herramientas de medición",
+            "rol": "Soldador especializado en acero inoxidable",
+            "date_in": "2017-04-19",
+            "prove": {
+                "id_prove": "ZX59",
+                "name": "Snap-on Tools",
+                "phone": "1410850053",
+                "city": "Davisside"
+            },
+            "image": "555A4cintametrica"
+        },
+        {
+            "id": "CEB32",
+            "tool": "Alicate",
+            "brand": "Makita",
+            "cant": 12,
+            "cat": "Herramientas de sujeción",
+            "rol": "Técnico de mantenimiento de equipos industriales",
+            "date_in": "1973-01-25",
+            "prove": {
+                "id_prove": "U8ZW",
+                "name": "Kobalt",
+                "phone": "2751638885",
+                "city": "Janiceville"
+            },
+            "image": "CEB32alicate"
+        }        
+
     ]
 
 }

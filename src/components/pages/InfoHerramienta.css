@@ -42,7 +42,8 @@
 }
 
 .img_info{
-    max-width: 30rem;    
+    max-width: 30rem; 
+    align-self: center;   
 }
 
 .proveedor{

@@ -1,6 +1,7 @@
-import Card from "./Card";
 import "./PanelListado.css";
+import Card from "./Card";
 import ItemListado from "./ItemListado";
+
 
 function PanelListado(props) {
 

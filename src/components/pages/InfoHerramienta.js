@@ -14,7 +14,8 @@ export default function InfoHerramienta(props){
             btnname:"Editar",
             icobtn:"EditarIcono",
             estiloBoton:"btn-outline-secondary",
-            tipo:"button",            
+            tipo:"button",  
+            accion:"null",          
             d_toggle:"modal",
             d_target:"#edit_t_modal"          
         },
@@ -23,6 +24,7 @@ export default function InfoHerramienta(props){
             btnname:"Descargar",
             icobtn:"DownloadIcono",
             estiloBoton:"btn-outline-secondary",
+            accion:"null",
             tipo:"button",            
         }
       ];
@@ -69,7 +71,7 @@ export default function InfoHerramienta(props){
                                     <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>---</span></li>
                                 </ul>
                             </div>
-                            <div className="card-footer bg-transparent"><li class="list-group-item atributo_lista">Cantidad Total: <span>{data_infoTool.cant}</span></li></div>
+                            <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad Total: <span>{data_infoTool.cant}</span></li></div>
                         </div> 
 
 

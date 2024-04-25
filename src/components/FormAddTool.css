@@ -1,0 +1,30 @@
+.img_Preview{
+    display: flex;
+    flex-direction: row;
+    gap:5%;
+}
+
+#img_Pre{
+    max-height: 110px;   
+    border-radius: 0.5rem; 
+}   
+
+#in_img{
+    display:flex;
+    flex-direction: column;
+    gap:1%;
+}
+
+.modal_Form_add_tool{    
+    padding-top: 4rem;
+    left: 35rem;  
+    top:4rem;    
+    display: flex;
+    flex-direction: column;        
+    width: 50rem;
+    height: 50.3rem;    
+    border-radius: 0.5rem;
+    background: #FFF;
+    align-items:center;        
+    overflow:auto;  
+}

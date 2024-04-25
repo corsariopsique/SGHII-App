@@ -31,7 +31,7 @@
     width: max-content;    
 }
 
-.modal_Form_add_tool{    
+.modal_Form_add_tool{        
     padding-top: 4rem;
     left: -5rem;  
     top:2rem;    
@@ -41,7 +41,8 @@
     height: 50.3rem;    
     border-radius: 0.5rem;
     background: #FFF;
-    align-items:center;        
+    align-items:center;  
+    z-index: 30;      
     overflow:auto;  
 }
 

@@ -1,28 +1,30 @@
 import './Inventario.css';
 import { PanelInfoText, Modal, Tablas } from '../IndexComponents';
+import {Outlet, useLoaderData} from 'react-router-dom';
 import AgregarHerramienta from './AgregarHerramienta';
-import { useLoaderData } from 'react-router-dom';
 
 
 export default function Inventario(){   
     
-    const data_inventario = useLoaderData()    
+    const data_inventario = useLoaderData()        
 
     const btnsInventario = [
         {
             btnname:"Agregar Herramienta",
             icobtn:"Tool1Icono",
             estiloBoton:"btn-outline-primary",
-            tipo:"button",            
+            tipo:"button",    
+            accion:"/inventario/agregarherramienta",
             d_toggle:"modal",
-            d_target:"#add_t_modal"
+            d_target:"#add_tool_modal"                                     
         },
 
         {
             btnname:"Filtros",
             icobtn:"FiltrosIcono",
             estiloBoton:"btn-outline-primary",
-            tipo:"button",            
+            tipo:"button",   
+            accion:"null"         
         },
 
         {
@@ -30,6 +32,7 @@ export default function Inventario(){
             icobtn:"DownloadIcono",
             estiloBoton:"btn-outline-primary",
             tipo:"button",            
+            accion:"null"
         }
       ];
 
@@ -62,8 +65,7 @@ export default function Inventario(){
             periodo: 7,
             estiloItemInfo: "bajos_Inven"
         }
-    ];       
-   
+    ];    
 
     const col_data = [
         { key: 'id', title: 'ID' },
@@ -96,13 +98,15 @@ export default function Inventario(){
                     data={data_inventario}
                 />   
 
-            </Modal>  
+            </Modal>
 
-            <div className='modal' id="add_t_modal">
-                <div className="modal-dialog">
-                    <AgregarHerramienta />         
+            <div className='modal' id='add_tool_modal' role='dialog'>
+                <div className='modal-dialog'>
+                    <AgregarHerramienta/>
                 </div>
             </div>
+
+            <Outlet/>
 
         </div>
     );

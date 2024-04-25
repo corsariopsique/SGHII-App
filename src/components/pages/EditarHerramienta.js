@@ -1,6 +1,6 @@
 import './EditarHerramienta.css';
 import './AgregarHerramienta.css';
-import { Form } from "react-router-dom";
+import { Form, useParams } from "react-router-dom";
 import { useState } from "react";
 import {Modal} from '../IndexComponents';
 
@@ -29,14 +29,15 @@ function EditarHerramienta(){
             estiloBoton:"btn-primary",
             formulario:"edit_tool",
             d_dismiss:"modal",
-            tipo:"submit"                   
+            tipo:"submit",
+            accion:"null"                
         },
 
         {
             btnname:"Cancelar",
             icobtn:"CancelIcono",
             estiloBoton:"btn-secondary",
-            accion:"/inventario/:toolId",
+            accion:`/inventario/${useParams().toolId}`,
             d_dismiss:"modal"
         },
 
@@ -46,7 +47,8 @@ function EditarHerramienta(){
             estiloBoton:"btn-danger",            
             d_toggle:"modal",
             d_target:"#ver_delete",                                    
-            tipo:"button"                   
+            tipo:"button",
+            accion:"null"                   
         },        
       ];
 
@@ -75,7 +77,7 @@ function EditarHerramienta(){
                                 type="file" 
                                 id="tool_image" 
                                 name="tool_image"
-                                accept="image/*"
+                                accept=".png"
                                 onChange={handleronChange}
                             />
                         </div>

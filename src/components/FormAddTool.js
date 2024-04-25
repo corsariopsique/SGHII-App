@@ -1,13 +1,13 @@
-import './AgregarHerramienta.css';
-import {Modal} from '../IndexComponents';
+import './FormAddTool.css';
 import {Form, redirect, useActionData} from 'react-router-dom';
 import { useState } from "react";
 
-function AgregarHerramienta (props) {  
-    
-    const datos = useActionData();
 
-    // manejo preview imagen formulario    
+export default function FormAddTool() {
+
+    const data = useActionData();
+
+    // manejo preview imagen formulario
 
     const [img_pre, setImg_Pre] = useState(null);
 
@@ -23,36 +23,11 @@ function AgregarHerramienta (props) {
         if (file) {
             reader.readAsDataURL(file);
         }
-    }
-    
-    const btnsAgregarHerramienta = [
-        {
-            btnname:"Registar",
-            icobtn:"Tool1Icono",
-            estiloBoton:"btn-primary",
-            formulario:"add_tool",            
-            tipo:"submit", 
-            accion:"null",                              
-        },
+    }       
 
-        {
-            btnname:"Cancelar",
-            icobtn:"CancelIcono",
-            estiloBoton:"btn-secondary",            
-            d_dismiss:"modal",
-            accion:"/inventario"
-        }        
-    ];      
-
-    return (           
-
-        <Modal         
-        title="Agregar Herramienta"
-        estiloModal="modal-content modal_Form_add_tool"
-        botoncss="btn_Modal_Form_add_tool"
-        botones={btnsAgregarHerramienta}
-        >     
-             <Form id="add_tool" name="add_tool" action="/inventario/agregarherramienta" method='post'>
+  return (
+        <div>
+            <Form id="add_tool" action="/inventario/agregarherramienta" method='post'>
 
                 <div className="img_Preview">
 
@@ -68,20 +43,18 @@ function AgregarHerramienta (props) {
                             name="tool_image"
                             accept=".png"
                             onChange={handleronChange}
-                            required
                         />
-                    </div>                    
-                </div>    
+                    </div>
+                    
+                </div>
 
                 <label htmlFor="name_tool" className="form-label">Nombre:</label>
 
                 <input 
                     type='text' 
                     className="form-control"
-                    name="name_tool" 
                     id="name_tool" 
                     placeholder='Ingrese nombre de herramienta'
-                    required
                 />                
 
                 <label htmlFor="cat_tool" className="form-label">Categoria:</label>
@@ -89,10 +62,8 @@ function AgregarHerramienta (props) {
                 <input 
                     type="text" 
                     className="form-control"
-                    name="cat_tool" 
                     id="cat_tool" 
                     placeholder='Ingrese categoria de herramienta'
-                    required
                 />
 
                 <label htmlFor="cantidad_tool" className="form-label">Cantidad:</label>
@@ -100,10 +71,8 @@ function AgregarHerramienta (props) {
                 <input 
                     type="number" 
                     className="form-control"
-                    name="cantidad_tool" 
                     id="cantidad_tool" 
                     placeholder='Ingrese numero de unidades'
-                    required
                 />
 
                 <label htmlFor="role_tool" className="form-label">Rol:</label>
@@ -111,10 +80,8 @@ function AgregarHerramienta (props) {
                 <input 
                     type="text" 
                     className="form-control"
-                    name="role_tool" 
                     id="role_tool" 
                     placeholder='Ingrese rol de herramienta'
-                    required
                 />
 
                 <label htmlFor="brand_tool" className="form-label">Marca:</label>
@@ -122,21 +89,17 @@ function AgregarHerramienta (props) {
                 <input 
                     type="text" 
                     className="form-control"
-                    name="brand_tool" 
                     id="brand_tool" 
                     placeholder='Ingrese marca de la herramienta'
-                    required
-                />                 
+                />  
 
-                {datos && <p>{datos.error}</p>}
+                {data && data.error && <p>{data.error}</p>}             
 
-            </Form>             
-        
-        </Modal>
-    );
-
+            </Form>                 
+        </div>
+    )
 }
-export default AgregarHerramienta;
+
 
 export const AgregarHerrramientaAction = async ({ request }) => {
 
@@ -159,14 +122,20 @@ export const AgregarHerrramientaAction = async ({ request }) => {
 
      // manejo verificacion formulario
 
-     const isEmpty = (value) => value.trim() === '';    
+     const isEmpty = (value) => value.trim() === '';
+
+     const [valida_entrada, setValida_Entrada] = useState({
+         tool: true,
+         brand: true,
+         cant: true,
+         cat: true,
+         rol: true,
+       });
   
     const entrada = {
-      id: generateRandomId(),  
-      image: data.get('tool_image'),  
       tool: data.get('name_tool'),
       cat: data.get('cat_tool'),
-      cant: Number(data.get('cantidad_tool')),
+      cant: data.get('cantidad_tool'),
       rol: data.get('role_tool'),
       brand: data.get('brand_tool')      
     }
@@ -175,32 +144,10 @@ export const AgregarHerrramientaAction = async ({ request }) => {
   
     // send your post request
   
-    if (entrada.tool.length < 1) {
-      return {error: 'Debe ingresar un nombre para la herramienta'}
+    if (entrada.message.length < 10) {
+      return {error: 'Message must be over 10 chars long.'}
     }
-
-    if (entrada.cat.length < 1) {
-        return {error: 'Debe ingresar una categoria para la herramienta'}
-    }
-
-    if (entrada.cant === 0) {
-        return {error: 'Debe ingresar una cantidad diferente de 0 para la herramienta'}
-    }
-
-    if (entrada.rol.length < 1) {
-        return {error: 'Debe asignar un rol para la herramienta'}
-    }
-
-    if (entrada.brand.length < 1) {
-        return {error: 'Debe ingresar una marca para la herramienta'}
-    }
-
-    if (entrada.image === null) {
-        return {error: 'Debe ingresar una imagen para la herramienta'}
-    }      
   
     // redirect the user
     return redirect('/inventario')
-}
-
-
+  }

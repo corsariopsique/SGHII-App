@@ -10,8 +10,11 @@ import Login from "./components/pages/Login";
 import Inventario, { inventarioLoader } from "./components/pages/Inventario";
 import InfoHerramienta, {InfoherramientaLoader} from "./components/pages/InfoHerramienta";
 
+import AgregarHerramienta, {AgregarHerrramientaAction} from "./components/pages/AgregarHerramienta";
+
 import RootLayout from './components/Layouts/RootLayout';
 import InventarioLayout from "./components/Layouts/InventarioLayout";
+
 
    const router = createBrowserRouter(
     
@@ -19,16 +22,14 @@ import InventarioLayout from "./components/Layouts/InventarioLayout";
       
       <Route path="/" element={<RootLayout />}>        
         <Route path="panelprincipal" element={<PanelPrincipal />} />       
-        <Route path="inventario" element={<InventarioLayout />}>
-          <Route 
-          index 
-          element={<Inventario />}
-          loader={inventarioLoader}/>
+        <Route path="inventario" element={<Inventario />} loader={inventarioLoader}>                           
           <Route 
           path=":toolId"
           element={<InfoHerramienta />}   
-          loader ={InfoherramientaLoader} 
-          />    
+          loader ={InfoherramientaLoader}/>
+          <Route
+          path="agregarherramienta"                                       
+          action={AgregarHerrramientaAction} />       
         </Route>
       </Route>      
     )

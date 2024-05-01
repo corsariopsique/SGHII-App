@@ -1,8 +1,7 @@
 import './AgregarHerramienta.css';
-import {Modal} from '../IndexComponents';
+import {Modal, FormAddTool} from '../IndexComponents';
 import {Form, redirect, useActionData} from 'react-router-dom';
 import { useState } from "react";
-import {FormAddTool} from '../IndexComponents';
 
 function AgregarHerramienta (props) {  
     
@@ -78,7 +77,7 @@ function AgregarHerramienta (props) {
                                 id="tool_image" 
                                 name="tool_image"
                                 accept=".png"
-                                onChange={handleronChange}                                  
+                                onChange={handleronChange}                                 
                                 required
                             />
 

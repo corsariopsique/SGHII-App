@@ -1,10 +1,9 @@
 import "./Card.css";
-import IDGenerator from "./IDGenerator";
 
 function Card (props) {
     const clases = 'Card ' + props.className;
     return(
-        <div className={clases} id={props.id} key={IDGenerator()}>
+        <div className={clases} id={props.id}>
             {props.children}
         </div>
     );

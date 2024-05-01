@@ -16,7 +16,7 @@ function Modal(props){
 
             { props.botones!=null &&           
 
-                <div className={boton_Clase} role="group" aria-label="Large button group" key={IDGenerator()}>
+                <div className={boton_Clase} role="group" aria-label="Large button group">
 
                     {props.botones.map((btninv) => (
                         <BotonIcono 

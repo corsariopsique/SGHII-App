@@ -1,5 +1,4 @@
 import './ItemListado.css'
-import IDGenerator from './IDGenerator';
 
 function ItemListado(props) {
 
@@ -9,15 +8,15 @@ function ItemListado(props) {
     const imagen = require('./images/'+ props.imagen + ".png"); 
 
     return (
-        <div className='item_Lista' key={IDGenerator()}>            
+        <div className='item_Lista'>            
             <img className='item_Foto' src={imagen} alt="tool"></img>       
 
-            <div className='text_Name_Cant' key={IDGenerator()}>
+            <div className='text_Name_Cant'>
                 <p className='item_Name'>{props.nombre}</p>
                 <p className='item_Cant'>Cantidad disponible: {props.cant}</p>
             </div>
 
-            <div className={textAlarm} key={IDGenerator()}>
+            <div className={textAlarm}>
                 <p className={textAlarm}>{marcador ? "Baja" : "Alta"}</p>
             </div>
 

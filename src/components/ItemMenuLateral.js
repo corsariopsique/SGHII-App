@@ -1,8 +1,6 @@
 import { useState} from 'react';
 import { Link} from 'react-router-dom';
 import './ItemMenuLateral.css';
-import IDGenerator from './IDGenerator';
-
 
 function ItemMenuLateral(props){    
 
@@ -20,7 +18,7 @@ function ItemMenuLateral(props){
     
     return (        
         <Link className ={seleccion} onMouseOver={handleronMouseOver} onMouseOut={handleronMouseOut} to={props.enlace}>
-            <div className ="itempack" key={IDGenerator()}>
+            <div className ="itempack">
                 <div className ="iconitem">                    
                     {props.children}                           
                 </div>

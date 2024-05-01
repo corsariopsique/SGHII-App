@@ -8,7 +8,7 @@ function PanelInfo (props) {
     return (     
         
         <Card className={props.estiloPanelInfo}>
-            <p className='titlepanel' key={IDGenerator()}>{props.title}</p>            
+            <p className='titlepanel'>{props.title}</p>            
             {props.dato.map((concepto) => (
                 <IconoInfo 
                 colico={concepto.color}

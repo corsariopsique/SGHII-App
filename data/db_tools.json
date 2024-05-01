@@ -495,6 +495,38 @@
         "city": "Zapatoca"
       },
       "image": "logo_sena_negro"
+    },
+    {
+      "id": "J0TMK",
+      "tool": "Martillo",
+      "brand": "Colima",
+      "cant": 8,
+      "cat": "Manual",
+      "rol": "Soldador",
+      "date_in": "2024-04-30",
+      "prove": {
+        "id_prove": "9FAK",
+        "name": "Alipra",
+        "phone": "123456790",
+        "city": "Zapatoca"
+      },
+      "image": "etiqueta yaya (2)"
+    },
+    {
+      "id": "1YPDN",
+      "tool": "Alicate",
+      "brand": "Stanley",
+      "cant": 5,
+      "cat": "Manual",
+      "rol": "Soldador",
+      "date_in": "2024-04-30",
+      "prove": {
+        "id_prove": "1KRQ",
+        "name": "Alipra",
+        "phone": "123456790",
+        "city": "Zapatoca"
+      },
+      "image": "pixelcut-export-1685164131652"
     }
   ]
 }

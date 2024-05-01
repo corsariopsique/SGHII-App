@@ -1,7 +1,6 @@
 import React from 'react';
 import './Tablas.css';
 import {Link} from 'react-router-dom';
-import IDGenerator from './IDGenerator';
 
 function Tablas (props) {       
 
@@ -12,7 +11,7 @@ function Tablas (props) {
 
         <div className={props.estiloTabla}>
 
-            <table className={clases} key={IDGenerator()}>
+            <table className={clases}>
 
                 <thead className='text-primary'>
 

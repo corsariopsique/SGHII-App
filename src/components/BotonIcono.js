@@ -1,6 +1,7 @@
 import * as Icons from './Iconos/IndexIcons';
 import {Link} from 'react-router-dom';
 import './BotonIcono.css';
+import IDGenerator from './IDGenerator';
 
 
 
@@ -33,6 +34,7 @@ function BotonIcono (props){
                 data-bs-toggle={props.d_toggle}   
                 data-bs-target={props.d_target}      
                 data-bs-dismiss={props.d_dismiss}                                                                  
+                key={IDGenerator()}
                 >                
                     <Icono id="icobtn"/>{name}                
                         

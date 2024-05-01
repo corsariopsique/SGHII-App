@@ -2,12 +2,26 @@ import './InfoHerramienta.css';
 import {Modal, Tablas} from '../IndexComponents';
 import {EditarHerramienta, AlertBorra} from './IndexPages';
 import { useLoaderData } from 'react-router-dom'
+import {Tool1Icono} from '../Iconos/IndexIcons';
 
 export default function InfoHerramienta(props){       
      
     const data_infoTool = useLoaderData()
 
-    const ruta_img = require(`../images/tools/${data_infoTool.image}.png`); 
+    function ImgTool () {
+    
+        try {
+            const ruta_img = require(`../images/tools/${data_infoTool.image}.png`);
+            return (
+                <img src={ruta_img} className="card-img-top img_info" alt="card-img-top"/>
+            );
+        } catch (error) {
+            console.error('El archivo no pudo ser requerido:');
+            return(
+                <Tool1Icono className="card-img-top img_info" width="100px" height="478px" viewBox ="0 0 16 16" fill="#cec8c6"/>
+            );
+        }
+    }
 
     const btnsInfoHerramienta = [
         {
@@ -88,7 +102,7 @@ export default function InfoHerramienta(props){
                         </div>  
 
                         <div className="card tarjeta_img_tool">
-                            <img src={ruta_img} className="card-img-top img_info" alt="card-img-top"/>
+                            <ImgTool />
                             <div className="card-body">
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item atributo_lista text-secondary">En prestamo: <span className='valor_atributo'>15</span></li>

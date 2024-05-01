@@ -1,6 +1,7 @@
 import React from 'react';
 import './Tablas.css';
 import {Link} from 'react-router-dom';
+import IDGenerator from './IDGenerator';
 
 function Tablas (props) {       
 
@@ -11,7 +12,7 @@ function Tablas (props) {
 
         <div className={props.estiloTabla}>
 
-            <table className={clases}>
+            <table className={clases} key={IDGenerator()}>
 
                 <thead className='text-primary'>
 
@@ -30,7 +31,7 @@ function Tablas (props) {
                         <tr key={index}>           
 
                             {props.columns.map(column => (
-                            <td><Link className={l_clases} to={row.id.toString()} key={column.key}>{row[column.key]}</Link></td>
+                            <td key={column.key}><Link className={l_clases} to={row.id.toString()}>{row[column.key]}</Link></td>
                             ))}
                             
                         </tr>                     

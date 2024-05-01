@@ -1,6 +1,7 @@
 import './Modal.css';
 import Card from './Card';
 import BotonIcono from './BotonIcono';
+import {IDGenerator} from './IndexComponents';
 
 
 function Modal(props){
@@ -9,13 +10,13 @@ function Modal(props){
     const modal_clase = props.estiloModal;
 
     return (
-        <Card className={modal_clase} id={props.id}>
+        <Card className={modal_clase} id={props.id}>            
             
             <p className='titlepanel'>{props.title}</p> 
 
             { props.botones!=null &&           
 
-                <div className={boton_Clase} role="group" aria-label="Large button group">
+                <div className={boton_Clase} role="group" aria-label="Large button group" key={IDGenerator()}>
 
                     {props.botones.map((btninv) => (
                         <BotonIcono 
@@ -28,7 +29,8 @@ function Modal(props){
                             on_Click={btninv.on_Click}
                             d_toggle={btninv.d_toggle}
                             d_target={btninv.d_target}   
-                            d_dismiss={btninv.d_dismiss}                   
+                            d_dismiss={btninv.d_dismiss}  
+                            key={IDGenerator()}                 
                         />
                     ))}         
                     

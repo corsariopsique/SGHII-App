@@ -1,19 +1,21 @@
 import "./PanelListado.css";
 import Card from "./Card";
 import ItemListado from "./ItemListado";
+import IDGenerator from "./IDGenerator";
 
 
 function PanelListado(props) {
 
     return(
         <Card className ="panelListaP">
-            <p className='titlepanel'>{props.title}</p>   
+            <p className='titlepanel' key={IDGenerator()}>{props.title}</p>   
             {props.tool_list.map((item) => (
                 <ItemListado
                 imagen={item.imagen}
                 tipo={item.tipo}
                 nombre={item.nombre}
-                cant={item.cantidad}                
+                cant={item.cantidad}  
+                key={IDGenerator()}              
                 />
             ))}                      
         </Card>

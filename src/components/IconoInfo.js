@@ -1,5 +1,6 @@
 import './IconoInfo.css';
 import * as icons from './Iconos/IndexIcons';
+import IDGenerator from './IDGenerator';
 
 function IconoInfo (props) {  
 
@@ -7,9 +8,9 @@ function IconoInfo (props) {
     const IcoFun = icons[ic_wd];    
 
     return(
-        <div className ="iconoinfo"> 
+        <div className ="iconoinfo" key={IDGenerator()}> 
             <IcoFun className='iconopanel' fill={props.colico}/>  
-            <div className='texticopanel'>
+            <div className='texticopanel' key={IDGenerator()}>
                 <p className='canttextpanel'>{props.cantidad}</p>
                 <p className='nametextpanel'>{props.nombre}</p>
             </div>            

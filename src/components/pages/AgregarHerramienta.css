@@ -15,6 +15,20 @@
     gap:1%;
 }
 
+.formulario{   
+    position: relative; 
+    top: 30%;
+    left:12%;
+    column-count: 3;   
+    
+}
+
+.error-form{
+    color: red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+}
+
 .modal_Form_add_tool{    
     padding-top: 4rem;
     left: 35rem;  
@@ -27,4 +41,23 @@
     background: #FFF;
     align-items:center;        
     overflow:auto;  
+}
+
+.backdrop-root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.75);
+}
+  
+.modal-root {
+    position: fixed;
+    top: 30vh;
+    left: 10%;
+    width: 80%;
+    z-index: 100;
+    overflow: hidden;
 }

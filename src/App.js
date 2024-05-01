@@ -22,13 +22,18 @@ import InventarioLayout from "./components/Layouts/InventarioLayout";
       
       <Route path="/" element={<RootLayout />}>        
         <Route path="panelprincipal" element={<PanelPrincipal />} />       
-        <Route path="inventario" element={<Inventario />} loader={inventarioLoader}>                           
+        <Route path="inventario" element={<InventarioLayout />}>
+          <Route
+          index
+          element={<Inventario />}
+          loader={inventarioLoader} />                           
           <Route 
           path=":toolId"
           element={<InfoHerramienta />}   
           loader ={InfoherramientaLoader}/>
           <Route
-          path="agregarherramienta"                                       
+          path="agregarherramienta"  
+          element={<AgregarHerramienta />}                                     
           action={AgregarHerrramientaAction} />       
         </Route>
       </Route>      

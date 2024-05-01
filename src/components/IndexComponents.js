@@ -14,3 +14,4 @@ export { default as PanelInfoText} from './PanelInfoText';
 export { default as PanelListado} from './PanelListado';
 export { default as Tablas} from './Tablas';
 export { default as FormAddTool} from './FormAddTool';
+export { default as IDGenerator} from './IDGenerator';

@@ -1,6 +1,7 @@
 import './PanelInfoText.css'
 import Card from "./Card";
 import InfoCont from "./InfoCont";
+import IDGenerator from './IDGenerator';
 
 
 function PanelInfoText(props) {
@@ -15,6 +16,7 @@ function PanelInfoText(props) {
                 cantidad={atributo.cantidad}
                 periodo={atributo.periodo}
                 estiloItemInfo={atributo.estiloItemInfo} 
+                key={IDGenerator()}
                 />                       
             ))}            
         </Card>                

@@ -1,8 +1,6 @@
 import './Inventario.css';
 import { PanelInfoText, Modal, Tablas } from '../IndexComponents';
 import {Outlet, useLoaderData} from 'react-router-dom';
-import AgregarHerramienta from './AgregarHerramienta';
-
 
 export default function Inventario(){   
     
@@ -14,9 +12,7 @@ export default function Inventario(){
             icobtn:"Tool1Icono",
             estiloBoton:"btn-outline-primary",
             tipo:"button",    
-            accion:"/inventario/agregarherramienta",
-            d_toggle:"modal",
-            d_target:"#add_tool_modal"                                     
+            accion:"/inventario/agregarherramienta"                                              
         },
 
         {
@@ -78,7 +74,7 @@ export default function Inventario(){
 
     return(
 
-        <div>            
+        <>
 
             <PanelInfoText
              title ="Inventario General" 
@@ -98,17 +94,11 @@ export default function Inventario(){
                     data={data_inventario}
                 />   
 
-            </Modal>
-
-            <div className='modal' id='add_tool_modal' role='dialog'>
-                <div className='modal-dialog'>
-                    <AgregarHerramienta/>
-                </div>
-            </div>
+            </Modal>           
 
             <Outlet/>
 
-        </div>
+        </>            
     );
 }
 

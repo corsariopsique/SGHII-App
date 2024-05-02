@@ -431,6 +431,22 @@
         "city": "West Rodneystad"
       },
       "image": "A1D33cintametrica"
+    },
+    {
+      "id": "6VMQ6",
+      "tool": "VillaMarquin",
+      "brand": "Incolma",
+      "cant": 2,
+      "cat": "Manual",
+      "rol": "Carpintero",
+      "date_in": "2024-05-02",
+      "prove": {
+        "id_prove": "HV87",
+        "name": "Andres Serrano",
+        "phone": "6543219870",
+        "city": "Zapatoca"
+      },
+      "image": "5C22Btaladromanual"
     }
   ]
 }

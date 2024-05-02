@@ -1,6 +1,6 @@
 import './AlertBorra.css';
-import * as Icons from '../Iconos/IndexIcons';
-import { Navigate, useParams, Link } from "react-router-dom";
+import * as Icons from '../../Iconos/IndexIcons';
+import { useParams, Link, Navigate } from "react-router-dom";
 import ReactDOM from 'react-dom';
 import { useState } from 'react';
 
@@ -13,28 +13,21 @@ function AlertBorra () {
     const urlDeleteItem = `http://localhost:4000/tools/${useParams().toolId}`;
 
     const [rndrmodal, setRndrModal] = useState(true);
-
-    const salDeHere = () => {
-        return <Navigate to="/inventario" replace={true} />
-    }                
-
+   
     const HandleronClickEliminar = () => {
 
         fetch(urlDeleteItem, {
             method: 'DELETE',
             headers: {
-                'Content-Type': 'application/json'
-                // Aquí puedes agregar otros headers si es necesario
+                'Content-Type': 'application/json'                
             },
         })
 
         .then(response => {
-            if (response.ok) {                
-                alert(`La herramienta con el ID: ${idTool} ha sido eliminada`);
-                setRndrModal(false);  
-                salDeHere();              
-                // Registro eliminado con éxito
-                // Realizar alguna acción adicional si es necesario
+            if (response.ok) {    
+                console.log(response.ok);                                       
+                alert(`La herramienta con el ID: ${idTool} ha sido eliminada con exito`);
+                setRndrModal(false);                                 
             } else {
                 // Manejar errores de respuesta
                 throw new Error('Error al eliminar el registro');
@@ -87,7 +80,9 @@ function AlertBorra () {
 
     return(        
 
-        <>
+        <>            
+
+            {!rndrmodal && (<Navigate to="/inventario" replace={true} />)}
 
             {rndrmodal && ReactDOM.createPortal(
                 <Backdrop />,
@@ -98,6 +93,7 @@ function AlertBorra () {
                 <ModalEliminar />,
                 document.getElementById('overlay-root')
             )}
+
 
         </>
     );

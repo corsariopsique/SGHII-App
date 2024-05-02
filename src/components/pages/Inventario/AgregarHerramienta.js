@@ -1,5 +1,5 @@
 import './AgregarHerramienta.css';
-import {Modal, FormAddTool} from '../IndexComponents';
+import {Modal, FormAddTool} from '../../IndexComponents';
 import {Form, redirect, useActionData} from 'react-router-dom';
 import { useState } from "react";
 

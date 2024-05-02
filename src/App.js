@@ -5,17 +5,22 @@ import {
   RouterProvider    
 } from "react-router-dom";
 
-import PanelPrincipal from "./components/pages/PanelPrincipal";
+// componentes iniciales SGHII
 import Login from "./components/pages/Login";
-import Inventario, { inventarioLoader } from "./components/pages/Inventario";
-import InfoHerramienta, {InfoherramientaLoader} from "./components/pages/InfoHerramienta";
+import PanelPrincipal from "./components/pages/PanelPrincipal";
 
-import AgregarHerramienta, {AgregarHerrramientaAction} from "./components/pages/AgregarHerramienta";
+//componentes inventario
+import Inventario, { inventarioLoader } from "./components/pages/Inventario/Inventario";
+import InfoHerramienta, {InfoherramientaLoader} from "./components/pages/Inventario/InfoHerramienta";
+import EditarHerramienta, { editarherramientaLoader, EditarHerrramientaAction } from "./components/pages/Inventario/EditarHerramienta";
+import AgregarHerramienta, {AgregarHerrramientaAction} from "./components/pages/Inventario/AgregarHerramienta";
+import AlertBorra from "./components/pages/Inventario/AlertBorra";
 
+// Layouts
 import RootLayout from './components/Layouts/RootLayout';
 import InventarioLayout from "./components/Layouts/InventarioLayout";
-import EditarHerramienta, { editarherramientaLoader, EditarHerrramientaAction } from "./components/pages/EditarHerramienta";
-import AlertBorra from "./components/pages/AlertBorra";
+
+
 
    const router = createBrowserRouter(
     

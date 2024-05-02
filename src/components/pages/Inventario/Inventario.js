@@ -1,5 +1,5 @@
 import './Inventario.css';
-import { PanelInfoText, Modal, Tablas } from '../IndexComponents';
+import { PanelInfoText, Modal, Tablas } from '../../IndexComponents';
 import {Outlet, useLoaderData} from 'react-router-dom';
 
 export default function Inventario(){   

@@ -1,7 +1,7 @@
 import './InfoHerramienta.css';
-import {Modal, Tablas} from '../IndexComponents';
+import {Modal, Tablas} from '../../IndexComponents';
 import { useLoaderData, useParams } from 'react-router-dom'
-import {Tool1Icono} from '../Iconos/IndexIcons';
+import {Tool1Icono} from '../../Iconos/IndexIcons';
 
 export default function InfoHerramienta(props){       
      
@@ -10,7 +10,7 @@ export default function InfoHerramienta(props){
     function ImgTool () {
     
         try {
-            const ruta_img = require(`../images/tools/${data_infoTool.image}.png`);
+            const ruta_img = require(`../../images/tools/${data_infoTool.image}.png`);
             return (
                 <img src={ruta_img} className="card-img-top img_info" alt="card-img-top"/>
             );

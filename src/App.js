@@ -14,28 +14,45 @@ import AgregarHerramienta, {AgregarHerrramientaAction} from "./components/pages/
 
 import RootLayout from './components/Layouts/RootLayout';
 import InventarioLayout from "./components/Layouts/InventarioLayout";
-
+import EditarHerramienta, { editarherramientaLoader, EditarHerrramientaAction } from "./components/pages/EditarHerramienta";
+import AlertBorra from "./components/pages/AlertBorra";
 
    const router = createBrowserRouter(
     
     createRoutesFromElements(      
       
-      <Route path="/" element={<RootLayout />}>        
-        <Route path="panelprincipal" element={<PanelPrincipal />} />       
+      <Route path="/" element={<RootLayout />}>    
+
+        <Route path="panelprincipal" element={<PanelPrincipal />} />               
         <Route path="inventario" element={<InventarioLayout />}>
+
           <Route
           index
           element={<Inventario />}
           loader={inventarioLoader} />                           
-          <Route 
+         
+         <Route 
           path=":toolId"
           element={<InfoHerramienta />}   
           loader ={InfoherramientaLoader}/>
+          
           <Route
           path="agregarherramienta"  
           element={<AgregarHerramienta />}                                     
-          action={AgregarHerrramientaAction} />       
+          action={AgregarHerrramientaAction} />    
+          
+          <Route
+          path=":toolId/editarherramienta"
+          element={<EditarHerramienta />}
+          action={EditarHerrramientaAction} 
+          loader={editarherramientaLoader}>  
+            <Route
+            path=":toolId/deleteherramienta"
+            element={<AlertBorra />} />
+          </Route>
+
         </Route>
+
       </Route>      
     )
   )    

@@ -1,20 +1,61 @@
-import { useState } from "react";
+import './AlertBorra.css';
 import * as Icons from '../Iconos/IndexIcons';
-import { redirect } from "react-router-dom";
+import { Navigate, useParams, Link } from "react-router-dom";
+import ReactDOM from 'react-dom';
+import { useState } from 'react';
 
+function AlertBorra () {
 
-const AlertBorra = () => {
+    const idTool = useParams().toolId;
 
-    const [toolinfo, SetToolInfo] = useState(true);
+    const enlaceCancelar = `/inventario/${useParams().toolId}/editarherramienta`    
+
+    const urlDeleteItem = `http://localhost:4000/tools/${useParams().toolId}`;
+
+    const [rndrmodal, setRndrModal] = useState(true);
+
+    const salDeHere = () => {
+        return <Navigate to="/inventario" replace={true} />
+    }                
 
     const HandleronClickEliminar = () => {
-        SetToolInfo(!toolinfo)
-    }          
 
-    return(
+        fetch(urlDeleteItem, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+                // Aquí puedes agregar otros headers si es necesario
+            },
+        })
 
-        <div>
-            <div className="card text-white bg-danger modal-content delete_alert">
+        .then(response => {
+            if (response.ok) {                
+                alert(`La herramienta con el ID: ${idTool} ha sido eliminada`);
+                setRndrModal(false);  
+                salDeHere();              
+                // Registro eliminado con éxito
+                // Realizar alguna acción adicional si es necesario
+            } else {
+                // Manejar errores de respuesta
+                throw new Error('Error al eliminar el registro');
+            }
+        })
+
+        .catch(error => {
+            // Manejar el error
+            console.error('Error al eliminar el registro:', error);
+        });        
+    }; 
+    
+    const Backdrop = () => {
+        return <div className="backdrop-root" />;
+    };
+
+    const ModalEliminar = () => {
+
+        return (
+            
+            <div className="card text-white bg-danger modal-root delete_alert">
                 <div className="card-header">Eliminar Herramienta</div>
                 <div className="card-body verificacion">                    
                     <p className="card-text text-start">¿Esta usted segur@ de eliminar esta herramienta?</p>
@@ -22,29 +63,44 @@ const AlertBorra = () => {
 
                         <button  
                             type="button" 
-                            className="btn boton btn-danger" 
-                            data-bs-dismiss="modal"                                                                
+                            className="btn boton btn-danger"                                                                                             
                             onClick={HandleronClickEliminar}        
                         >                
                             <Icons.EliminarIcono id="icobtn"/>Eliminar              
                     
                         </button> 
-                        <button  
-                            type="button" 
-                            className="btn boton btn-secondary" 
-                            data-bs-dismiss="modal"                                                      
-                        >                
-                            <Icons.CancelIcono id="icobtn"/>Cancelar              
-                    
-                        </button>            
+
+                        <Link to={enlaceCancelar}>
+                            <button  
+                                type="button" 
+                                className="btn boton btn-secondary"                                                                                   
+                            >                
+                                <Icons.CancelIcono id="icobtn"/>Cancelar              
+                        
+                            </button>            
+                        </Link>
                     </div>
                 </div>
-            </div>
+            </div>        
+        );
+    }
 
-            {toolinfo ? <></>: redirect("/inventario")}
+    return(        
 
-        </div>
+        <>
+
+            {rndrmodal && ReactDOM.createPortal(
+                <Backdrop />,
+                document.getElementById('backdrop-root')
+            )} 
+
+            {rndrmodal && ReactDOM.createPortal(
+                <ModalEliminar />,
+                document.getElementById('overlay-root')
+            )}
+
+        </>
     );
-};
+}
 
 export default AlertBorra;

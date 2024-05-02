@@ -31,7 +31,7 @@ function AgregarHerramienta (props) {
             setImg_Pre(null);
             return             
         } 
-    }
+    }   
     
     const btnsAgregarHerramienta = [
         {
@@ -59,35 +59,36 @@ function AgregarHerramienta (props) {
             estiloModal="modal_completo"
             botoncss="btn_ModalIntermedio"
             botones={btnsAgregarHerramienta}
-            >  
+            >           
 
-            <div className="formulario">
-                <Form id="add_tool" name="add_tool" action="/inventario/agregarherramienta" method='post'>
+            
+            <Form id="add_tool" name="add_tool" className="formulario" action="/inventario/agregarherramienta" method='post'>                                       
 
-                    <div className="img_Preview">
+                <div className="img_ContPreview">
 
-                        <div>
+                    <div>
                         {img_pre && (<img id="img_Pre" className= "img-thumbnail" src={img_pre} alt="Preview"></img>)}
-                        </div>
+                    </div>
 
-                        <div id="in_img">
-                            <label htmlFor="tool_image" className="form-label">Imagen:</label> 
-                            <input 
-                                type="file" 
-                                id="tool_image" 
-                                name="tool_image"
-                                accept=".png"
-                                onChange={handleronChange}                                 
-                                required
-                            />
+                    <div id="in_img">
+                        <label htmlFor="tool_image" className="form-label">Imagen:</label> 
+                        <input 
+                            type="file" 
+                            id="tool_image" 
+                            name="tool_image"
+                            accept=".png"
+                            onChange={handleronChange}                           
+                            required
+                        />
 
-                            {tipo_img && <p className='error-form'>{tipo_img}</p>} 
-                            {datos && datos["image"] && <p className='error-form'>{datos["image"]}</p>}                             
+                        {tipo_img && <p className='error-form'>{tipo_img}</p>} 
+                        {datos && datos["image"] && <p className='error-form'>{datos["image"]}</p>}                             
 
-                        </div>                    
-                    </div>    
+                    </div>  
 
-                    
+                </div>
+
+                <div className='inputNoImgAdd'>
 
                     <label htmlFor="name_tool" className="form-label">Nombre:</label>
 
@@ -193,9 +194,9 @@ function AgregarHerramienta (props) {
 
                     {datos && datos["phone_prove"] && <p className='error-form'>{datos["phone_prove"]}</p>}                                
 
-                </Form>                        
+                </div>
 
-            </div>   
+            </Form>            
             
         </Modal>
       
@@ -305,7 +306,7 @@ export const AgregarHerrramientaAction = async ({ request }) => {
     FormAddTool(entrada);
 
     // redirect the user
-    return redirect('/inventario');
+    return redirect(`/inventario/${entrada.id}`);
 }
 
 

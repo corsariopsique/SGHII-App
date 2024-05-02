@@ -1,14 +1,38 @@
-.modal_Form_add_tool{ 
-    position: fixed;   
-    padding-top: 4rem;
-    left: 35rem;  
-    top:4rem;    
+.img_ContPreview{
     display: flex;
-    flex-direction: column;        
-    width: 50rem;
-    height: 50.3rem;    
+    flex-direction: row;    
+    gap: 5%;
+    justify-content: space-evenly;
+    padding-bottom: 2%;    
+}
+
+#img_Pre{    
+    max-height: 13rem;
     border-radius: 0.5rem;
-    background: #FFF;
-    align-items:center;        
-    overflow:auto;  
+    overflow: hidden; 
+}   
+
+#in_img{
+    display: flex;
+    flex-direction: column;
+}
+
+.formularioEdit{     
+    display: flex;
+    flex-direction: column;  
+    position: absolute; 
+    top: 15%;
+    left:15%;        
+}
+
+.inputNoImgEdit{
+    column-count: 3;
+    column-gap: 20%;  
+    justify-content: space-evenly;   
+}
+
+.error-form{
+    color: red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
 }

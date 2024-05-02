@@ -1,26 +1,34 @@
-.img_Preview{
+.img_ContPreview{
     display: flex;
-    flex-direction: row;
-    gap:5%;
+    flex-direction: row;    
+    gap: 8%;
+    justify-content: space-evenly;
+    padding-bottom: 5%;    
 }
 
-#img_Pre{
-    max-height: 110px;   
-    border-radius: 0.5rem; 
+#img_Pre{    
+    max-height: 13rem;
+    border-radius: 0.5rem;
+    overflow: hidden; 
 }   
 
 #in_img{
-    display:flex;
+    display: flex;
     flex-direction: column;
-    gap:1%;
 }
 
-.formulario{   
-    position: relative; 
-    top: 30%;
-    left:12%;
-    column-count: 3;   
-    
+.formulario{     
+    display: flex;
+    flex-direction: column;  
+    position: absolute; 
+    top: 15%;
+    left:29%;        
+}
+
+.inputNoImgAdd{
+    column-count: 2;
+    column-gap: 20%;  
+    justify-content: space-evenly;   
 }
 
 .error-form{
@@ -43,21 +51,3 @@
     overflow:auto;  
 }
 
-.backdrop-root {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.75);
-}
-  
-.modal-root {
-    position: fixed;
-    top: 30vh;
-    left: 10%;
-    width: 80%;
-    z-index: 100;
-    overflow: hidden;
-}

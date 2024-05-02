@@ -1,7 +1,6 @@
 import './InfoHerramienta.css';
 import {Modal, Tablas} from '../IndexComponents';
-import {EditarHerramienta, AlertBorra} from './IndexPages';
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData, useParams } from 'react-router-dom'
 import {Tool1Icono} from '../Iconos/IndexIcons';
 
 export default function InfoHerramienta(props){       
@@ -29,9 +28,7 @@ export default function InfoHerramienta(props){
             icobtn:"EditarIcono",
             estiloBoton:"btn-outline-secondary",
             tipo:"button",  
-            accion:"null",          
-            d_toggle:"modal",
-            d_target:"#edit_t_modal"          
+            accion:`/inventario/${useParams().toolId}/editarherramienta`
         },
 
         {
@@ -122,24 +119,12 @@ export default function InfoHerramienta(props){
                                 </ul>
                             </div>                            
                         </div> 
-
+                        
                     </div>                    
                 </div>
 
-            </Modal>          
-
-            <div className='modal' id="edit_t_modal">
-                <div className="modal-dialog">
-                    <EditarHerramienta/>         
-                </div>
-            </div>
-
-            <div className='modal' id="ver_delete">
-                <div className="modal-dialog">
-                    <AlertBorra/>                       
-                </div>
-            </div> 
-                        
+            </Modal>
+                                    
         </div>
     );
 }

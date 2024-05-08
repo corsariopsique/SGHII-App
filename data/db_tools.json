@@ -447,6 +447,48 @@
         "city": "Zapatoca"
       },
       "image": "5C22Btaladromanual"
+    },
+    {
+      "tool": "Escuadra",
+      "brand": "Stanley",
+      "cant": 8,
+      "cat": "Medicion",
+      "rol": "Diseñador",
+      "date_in": "2024-05-07",
+      "prove": {
+        "id_prove": "47KO",
+        "name": "La Batea Ferreteria",
+        "phone": "9875643210",
+        "city": "Betulia"
+      },
+      "image": "254A5escuadra",
+      "id": "W30JM"
+    }
+  ],
+  "kits": [
+    {
+      "id": "OCLF9",
+      "name": "Kit 1",
+      "rol": "Diseñador",
+      "date_in": "2024-05-08",
+      "tools": [
+        {
+          "id": "2C1DD",
+          "cant": "8"
+        },
+        {
+          "id": "254A5",
+          "cant": "12"
+        },
+        {
+          "id": "5BEE2",
+          "cant": "3"
+        },
+        {
+          "id": "DE2CA",
+          "cant": "8"
+        }
+      ]
     }
   ]
 }

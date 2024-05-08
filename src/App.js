@@ -16,9 +16,15 @@ import EditarHerramienta, { editarherramientaLoader, EditarHerrramientaAction } 
 import AgregarHerramienta, {AgregarHerrramientaAction} from "./components/pages/Inventario/AgregarHerramienta";
 import AlertBorra from "./components/pages/Inventario/AlertBorra";
 
+//componentes Kits
+
+import AgregarKits, {agregarKitsLoader, AgregarKitsAction} from "./components/pages/Kits/AgregarKits";
+
 // Layouts
 import RootLayout from './components/Layouts/RootLayout';
 import InventarioLayout from "./components/Layouts/InventarioLayout";
+import KitsLayout from "./components/Layouts/KitsLayout";
+
 
 
 
@@ -28,9 +34,9 @@ import InventarioLayout from "./components/Layouts/InventarioLayout";
       
       <Route path="/" element={<RootLayout />}>    
 
-        <Route path="panelprincipal" element={<PanelPrincipal />} />               
-        <Route path="inventario" element={<InventarioLayout />}>
+        <Route path="panelprincipal" element={<PanelPrincipal />} />  
 
+        <Route path="inventario" element={<InventarioLayout />}>
           <Route
           index
           element={<Inventario />}
@@ -55,7 +61,15 @@ import InventarioLayout from "./components/Layouts/InventarioLayout";
             path=":toolId/deleteherramienta"
             element={<AlertBorra />} />
           </Route>
+        </Route>
 
+        <Route path="kits" element={<KitsLayout />}>
+          
+          <Route
+          path="agregarkits"
+          element={<AgregarKits />}
+          loader={agregarKitsLoader} 
+          action={AgregarKitsAction}/>
         </Route>
 
       </Route>      

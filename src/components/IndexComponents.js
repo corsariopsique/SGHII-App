@@ -15,4 +15,4 @@ export { default as PanelListado} from './PanelListado';
 export { default as Tablas} from './Tablas';
 export { default as FormAddTool} from './FormAddTool';
 export { default as IDGenerator} from './IDGenerator';
-export { default as FormEditTool} from './FormEditTool';
+export { default as FormAddKit} from './FormAddKit';

@@ -289,8 +289,7 @@
       "image": "43BCDdestornilladordeprecision"
     },
     {
-      "id": "B32AB",
-      "tool": "Cúter",
+      "tool": "Bisturi",
       "brand": "Bosch",
       "cant": 4,
       "cat": "Herramientas de corte",
@@ -302,7 +301,8 @@
         "phone": "6235041780",
         "city": "East Edward"
       },
-      "image": "B32ABcuter"
+      "image": "5BEE2cuter",
+      "id": "B32AB"
     },
     {
       "id": "5C22B",
@@ -487,6 +487,34 @@
         {
           "id": "DE2CA",
           "cant": "8"
+        }
+      ]
+    },
+    {
+      "id": "OBL1Z",
+      "name": "Kit2",
+      "rol": "Pulidor",
+      "date_in": "2024-05-11",
+      "tools": [
+        {
+          "id": "E4DBB",
+          "cant": "1"
+        },
+        {
+          "id": "A5C5B",
+          "cant": "1"
+        },
+        {
+          "id": "B32AB",
+          "cant": "1"
+        },
+        {
+          "id": "AE2AC",
+          "cant": "1"
+        },
+        {
+          "id": "552CA",
+          "cant": "1"
         }
       ]
     }

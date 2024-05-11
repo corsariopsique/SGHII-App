@@ -1,18 +1,18 @@
-import './Inventario.css';
+import './Kits.css';
 import { PanelInfoText, Modal, Tablas } from '../../IndexComponents';
 import {useLoaderData} from 'react-router-dom';
 
-export default function Inventario(){   
+export default function Kits(){   
     
-    const data_inventario = useLoaderData()        
+    const data_kits = useLoaderData()        
 
-    const btnsInventario = [
+    const btnsKits = [
         {
-            btnname:"Agregar Herramienta",
+            btnname:"Agregar Kit",
             icobtn:"Tool1Icono",
             estiloBoton:"btn-outline-primary",
             tipo:"button",    
-            accion:"/inventario/agregarherramienta"                                              
+            accion:"/kits/agregarkits"                                              
         },
 
         {
@@ -65,10 +65,8 @@ export default function Inventario(){
 
     const col_data = [
         { key: 'id', title: 'ID' },
-        { key: 'tool', title: 'Herramienta' },
-        { key: 'brand', title: 'Marca' },
-        { key: 'cat', title: 'Categoria'},
-        { key: 'rol', title: 'Rol Herramienta'},
+        { key: 'name', title: 'Nombre' },
+        { key: 'rol', title: 'Rol' },        
         { key: 'date_in', title: 'Fecha Ingreso'},        
     ];        
 
@@ -83,33 +81,32 @@ export default function Inventario(){
             />
 
             <Modal 
-            title='Herramientas'
+            title='Kits'
             estiloModal="modal_intermedio"
             botoncss="btn_ModalIntermedio"
-            botones={btnsInventario}
+            botones={btnsKits}
             >                         
                 <Tablas                    
                     estiloTabla='tabla_Inventario'
                     columns={col_data} 
-                    data={data_inventario}
+                    data={data_kits}
                 />   
 
-            </Modal>                      
+            </Modal>                       
 
         </>            
     );
 }
 
 
-export const inventarioLoader = async () => {
+export const kitsLoader = async () => {
     
-    const itms = await fetch('http://localhost:4000/tools')   
+    const kitsLista = await fetch('http://localhost:4000/kits')   
     
 
-    if (!itms.ok) {
-        throw Error('No se pudo cargar el listado de herramientas')
+    if (!kitsLista.ok) {
+        throw Error('No se pudo cargar el listado de Kits')
       }
     
-      return itms.json()
+      return kitsLista.json()
 };
-

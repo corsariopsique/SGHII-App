@@ -18,6 +18,7 @@ import AlertBorra from "./components/pages/Inventario/AlertBorra";
 
 //componentes Kits
 
+import Kits, { kitsLoader } from "./components/pages/Kits/Kits";
 import AgregarKits, {agregarKitsLoader, AgregarKitsAction} from "./components/pages/Kits/AgregarKits";
 
 // Layouts
@@ -28,12 +29,15 @@ import KitsLayout from "./components/Layouts/KitsLayout";
 
 
 
+
    const router = createBrowserRouter(
     
     createRoutesFromElements(      
-      
-      <Route path="/" element={<RootLayout />}>    
 
+      // Gestor de rutas
+      
+      <Route path="/" element={<RootLayout />}>          
+        
         <Route path="panelprincipal" element={<PanelPrincipal />} />  
 
         <Route path="inventario" element={<InventarioLayout />}>
@@ -64,6 +68,11 @@ import KitsLayout from "./components/Layouts/KitsLayout";
         </Route>
 
         <Route path="kits" element={<KitsLayout />}>
+
+          <Route
+          index
+          element={<Kits />}
+          loader={kitsLoader} />
           
           <Route
           path="agregarkits"

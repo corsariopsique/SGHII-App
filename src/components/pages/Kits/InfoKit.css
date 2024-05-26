@@ -1,0 +1,72 @@
+#nav-tabKit{
+    position: absolute;
+    top:4rem;
+    left:2.1rem;
+}
+
+#nav-tabContentKit{
+    position: absolute;
+    top:8rem;
+    left:2rem;
+}
+
+.valor_atributo{
+    font-weight: lighter;    
+}
+
+.atributo_lista{
+    display: flex;
+    font-weight: bolder;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tarjeta_tool{
+    width: 30rem;
+}
+
+.last_oper{
+    margin-top: 2rem;
+    width: 30rem;
+    max-height: 13rem;
+    overflow: auto;
+}
+
+.tarjeta_img_kit{    
+    position: absolute;
+    top: 0rem;
+    left:32rem;
+    width: 35rem;
+    max-height:39.7rem;  
+    overflow: auto;  
+}
+
+.img_info{
+    padding-top: 3%;
+    max-width: 30rem; 
+    align-self: center;   
+}
+
+.proveedor{
+    position: absolute;
+    top: 0rem;
+    left:69rem;
+    width: 26rem;
+}
+
+.verificacion{    
+    display: flex;   
+    flex-direction: column;
+    height: 7.5rem;   
+    align-items: center;    
+}
+
+.delete_alert{
+    position: absolute;
+    top:18rem;
+    left:2rem;
+}
+
+#icobtn{
+    align-self: center;       
+}

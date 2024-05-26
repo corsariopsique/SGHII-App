@@ -3,10 +3,10 @@ import './Tablas.css';
 import {Link} from 'react-router-dom';
 
 function Tablas (props) {       
-
+    
     const l_clases = "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover";        
-    const clases = "tabla table table-striped table-hover"           
-
+    const clases = "tabla table table-striped table-hover" 
+   
     return (
 
         <div className={props.estiloTabla}>

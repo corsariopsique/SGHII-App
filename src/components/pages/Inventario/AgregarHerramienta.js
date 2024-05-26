@@ -262,11 +262,11 @@ export const AgregarHerrramientaAction = async ({ request }) => {
   
     // send your post request
   
-    if (entrada.tool.length < 3) {
+    if (entrada.tool.length < 3 || entrada.tool.length > 25) {
         errors.name = 'Debe ingresar un nombre valido para la herramienta';
     }
 
-    if (entrada.cat.length < 3) {
+    if (entrada.cat.length < 3 || entrada.tool.length > 25) {
         errors.cat = 'Debe ingresar una categoria valida para la herramienta';
     }
 
@@ -274,23 +274,23 @@ export const AgregarHerrramientaAction = async ({ request }) => {
         errors.cant = 'Debe ingresar una cantidad diferente de 0 para la herramienta';
     }
 
-    if (entrada.rol.length < 3) {
+    if (entrada.rol.length < 3 || entrada.tool.length > 25) {
         errors.rol = 'Debe asignar un rol valido para la herramienta';
     }
 
-    if (entrada.brand.length < 3) {
+    if (entrada.brand.length < 3 || entrada.tool.length > 25) {
         errors.brand = 'Debe ingresar una marca valido para la herramienta';
     }
 
-    if (entrada.prove.name.length < 3) {
+    if (entrada.prove.name.length < 3 || entrada.tool.length > 25) {
         errors.name_prove = 'Debe ingresar un nombre de proveedor valido';
     }
 
-    if (entrada.prove.phone.length < 9) {
+    if (entrada.prove.phone.length < 9 || entrada.tool.length > 15) {
         errors.phone_prove = 'Debe ingresar un telefono de proveedor valido';
     }
 
-    if (entrada.prove.city.length < 3) {
+    if (entrada.prove.city.length < 3 || entrada.tool.length > 25) {
         errors.city_prove = 'Debe ingresar una ciudad de proveedor valida';
     }
 

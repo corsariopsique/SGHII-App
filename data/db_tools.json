@@ -517,6 +517,34 @@
           "cant": "1"
         }
       ]
+    },
+    {
+      "id": "CD4VZ",
+      "name": "Kit3",
+      "rol": "Diseñador",
+      "date_in": "2024-05-12",
+      "tools": [
+        {
+          "id": "2BE2B",
+          "cant": "2"
+        },
+        {
+          "id": "A5C5B",
+          "cant": "8"
+        },
+        {
+          "id": "DE2CA",
+          "cant": "3"
+        },
+        {
+          "id": "AE2AC",
+          "cant": "2"
+        },
+        {
+          "id": "E4434",
+          "cant": "4"
+        }
+      ]
     }
   ]
 }

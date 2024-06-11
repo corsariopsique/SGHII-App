@@ -1,26 +1,12 @@
 import './InfoHerramienta.css';
-import {Modal, Tablas} from '../../IndexComponents';
+import {Modal, Tablas, TraerImagenes} from '../../IndexComponents';
 import { useLoaderData, useParams } from 'react-router-dom'
-import {Tool1Icono} from '../../Iconos/IndexIcons';
 
-export default function InfoHerramienta(props){       
+
+export default function InfoHerramienta(){       
      
     const data_infoTool = useLoaderData()
-
-    function ImgTool () {
-    
-        try {
-            const ruta_img = require(`../../images/tools/${data_infoTool.image}.png`);
-            return (
-                <img src={ruta_img} className="card-img-top img_info" alt="card-img-top"/>
-            );
-        } catch (error) {
-            console.error('El archivo no pudo ser requerido:');
-            return(
-                <Tool1Icono className="card-img-top img_info" width="100px" height="478px" viewBox ="0 0 16 16" fill="#cec8c6"/>
-            );
-        }
-    }
+    const idImagen = useParams().toolId;    
 
     const btnsInfoHerramienta = [
         {
@@ -73,16 +59,16 @@ export default function InfoHerramienta(props){
                         <div className="card tarjeta_tool text-secondary">
                             <div className="card-header bg-transparent text-primary">Detalles Primarios</div>
                             <div className="card-body">
-                                <h5 className="card-title text-primary text-center">{data_infoTool.tool}</h5>
+                                <h5 className="card-title text-primary text-center">{data_infoTool.nombre}</h5>
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item atributo_lista text-secondary">ID: <span className='valor_atributo'>{data_infoTool.id}</span></li>
-                                    <li className="list-group-item atributo_lista text-secondary">Categoria: <span className='valor_atributo'>{data_infoTool.cat}</span></li>
-                                    <li className="list-group-item atributo_lista text-secondary">Marca: <span className='valor_atributo'>{data_infoTool.brand}</span></li>                                        
-                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoTool.date_in}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Categoria: <span className='valor_atributo'>{data_infoTool.categoria}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Marca: <span className='valor_atributo'>{data_infoTool.marca}</span></li>                                        
+                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoTool.fecha_in}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>---</span></li>
                                 </ul>
                             </div>
-                            <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad Total: <span>{data_infoTool.cant}</span></li></div>
+                            <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad Total: <span>{data_infoTool.cantidad}</span></li></div>
                         </div> 
 
 
@@ -99,7 +85,7 @@ export default function InfoHerramienta(props){
                         </div>  
 
                         <div className="card tarjeta_img_tool">
-                            <ImgTool />
+                            <TraerImagenes imageId={idImagen} />                            
                             <div className="card-body">
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item atributo_lista text-secondary">En prestamo: <span className='valor_atributo'>15</span></li>
@@ -107,6 +93,8 @@ export default function InfoHerramienta(props){
                                 </ul>
                             </div>
                         </div> 
+
+                        {/*
 
                         <div className="card text-secondary proveedor">
                             <div className="card-header bg-transparent text-primary">Proveedores</div>
@@ -119,6 +107,8 @@ export default function InfoHerramienta(props){
                                 </ul>
                             </div>                            
                         </div> 
+
+    */}
                         
                     </div>                    
                 </div>
@@ -131,7 +121,7 @@ export default function InfoHerramienta(props){
 
 export const InfoherramientaLoader = async ({params}) => {        
     
-    const detail = await fetch(`http://localhost:4000/tools/${params.toolId}`)           
+    const detail = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`)           
 
     if (!detail.ok) {
         throw Error('No se pudo cargar la herramienta indicada')

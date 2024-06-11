@@ -29,9 +29,6 @@ import KitsLayout from "./components/Layouts/KitsLayout";
 
 
 
-
-
-
    const router = createBrowserRouter(
     
     createRoutesFromElements(      
@@ -66,7 +63,8 @@ import KitsLayout from "./components/Layouts/KitsLayout";
             <Route
             path=":toolId/deleteherramienta"
             element={<AlertBorra />} />
-          </Route>
+          </Route>          
+          
         </Route>
 
         <Route path="kits" element={<KitsLayout />}>

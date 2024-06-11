@@ -16,3 +16,27 @@
     z-index: 100;
     overflow: hidden;
 }
+
+.delete_alert{
+    position: absolute;
+    top:18rem;    
+}
+
+.boton{ 
+    display:flex;        
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    width:max-content;    
+}
+
+#icobtn{
+    align-self: center;       
+}
+
+.verificacion{    
+    display: flex;   
+    flex-direction: column;
+    height: 7.5rem;   
+    align-items: center;    
+}

@@ -1,18 +1,19 @@
-export default function FormAddTool(props) {  
+export default async function FormAddTool(props) {   
 
-    fetch('http://localhost:4000/tools', {
+  try{
+    const response = await fetch('http://localhost:8081/api/herramientas', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(props)
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Respuesta del servidor:', data);
-      // Hacer algo con la respuesta del servidor      
-    })
-    .catch(error => {
-      console.error('Error al enviar la solicitud:', error);
-    });   
+    });
+    
+    const result = await response.json();
+    console.log('Respuesta del servidor:', result);
+    return response.ok;
+
+  } catch(error) {
+    console.error('Error al enviar la solicitud:', error);        
+  }    
 }
 
 

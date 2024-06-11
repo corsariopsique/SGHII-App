@@ -51,3 +51,24 @@
     overflow:auto;  
 }
 
+#icobtn{
+    align-self: center;       
+}
+
+.boton{ 
+    display:flex;        
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    width:max-content;    
+}
+
+.btn_ModalIntermedio{
+    position:absolute;
+    top: 0.8rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: row;        
+    width: max-content;    
+}
+

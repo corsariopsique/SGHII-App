@@ -37,8 +37,8 @@
     top: 0rem;
     left:32rem;
     width: 35rem;
-    max-height:39.7rem;  
-    overflow: auto;  
+    max-height:37.17rem;   
+    overflow: auto;   
 }
 
 .img_info{
@@ -52,21 +52,4 @@
     top: 0rem;
     left:69rem;
     width: 26rem;
-}
-
-.verificacion{    
-    display: flex;   
-    flex-direction: column;
-    height: 7.5rem;   
-    align-items: center;    
-}
-
-.delete_alert{
-    position: absolute;
-    top:18rem;
-    left:2rem;
-}
-
-#icobtn{
-    align-self: center;       
 }

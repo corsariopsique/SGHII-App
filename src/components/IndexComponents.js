@@ -16,3 +16,6 @@ export { default as Tablas} from './Tablas';
 export { default as FormAddTool} from './FormAddTool';
 export { default as IDGenerator} from './IDGenerator';
 export { default as FormAddKit} from './FormAddKit';
+export { default as TraerImagenes} from './TraerImagenes';
+
+

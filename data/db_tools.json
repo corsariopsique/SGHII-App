@@ -129,8 +129,7 @@
       "image": "1DB22sierrademano"
     },
     {
-      "id": "5BEE2",
-      "tool": "Cúter",
+      "tool": "Bisturi",
       "brand": "Husky",
       "cant": 33,
       "cat": "Herramientas de sujeción",
@@ -142,7 +141,8 @@
         "phone": "4976647609",
         "city": "Butlermouth"
       },
-      "image": "5BEE2cuter"
+      "image": "5BEE2cuter",
+      "id": "5BEE2"
     },
     {
       "id": "A5A51",
@@ -463,6 +463,22 @@
       },
       "image": "254A5escuadra",
       "id": "W30JM"
+    },
+    {
+      "id": "Q1YJB",
+      "tool": "Bisturi",
+      "brand": "Colima",
+      "cant": 6,
+      "cat": "Manual",
+      "rol": "Diseñador",
+      "date_in": "2024-06-08",
+      "prove": {
+        "id_prove": "AKVZ",
+        "name": "poi",
+        "phone": "9876543210",
+        "city": "Zapatoca"
+      },
+      "image": "5BEE2cuter"
     }
   ],
   "kits": [

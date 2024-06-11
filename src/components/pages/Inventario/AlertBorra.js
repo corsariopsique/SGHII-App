@@ -8,7 +8,7 @@ function AlertBorra () {
 
     const idTool = useParams().toolId;
 
-    const enlaceCancelar = `/inventario/${useParams().toolId}/editarherramienta`    
+    const enlaceCancelar = `/inventario/${useParams().toolId}/editarherramienta`;    
 
     const urlDeleteItem = `http://localhost:4000/tools/${useParams().toolId}`;
 

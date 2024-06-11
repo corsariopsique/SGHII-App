@@ -65,11 +65,11 @@ export default function Inventario(){
 
     const col_data = [
         { key: 'id', title: 'ID' },
-        { key: 'tool', title: 'Herramienta' },
-        { key: 'brand', title: 'Marca' },
-        { key: 'cat', title: 'Categoria'},
+        { key: 'nombre', title: 'Herramienta' },
+        { key: 'marca', title: 'Marca' },
+        { key: 'categoria', title: 'Categoria'},
         { key: 'rol', title: 'Rol Herramienta'},
-        { key: 'date_in', title: 'Fecha Ingreso'},        
+        { key: 'fecha_in', title: 'Fecha Ingreso'},        
     ];        
 
     return(
@@ -103,7 +103,7 @@ export default function Inventario(){
 
 export const inventarioLoader = async () => {
     
-    const itms = await fetch('http://localhost:4000/tools')   
+    const itms = await fetch('http://localhost:8081/api/herramientas')   
     
 
     if (!itms.ok) {

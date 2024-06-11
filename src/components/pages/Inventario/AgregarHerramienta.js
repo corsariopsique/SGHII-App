@@ -1,65 +1,173 @@
 import './AgregarHerramienta.css';
-import {Modal, FormAddTool} from '../../IndexComponents';
-import {Form, redirect, useActionData} from 'react-router-dom';
-import { useState } from "react";
+import * as Icons from '../../Iconos/IndexIcons';
+import {Modal} from '../../IndexComponents';
+import {Form, Link, useActionData} from 'react-router-dom';
+import { useState, useEffect } from "react";
 
-function AgregarHerramienta (props) {  
-    
-    const datos = useActionData();      
+function AgregarHerramienta () {
 
-    // manejo preview imagen formulario    
+    const herramienta = useActionData();    
+    const enlaceCancelar = `/inventario`;    
 
     const [img_pre, setImg_Pre] = useState(null);
     const [tipo_img, setTipo_Img] = useState(null);
+    const [img_send, setImg_Send] = useState(null);   
+    
+    
+    // Manejo de envio de datos al servidor
+
+    const useFetchData = (dataHook) => {
+        const [data, setData] = useState(null);
+        const [data2, setData2] = useState(null);
+        const [data3, setData3] = useState(null);
+        const [loading, setLoading] = useState(true);        
+      
+        useEffect(() => {
+          const fetchData = async () => {
+                if(dataHook!==undefined && !data){
+                    setData(EnvioHerramienta());                    
+                }
+                if(data && !data2){
+                    setData2(EnvioDatosImagen());
+                }
+                if(data2 && loading){
+                    setData3(EnvioImagen());
+                    setLoading(false);
+                }
+            };      
+          fetchData();
+        }, [dataHook,data,data2]);
+      
+        return { data, data2, data3, loading };
+    };
+
+    const { data, data2, data3, loading } = useFetchData(herramienta);
+
+    useEffect(() => {
+        if (!loading && data && data2) {
+            console.log("Subida Herramienta:",data);          
+            console.log("Subida datos imagen:", data2);
+            console.log("Subida imagen:", data3);            
+        }
+    }, [loading, data, data2]);
+
+    const  EnvioHerramienta = async () => {                
+
+        try{
+            const response = await fetch('http://localhost:8081/api/herramientas', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(herramienta.entrada)
+            });
+            
+            const result = await response.ok;            
+            console.log('Respuesta del servidor:', result);            
+            return result; 
+        
+        } catch(error) {            
+            console.error('Error al enviar la solicitud:', error);            
+            return false;
+        }
+    }
+
+    const EnvioDatosImagen = async () => {
+
+        try{
+            const response = await fetch('http://localhost:8081/api/images', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(herramienta.image_in)
+            });
+            
+            const result = await response.ok;            
+            console.log('Respuesta del servidor:', result);
+            return result;
+            
+        
+        } catch(error) {            
+            console.error('Error al enviar la solicitud:', error);                    
+            return false;
+        }
+    }
+
+    const EnvioImagen = async () => {
+
+        try{
+            const response = await fetch(`http://localhost:8081/api/images/${herramienta.entrada.id}`, {
+              method: 'PUT',
+              headers: {'Content-Type': 'application/octet-stream'},        
+              body: herramienta.image_binary
+            });
+      
+            const result = await response.ok;            
+            console.log('Respuesta del servidor:', result);                
+            return result;
+        
+        } catch(error) {
+            console.error('Error al solicitar la imagen:', error);                    
+            return false;
+        }
+    }  
+    
+    
+    // manejo preview imagen formulario    
+        
 
     const handleronChange = (event) => {        
 
         const file = event.target.files[0];
-        const reader = new FileReader();       
+        const reader = new FileReader();           
+        
 
-        reader.onloadend = () => {
-            setImg_Pre(reader.result);
-        };    
-
-        if (file) {
-            reader.readAsDataURL(file);
-            setTipo_Img(null);            
-        }
-
+        reader.onloadend = () => {    
+            const base64String = reader.result.split(',')[1];
+            setImg_Send(base64String);           
+            setImg_Pre(reader.result);                        
+        }       
+        
+        
         if (file && file.type !== 'image/png') {
             setTipo_Img ("Tipo de imagen no valido, por favor ingrese un archivo tipo PNG"); 
             setImg_Pre(null);
             return             
-        } 
-    }   
-    
-    const btnsAgregarHerramienta = [
-        {
-            btnname:"Registar",
-            icobtn:"Tool1Icono",
-            estiloBoton:"btn-primary",
-            formulario:"add_tool",            
-            tipo:"submit", 
-            accion:"null",                                         
-        },
-
-        {
-            btnname:"Cancelar",
-            icobtn:"CancelIcono",
-            estiloBoton:"btn-secondary",            
-            accion:"/inventario"
         }        
-    ]; 
-    
+         
+        if (file) {
+            reader.readAsDataURL(file);                        
+            setTipo_Img(null);            
+        }                       
+    }        
+
+    // renderizado de formularios
 
     return (
 
         <Modal         
             title="Agregar Herramienta"
-            estiloModal="modal_completo"
-            botoncss="btn_ModalIntermedio"
-            botones={btnsAgregarHerramienta}
-            >           
+            estiloModal="modal_completo"            
+            > 
+            <div className="btn-group btn_ModalIntermedio" role="group" aria-label="Large button group">
+
+                <button  
+                    form='add_tool'
+                    type="submit" 
+                    className="btn boton btn-primary"                                       
+                >                
+                    <Icons.Tool2Icono id="icobtn"/>Registrar              
+
+                </button> 
+
+                <Link to={enlaceCancelar}>
+                    <button  
+                        type="button" 
+                        className="btn boton btn-secondary"                                                                                   
+                    >                
+                        <Icons.CancelIcono id="icobtn"/>Cancelar              
+
+                    </button>            
+                </Link>
+                </div> 
+
 
             
             <Form id="add_tool" name="add_tool" className="formulario" action="/inventario/agregarherramienta" method='post'>                                       
@@ -68,21 +176,31 @@ function AgregarHerramienta (props) {
 
                     <div>
                         {img_pre && (<img id="img_Pre" className= "img-thumbnail" src={img_pre} alt="Preview"></img>)}
+                        {console.log(img_pre)}
                     </div>
 
                     <div id="in_img">
-                        <label htmlFor="tool_image" className="form-label">Imagen:</label> 
+
+                        <label htmlFor="image" className="form-label">Imagen:</label> 
+
                         <input 
                             type="file" 
-                            id="tool_image" 
-                            name="tool_image"
+                            id="image" 
+                            name="image"
                             accept=".png"
-                            onChange={handleronChange}                           
-                            required
+                            onChange={handleronChange}                             
                         />
 
-                        {tipo_img && <p className='error-form'>{tipo_img}</p>} 
-                        {datos && datos["image"] && <p className='error-form'>{datos["image"]}</p>}                             
+                        <input 
+                            type="text" 
+                            id="imageBase64" 
+                            name="imageBase64"
+                            value={img_send}
+                            style={{display: 'none'}}
+                            readOnly                            
+                        />
+
+                        {tipo_img && <p className='error-form'>{tipo_img}</p>}                         
 
                     </div>  
 
@@ -90,113 +208,73 @@ function AgregarHerramienta (props) {
 
                 <div className='inputNoImgAdd'>
 
-                    <label htmlFor="name_tool" className="form-label">Nombre:</label>
+                    <label htmlFor="nombre" className="form-label">Nombre:</label>
 
                     <input 
                         type='text' 
                         className="form-control"
-                        name="name_tool" 
-                        id="name_tool" 
+                        name="nombre" 
+                        id="nombre" 
                         placeholder='Ingrese nombre de herramienta'
+                        maxLength ='25'
+                        minLength ='3'
                         required
-                    />                
+                    />                    
 
-                    {datos && datos["name"] && <p className='error-form'>{datos["name"]}</p>}               
-
-                    <label htmlFor="cat_tool" className="form-label">Categoria:</label>
+                    <label htmlFor="categoria" className="form-label">Categoria:</label>
 
                     <input 
                         type="text" 
                         className="form-control"
-                        name="cat_tool" 
-                        id="cat_tool" 
+                        name="categoria" 
+                        id="categoria" 
                         placeholder='Ingrese categoria de herramienta'
+                        maxLength ='25'
+                        minLength ='3'
                         required
-                    />
+                    />                    
 
-                    {datos && datos["cat"] && <p className='error-form'>{datos["cat"]}</p>}               
-
-                    <label htmlFor="cantidad_tool" className="form-label">Cantidad:</label>
+                    <label htmlFor="cantidad" className="form-label">Cantidad:</label>
 
                     <input 
                         type="number" 
                         className="form-control"
-                        name="cantidad_tool" 
-                        id="cantidad_tool" 
+                        name="cantidad" 
+                        id="cantidad" 
                         placeholder='Ingrese numero de unidades'
+                        min='1'
                         required
-                    /> 
+                    />                    
 
-                    {datos && datos["cant"] && <p className='error-form'>{datos["cant"]}</p>}               
-
-                    <label htmlFor="role_tool" className="form-label">Rol:</label>
+                    <label htmlFor="rol" className="form-label">Rol:</label>
 
                     <input 
                         type="text" 
                         className="form-control"
-                        name="role_tool" 
-                        id="role_tool" 
+                        name="rol" 
+                        id="rol" 
                         placeholder='Ingrese rol de herramienta'
+                        maxLength ='25'
+                        minLength ='3'
                         required
-                    />
+                    />                   
 
-                    {datos && datos["rol"] && <p className='error-form'>{datos["rol"]}</p>}               
-
-                    <label htmlFor="brand_tool" className="form-label">Marca:</label>
+                    <label htmlFor="marca" className="form-label">Marca:</label>
 
                     <input 
                         type="text" 
                         className="form-control"
-                        name="brand_tool" 
-                        id="brand_tool" 
+                        name="marca" 
+                        id="marca" 
                         placeholder='Ingrese marca de la herramienta'
+                        maxLength ='25'
+                        minLength ='3'
                         required
-                    />  
-
-                    {datos && datos["brand"] && <p className='error-form'>{datos["brand"]}</p>}   
-
-                    <label htmlFor="name_prove" className="form-label">Nombre proveedor:</label>
-
-                    <input 
-                        type='text' 
-                        className="form-control"
-                        name="name_prove" 
-                        id="name_prove" 
-                        placeholder='Ingrese nombre proveedor de herramienta'
-                        required
-                    />                
-
-                    {datos && datos["name_prove"] && <p className='error-form'>{datos["name_prove"]}</p>}       
-
-                    <label htmlFor="phone_prove" className="form-label">Telefono proveedor:</label>
-
-                    <input 
-                        type='text' 
-                        className="form-control"
-                        name="phone_prove" 
-                        id="phone_prove" 
-                        placeholder='Ingrese telefono proveedor de herramienta'
-                        required
-                    />                
-
-                    {datos && datos["phone_prove"] && <p className='error-form'>{datos["phone_prove"]}</p>}
-
-                    <label htmlFor="city_prove" className="form-label">Ciudad proveedor:</label>
-
-                    <input 
-                        type='text' 
-                        className="form-control"
-                        name="city_prove" 
-                        id="city_prove" 
-                        placeholder='Ingrese ciudad proveedor de herramienta'
-                        required
-                    />                
-
-                    {datos && datos["phone_prove"] && <p className='error-form'>{datos["phone_prove"]}</p>}                                
+                    />                   
 
                 </div>
 
-            </Form>            
+            </Form>          
             
         </Modal>
       
@@ -204,6 +282,9 @@ function AgregarHerramienta (props) {
 
 }
 export default AgregarHerramienta;
+
+
+// manejo datos de los formularios
 
 export const AgregarHerrramientaAction = async ({ request }) => {
 
@@ -230,83 +311,37 @@ export const AgregarHerrramientaAction = async ({ request }) => {
         const formattedDate = `${year}-${month}-${day}`;
 
         return formattedDate;
+    }    
 
-    }
-
-    //recibir los datos del formulario
-
-    const data = await request.formData()
-
-    const errors = {};    
-
-     // manejo verificacion formulario     
+    const data = await request.formData();            
   
     const entrada = {
       id: generateRandomId(5),  
-      tool: data.get('name_tool'),
-      brand: data.get('brand_tool'),         
-      cant: Number(data.get('cantidad_tool')),      
-      cat: data.get('cat_tool'),      
-      rol: data.get('role_tool'),
-      date_in: fechaActual(),
-      prove:{
-        id_prove: generateRandomId(4),
-        name: data.get('name_prove'),
-        phone: data.get('phone_prove'),
-        city: data.get('city_prove')
-      },
-      image: data.get('tool_image').split(".")[0]
-    }
-  
-    console.log("recibido del formulario",entrada);
-  
-    // send your post request
-  
-    if (entrada.tool.length < 3 || entrada.tool.length > 25) {
-        errors.name = 'Debe ingresar un nombre valido para la herramienta';
+      nombre: data.get('nombre'),
+      marca: data.get('marca'),         
+      cantidad: Number(data.get('cantidad')),      
+      categoria: data.get('categoria'),      
+      rol: data.get('rol'),
+      fecha_in: fechaActual()            
     }
 
-    if (entrada.cat.length < 3 || entrada.tool.length > 25) {
-        errors.cat = 'Debe ingresar una categoria valida para la herramienta';
+    const image_in = {
+        id: entrada.id,
+        image_name: data.get('image'),        
     }
 
-    if (entrada.cant === 0) {        
-        errors.cant = 'Debe ingresar una cantidad diferente de 0 para la herramienta';
-    }
+    const image_binary = data.get('imageBase64');    
+    
+    const nuevaherramienta = [{}];
 
-    if (entrada.rol.length < 3 || entrada.tool.length > 25) {
-        errors.rol = 'Debe asignar un rol valido para la herramienta';
-    }
+    nuevaherramienta.entrada = entrada;
+    nuevaherramienta.image_in = image_in;
+    nuevaherramienta.image_binary = image_binary;
+    
+    console.log("recibido del formulario",nuevaherramienta);   
 
-    if (entrada.brand.length < 3 || entrada.tool.length > 25) {
-        errors.brand = 'Debe ingresar una marca valido para la herramienta';
-    }
-
-    if (entrada.prove.name.length < 3 || entrada.tool.length > 25) {
-        errors.name_prove = 'Debe ingresar un nombre de proveedor valido';
-    }
-
-    if (entrada.prove.phone.length < 9 || entrada.tool.length > 15) {
-        errors.phone_prove = 'Debe ingresar un telefono de proveedor valido';
-    }
-
-    if (entrada.prove.city.length < 3 || entrada.tool.length > 25) {
-        errors.city_prove = 'Debe ingresar una ciudad de proveedor valida';
-    }
-
-    if (data.get('tool_image').includes(".png") !== true) {        
-        errors.image = 'Debe ingresar una imagen valida para la herramienta';
-    }      
-
-    if (Object.keys(errors).length) {
-        console.log(errors);
-        return errors;
-    }
-
-    FormAddTool(entrada);
-
-    // redirect the user
-    return redirect(`/inventario/${entrada.id}`);
+    return nuevaherramienta;    
+    
 }
 
 

@@ -10,10 +10,11 @@ const TraerImagenes = ( props ) => {
         const fetchImage = async () => {    
 
             try {
-                const response = await fetch(`http://localhost:8081/api/images/${id_tool}`);  
-                
+                const response = await fetch(`http://localhost:8081/api/images/${id_tool}`);
+                                
                 if(!response.ok){
                     setactivaIco(true);
+                    console.log('Respuesta del servidor:', response.ok);                    
                 }
                 
                 const result = await response.blob();                
@@ -23,8 +24,7 @@ const TraerImagenes = ( props ) => {
                     setImageSrc(`data:image/png;base64,${reader.result}`);                     
                 };
 
-                reader.readAsText(result);                     
-                console.log('Respuesta del servidor:', imageSrc);
+                reader.readAsText(result);                                     
 
             } catch (error) {
                 setactivaIco(true);
@@ -33,7 +33,7 @@ const TraerImagenes = ( props ) => {
         };
 
         fetchImage();
-        console.log(imageSrc);
+               
     }, []);
 
     return (

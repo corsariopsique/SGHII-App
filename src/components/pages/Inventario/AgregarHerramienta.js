@@ -1,7 +1,7 @@
 import './AgregarHerramienta.css';
 import * as Icons from '../../Iconos/IndexIcons';
 import {Modal} from '../../IndexComponents';
-import {Form, Link, useActionData} from 'react-router-dom';
+import {Form, Link, Navigate, useActionData} from 'react-router-dom';
 import { useState, useEffect } from "react";
 
 function AgregarHerramienta () {
@@ -11,7 +11,8 @@ function AgregarHerramienta () {
 
     const [img_pre, setImg_Pre] = useState(null);
     const [tipo_img, setTipo_Img] = useState(null);
-    const [img_send, setImg_Send] = useState(null);   
+    const [img_send, setImg_Send] = useState(null);  
+    const [ctrlEnvio, setCtrlEnvio] = useState(null);
     
     
     // Manejo de envio de datos al servidor
@@ -24,31 +25,57 @@ function AgregarHerramienta () {
       
         useEffect(() => {
           const fetchData = async () => {
-                if(dataHook!==undefined && !data){
+                if(loading && dataHook!==undefined && !data){
                     setData(EnvioHerramienta());                    
                 }
-                if(data && !data2){
-                    setData2(EnvioDatosImagen());
+
+                if(loading && data && !data2 && dataHook.image_binary){
+                    data.then((state) => {
+                        if(state){
+                            setData2(EnvioDatosImagen());
+                        }
+                    })
                 }
-                if(data2 && loading){
-                    setData3(EnvioImagen());
+
+                if(loading && data2 && !data3){
+                    data2.then((state) => {
+                        if(state){
+                            setData3(EnvioImagen());
+                        }
+                    })
+                }
+
+                if(loading && data3 && !ctrlEnvio){
+                    data3.then((state) => {
+                        if(state){
+                            setCtrlEnvio(true);
+                        }
+                    })
+                }   
+                
+                if(loading && data && !data2 && !data3 && !dataHook.image_binary && !ctrlEnvio){
+                    setCtrlEnvio(true);
+                }
+               
+                if(loading && ctrlEnvio){
                     setLoading(false);
                 }
+
             };      
           fetchData();
-        }, [dataHook,data,data2]);
+        }, [dataHook,data,data2,data3,loading,ctrlEnvio]);
       
         return { data, data2, data3, loading };
     };
 
     const { data, data2, data3, loading } = useFetchData(herramienta);
-
+    
     useEffect(() => {
-        if (!loading && data && data2) {
+        if (!loading && data && data2 && data3) {
             console.log("Subida Herramienta:",data);          
             console.log("Subida datos imagen:", data2);
             console.log("Subida imagen:", data3);            
-        }
+        }                
     }, [loading, data, data2]);
 
     const  EnvioHerramienta = async () => {                
@@ -60,8 +87,7 @@ function AgregarHerramienta () {
             body: JSON.stringify(herramienta.entrada)
             });
             
-            const result = await response.ok;            
-            console.log('Respuesta del servidor:', result);            
+            const result = response.ok;                                
             return result; 
         
         } catch(error) {            
@@ -79,10 +105,8 @@ function AgregarHerramienta () {
                 body: JSON.stringify(herramienta.image_in)
             });
             
-            const result = await response.ok;            
-            console.log('Respuesta del servidor:', result);
-            return result;
-            
+            const result = response.ok;                        
+            return result;            
         
         } catch(error) {            
             console.error('Error al enviar la solicitud:', error);                    
@@ -99,16 +123,14 @@ function AgregarHerramienta () {
               body: herramienta.image_binary
             });
       
-            const result = await response.ok;            
-            console.log('Respuesta del servidor:', result);                
+            const result = response.ok;                            
             return result;
         
         } catch(error) {
             console.error('Error al solicitar la imagen:', error);                    
             return false;
         }
-    }  
-    
+    }    
     
     // manejo preview imagen formulario    
         
@@ -146,6 +168,9 @@ function AgregarHerramienta () {
             title="Agregar Herramienta"
             estiloModal="modal_completo"            
             > 
+
+            { ctrlEnvio && (<Navigate to={`/inventario/${herramienta.entrada.id}`} replace={true} />) }
+             
             <div className="btn-group btn_ModalIntermedio" role="group" aria-label="Large button group">
 
                 <button  
@@ -166,7 +191,7 @@ function AgregarHerramienta () {
 
                     </button>            
                 </Link>
-                </div> 
+            </div> 
 
 
             
@@ -175,8 +200,7 @@ function AgregarHerramienta () {
                 <div className="img_ContPreview">
 
                     <div>
-                        {img_pre && (<img id="img_Pre" className= "img-thumbnail" src={img_pre} alt="Preview"></img>)}
-                        {console.log(img_pre)}
+                        {img_pre && (<img id="img_Pre" className= "img-thumbnail" src={img_pre} alt="Preview"></img>)}                        
                     </div>
 
                     <div id="in_img">

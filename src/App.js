@@ -61,7 +61,7 @@ import KitsLayout from "./components/Layouts/KitsLayout";
           action={EditarHerrramientaAction} 
           loader={editarherramientaLoader}>  
             <Route
-            path=":toolId/deleteherramienta"
+            path="deleteherramienta"
             element={<AlertBorra />} />
           </Route>          
           

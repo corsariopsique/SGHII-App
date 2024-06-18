@@ -61,12 +61,6 @@
     align-items: center;    
 }
 
-.delete_alert{
-    position: absolute;
-    top:18rem;
-    left:2rem;
-}
-
 #icobtn{
     align-self: center;       
 }

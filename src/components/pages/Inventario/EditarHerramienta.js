@@ -1,39 +1,43 @@
 import './EditarHerramienta.css';
-import { Form, useParams, useActionData, useLoaderData, redirect, Outlet } from "react-router-dom";
+import { Form, useParams, useLoaderData, redirect, Outlet} from "react-router-dom";
 import { useState } from "react";
 import { Modal } from '../../IndexComponents';
 
 
-function EditarHerramienta(){ 
+function EditarHerramienta(){     
     
-    const datos = useActionData();
     const itemToMod = useLoaderData();      
     
     //control previsualizacion imagen
 
     const [img_pre, setImg_Pre] = useState(null);
     const [tipo_img, setTipo_Img] = useState(null);      
+    const [img_send, setImg_Send] = useState(null);  
 
     const handleronChange = (event) => {        
 
         const file = event.target.files[0];
-        const reader = new FileReader();       
+        const reader = new FileReader();           
+        
 
-        reader.onloadend = () => {
-            setImg_Pre(reader.result);
-        };    
-
-        if (file) {
-            reader.readAsDataURL(file);
-            setTipo_Img(null);            
-        }
-
+        reader.onloadend = () => {    
+            const base64String = reader.result.split(',')[1];
+            setImg_Send(base64String);           
+            setImg_Pre(reader.result);                        
+        }       
+        
+        
         if (file && file.type !== 'image/png') {
             setTipo_Img ("Tipo de imagen no valido, por favor ingrese un archivo tipo PNG"); 
             setImg_Pre(null);
             return             
-        } 
-    }   
+        }        
+         
+        if (file) {
+            reader.readAsDataURL(file);                        
+            setTipo_Img(null);            
+        }                       
+    }        
 
     // paquete iconos acciones
 
@@ -59,7 +63,7 @@ function EditarHerramienta(){
             icobtn:"EliminarIcono",
             estiloBoton:"btn-danger",                                                          
             tipo:"button",
-            accion:`/inventario/${useParams().toolId}/editarherramienta/${useParams().toolId}/deleteherramienta`                   
+            accion:`/inventario/${useParams().toolId}/editarherramienta/deleteherramienta`                   
         },        
     ];   
 
@@ -83,165 +87,130 @@ function EditarHerramienta(){
                     <div className="img_ContPreview">
 
                         <div>
-                            {img_pre && (<img id="img_Pre" className= "img-thumbnail" src={img_pre} alt="Preview"></img>)}
+                            {img_pre && (<img id="img_Pre" className= "img-thumbnail" src={img_pre} alt="Preview"></img>)}                        
                         </div>
 
                         <div id="in_img">
-                            <label htmlFor="tool_image" className="form-label">Imagen:</label> 
+
+                            <label htmlFor="image" className="form-label">Imagen:</label> 
+
                             <input 
                                 type="file" 
-                                id="tool_image" 
-                                name="tool_image"
-                                accept=".png"                                
-                                onChange={handleronChange}                                                             
+                                id="image" 
+                                name="image"
+                                accept=".png"
+                                onChange={handleronChange}                             
                             />
 
-                            {tipo_img && <p className='error-form'>{tipo_img}</p>} 
-                            {datos && datos["image"] && <p className='error-form'>{datos["image"]}</p>}                             
+                            <input 
+                                type="text" 
+                                id="imageBase64" 
+                                name="imageBase64"
+                                value={img_send}
+                                style={{display: 'none'}}
+                                readOnly                            
+                            />
 
-                        </div>                    
+                            {tipo_img && <p className='error-form'>{tipo_img}</p>}                         
+
+                        </div>  
+
                     </div>
 
-                    <div className='inputNoImgEdit'>
+                    <div className='inputNoImgAdd'>
 
-                        <label htmlFor="id_tool" className="form-label">ID Herramienta:</label>
+                        <label htmlFor="id" className="form-label">ID:</label>
 
                         <input 
                             type='text' 
                             className="form-control"
-                            name="id_tool" 
-                            id="id_tool" 
+                            name="id" 
+                            id="id" 
                             placeholder={itemToMod.id}
-                            value={itemToMod.id}                        
+                            value={itemToMod.id}                                  
+                        />          
+
+                        <label htmlFor="nombre" className="form-label">Nombre:</label>
+
+                        <input 
+                            type='text' 
+                            className="form-control"
+                            name="nombre" 
+                            id="nombre" 
+                            placeholder={itemToMod.nombre}
+                            defaultValue={itemToMod.nombre}
+                            maxLength ='25'
+                            minLength ='3'
+                            required
                         />                    
 
-                        <label htmlFor="name_tool" className="form-label">Nombre:</label>
-
-                        <input 
-                            type='text' 
-                            className="form-control"
-                            name="name_tool" 
-                            id="name_tool" 
-                            placeholder={itemToMod.tool}
-                            defaultValue={itemToMod.tool}                        
-                        />                
-
-                        {datos && datos["name"] && <p className='error-form'>{datos["name"]}</p>}               
-
-                        <label htmlFor="cat_tool" className="form-label">Categoria:</label>
+                        <label htmlFor="categoria" className="form-label">Categoria:</label>
 
                         <input 
                             type="text" 
                             className="form-control"
-                            name="cat_tool" 
-                            id="cat_tool" 
-                            placeholder={itemToMod.cat}
-                            defaultValue={itemToMod.cat}                        
-                        />
+                            name="categoria" 
+                            id="categoria" 
+                            placeholder={itemToMod.categoria}
+                            defaultValue={itemToMod.categoria}
+                            maxLength ='25'
+                            minLength ='3'
+                            required
+                        />                    
 
-                        {datos && datos["cat"] && <p className='error-form'>{datos["cat"]}</p>}               
-
-                        <label htmlFor="cantidad_tool" className="form-label">Cantidad:</label>
+                        <label htmlFor="cantidad" className="form-label">Cantidad:</label>
 
                         <input 
                             type="number" 
                             className="form-control"
-                            name="cantidad_tool" 
-                            id="cantidad_tool" 
-                            placeholder={itemToMod.cant}
-                            defaultValue={itemToMod.cant}                        
-                        /> 
-
-                        {datos && datos["cant"] && <p className='error-form'>{datos["cant"]}</p>}               
-
-                        <label htmlFor="role_tool" className="form-label">Rol:</label>
-
-                        <input 
-                            type="text" 
-                            className="form-control"
-                            name="role_tool" 
-                            id="role_tool" 
-                            placeholder={itemToMod.rol}
-                            defaultValue={itemToMod.rol}
-                        />
-
-                        {datos && datos["rol"] && <p className='error-form'>{datos["rol"]}</p>}               
-
-                        <label htmlFor="brand_tool" className="form-label">Marca:</label>
-
-                        <input 
-                            type="text" 
-                            className="form-control"
-                            name="brand_tool" 
-                            id="brand_tool" 
-                            placeholder={itemToMod.brand}
-                            defaultValue={itemToMod.brand}
-                        />  
-
-                        {datos && datos["brand"] && <p className='error-form'>{datos["brand"]}</p>}   
-
-                        <label htmlFor="date_in" className="form-label">Fecha Ingreso Herramienta:</label>
-
-                        <input 
-                            type='text' 
-                            className="form-control"
-                            name="date_in" 
-                            id="date_in" 
-                            placeholder={itemToMod.date_in}
-                            value={itemToMod.date_in}                        
+                            name="cantidad" 
+                            id="cantidad" 
+                            placeholder={itemToMod.cantidad}
+                            defaultValue={itemToMod.cantidad}
+                            min='1'
+                            required
                         />                    
 
-                        <label htmlFor="id_prove" className="form-label">ID Proveedor:</label>
+                        <label htmlFor="rol" className="form-label">Rol:</label>
 
                         <input 
-                            type='text' 
+                            type="text" 
                             className="form-control"
-                            name="id_prove" 
-                            id="id_prove" 
-                            placeholder={itemToMod.prove.id_prove}
-                            value={itemToMod.prove.id_prove}                        
-                        />        
+                            name="rol" 
+                            id="rol" 
+                            placeholder={itemToMod.rol}
+                            defaultValue={itemToMod.rol}
+                            maxLength ='25'
+                            minLength ='3'
+                            required
+                        />                   
 
-                        <label htmlFor="name_prove" className="form-label">Nombre proveedor:</label>
+                        <label htmlFor="marca" className="form-label">Marca:</label>
 
                         <input 
-                            type='text' 
+                            type="text" 
                             className="form-control"
-                            name="name_prove" 
-                            id="name_prove" 
-                            placeholder={itemToMod.prove.name}
-                            defaultValue={itemToMod.prove.name}
-                        />                
+                            name="marca" 
+                            id="marca" 
+                            placeholder={itemToMod.marca}
+                            defaultValue={itemToMod.marca}
+                            maxLength ='25'
+                            minLength ='3'
+                            required
+                        />          
 
-                        {datos && datos["name_prove"] && <p className='error-form'>{datos["name_prove"]}</p>}       
-
-                        <label htmlFor="phone_prove" className="form-label">Telefono proveedor:</label>
+                        <label htmlFor="fecha_in" className="form-label">Fecha Ingreso:</label>
 
                         <input 
-                            type='text' 
+                            type="text" 
                             className="form-control"
-                            name="phone_prove" 
-                            id="phone_prove" 
-                            placeholder={itemToMod.prove.phone}
-                            defaultValue={itemToMod.prove.phone}
-                        />                
+                            name="fecha_in" 
+                            id="fecha_in" 
+                            placeholder={itemToMod.fecha_in}
+                            value={itemToMod.fecha_in}                            
+                        />                  
 
-                        {datos && datos["phone_prove"] && <p className='error-form'>{datos["phone_prove"]}</p>}
-
-                        <label htmlFor="city_prove" className="form-label">Ciudad proveedor:</label>
-
-                        <input 
-                            type='text' 
-                            className="form-control"
-                            name="city_prove" 
-                            id="city_prove" 
-                            placeholder={itemToMod.prove.city}
-                            defaultValue={itemToMod.prove.city}
-                        />                
-
-                        {datos && datos["city_prove"] && <p className='error-form'>{datos["city_prove"]}</p>}                                
-
-                    </div>
+                    </div>                   
 
                 </Form>            
 
@@ -262,106 +231,123 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
 
     //recibir los datos del formulario    
 
-    const data = await request.formData()
-    const errors = {};    
+    const data = await request.formData()    
 
-     // manejo verificacion formulario     
+    const dataToChange = {
+        id: data.get('id'),
+        nombre: data.get('nombre'),
+        marca: data.get('marca'),         
+        cantidad: Number(data.get('cantidad')),      
+        categoria: data.get('categoria'),      
+        rol: data.get('rol'),
+        fecha_in: data.get('fecha_in')
+    }
+
+    const image_in = {
+        id: dataToChange.id,
+        image_name: data.get('image')        
+    }
+
+    const image_binary = data.get('imageBase64');    
   
-    const dataToChange = {      
-      tool: data.get('name_tool'),
-      brand: data.get('brand_tool'),         
-      cant: Number(data.get('cantidad_tool')),      
-      cat: data.get('cat_tool'),      
-      rol: data.get('role_tool'),    
-      date_in: data.get('date_in'),  
-      prove:{     
-        id_prove: data.get('id_prove'),   
-        name: data.get('name_prove'),
-        phone: data.get('phone_prove'),
-        city: data.get('city_prove')
-      },
-      image: data.get('tool_image').split(".")[0]
-    }
-  
-    console.log("recibido del formulario",dataToChange);
-  
-    // send your post request
-  
-    if (dataToChange.tool.length < 3) {
-        errors.name = 'Debe ingresar un nombre valido para la herramienta';
-    }
-
-    if (dataToChange.cat.length < 3) {
-        errors.cat = 'Debe ingresar una categoria valida para la herramienta';
-    }
-
-    if (dataToChange.cant === 0) {        
-        errors.cant = 'Debe ingresar una cantidad diferente de 0 para la herramienta';
-    }
-
-    if (dataToChange.rol.length < 3) {
-        errors.rol = 'Debe asignar un rol valido para la herramienta';
-    }
-
-    if (dataToChange.brand.length < 3) {
-        errors.brand = 'Debe ingresar una marca valido para la herramienta';
-    }
-
-    if (dataToChange.prove.name.length < 3) {
-        errors.name_prove = 'Debe ingresar un nombre de proveedor valido';
-    }
-
-    if (dataToChange.prove.phone.length < 10) {
-        errors.phone_prove = 'Debe ingresar un telefono de proveedor valido';
-    }
-
-    if (dataToChange.prove.city.length < 3) {
-        errors.city_prove = 'Debe ingresar una ciudad de proveedor valida';
-    }
-
-    if (data.get('tool_image').includes(".png") !== true) {        
-        errors.image = 'Debe ingresar una imagen valida para la herramienta';
-    }      
-
-    if (Object.keys(errors).length) {
-        console.log(errors);
-        return errors;
-    }  
+    console.log("recibido del formulario",dataToChange,image_binary);   
     
     // funcion que envia los cambios al servidor
 
-    const FormEditTool = (props) => {
+    const FormEditTool = async (props) => {
 
-        const urlData = `http://localhost:4000/tools/${params.toolId}`;
+        const urlData = `http://localhost:8081/api/herramientas/${params.toolId}`;
     
         try {
-            const response = fetch(urlData, {
+            const response = await fetch(urlData, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify(props),
             });
+            
             if (!response.ok) {
               throw new Error('Fallo la actualizacion del registro');
-            }
-            console.log('Actualizacion de registro se realizo correctamente');
-    
+            }else{
+                console.log('Actualizacion de registro se realizo correctamente');
+                return redirect(`/inventario/${params.toolId}`);
+            }        
+
         } catch (error) {
             console.error(error);
+        }        
+    }  
+    
+    const EnvioDatosImagen = async (props) => {
+
+        try{
+            const response = await fetch('http://localhost:8081/api/images', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(props)
+            });
+            
+            const result = response.ok;                        
+            return result;            
+        
+        } catch(error) {            
+            console.error('Error al enviar la solicitud:', error);                    
+            return false;
         }
     }
-    FormEditTool(dataToChange);
 
-    // redirect the user
-    return redirect(`/inventario/${params.toolId}`);
+    const EnvioImagen = async (props) => {
+        try{
+            const response = fetch(`http://localhost:8081/api/images/${params.toolId}`, {
+              method: 'PUT',
+              headers: {'Content-Type': 'application/octet-stream'},        
+              body: props
+            });
+      
+            const result = response.ok;                            
+            return result;
+        
+        } catch(error) {
+            console.error('Error al solicitar la imagen:', error);                    
+            return false;
+        }
+
+    }
+
+    const EnvioImagenCompleta = async (datos,imagen) => {
+
+        try {
+            const response = await fetch(`http://localhost:8081/api/images/${params.toolId}`);
+                            
+            if(!response.ok){
+                const nuevaImagen = EnvioDatosImagen(datos);
+                nuevaImagen.then((state) => {
+                    if(state){
+                        EnvioImagen(imagen);                        
+                    }
+                })                
+            }else{
+                EnvioImagen(imagen);
+            }
+            
+        } catch (error) {            
+            console.error('Error al solicitar la imagen:', error);                                
+        }
+    }    
+
+    if(image_binary){
+       EnvioImagenCompleta(image_in,image_binary);       
+    }    
+
+    return FormEditTool(dataToChange);    
 }
 
 // funcion para buscar datos de la herramienta a editar
 
 export const editarherramientaLoader = async ({params}) => {        
     
-    const detail = await fetch(`http://localhost:4000/tools/${params.toolId}`)           
+    const detail = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`)           
 
     if (!detail.ok) {
         throw Error('No se pudo cargar la herramienta indicada')

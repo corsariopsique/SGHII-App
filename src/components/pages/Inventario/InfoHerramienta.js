@@ -64,6 +64,7 @@ export default function InfoHerramienta(){
                                     <li className="list-group-item atributo_lista text-secondary">ID: <span className='valor_atributo'>{data_infoTool.id}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Categoria: <span className='valor_atributo'>{data_infoTool.categoria}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Marca: <span className='valor_atributo'>{data_infoTool.marca}</span></li>                                        
+                                    <li className="list-group-item atributo_lista text-secondary">Rol: <span className='valor_atributo'>{data_infoTool.rol}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoTool.fecha_in}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>---</span></li>
                                 </ul>

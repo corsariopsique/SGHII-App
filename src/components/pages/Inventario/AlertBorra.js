@@ -10,22 +10,42 @@ function AlertBorra () {
 
     const enlaceCancelar = `/inventario/${useParams().toolId}/editarherramienta`;    
 
-    const urlDeleteItem = `http://localhost:4000/tools/${useParams().toolId}`;
+    const urlDeleteItem = `http://localhost:8081/api/herramientas/${useParams().toolId}`;
+
+    const urlDeleteImage = `http://localhost:8081/api/images/${useParams().toolId}`;
+
 
     const [rndrmodal, setRndrModal] = useState(true);
-   
-    const HandleronClickEliminar = () => {
 
-        fetch(urlDeleteItem, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'                
-            },
+    const EliminaImagen = async () => {
+        fetch(urlDeleteImage, {
+            method: 'DELETE'
         })
 
         .then(response => {
             if (response.ok) {    
-                console.log(response.ok);                                       
+                return response.ok;
+            } else {
+                // Manejar errores de respuesta
+                throw new Error('Error al eliminar la imagen');
+            }
+        })
+
+        .catch(error => {
+            // Manejar el error
+            console.error('Error al eliminar la imagen:', error);
+        });
+    }
+
+    const EliminaTool = async () => {
+
+        fetch(urlDeleteItem, {
+            method: 'DELETE'
+        })
+
+        .then(response => {
+            if (response.ok) {    
+                console.log("Respuesta del servidor",response.ok);                                       
                 alert(`La herramienta con el ID: ${idTool} ha sido eliminada con exito`);
                 setRndrModal(false);                                 
             } else {
@@ -37,7 +57,20 @@ function AlertBorra () {
         .catch(error => {
             // Manejar el error
             console.error('Error al eliminar el registro:', error);
-        });        
+        });
+
+    }
+   
+    const HandleronClickEliminar = () => {
+
+        const borraIMG = EliminaImagen();
+        borraIMG.then((state) => {
+            if(state){
+                EliminaTool();                
+            }else{
+                EliminaTool();
+            }
+        })        
     }; 
     
     const Backdrop = () => {

@@ -236,7 +236,7 @@ function AgregarHerramienta () {
 
                     <input 
                         type='text' 
-                        className="form-control"
+                        className="form-control inputs_Add_Tool"
                         name="nombre" 
                         id="nombre" 
                         placeholder='Ingrese nombre de herramienta'
@@ -249,7 +249,7 @@ function AgregarHerramienta () {
 
                     <input 
                         type="text" 
-                        className="form-control"
+                        className="form-control inputs_Add_Tool"
                         name="categoria" 
                         id="categoria" 
                         placeholder='Ingrese categoria de herramienta'
@@ -262,7 +262,7 @@ function AgregarHerramienta () {
 
                     <input 
                         type="number" 
-                        className="form-control"
+                        className="form-control inputs_Add_Tool"
                         name="cantidad" 
                         id="cantidad" 
                         placeholder='Ingrese numero de unidades'
@@ -274,7 +274,7 @@ function AgregarHerramienta () {
 
                     <input 
                         type="text" 
-                        className="form-control"
+                        className="form-control inputs_Add_Tool"
                         name="rol" 
                         id="rol" 
                         placeholder='Ingrese rol de herramienta'
@@ -287,7 +287,7 @@ function AgregarHerramienta () {
 
                     <input 
                         type="text" 
-                        className="form-control"
+                        className="form-control inputs_Add_Tool"
                         name="marca" 
                         id="marca" 
                         placeholder='Ingrese marca de la herramienta'

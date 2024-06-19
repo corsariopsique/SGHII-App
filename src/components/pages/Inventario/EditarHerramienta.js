@@ -84,7 +84,7 @@ function EditarHerramienta(){
 
                 <Form id="edit_tool" className="formularioEdit" name="edit_tool" action={dirFormEdit} method='post'>
 
-                    <div className="img_ContPreview">
+                    <div className="img_ContPreview_ToolEdit">
 
                         <div>
                             {img_pre && (<img id="img_Pre" className= "img-thumbnail" src={img_pre} alt="Preview"></img>)}                        
@@ -117,13 +117,13 @@ function EditarHerramienta(){
 
                     </div>
 
-                    <div className='inputNoImgAdd'>
+                    <div className='inputNoImgEdit'>
 
                         <label htmlFor="id" className="form-label">ID:</label>
 
                         <input 
                             type='text' 
-                            className="form-control"
+                            className="form-control inputs_Edit_Tool"
                             name="id" 
                             id="id" 
                             placeholder={itemToMod.id}
@@ -134,7 +134,7 @@ function EditarHerramienta(){
 
                         <input 
                             type='text' 
-                            className="form-control"
+                            className="form-control inputs_Edit_Tool"
                             name="nombre" 
                             id="nombre" 
                             placeholder={itemToMod.nombre}
@@ -148,7 +148,7 @@ function EditarHerramienta(){
 
                         <input 
                             type="text" 
-                            className="form-control"
+                            className="form-control inputs_Edit_Tool"
                             name="categoria" 
                             id="categoria" 
                             placeholder={itemToMod.categoria}
@@ -162,7 +162,7 @@ function EditarHerramienta(){
 
                         <input 
                             type="number" 
-                            className="form-control"
+                            className="form-control inputs_Edit_Tool"
                             name="cantidad" 
                             id="cantidad" 
                             placeholder={itemToMod.cantidad}
@@ -175,7 +175,7 @@ function EditarHerramienta(){
 
                         <input 
                             type="text" 
-                            className="form-control"
+                            className="form-control inputs_Edit_Tool"
                             name="rol" 
                             id="rol" 
                             placeholder={itemToMod.rol}
@@ -189,7 +189,7 @@ function EditarHerramienta(){
 
                         <input 
                             type="text" 
-                            className="form-control"
+                            className="form-control inputs_Edit_Tool"
                             name="marca" 
                             id="marca" 
                             placeholder={itemToMod.marca}
@@ -203,7 +203,7 @@ function EditarHerramienta(){
 
                         <input 
                             type="text" 
-                            className="form-control"
+                            className="form-control inputs_Edit_Tool"
                             name="fecha_in" 
                             id="fecha_in" 
                             placeholder={itemToMod.fecha_in}

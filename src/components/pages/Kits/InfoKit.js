@@ -1,15 +1,13 @@
 import './InfoKit.css';
 import {Modal, Tablas} from '../../IndexComponents';
+import ListarKits from './ListarKits';
 import { useLoaderData, useParams } from 'react-router-dom'
 
-export default function InfoKit(props){       
+export default function InfoKit(){       
      
-    const data_infoKit = useLoaderData()
-    let totalTools = 0;
+    const data_infoKit = useLoaderData();    
 
-    for(let x in data_infoKit.tools){
-        totalTools += Number(data_infoKit.tools[x].cant);
-    }      
+    const numTool = data_infoKit.herramientas.length;    
   
     const btnsInfoKit = [
         {
@@ -27,25 +25,20 @@ export default function InfoKit(props){
             accion:"null",
             tipo:"button",            
         }
-      ];
+    ];
 
-      const columns = [
+    const columns = [
         { key: 'id', title: 'ID' },
         { key: 'name', title: 'Nombre Operario' },        
         { key: 'date',title: 'Fecha Operación'},
-      ];      
+    ];      
       
-      const data = [
+    const data = [
         { id: 'S1', name: 'Jose', date:"2024-02-15"},
         { id: 'A3', name: 'Carlos', date:"2024-01-25"},
         { id: 'S8', name: 'Roberto', date:"2023-12-21"},
         { id: 'D5', name: 'Jose Maria', date:"2024-01-09"},
-      ];  
-
-      const columnsKit = [
-        { key: 'id', title: 'ID' },
-        { key: 'cant', title: 'Cantidad' },                
-      ];      
+    ];           
 
     return(
         <div>
@@ -64,20 +57,20 @@ export default function InfoKit(props){
                 <div className="tab-content" id="nav-tabContentKit">
 
                     <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <div className="card tarjeta_tool text-secondary">
+                        <div className="card tarjeta_kit text-secondary">
                             <div className="card-header bg-transparent text-primary">Detalles Primarios</div>
                             <div className="card-body">
-                                <h5 className="card-title text-primary text-center">{data_infoKit.name}</h5>
+                                <h5 className="card-title text-primary text-center">{data_infoKit.nombre}</h5>
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item atributo_lista text-secondary">ID: <span className='valor_atributo'>{data_infoKit.id}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Rol: <span className='valor_atributo'>{data_infoKit.rol}</span></li>                                    
-                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoKit.date_in}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoKit.fecha_in}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>---</span></li>
                                 </ul>
                             </div>
 
                             {/* aca voy estar pendiente */}
-                            <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad total de herramientas : <span>{totalTools}</span></li></div>
+                            <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad total de herramientas : <span>{numTool}</span></li></div>
                         </div> 
 
 
@@ -95,13 +88,7 @@ export default function InfoKit(props){
 
                         <div className="card tarjeta_img_kit">
                             <div className="card-header bg-transparent text-primary">Listado Herramientas</div>
-                            <Tablas
-                                listado='transaccion'
-                                estiloTabla="tabla_info_tool"
-                                columns={columnsKit}
-                                componente='inventario'
-                                data={data_infoKit.tools}
-                            />                                                                      
+                            <ListarKits herramientas={data_infoKit.herramientas} />                                                                 
                         </div>                                        
                         
                     </div>                    
@@ -115,7 +102,7 @@ export default function InfoKit(props){
 
 export const InfoKitLoader = async ({params}) => {        
     
-    const detailKit = await fetch(`http://localhost:4000/kits/${params.kitId}`)           
+    const detailKit = await fetch(`http://localhost:8081/api/kits/${params.kitId}`)           
 
     if (!detailKit.ok) {
         throw Error('No se pudo cargar la herramienta indicada')

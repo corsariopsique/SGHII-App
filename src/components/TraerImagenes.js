@@ -1,3 +1,4 @@
+import './TraerImagenes.css';
 import React, { useEffect, useState } from 'react';
 import {Tool1Icono} from './Iconos/IndexIcons';
 
@@ -39,7 +40,7 @@ const TraerImagenes = ( props ) => {
     return (
         <>
             {imageSrc && !activaIco && (<img src={imageSrc} alt="Fetched from server" />)}  
-            {(!imageSrc) || (activaIco) && (<Tool1Icono className="card-img-top img_info" width="100px" height="478px" viewBox ="0 0 16 16" fill="#cec8c6"/>)} 
+            {(!imageSrc) || (activaIco) && (<Tool1Icono className="card-img-top img_info" width={props.ancho} height={props.alto} viewBox ="0 0 16 16" fill="#cec8c6"/>)} 
         </>
     );
         

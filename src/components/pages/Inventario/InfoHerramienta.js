@@ -73,7 +73,7 @@ export default function InfoHerramienta(){
                         </div> 
 
 
-                        <div className="card text-secondary last_oper">
+                        <div className="card text-secondary last_oper_tool">
                             <div className="card-header bg-transparent text-primary">Ultimas Operaciones</div>
                             <div className="card-body">
                                 <Tablas
@@ -86,7 +86,7 @@ export default function InfoHerramienta(){
                         </div>  
 
                         <div className="card tarjeta_img_tool">
-                            <TraerImagenes imageId={idImagen} />                            
+                            <TraerImagenes ancho='450px' alto='450px' imageId={idImagen} />                            
                             <div className="card-body">
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item atributo_lista text-secondary">En prestamo: <span className='valor_atributo'>15</span></li>

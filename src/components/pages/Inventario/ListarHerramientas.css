@@ -1,0 +1,35 @@
+.control_TextoInventario{
+    width: 5rem; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.listaHerramientaInventario{   
+    justify-content:center;
+    display:flex;    
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;       
+    flex-direction: row;  
+    position: absolute; 
+    top: 15%;
+    left:2%;
+    right: 2%;        
+}
+
+.itemHerramientaInventario {
+    display: flex;
+    flex-direction: row;
+    width: 20%; 
+    max-height: 10rem;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;    
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;   
+    padding-left: 0.6rem;
+    border: #a8d1eb;
+    border-width: 0.1px;
+    border-style:double;
+    font-size: 12px;
+}

@@ -21,14 +21,14 @@
     justify-content: space-between;
 }
 
-.tarjeta_tool{
+.tarjeta_kit{
     width: 30rem;
 }
 
 .last_oper{
     margin-top: 2rem;
     width: 30rem;
-    max-height: 13rem;
+    max-height: 18.3rem;
     overflow: auto;
 }
 
@@ -36,29 +36,15 @@
     position: absolute;
     top: 0rem;
     left:32rem;
-    width: 35rem;
-    max-height:39.7rem;  
+    width: 63rem;
+    height:39.7rem;  
     overflow: auto;  
 }
-
-.img_info{
-    padding-top: 3%;
-    max-width: 30rem; 
-    align-self: center;   
-}
-
 .proveedor{
     position: absolute;
     top: 0rem;
     left:69rem;
     width: 26rem;
-}
-
-.verificacion{    
-    display: flex;   
-    flex-direction: column;
-    height: 7.5rem;   
-    align-items: center;    
 }
 
 #icobtn{

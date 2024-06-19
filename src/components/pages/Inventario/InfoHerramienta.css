@@ -25,7 +25,7 @@
     width: 30rem;
 }
 
-.last_oper{
+.last_oper_tool{
     margin-top: 2rem;
     width: 30rem;
     max-height: 13rem;
@@ -39,12 +39,6 @@
     width: 35rem;
     max-height:39.57rem;   
     overflow: auto;   
-}
-
-.img_info{
-    padding-top: 3%;
-    max-width: 30rem; 
-    align-self: center;   
 }
 
 .proveedor{

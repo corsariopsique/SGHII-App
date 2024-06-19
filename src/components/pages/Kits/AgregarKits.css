@@ -74,3 +74,10 @@
     align-items:center;        
     overflow:auto;  
 }
+
+.control_Texto{
+    width: 5rem; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

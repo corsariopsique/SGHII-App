@@ -1,6 +1,7 @@
 import './Inventario.css';
 import { PanelInfoText, Modal, Tablas } from '../../IndexComponents';
 import {useLoaderData} from 'react-router-dom';
+import ListarHerramientas from './ListarHerramientas';
 
 export default function Inventario(){   
     
@@ -88,11 +89,7 @@ export default function Inventario(){
             botoncss="btn_ModalIntermedio"
             botones={btnsInventario}
             >                         
-                <Tablas                    
-                    estiloTabla='tabla_Inventario'
-                    columns={col_data} 
-                    data={data_inventario}
-                />   
+               <ListarHerramientas herramientas={data_inventario} />
 
             </Modal>                      
 

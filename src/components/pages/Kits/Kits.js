@@ -65,9 +65,9 @@ export default function Kits(){
 
     const col_data = [
         { key: 'id', title: 'ID' },
-        { key: 'name', title: 'Nombre' },
+        { key: 'nombre', title: 'Nombre' },
         { key: 'rol', title: 'Rol' },        
-        { key: 'date_in', title: 'Fecha Ingreso'},        
+        { key: 'fecha_in', title: 'Fecha Ingreso'}        
     ];        
 
     return(
@@ -101,7 +101,7 @@ export default function Kits(){
 
 export const kitsLoader = async () => {
     
-    const kitsLista = await fetch('http://localhost:4000/kits')   
+    const kitsLista = await fetch('http://localhost:8081/api/kits')   
     
 
     if (!kitsLista.ok) {

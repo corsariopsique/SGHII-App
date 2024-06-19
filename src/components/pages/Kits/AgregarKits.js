@@ -1,12 +1,12 @@
 import './AgregarKits.css';
-import {Modal,FormAddKit} from '../../IndexComponents';
-import {Form, redirect, useActionData, useLoaderData} from 'react-router-dom';
-import {Tool1Icono} from '../../Iconos/IndexIcons';
+import {Modal,TraerImagenes} from '../../IndexComponents';
+import FormAddKit from './FormAddKit';
+import {Form, redirect, useLoaderData} from 'react-router-dom';
 import { useState } from "react";
+import FormAddToolKit from './FormAddToolKit';
 
 export default function AgregarKits() {
-
-    const verifyData = useActionData();
+    
     const listado_Herramienta = useLoaderData();
     
     const [checkedItems, setCheckedItems] = useState({});    
@@ -27,22 +27,7 @@ export default function AgregarKits() {
         setCantItems({
           ...cantItems          
         });
-      };   
-    
-    function ImgToolForKit (props) {
-    
-        try {
-            const ruta_img = require(`../../images/tools/${props.image}.png`);
-            return (
-                <img src={ruta_img} className='previewImageTool' alt="card-img-top"/>
-            );
-        } catch (error) {
-            console.error('El archivo no pudo ser requerido:');
-            return(
-                <Tool1Icono width="7.8rem" height="7rem" viewBox ="0 0 16 16" fill="#cec8c6"/>
-            );
-        }
-    }
+    };    
 
     const btnsAgregarKit = [
         {
@@ -84,10 +69,10 @@ export default function AgregarKits() {
                         name="name_kit" 
                         id="name_kit" 
                         placeholder='Ingrese nombre del kit'
+                        maxLength ='25'
+                        minLength ='3'                        
                         required
-                    />  
-
-                    {verifyData && verifyData["name"] && <p className='error-form'>{verifyData["name"]}</p>} 
+                    />                      
 
                     <label htmlFor="rol_kit" className="form-label">Rol:</label>
 
@@ -97,10 +82,10 @@ export default function AgregarKits() {
                         name="rol_kit" 
                         id="rol_kit" 
                         placeholder='Ingrese rol del kit'
+                        maxLength ='25'
+                        minLength ='3'     
                         required
-                    />  
-
-                    {verifyData && verifyData["rol"] && <p className='error-form'>{verifyData["rol"]}</p>} 
+                    />                      
 
                 </div>             
 
@@ -127,20 +112,20 @@ export default function AgregarKits() {
                                 name={opcion.id}
                                 placeholder='Cant..'      
                                 min={1}
-                                max={Number(opcion.cant)}                                  
+                                max={Number(opcion.cantidad)}                                  
                                 onChange={handleChangeCantidades}
                                 required
                             /> }                                                   
                             
                             <label> 
-                                ID: <h6 className='fw-bold'>{opcion.id}</h6> 
-                                Nombre: <h6 className='text-primary'>{opcion.tool}</h6> 
-                                Cantidad disponible: <h6 className='text-success'>{opcion.cant}</h6>
+                                ID: <h6 className='fw-bold control_Texto'>{opcion.id}</h6> 
+                                Nombre: <h6 className='text-primary control_Texto'>{opcion.nombre}</h6> 
+                                Cantidad disponible: <h6 className='text-success control_Texto'>{opcion.cantidad}</h6>
                             </label>  
 
                             { !checkedItems[opcion.id] &&
 
-                            <ImgToolForKit image={opcion.image} /> }
+                            <TraerImagenes ancho='125px' alto='125px' imageId={opcion.id} /> }
 
                         </div>                        
                     ))}  
@@ -157,7 +142,7 @@ export default function AgregarKits() {
 
 export const agregarKitsLoader = async () => {
     
-    const tools = await fetch('http://localhost:4000/tools')   
+    const tools = await fetch('http://localhost:8081/api/herramientas')   
     
 
     if (!tools.ok) {
@@ -205,8 +190,7 @@ export const AgregarKitsAction = async ({ request }) => {
     const kits = await request.formData()
 
     // definicion de arreglos de manejo
-
-    const errors = {};   
+    
     const formKits = {};
     const pack = [];
 
@@ -216,7 +200,7 @@ export const AgregarKitsAction = async ({ request }) => {
         const tool = {} ;
         if(key !== 'name_kit' && key !== 'rol_kit' && key !== 'tools_kits'){
             tool['id'] = key;
-            tool['cant'] = value;  
+            tool['cantidad'] = value;  
             pack.push(tool);                   
         }        
         else{ formKits[key]=value; }        
@@ -226,31 +210,21 @@ export const AgregarKitsAction = async ({ request }) => {
     
     const kitData = {
     id : generateRandomId(5),
-    name : formKits['name_kit'],
+    nombre : formKits['name_kit'],
     rol : formKits['rol_kit'],
-    date_in : fechaActual(),
-    tools : pack,
+    fecha_in : fechaActual()
     }     
 
-    console.log("recibido del formulario",kitData);       
+    const herramientas = pack;
 
-   
-    // segunda verificacion de entradas
-  
-    if (kitData.name.length < 2) {
-        errors.name = 'Debe ingresar un nombre valido para el kit';
-    }
-
-    if (kitData.rol.length < 2) {
-        errors.rol = 'Debe ingresar un rol valido para el kit';
-    }   
+    console.log("recibido del formulario",kitData,herramientas);  
     
-    if (Object.keys(errors).length) {
-        console.log(errors);
-        return errors;
-    } 
-    
-    FormAddKit(kitData);
+    const nuevoKit = FormAddKit(kitData);
+    nuevoKit.then((state) => {
+        if(state){
+            FormAddToolKit(kitData.id,herramientas);            
+        }
+    });
 
     // redirect the user
     return redirect(`/kits`);

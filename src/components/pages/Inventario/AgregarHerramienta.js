@@ -11,7 +11,7 @@ function AgregarHerramienta () {
 
     const [img_pre, setImg_Pre] = useState(null);
     const [tipo_img, setTipo_Img] = useState(null);
-    const [img_send, setImg_Send] = useState(null);  
+    const [img_send, setImg_Send] = useState(undefined);  
     const [ctrlEnvio, setCtrlEnvio] = useState(null);
     
     

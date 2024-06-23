@@ -12,7 +12,7 @@ function EditarHerramienta(){
 
     const [img_pre, setImg_Pre] = useState(null);
     const [tipo_img, setTipo_Img] = useState(null);      
-    const [img_send, setImg_Send] = useState(null);  
+    const [img_send, setImg_Send] = useState(undefined);  
 
     const handleronChange = (event) => {        
 
@@ -127,7 +127,8 @@ function EditarHerramienta(){
                             name="id" 
                             id="id" 
                             placeholder={itemToMod.id}
-                            value={itemToMod.id}                                  
+                            defaultValue={itemToMod.id}                                  
+                            readOnly
                         />          
 
                         <label htmlFor="nombre" className="form-label">Nombre:</label>
@@ -207,7 +208,8 @@ function EditarHerramienta(){
                             name="fecha_in" 
                             id="fecha_in" 
                             placeholder={itemToMod.fecha_in}
-                            value={itemToMod.fecha_in}                            
+                            defaultValue={itemToMod.fecha_in}                            
+                            readOnly
                         />                  
 
                     </div>                   

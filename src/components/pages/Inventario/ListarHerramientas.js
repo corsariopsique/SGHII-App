@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 
 export default function ListarHerramientas(props) {
 
-
   return (        
 
         <div className='listaHerramientaInventario'>
@@ -16,8 +15,8 @@ export default function ListarHerramientas(props) {
                     <Link to={`/inventario/${opcion.id}`}>
                     
                         <label htmlFor='foto'> 
-                            ID: <h6 className='fw-bold control_TextoInventario'>{opcion.id}</h6> 
-                            Nombre: <h6 className='text-primary control_TextoInventario'>{opcion.nombre}</h6> 
+                            ID: <h6 className='fw-bold text-dark control_TextoInventario'>{opcion.id}</h6> 
+                            Nombre: <h6 className='text-secondary control_TextoInventario'>{opcion.nombre}</h6> 
                             Cantidad total: <h6 className='text-success control_TextoInventario'>{opcion.cantidad}</h6>
                         </label>            
 

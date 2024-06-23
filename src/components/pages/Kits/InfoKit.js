@@ -15,7 +15,7 @@ export default function InfoKit(){
             icobtn:"EditarIcono",
             estiloBoton:"btn-outline-secondary",
             tipo:"button",  
-            accion:`/inventario/${useParams().kitId}/editarkit`
+            accion:`/kits/${useParams().kitId}/editarkits`
         },
 
         {
@@ -105,7 +105,7 @@ export const InfoKitLoader = async ({params}) => {
     const detailKit = await fetch(`http://localhost:8081/api/kits/${params.kitId}`)           
 
     if (!detailKit.ok) {
-        throw Error('No se pudo cargar la herramienta indicada')
+        throw Error('No se pudo cargar el kit indicado')
       }
     
       return detailKit.json()

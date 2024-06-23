@@ -64,9 +64,9 @@
     height:max-content;
     top: 0.5rem;
     left: 1rem;    
-    color: var(--Grey-grey-800, #383E49);    
+    color:white;    
     font-family: "Verdana", Sans-serif;
-    font-size:larger;
+    font-size: 0.8rem;
     font-style: normal;
     font-weight: 500;
     line-height: 1.875rem;

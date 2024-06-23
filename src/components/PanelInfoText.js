@@ -9,7 +9,7 @@ function PanelInfoText(props) {
     return (     
         
         <Card className={props.estiloPanelInfoText}>
-            <p className='titlepanel'>{props.title}</p>            
+            <p className='titlepanelinfo'>{props.title}</p>            
             {props.info.map((atributo) => (
                 <InfoCont                 
                 titulo={atributo.titulo}

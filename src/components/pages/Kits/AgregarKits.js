@@ -23,7 +23,7 @@ export default function AgregarKits() {
 
     // arreglo herramientas - cantidades
 
-    const handleChangeCantidades = (e) => {
+    const handleChangeCantidades = () => {
         setCantItems({
           ...cantItems          
         });

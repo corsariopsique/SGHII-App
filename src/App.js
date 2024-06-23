@@ -21,12 +21,13 @@ import AlertBorra from "./components/pages/Inventario/AlertBorra";
 import Kits, { kitsLoader } from "./components/pages/Kits/Kits";
 import AgregarKits, {agregarKitsLoader, AgregarKitsAction} from "./components/pages/Kits/AgregarKits";
 import InfoKit, {InfoKitLoader} from "./components/pages/Kits/InfoKit";
+import EditarKits, { EditarKitsLoader, EditarKitsAction } from "./components/pages/Kits/EditarKits";
+import BorrarKits from "./components/pages/Kits/BorrarKits";
 
 // Layouts
 import RootLayout from './components/Layouts/RootLayout';
 import InventarioLayout from "./components/Layouts/InventarioLayout";
 import KitsLayout from "./components/Layouts/KitsLayout";
-
 
 
    const router = createBrowserRouter(
@@ -85,12 +86,21 @@ import KitsLayout from "./components/Layouts/KitsLayout";
           element={<InfoKit />}   
           loader ={InfoKitLoader}/>
 
+          <Route
+          path=":kitId/editarkits"
+          element={<EditarKits />}
+          action={EditarKitsAction} 
+          loader={EditarKitsLoader}>
+            <Route
+            path="deletekits"
+            element={<BorrarKits />} />            
+          </Route>          
+
         </Route>
 
       </Route>      
     )
-  )    
-
+  )
 
   export default function App() {
     return <RouterProvider router={router} />;

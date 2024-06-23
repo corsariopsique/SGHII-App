@@ -1,16 +1,20 @@
-:root{
 
-    --Primary-primary-500: #1570EF;
-    --Grey-grey-600: #5D6679;
-
-}
-
-.tittlenosel{
-    color: var(--Grey-grey-600, #5D6679);    
+a.tittlenosel{
+    color: #5D6679;
     font-family: "Verdana", Sans-serif;
     font-size: 1rem;
-    font-style: normal;
-    font-weight: 500;
+    font-style:italic;
+    font-weight: 600;
+    line-height: 1.5rem; 
+    list-style-type:none;
+    text-decoration: none;
+}
+
+a.tittlesel{
+    color:#1570EF;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style:normal;
+    font-weight:450;
     line-height: 1.5rem; 
     list-style-type:none;
     text-decoration: none;
@@ -53,7 +57,7 @@
     align-items: center;
     padding-top: 0.4rem;
     gap: 0.625rem;
-    align-self: stretch;
+    align-self: stretch;    
     border-radius: 0.5rem;    
     border-width: 0.1rem;    
     border-color: #1570EF;

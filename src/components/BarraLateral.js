@@ -11,9 +11,8 @@ import SettingsIcono from './Iconos/SettingsIcono';
 import LogoutIcono from './Iconos/LogoutIcono';
 import Card from './Card';
 
-
 function BarraLateral(){
-    
+
     return (
         <Card className ="barralateral">
 

@@ -130,7 +130,7 @@ export default function EditarKits() {
 
                     </div>             
 
-                    <h5 id='tag_Incluidas' className='text-wrap badge bg-primary'>Herramientas ya incluidas</h5>
+                    <h5 id='tag_Incluidas' className='text-wrap badge bg-primary'>Herramientas incluidas</h5>
 
                     <div className='listaHerramientaEdit'>                    
 

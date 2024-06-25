@@ -3,3 +3,8 @@
     max-height: max-content; 
     align-self: center;   
 }
+
+.size_Img{
+    width: 55%;
+    height: 90%;
+}

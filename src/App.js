@@ -17,17 +17,26 @@ import AgregarHerramienta, {AgregarHerrramientaAction} from "./components/pages/
 import AlertBorra from "./components/pages/Inventario/AlertBorra";
 
 //componentes Kits
-
 import Kits, { kitsLoader } from "./components/pages/Kits/Kits";
 import AgregarKits, {agregarKitsLoader, AgregarKitsAction} from "./components/pages/Kits/AgregarKits";
 import InfoKit, {InfoKitLoader} from "./components/pages/Kits/InfoKit";
 import EditarKits, { EditarKitsLoader, EditarKitsAction } from "./components/pages/Kits/EditarKits";
 import BorrarKits from "./components/pages/Kits/BorrarKits";
 
+// componentes Operarios
+import AgregarOperario, { AgregarOperarioAction } from "./components/pages/Operario/AgregarOperario";
+import InfoOperario, { InfoOperarioLoader } from "./components/pages/Operario/InfoOperario";
+import Operarios, { operariosLoader } from "./components/pages/Operario/Operarios";
+import EditarOperario, { EditarOperarioAction, editarOperarioLoader } from "./components/pages/Operario/EditarOperario";
+import BorrarOperario from "./components/pages/Operario/BorrarOperario";
+
+
 // Layouts
 import RootLayout from './components/Layouts/RootLayout';
 import InventarioLayout from "./components/Layouts/InventarioLayout";
 import KitsLayout from "./components/Layouts/KitsLayout";
+import OperariosLayout from './components/Layouts/OperariosLayout';
+
 
 
    const router = createBrowserRouter(
@@ -95,6 +104,34 @@ import KitsLayout from "./components/Layouts/KitsLayout";
             path="deletekits"
             element={<BorrarKits />} />            
           </Route>          
+
+        </Route>
+
+        <Route path="operarios" element={<OperariosLayout />}>
+          <Route 
+          index
+          element={<Operarios />}
+          loader={operariosLoader}/>
+
+          <Route
+          path="agregaroperario"
+          element={<AgregarOperario />}
+          action={AgregarOperarioAction}/>
+
+          <Route 
+          path=":workerId"
+          element={<InfoOperario />}   
+          loader ={InfoOperarioLoader}/>
+
+          <Route
+          path=":workerId/editaroperario"
+          element={<EditarOperario />}
+          action={EditarOperarioAction}
+          loader={editarOperarioLoader}>
+            <Route
+            path="deleteoperario"
+            element={<BorrarOperario />}/>            
+          </Route>
 
         </Route>
 

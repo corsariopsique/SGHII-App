@@ -16,7 +16,7 @@ function BarraLateral(){
     return (
         <Card className ="barralateral">
 
-            <div>
+            <div id='companyPage' className='contitembar'>
                 <ItemMenuLateral textitem = "Ingeniar Inoxidables" enlace="https://www.ingeniarinoxidables.com/">
                     <LogoIcono fill="#1570EF"></LogoIcono>
                 </ItemMenuLateral>
@@ -50,7 +50,7 @@ function BarraLateral(){
                 </li>
             
                 <li className="nav-item contitembar">
-                    <ItemMenuLateral textitem = "Operario" enlace="/operario">
+                    <ItemMenuLateral textitem = "Operarios" enlace="/operarios">
                         <OperarioIcono fill="#1570EF" stroke='#5D667'/>
                     </ItemMenuLateral>
                 </li>

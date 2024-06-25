@@ -23,3 +23,4 @@ export { default as DownloadIcono} from './DownloadIcono';
 export { default as CancelIcono} from './CancelIcono';
 export { default as EditarIcono} from './EditarIcono';
 export { default as EliminarIcono} from './EliminarIcono';
+export { default as PazYSalvoIcono} from './PazYSalvoIcono';

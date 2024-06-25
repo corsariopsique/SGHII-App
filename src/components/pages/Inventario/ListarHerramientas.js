@@ -8,23 +8,19 @@ export default function ListarHerramientas(props) {
 
         <div className='listaHerramientaInventario'>
 
-            {props.herramientas.map((opcion) => (               
-                    
-                <div className='itemHerramientaInventario rounded' key={opcion.id}>                                                 
+            {props.herramientas.map((opcion) => (                
 
-                    <Link to={`/inventario/${opcion.id}`}>
-                    
-                        <label htmlFor='foto'> 
-                            ID: <h6 className='fw-bold text-dark control_TextoInventario'>{opcion.id}</h6> 
-                            Nombre: <h6 className='text-secondary control_TextoInventario'>{opcion.nombre}</h6> 
-                            Cantidad total: <h6 className='text-success control_TextoInventario'>{opcion.cantidad}</h6>
-                        </label>            
+                <Link to={`/inventario/${opcion.id}`} className='itemHerramientaInventario rounded' key={opcion.id}>                                        
+                        
+                    <label htmlFor='foto'> 
+                        ID: <h6 className='fw-bold text-dark control_TextoInventario'>{opcion.id}</h6> 
+                        Nombre: <h6 className='text-secondary control_TextoInventario'>{opcion.nombre}</h6> 
+                        Cantidad total: <h6 className='text-success control_TextoInventario'>{opcion.cantidad}</h6>
+                    </label>                                                   
 
-                    </Link>                   
+                    <TraerImagenes tipo = '1' ancho='125px' alto='125px' imageId={opcion.id} />                    
 
-                    <TraerImagenes ancho='125px' alto='125px' imageId={opcion.id} />                                       
-
-                </div>
+                </Link>
 
             ))}
 

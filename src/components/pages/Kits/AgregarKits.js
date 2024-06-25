@@ -110,14 +110,15 @@ export default function AgregarKits() {
                                 id={opcion.id}
                                 className="form-control-sm inputCantidad"
                                 name={opcion.id}
-                                placeholder='Cant..'      
+                                placeholder='Cant..' 
+                                defaultValue={1}     
                                 min={1}
                                 max={Number(opcion.cantidad)}                                  
                                 onChange={handleChangeCantidades}
                                 required
                             /> }                                                   
                             
-                            <label> 
+                            <label className='sizeLabel'> 
                                 ID: <h6 className='fw-bold control_Texto'>{opcion.id}</h6> 
                                 Nombre: <h6 className='text-primary control_Texto'>{opcion.nombre}</h6> 
                                 Cantidad disponible: <h6 className='text-success control_Texto'>{opcion.cantidad}</h6>
@@ -125,7 +126,7 @@ export default function AgregarKits() {
 
                             { !checkedItems[opcion.id] &&
 
-                            <TraerImagenes ancho='125px' alto='125px' imageId={opcion.id} /> }
+                            <TraerImagenes tipo='1' ancho='125px' alto='125px' imageId={opcion.id} /> }
 
                         </div>                        
                     ))}  

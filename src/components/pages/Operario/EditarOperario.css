@@ -1,0 +1,66 @@
+.img_ContPreview_workerEdit{
+    display: flex;
+    flex-direction: row;    
+    gap: 5%;
+    justify-content: space-evenly;
+    padding-bottom: 2%;
+    position: absolute;
+    left: 4%; 
+    top:6.5rem;    
+}
+
+#img_PreEworker{    
+    max-height: 13rem;
+    border-radius: 0.5rem;
+    overflow: hidden; 
+}   
+
+#in_imgEworker{
+    display: flex;
+    flex-direction: column;
+}
+
+.formularioEditEworker{     
+    display: flex;
+    flex-direction: column;
+    width: 85%;  
+    position: absolute; 
+    top: 15%;
+    left:5%;        
+}
+
+.inputNoImgEditEworker{
+    justify-content:center;
+    display:flex;    
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;       
+    flex-direction: column;  
+    position: absolute; 
+    top: 5rem;
+    left:55%;
+    right: 2%;  
+    max-height: 30rem;       
+}
+
+.error-formEworker{
+    color: red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+}
+
+.inputs_Edit_Eworker{
+    display: flex;
+    flex-direction: row;
+    width: 40%; 
+    max-height: 10rem;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;    
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;   
+    padding-left: 0.6rem;
+    border: #a8d1eb;
+    border-width: 0.1px;
+    border-style:double;
+    font-size: 12px;
+}

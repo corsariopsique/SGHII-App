@@ -130,7 +130,7 @@ export default function EditarKits() {
 
                     </div>             
 
-                    <h5 id='tag_Incluidas' className='text-wrap badge bg-primary'>Herramientas incluidas</h5>
+                    <h5 id='tag_Incluidas' className='text-wrap badge bg-primary'>Herramientas agregadas actualmente</h5>
 
                     <div className='listaHerramientaEdit'>                    
 
@@ -157,7 +157,7 @@ export default function EditarKits() {
                                     required
                                 /> }                                                   
                                 
-                                <label> 
+                                <label className='sizeLabel'> 
                                     ID: <h6 className='fw-bold control_Texto'>{opcionEdit.id}</h6> 
                                     Nombre: <h6 className='text-primary control_Texto'>{opcionEdit.nombre}</h6> 
                                     Cantidad disponible: <h6 className='text-success control_Texto'>1</h6>
@@ -165,7 +165,7 @@ export default function EditarKits() {
 
                                 { !checkedItemsEdit[index] &&
 
-                                <TraerImagenes ancho='125px' alto='125px' imageId={opcionEdit.id} /> }
+                                <TraerImagenes tipo='1' ancho='125px' alto='125px' imageId={opcionEdit.id} /> }
 
                             </div>                        
                         ))}  
@@ -195,14 +195,15 @@ export default function EditarKits() {
                                     id={index}
                                     className="form-control-sm inputCantidadEdit"
                                     name={opcionEdit.id}
-                                    placeholder='Cant..'      
+                                    placeholder='Cant..'
+                                    defaultValue={1}      
                                     min={1}
                                     max={Number(opcionEdit.cantidad)}
                                     onChange={handleChangeCantidadesEdit}                               
                                     required
                                 /> }                                                   
                                 
-                                <label> 
+                                <label className='sizeLabel'> 
                                     ID: <h6 className='fw-bold control_Texto'>{opcionEdit.id}</h6> 
                                     Nombre: <h6 className='text-primary control_Texto'>{opcionEdit.nombre}</h6> 
                                     Cantidad disponible: <h6 className='text-success control_Texto'>{opcionEdit.cantidad}</h6>
@@ -210,7 +211,7 @@ export default function EditarKits() {
 
                                 { !checkedItemsEdit2[index] &&
 
-                                <TraerImagenes ancho='125px' alto='125px' imageId={opcionEdit.id} /> }
+                                <TraerImagenes tipo='1' ancho='125px' alto='125px' imageId={opcionEdit.id} /> }
 
                             </div>                        
                         ))}  

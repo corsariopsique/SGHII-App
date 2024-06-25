@@ -1,19 +1,19 @@
-import './Inventario.css';
+import './Operarios.css';
 import { PanelInfoText, Modal } from '../../IndexComponents';
 import {useLoaderData} from 'react-router-dom';
-import ListarHerramientas from './ListarHerramientas';
+import ListarOperarios from './ListarOperarios';
 
-export default function Inventario(){   
+export default function Operarios(){   
     
-    const data_inventario = useLoaderData()        
+    const data_Operarios = useLoaderData()        
 
-    const btnsInventario = [
+    const btnsOperarios = [
         {
-            btnname:"Agregar Herramienta",
-            icobtn:"Tool1Icono",
+            btnname:"Agregar Operario",
+            icobtn:"Oper2PanelIcono",
             estiloBoton:"btn-outline-primary",
             tipo:"button",    
-            accion:"/inventario/agregarherramienta"                                              
+            accion:"/operarios/agregaroperario"                                              
         },
 
         {
@@ -62,7 +62,7 @@ export default function Inventario(){
             periodo: 7,
             estiloItemInfo: "bajos_Inven"
         }
-    ];          
+    ];   
 
     return(
 
@@ -75,12 +75,12 @@ export default function Inventario(){
             />
 
             <Modal 
-            title='Herramientas'
+            title='Operarios'
             estiloModal="modal_intermedio"
             botoncss="btn_ModalIntermedio"
-            botones={btnsInventario}
+            botones={btnsOperarios}
             >                         
-               <ListarHerramientas herramientas={data_inventario} />
+               <ListarOperarios operarios={data_Operarios} />
 
             </Modal>                      
 
@@ -89,15 +89,15 @@ export default function Inventario(){
 }
 
 
-export const inventarioLoader = async () => {
+export const operariosLoader = async () => {
     
-    const itms = await fetch('http://localhost:8081/api/herramientas')   
+    const workers = await fetch('http://localhost:8081/api/operarios')   
     
 
-    if (!itms.ok) {
-        throw Error('No se pudo cargar el listado de herramientas')
+    if (!workers.ok) {
+        throw Error('No se pudo cargar el listado de operarios')
       }
     
-      return itms.json()
+      return workers.json()
 };
 

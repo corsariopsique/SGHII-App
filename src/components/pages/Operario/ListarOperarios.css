@@ -1,11 +1,11 @@
-.control_TextoInventario{
+.control_TextoOperario{
     width: 5rem; 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.listaHerramientaInventario{   
+.lista_Operarios{   
     justify-content:center;
     display:flex;    
     flex-wrap: wrap;
@@ -17,12 +17,12 @@
     right: 2%;        
 }
 
-.itemHerramientaInventario {
+.item_Operario {
     display: flex;
     flex-direction: row;
-    background-color:white;
+    background-color: white;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    width: 20%; 
+    width: 20.5%; 
     max-height: 10rem;
     gap: 0.8rem;
     margin-top: 0.5rem;
@@ -36,8 +36,8 @@
     font-size: 12px;
 }
 
-.itemHerramientaInventario:hover {
-    background-color:white;
+.item_Operario:hover{
+    background-color: white;
     transform: scale(1.05);
 }
 

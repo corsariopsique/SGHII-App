@@ -1,26 +1,25 @@
-import './InfoHerramienta.css';
+import './InfoOperario.css';
 import {Modal, Tablas, TraerImagenes} from '../../IndexComponents';
 import { useLoaderData, useParams } from 'react-router-dom'
 
 
-export default function InfoHerramienta(){       
+export default function InfoOperario(){       
      
-    const data_infoTool = useLoaderData()
-    const idImagen = useParams().toolId;    
+    const data_infoWorker = useLoaderData()
+    const idImagenWorker = useParams().workerId;    
 
-    const btnsInfoHerramienta = [
+    const btnsInfoOperarios = [
         {
             btnname:"Editar",
             icobtn:"EditarIcono",
             estiloBoton:"btn-outline-secondary",
             tipo:"button",  
-            accion:`/inventario/${useParams().toolId}/editarherramienta`
-        },
-
+            accion:`/operarios/${useParams().workerId}/editaroperario`
+        },       
         {
-            btnname:"Descargar",
-            icobtn:"DownloadIcono",
-            estiloBoton:"btn-outline-secondary",
+            btnname:"Paz y Salvo",
+            icobtn:"PazYSalvoIcono",
+            estiloBoton:"btn-outline-success",
             accion:"null",
             tipo:"button",            
         }
@@ -42,10 +41,10 @@ export default function InfoHerramienta(){
     return(
         <div>
             <Modal 
-            title="Información Herramienta"
+            title="Información Operario"
             estiloModal="modal_completo"
             botoncss="btn_ModalIntermedio"
-            botones={btnsInfoHerramienta}
+            botones={btnsInfoOperarios}
             >
 
                 <nav className="nav nav-tabs" id="nav-tab" role="tablist">
@@ -59,17 +58,15 @@ export default function InfoHerramienta(){
                         <div className="card tarjeta_tool text-secondary">
                             <div className="card-header bg-transparent text-primary">Detalles Primarios</div>
                             <div className="card-body">
-                                <h5 className="card-title text-primary text-center">{data_infoTool.nombre}</h5>
+                                <h5 className="card-title text-primary text-center">{data_infoWorker.nombre}</h5>
                                 <ul className="list-group list-group-flush">
-                                    <li className="list-group-item atributo_lista text-secondary">ID: <span className='valor_atributo'>{data_infoTool.id}</span></li>
-                                    <li className="list-group-item atributo_lista text-secondary">Categoria: <span className='valor_atributo'>{data_infoTool.categoria}</span></li>
-                                    <li className="list-group-item atributo_lista text-secondary">Marca: <span className='valor_atributo'>{data_infoTool.marca}</span></li>                                        
-                                    <li className="list-group-item atributo_lista text-secondary">Rol: <span className='valor_atributo'>{data_infoTool.rol}</span></li>
-                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoTool.fecha_in}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Cédula: <span className='valor_atributo'>{data_infoWorker.id}</span></li>                                    
+                                    <li className="list-group-item atributo_lista text-secondary">Rol: <span className='valor_atributo'>{data_infoWorker.rol}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoWorker.fecha_in}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>---</span></li>
                                 </ul>
                             </div>
-                            <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad Total: <span>{data_infoTool.cantidad}</span></li></div>
+                            <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad Total Operaciones: <span></span></li></div>
                         </div> 
 
 
@@ -86,7 +83,7 @@ export default function InfoHerramienta(){
                         </div>  
 
                         <div className="card tarjeta_img_tool">
-                            <TraerImagenes tipo='1' ancho='450px' alto='450px' imageId={idImagen} />                            
+                            <TraerImagenes tipo='2' ancho='450px' alto='450px' imageId={idImagenWorker} />                            
                             <div className="card-body">
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item atributo_lista text-secondary">En prestamo: <span className='valor_atributo'>15</span></li>
@@ -120,16 +117,13 @@ export default function InfoHerramienta(){
     );
 }
 
-export const InfoherramientaLoader = async ({params}) => {        
+export const InfoOperarioLoader = async ({params}) => {        
     
-    const detail = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`)           
+    const trabajador = await fetch(`http://localhost:8081/api/operarios/${params.workerId}`)           
 
-    if (!detail.ok) {
+    if (!trabajador.ok) {
         throw Error('No se pudo cargar la herramienta indicada')
       }
     
-      return detail.json()
+      return trabajador.json()
 }
-
-
-

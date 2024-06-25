@@ -1,0 +1,100 @@
+.img_ContPreviewWorker{
+    display: flex;
+    flex-direction: row;    
+    gap: 8%;
+    justify-content: space-evenly;
+    padding-bottom: 5%;   
+    position: absolute;
+    left: 8%; 
+    top:6.5rem;
+}
+
+#img_PreWorker{    
+    max-height: 13rem;
+    border-radius: 0.5rem;
+    overflow: hidden; 
+}   
+
+#in_imgWorker{    
+    display: flex;
+    flex-direction: column;
+}
+
+.formularioWorker{     
+    display: flex;
+    flex-direction: row;  
+    position: absolute; 
+    width: 85%;
+    top: 15%;
+    left:2%;        
+}
+
+.inputNoImgAddWorker{
+    justify-content:center;
+    display:flex;    
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;       
+    flex-direction: column;  
+    position: absolute; 
+    top: 5rem;
+    left:65%;
+    right: 2%;   
+}
+
+.error-formWorker{
+    color: red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+}
+
+.modal_Form_add_tool{    
+    padding-top: 4rem;
+    left: 35rem;  
+    top:4rem;    
+    display: flex;
+    flex-direction: column;        
+    width: 50rem;
+    height: 50.3rem;    
+    border-radius: 0.5rem;
+    background: #FFF;
+    align-items:center;        
+    overflow:auto;  
+}
+
+#icobtnWorker{
+    align-self: center;       
+}
+
+.botonWorker{ 
+    display:flex;        
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    width:max-content;    
+}
+
+.btn_ModalIntermedio{
+    position:absolute;
+    top: 0.8rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: row;        
+    width: max-content;    
+}
+
+.inputs_Add_Worker{
+    display: flex;
+    flex-direction: row;
+    width: 60%; 
+    max-height: 10rem;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;    
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;   
+    padding-left: 0.6rem;
+    border: #a8d1eb;
+    border-width: 0.1px;
+    border-style:double;
+    font-size: 12px;
+}

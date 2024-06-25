@@ -6,7 +6,7 @@ const OperPanelIcono = (props) => (
     width={16}
     height={16}
     viewBox="0 0 16 16"
-    fill={props.fill}
+    fill="currentColor"
     className="bi bi-person-gear"
     {...props}
     >

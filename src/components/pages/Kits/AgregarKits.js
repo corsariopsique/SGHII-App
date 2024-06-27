@@ -113,7 +113,7 @@ export default function AgregarKits() {
                                 placeholder='Cant..' 
                                 defaultValue={1}     
                                 min={1}
-                                max={Number(opcion.cantidad)}                                  
+                                max={Number(opcion.cantidad_disponible)}                                  
                                 onChange={handleChangeCantidades}
                                 required
                             /> }                                                   
@@ -121,7 +121,7 @@ export default function AgregarKits() {
                             <label className='sizeLabel'> 
                                 ID: <h6 className='fw-bold control_Texto'>{opcion.id}</h6> 
                                 Nombre: <h6 className='text-primary control_Texto'>{opcion.nombre}</h6> 
-                                Cantidad disponible: <h6 className='text-success control_Texto'>{opcion.cantidad}</h6>
+                                Cantidad disponible: <h6 className='text-success control_Texto'>{opcion.cantidad_disponible}</h6>
                             </label>  
 
                             { !checkedItems[opcion.id] &&

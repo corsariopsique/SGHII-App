@@ -198,7 +198,7 @@ export default function EditarKits() {
                                     placeholder='Cant..'
                                     defaultValue={1}      
                                     min={1}
-                                    max={Number(opcionEdit.cantidad)}
+                                    max={Number(opcionEdit.cantidad_disponible)}
                                     onChange={handleChangeCantidadesEdit}                               
                                     required
                                 /> }                                                   
@@ -206,7 +206,7 @@ export default function EditarKits() {
                                 <label className='sizeLabel'> 
                                     ID: <h6 className='fw-bold control_Texto'>{opcionEdit.id}</h6> 
                                     Nombre: <h6 className='text-primary control_Texto'>{opcionEdit.nombre}</h6> 
-                                    Cantidad disponible: <h6 className='text-success control_Texto'>{opcionEdit.cantidad}</h6>
+                                    Cantidad disponible: <h6 className='text-success control_Texto'>{opcionEdit.cantidad_disponible}</h6>
                                 </label>  
 
                                 { !checkedItemsEdit2[index] &&

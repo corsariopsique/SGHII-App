@@ -170,7 +170,30 @@ function EditarHerramienta(){
                             defaultValue={itemToMod.cantidad}
                             min='1'
                             required
-                        />                    
+                        />
+
+                        <label htmlFor="cantidad_disponible" className="form-label">Cantidad Disponible:</label>
+
+                        <input 
+                            type="number" 
+                            className="form-control inputs_Edit_Tool"
+                            name="cantidad_disponible" 
+                            id="cantidad_disponible" 
+                            placeholder={itemToMod.cantidad_disponible}
+                            defaultValue={itemToMod.cantidad_disponible}
+                            readOnly
+                        />  
+
+                         <input 
+                            type="number" 
+                            className="form-control inputs_Edit_Tool"
+                            name="cantidad_respaldo" 
+                            id="cantidad_respaldo" 
+                            placeholder={itemToMod.cantidad}
+                            defaultValue={itemToMod.cantidad}
+                            style={{display: 'none'}}
+                            readOnly
+                        />                         
 
                         <label htmlFor="rol" className="form-label">Rol:</label>
 
@@ -233,13 +256,20 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
 
     //recibir los datos del formulario    
 
-    const data = await request.formData()    
+    const data = await request.formData()  
+    
+    const nueva_cantidad = Number(data.get('cantidad'));
+    const cantidad_disponible = Number(data.get('cantidad_disponible'));
+    const cantidad_respaldo = Number(data.get('cantidad_respaldo'));
+    const cantidad_prestados = cantidad_respaldo - cantidad_disponible;
+    const nueva_cant_disponible = nueva_cantidad - cantidad_prestados;
 
     const dataToChange = {
         id: data.get('id'),
         nombre: data.get('nombre'),
         marca: data.get('marca'),         
-        cantidad: Number(data.get('cantidad')),      
+        cantidad: nueva_cantidad,   
+        cantidad_disponible: nueva_cant_disponible,
         categoria: data.get('categoria'),      
         rol: data.get('rol'),
         fecha_in: data.get('fecha_in')

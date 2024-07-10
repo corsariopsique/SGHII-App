@@ -1,31 +1,32 @@
 import './InfoKit.css';
 import {Modal, Tablas} from '../../IndexComponents';
+import * as Icons from '../../Iconos/IndexIcons';
 import ListarKits from './ListarKits';
-import { useLoaderData, useParams } from 'react-router-dom'
+import { useLoaderData, useParams, useNavigate } from 'react-router-dom'
 
 export default function InfoKit(){       
      
-    const data_infoKit = useLoaderData();    
+    const data_infoKit = useLoaderData(); 
+    const navigate = useNavigate();   
 
-    const numTool = data_infoKit.herramientas.length;    
-  
-    const btnsInfoKit = [
-        {
-            btnname:"Editar",
-            icobtn:"EditarIcono",
-            estiloBoton:"btn-outline-secondary",
-            tipo:"button",  
-            accion:`/kits/${useParams().kitId}/editarkits`
-        },
-
-        {
-            btnname:"Descargar",
-            icobtn:"DownloadIcono",
-            estiloBoton:"btn-outline-secondary",
-            accion:"null",
-            tipo:"button",            
+    const kit_Estado = (estado) => {
+        if(!estado){
+            return 'Disponible'
+        }else{
+            return 'Prestado'
         }
-    ];
+    };    
+
+    const numTool = data_infoKit.herramientas.length; 
+    const enlaceEditarKit = `/kits/${useParams().kitId}/editarkits`;   
+
+    const handlerClickButton = () => {
+        if(!data_infoKit.disponible){
+            navigate(enlaceEditarKit);            
+        }else{
+            alert(`El kit con id ${data_infoKit.id} no es editable porque se encuentra en prestamo`);            
+        }
+    }    
 
     const columns = [
         { key: 'id', title: 'ID' },
@@ -44,10 +45,29 @@ export default function InfoKit(){
         <div>
             <Modal 
             title="Información Kits"
-            estiloModal="modal_completo"
-            botoncss="btn_ModalIntermedio"
-            botones={btnsInfoKit}
+            estiloModal="modal_completo"            
             >
+
+                <div className="btn-group btn_ModalIntermedio" role="group" aria-label="Large button group">                    
+
+                    <button                              
+                        type="button" 
+                        className="btn botonEditKit btn-outline-secondary"
+                        onClick={handlerClickButton}                                       
+                    >                
+                        <Icons.EditarIcono id="icobtnEditKit"/>Editar              
+
+                    </button>                    
+                    
+                    <button  
+                        type="button" 
+                        className="btn botonEditKit btn-outline-secondary"                                                                                   
+                    >                
+                        <Icons.DownloadIcono id="icobtnEditKit"/>Descargar              
+
+                    </button>            
+
+                </div> 
 
                 <nav className="nav nav-tabs" id="nav-tabKit" role="tablist">
                     <a className="nav-link active" id="nav-home-tab" data-bs-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Descripción</a>                    
@@ -63,13 +83,13 @@ export default function InfoKit(){
                                 <h5 className="card-title text-primary text-center">{data_infoKit.nombre}</h5>
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item atributo_lista text-secondary">ID: <span className='valor_atributo'>{data_infoKit.id}</span></li>
-                                    <li className="list-group-item atributo_lista text-secondary">Rol: <span className='valor_atributo'>{data_infoKit.rol}</span></li>                                    
+                                    <li className="list-group-item atributo_lista text-secondary">Rol: <span className='valor_atributo'>{data_infoKit.rol}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Estado: <span className='valor_atributo'>{kit_Estado(data_infoKit.disponible)}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoKit.fecha_in}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>---</span></li>
                                 </ul>
                             </div>
-
-                            {/* aca voy estar pendiente */}
+                            
                             <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad total de herramientas : <span>{numTool}</span></li></div>
                         </div> 
 
@@ -88,7 +108,7 @@ export default function InfoKit(){
 
                         <div className="card tarjeta_img_kit">
                             <div className="card-header bg-transparent text-primary">Listado Herramientas</div>
-                            <ListarKits herramientas={data_infoKit.herramientas} />                                                                 
+                            <ListarKits tipo = '1' herramientas={data_infoKit.herramientas} />                                                                 
                         </div>                                        
                         
                     </div>                    

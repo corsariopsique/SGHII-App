@@ -1,10 +1,11 @@
 import './Kits.css';
-import { PanelInfoText, Modal, Tablas } from '../../IndexComponents';
+import { PanelInfoText, Modal } from '../../IndexComponents';
+import ListarKits from './ListarKits';
 import {useLoaderData} from 'react-router-dom';
 
 export default function Kits(){   
     
-    const data_kits = useLoaderData()        
+    const data_kits = useLoaderData()            
 
     const btnsKits = [
         {
@@ -61,14 +62,7 @@ export default function Kits(){
             periodo: 7,
             estiloItemInfo: "bajos_Inven"
         }
-    ];    
-
-    const col_data = [
-        { key: 'id', title: 'ID' },
-        { key: 'nombre', title: 'Nombre' },
-        { key: 'rol', title: 'Rol' },        
-        { key: 'fecha_in', title: 'Fecha Ingreso'}        
-    ];        
+    ];      
 
     return(
 
@@ -86,11 +80,7 @@ export default function Kits(){
             botoncss="btn_ModalIntermedio"
             botones={btnsKits}
             >                         
-                <Tablas                    
-                    estiloTabla='tabla_Inventario'
-                    columns={col_data} 
-                    data={data_kits}
-                />   
+                <ListarKits tipo = '2' kitsLista={data_kits} />
 
             </Modal>                       
 
@@ -106,7 +96,7 @@ export const kitsLoader = async () => {
 
     if (!kitsLista.ok) {
         throw Error('No se pudo cargar el listado de Kits')
-      }
+    }
     
-      return kitsLista.json()
+    return await kitsLista.json()
 };

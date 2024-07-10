@@ -1,12 +1,23 @@
 import './EditarHerramienta.css';
-import { Form, useParams, useLoaderData, redirect, Outlet} from "react-router-dom";
-import { useState } from "react";
+import { Form, useParams, useLoaderData, useActionData, useNavigate, Outlet} from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Modal } from '../../IndexComponents';
 
 
 function EditarHerramienta(){     
     
-    const itemToMod = useLoaderData();      
+    const itemToMod = useLoaderData();  
+    const idTool = useParams().toolId;
+    const verificacion = useActionData();    
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+
+        if(verificacion){             
+            navigate(`/inventario/${idTool}`);            
+        }        
+        
+    }, [verificacion]);
     
     //control previsualizacion imagen
 
@@ -184,16 +195,25 @@ function EditarHerramienta(){
                             readOnly
                         />  
 
-                         <input 
+                        <input 
                             type="number" 
                             className="form-control inputs_Edit_Tool"
                             name="cantidad_respaldo" 
-                            id="cantidad_respaldo" 
-                            placeholder={itemToMod.cantidad}
+                            id="cantidad_respaldo"                             
                             defaultValue={itemToMod.cantidad}
                             style={{display: 'none'}}
                             readOnly
-                        />                         
+                        />
+
+                        <input 
+                            type="number" 
+                            className="form-control inputs_Edit_Tool"
+                            name="cantidad_kits" 
+                            id="cantidad_kits"                             
+                            defaultValue={itemToMod.cantidad_kits}
+                            style={{display: 'none'}}
+                            readOnly
+                        />                                
 
                         <label htmlFor="rol" className="form-label">Rol:</label>
 
@@ -270,6 +290,7 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
         marca: data.get('marca'),         
         cantidad: nueva_cantidad,   
         cantidad_disponible: nueva_cant_disponible,
+        cantidad_kits: data.get('cantidad_kits'),
         categoria: data.get('categoria'),      
         rol: data.get('rol'),
         fecha_in: data.get('fecha_in')
@@ -298,13 +319,13 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
               },
               body: JSON.stringify(props),
             });
-            
+
             if (!response.ok) {
-              throw new Error('Fallo la actualizacion del registro');
-            }else{
-                console.log('Actualizacion de registro se realizo correctamente');
-                return redirect(`/inventario/${params.toolId}`);
-            }        
+                throw new Error('Fallo la actualizacion del registro');
+              }else{
+                  console.log('Actualizacion de registro se realizo correctamente');
+                  return response.ok;
+              }        
 
         } catch (error) {
             console.error(error);
@@ -336,7 +357,7 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
               headers: {'Content-Type': 'application/octet-stream'},        
               body: props
             });
-      
+
             const result = response.ok;                            
             return result;
         

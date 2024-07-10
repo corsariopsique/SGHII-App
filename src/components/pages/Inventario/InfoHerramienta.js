@@ -7,7 +7,7 @@ export default function InfoHerramienta(){
      
     const data_infoTool = useLoaderData()
     const idImagen = useParams().toolId;    
-    const tool_prestamo = data_infoTool.cantidad - data_infoTool.cantidad_disponible;
+    const tool_prestamo = data_infoTool.cantidad - data_infoTool.cantidad_disponible - data_infoTool.cantidad_kits;
 
     const btnsInfoHerramienta = [
         {
@@ -91,7 +91,9 @@ export default function InfoHerramienta(){
                             <div className="card-body">
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item atributo_lista text-secondary">En prestamo: <span className='valor_atributo'>{tool_prestamo}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">En kits: <span className='valor_atributo'>{data_infoTool.cantidad_kits}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">En inventario: <span className='valor_atributo'>{data_infoTool.cantidad_disponible}</span></li>
+                                    
                                 </ul>
                             </div>
                         </div> 

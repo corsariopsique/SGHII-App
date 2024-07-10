@@ -344,7 +344,8 @@ export const AgregarHerrramientaAction = async ({ request }) => {
       nombre: data.get('nombre'),
       marca: data.get('marca'),         
       cantidad: Number(data.get('cantidad')),  
-      cantidad_disponible: Number(data.get('cantidad')),      
+      cantidad_disponible: Number(data.get('cantidad')),   
+      cantidad_kits: 0,   
       categoria: data.get('categoria'),      
       rol: data.get('rol'),
       fecha_in: fechaActual()            

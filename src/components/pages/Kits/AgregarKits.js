@@ -1,16 +1,39 @@
 import './AgregarKits.css';
 import {Modal,TraerImagenes} from '../../IndexComponents';
 import FormAddKit from './FormAddKit';
-import {Form, redirect, useLoaderData} from 'react-router-dom';
-import { useState } from "react";
 import FormAddToolKit from './FormAddToolKit';
+import {Form, useNavigate, useLoaderData, useActionData} from 'react-router-dom';
+import { useState, useEffect } from "react";
 
-export default function AgregarKits() {
-    
-    const listado_Herramienta = useLoaderData();
+
+function AgregarKits() {
+
+    const dataNewKit = useActionData();    
+    const listado_Herramienta = useLoaderData();    
+    const navigate = useNavigate();
     
     const [checkedItems, setCheckedItems] = useState({});    
     const [cantItems, setCantItems] = useState({});
+
+    useEffect(() => {
+
+        if(dataNewKit){
+            const nuevoKit = FormAddKit(dataNewKit.kitData);
+            nuevoKit.then((state) => {
+                if(state){
+                    const kitWImage = FormAddToolKit(dataNewKit.kitData.id,dataNewKit.herramientas);   
+                    if(kitWImage){
+                        kitWImage.then((kitFull)=> {
+                            if(kitFull){
+                                navigate(`/kits/${dataNewKit.kitData.id}`);
+                            }
+                        });
+                    }                    
+                }
+            });
+        }
+
+      }, [dataNewKit]);
 
     // manejador eventos checkbox
 
@@ -138,6 +161,8 @@ export default function AgregarKits() {
         </Modal>
     ) 
 }
+export default AgregarKits;
+
 
 // trae listado de herramientas disponibles
 
@@ -205,7 +230,9 @@ export const AgregarKitsAction = async ({ request }) => {
             pack.push(tool);                   
         }        
         else{ formKits[key]=value; }        
-    });  
+    }); 
+    
+    const herramientas = pack;
 
     // creacion de objeto
     
@@ -213,20 +240,13 @@ export const AgregarKitsAction = async ({ request }) => {
     id : generateRandomId(5),
     nombre : formKits['name_kit'],
     rol : formKits['rol_kit'],
-    fecha_in : fechaActual()
-    }     
+    fecha_in : fechaActual(),
+    disponible: 0    
+    };    
 
-    const herramientas = pack;
+    const totalData ={ kitData, herramientas };
 
-    console.log("recibido del formulario",kitData,herramientas);  
+    console.log("recibido del formulario",totalData);    
     
-    const nuevoKit = FormAddKit(kitData);
-    nuevoKit.then((state) => {
-        if(state){
-            FormAddToolKit(kitData.id,herramientas);            
-        }
-    });
-
-    // redirect the user
-    return redirect(`/kits`);
+    return totalData;
 }

@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `SGHII`.`herramienta` (
   `fecha_out` DATE,
   `cantidad` INT NOT NULL,
   `cantidad_disponible` INT,
+  `cantidad_kits` INT,
 
   PRIMARY KEY (`idherramienta`))  
 ENGINE = InnoDB;
@@ -66,6 +67,7 @@ CREATE TABLE IF NOT EXISTS `SGHII`.`kit` (
   `nombre` VARCHAR(25) NOT NULL,
   `fecha_in` DATE NOT NULL,
   `fecha_out` DATE,
+  `disponible` BOOLEAN,
   
   PRIMARY KEY (`idkit`))
 ENGINE = InnoDB;
@@ -143,10 +145,11 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS `SGHII`.`asg_dev_tool` (
+  `id` INT NOT NULL AUTO_INCREMENT,
   `id_operacion_tool` VARCHAR(5) NOT NULL,
   `id_tool` VARCHAR(5) NOT NULL,
-  PRIMARY KEY (`id_operacion_tool`, `id_tool`),
-  INDEX `id_herramienta_idx` (`id_tool` ASC) VISIBLE,
+  PRIMARY KEY (`id`),
+  INDEX `id_herramienta_idx` (`id_operacion_tool` ASC) VISIBLE,
   CONSTRAINT `id_operacion_tool`
     FOREIGN KEY (`id_operacion_tool`)
     REFERENCES `SGHII`.`asignacion_devolucion` (`id_operaciones`)
@@ -383,84 +386,100 @@ CREATE TRIGGER control_oper_kits
 
 END $$
 
--- -----------------------------------------------------
--- Trigger actualizar herramientas disponibles asignacion-tools
--- -----------------------------------------------------
+---------------------------------------------------------------
+--Trigger actualizar herramientas disponibles asignacion-tools
+---------------------------------------------------------------
 
-DELIMITER$$
-CREATE TRIGGER `actualiza_disponibles` AFTER INSERT ON `asg_dev_tool` FOR EACH ROW begin 
-	call calcular_cant_disponible(new.id_tool);
-end$$
+DELIMITER $$
+  CREATE TRIGGER `actualiza_disponibles` AFTER INSERT ON `asg_dev_tool` FOR EACH ROW BEGIN 
+    CALL calcular_cant_disponible(NEW.id_tool);
+END $$
 
--- -----------------------------------------------------
--- Trigger actualizar herramientas disponibles add tool kit
--- -----------------------------------------------------
+--------------------------------------------------------------
+--Trigger actualizar herramientas disponibles add tool kit
+--------------------------------------------------------------
 
-DELIMITER$$
-CREATE TRIGGER `actualizar_herramientas_insercion` AFTER INSERT ON `tool_kit` FOR EACH ROW begin 
-	call calcular_cant_disponible(new.id_tool);
-end$$
+DELIMITER $$
+  CREATE TRIGGER `actualizar_herramientas_insercion` AFTER INSERT ON `tool_kit` FOR EACH ROW BEGIN 
+    CALL calcular_cant_disponible(NEW.id_tool);
+END $$
 
--- -----------------------------------------------------
--- Trigger actualizar herramientas disponibles delete tool kit
--- -----------------------------------------------------
+--------------------------------------------------------------
+--Trigger actualizar herramientas disponibles delete tool kit
+--------------------------------------------------------------
 
-DELIMITER$$
-CREATE TRIGGER `actualizar_herramientas_delete` AFTER DELETE ON `tool_kit` FOR EACH ROW begin 
-	call calcular_cant_disponible(OLD.id_tool);
-end$$
+DELIMITER $$
+  CREATE TRIGGER `actualizar_herramientas_delete` AFTER DELETE ON `tool_kit` FOR EACH ROW BEGIN 
+    CALL calcular_cant_disponible(OLD.id_tool);
+END $$
+
+----------------------------------------------------------
+--Trigger actualizar kit disponibles add asg_dev_kit
+----------------------------------------------------------
+
+DELIMITER $$
+  CREATE TRIGGER `actualiza_kit_disponibles` AFTER INSERT ON `asg_dev_kit` FOR EACH ROW BEGIN 
+    CALL kit_disponible(NEW.id_kit);
+END $$
+
+
 
 -----------------------------------------------------------------------------------------------------------------------------
--- VISTAS SGHII
+--VISTAS SGHII
 -----------------------------------------------------------------------------------------------------------------------------
 
--- sghii.herramientas_asignadas source
+--sghii.herramientas_asignadas source
 
-CREATE VIEW herramientas_asignadas as
-SELECT idherramienta, COUNT(idherramienta) AS conteo_operaciones
-FROM herramienta h 
-INNER JOIN asg_dev_tool adt ON adt.id_tool = h.idherramienta
-inner join asignacion_devolucion ad on ad.id_operaciones = adt.id_operacion_tool
-where ad.tipo=1
-GROUP BY h.idherramienta;
+DELIMITER $$
+  CREATE VIEW herramientas_asignadas AS
+    SELECT idherramienta, COUNT(idherramienta) AS conteo_operaciones
+    FROM herramienta h 
+    INNER JOIN asg_dev_tool adt ON adt.id_tool = h.idherramienta
+    INNER JOIN asignacion_devolucion ad ON ad.id_operaciones = adt.id_operacion_tool
+    WHERE ad.tipo=1
+    GROUP BY h.idherramienta;
+END $$
 
 -- sghii.herramientas_devueltas source
-
-CREATE VIEW herramientas_devueltas as
-SELECT idherramienta, COUNT(idherramienta) AS conteo_operaciones
-FROM herramienta h 
-INNER JOIN asg_dev_tool adt ON adt.id_tool = h.idherramienta
-inner join asignacion_devolucion ad on ad.id_operaciones = adt.id_operacion_tool
-where ad.tipo=2
-GROUP BY h.idherramienta;
+DELIMITER $$
+  CREATE VIEW herramientas_devueltas AS
+    SELECT idherramienta, COUNT(idherramienta) AS conteo_operaciones
+    FROM herramienta h 
+    INNER JOIN asg_dev_tool adt ON adt.id_tool = h.idherramienta
+    INNER JOIN asignacion_devolucion ad ON ad.id_operaciones = adt.id_operacion_tool
+    WHERE ad.tipo=2
+    GROUP BY h.idherramienta;
+END $$
 
 -- sghii.herramientas_kits source
 
-CREATE VIEW herramientas_kits as
-SELECT idherramienta, COUNT(idherramienta) AS conteo_kits
-FROM herramienta h 
-INNER JOIN tool_kit tk ON tk.id_tool = h.idherramienta
-GROUP BY h.idherramienta;
+DELIMITER $$
+  CREATE VIEW herramientas_kits AS
+    SELECT idherramienta, COUNT(idherramienta) AS conteo_kits
+    FROM herramienta h 
+    INNER JOIN tool_kit tk ON tk.id_tool = h.idherramienta
+    GROUP BY h.idherramienta;
+END $$
 
 --------------------------------------------------------------------------------------------------------------------
 ---------------Procedimientos---------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------
----- calcular cantidad disponible--------------------
+----calcular cantidad disponible--------------------
 -------------------------------------------------------------------------
 
 DELIMITER $$
-CREATE PROCEDURE sghii.calcular_cant_disponible(in id_tool VARCHAR(5))
+CREATE PROCEDURE sghii.calcular_cant_disponible(IN id_tool VARCHAR(5))
 
-  begin
+  BEGIN
     
-    declare tool_prestadas INT;
-    declare tool_devueltas INT;
-    declare tool_kits INT;
-    declare tool_totales INT;
-    declare tool_disponibles INT;
-    declare tool_conteo INT;
+    DECLARE tool_prestadas INT;
+    DECLARE tool_devueltas INT;
+    DECLARE tool_kits INT;
+    DECLARE tool_totales INT;
+    DECLARE tool_disponibles INT;
+    DECLARE tool_conteo INT;
 
     SELECT COUNT(*) INTO tool_prestadas
       FROM asignacion_devolucion p
@@ -484,12 +503,44 @@ CREATE PROCEDURE sghii.calcular_cant_disponible(in id_tool VARCHAR(5))
 
     SET tool_disponibles = tool_totales - tool_conteo - tool_kits;
     
-    update herramienta 
-      set cantidad_disponible = tool_disponibles
-      where idherramienta = id_tool;
+    UPDATE herramienta 
+      SET cantidad_disponible = tool_disponibles      
+      WHERE idherramienta = id_tool;
 
+    UPDATE herramienta      
+      SET cantidad_kits = tool_kits
+      WHERE idherramienta = id_tool;
 END $$
 
+-------------------------------------------------------------------------
+----calcular kit disponible--------------------
+-------------------------------------------------------------------------
+
+DELIMITER $$
+CREATE PROCEDURE sghii.kit_disponible(IN id_kit VARCHAR(5))
+
+  BEGIN
+    
+    DECLARE kit_prestadas INT;
+    DECLARE kit_devueltas INT;    
+    DECLARE kit_conteo INT;
+
+    SELECT COUNT(*) INTO kit_prestadas
+      FROM asignacion_devolucion p
+      JOIN asg_dev_kit i ON p.id_operaciones = i.id_operacion_kit
+      WHERE i.id_kit = id_kit AND p.tipo = 1;  
+    
+    SELECT COUNT(*) INTO kit_devueltas
+      FROM asignacion_devolucion p
+      JOIN asg_dev_kit i ON p.id_operaciones = i.id_operacion_kit
+      WHERE i.id_kit = id_kit AND p.tipo = 2;  
+
+    SET kit_conteo = kit_prestadas - kit_devueltas;
+
+    UPDATE kit 
+      SET disponible = kit_conteo        
+      WHERE idkit = id_kit;          
+END $$
 
 USE `SGHII` ;
 

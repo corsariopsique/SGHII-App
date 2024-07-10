@@ -1,0 +1,209 @@
+.formularioAddOperacion{     
+    display: flex;
+    flex-direction: column;  
+    position: absolute; 
+    top: 11%;
+    left:2%;
+    right: 2%;        
+}
+
+.tipo_Operacion{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:1rem;    
+}
+
+.error-form{
+    color: red;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+}
+
+.listaOperarios{
+    justify-content: center;
+    display:flex;    
+    flex-wrap: wrap;
+    position: absolute;
+    top:8.3rem;
+    left:0.2rem;
+    width: 48%;
+    padding-bottom: 0.5rem;    
+    border: #6197ce;
+    border-style: groove;
+    overflow: auto;
+}
+
+.listaHerramientaOperacion{
+    justify-content: center;
+    display:flex;    
+    flex-wrap: wrap;
+    position: absolute;
+    top:8.3rem;
+    left:48rem;
+    width: 48%;
+    padding-bottom: 0.5rem;    
+    border: #61ce82;
+    border-style:groove;
+    overflow: auto;
+}
+
+.itemOperario {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 45%; 
+    max-height: 10rem;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;    
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;   
+    padding-left: 0.6rem;
+    border: #a8d1eb;
+    border-width: 0.1px;
+    border-style:double;
+    font-size: 12px;
+}
+
+.itemOperario:hover{
+    background-color: white;
+    transform: scale(1.08);
+} 
+
+.itemTools {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 45%; 
+    max-height: 10rem;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;    
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;   
+    padding-left: 0.6rem;
+    border: #a8d1eb;
+    border-width: 0.1px;
+    border-style:double;
+    font-size: 12px;
+}
+
+.itemTools:hover{
+    background-color: white;
+    transform: scale(1.08);
+} 
+
+.etiquetaKits{
+    display: inline;
+}
+
+.previewImageTool{
+    max-width: 7.8rem;
+    justify-content: center;
+    align-content: center;
+}
+
+.inputCantToolOper{
+    max-width: 5rem;
+    max-height: 4rem;
+    align-self: center;
+}
+
+.modal_Form_add_tool{    
+    padding-top: 4rem;
+    left: 35rem;  
+    top:4rem;    
+    display: flex;
+    flex-direction: column;        
+    width: 50rem;
+    height: 50.3rem;    
+    border-radius: 0.5rem;
+    background: #FFF;
+    align-items:center;        
+    overflow:auto;  
+}
+
+.control_Texto{
+    width: 5rem; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#tag_Operarios{
+    position: absolute;
+    font-size:large;
+    top: 1rem;
+    left:1rem;
+}
+
+#tag_Herramientas{
+    position: absolute;
+    font-size:large;
+    top: 1rem;
+    left:1rem;
+}
+
+.sizeLabel{
+    width: 5.4rem;
+}
+
+.sizeLabelTipo{
+    font-size: x-large;
+}
+
+.itemSeleccionRadio {
+    display: flex;
+    flex-direction: row;
+    background-color: white;    
+    width:fit-content; 
+    max-height:fit-content;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;    
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;   
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+    border: #a8d1eb;
+    border-width: 0.1px;
+    border-style:double;   
+}
+
+.etiqueta_Radio{
+    font-size: medium;    
+    align-self: center;    
+}
+
+.disabled-button {
+    background-color: grey; 
+    color: white; 
+    cursor: not-allowed; 
+    pointer-events: none; 
+    opacity: 0.6; 
+}
+
+.botonOperacion{ 
+    display:flex;        
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    width:max-content;    
+}
+
+#icobtnOperacion{
+    align-self: center;       
+}
+
+.btn_ModalIntermedio{
+    position:absolute;
+    top: 0.8rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: row;        
+    width: max-content;    
+}
+

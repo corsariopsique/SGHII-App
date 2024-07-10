@@ -1,11 +1,11 @@
-.control_TextoKits{
+.control_TextoOper{
     width: 5rem; 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-.listaHerramientaKits{   
+.listaHerramientaOper{   
     justify-content:center;
     display:flex;    
     flex-wrap: wrap;
@@ -17,7 +17,7 @@
     right: 2%;        
 }
 
-.itemHerramientaKits {
+.itemHerramientaOper {
     display: flex;
     flex-direction: row;
     background-color:white;
@@ -36,31 +36,7 @@
     font-size: 12px;
 }
 
-.itemHerramientaKits:hover{
-    background-color: white;
-    transform: scale(1.05);
-}
-
-.itemKits {
-    display: flex;
-    flex-direction: row;
-    background-color:white;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    width: 20%; 
-    max-height: 10rem;
-    gap: 0.8rem;
-    margin-top: 0.5rem;
-    margin-left: 0.5rem;    
-    padding-top: 0.6rem;
-    padding-bottom: 0.6rem;   
-    padding-left: 0.6rem;
-    border: #a8d1eb;
-    border-width: 0.1px;
-    border-style:double;
-    font-size: 12px;
-}
-
-.itemKits:hover{
+.itemHerramientaOper:hover{
     background-color: white;
     transform: scale(1.05);
 }

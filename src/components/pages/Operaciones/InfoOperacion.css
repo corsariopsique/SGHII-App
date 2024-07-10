@@ -1,10 +1,10 @@
-#nav-tabKit{
+#nav-tabOper{
     position: absolute;
     top:4rem;
     left:2.1rem;
 }
 
-#nav-tabContentKit{
+#nav-tabContentOper{
     position: absolute;
     top:8rem;
     left:2rem;
@@ -21,7 +21,7 @@
     justify-content: space-between;
 }
 
-.tarjeta_kit{
+.tarjeta_Oper{
     width: 30rem;
 }
 
@@ -32,7 +32,7 @@
     overflow: auto;
 }
 
-.tarjeta_img_kit{    
+.tarjeta_img_Oper{    
     position: absolute;
     top: 0rem;
     left:32rem;
@@ -47,7 +47,7 @@
     width: 26rem;
 }
 
-#icobtn{
+#icobtnOper{
     align-self: center;       
 }
 
@@ -60,11 +60,7 @@
     width: max-content;    
 }
 
-#icobtnEditKit{
-    align-self: center;       
-}
-
-.botonEditKit{ 
+.botonOperInfo{ 
     display:flex;        
     flex-direction: row;
     justify-content: space-between;

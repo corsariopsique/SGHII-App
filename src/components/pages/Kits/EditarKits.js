@@ -1,16 +1,32 @@
 import './EditarKits.css';
 import {Modal,TraerImagenes} from '../../IndexComponents';
 import FormEditKit from './FormEditKit';
-import {Form, redirect, useLoaderData, useParams, Outlet} from 'react-router-dom';
-import { useState } from "react";
+import {Form, useActionData, useLoaderData, useParams, Outlet, useNavigate} from 'react-router-dom';
+import { useState, useEffect } from "react";
 
-export default function EditarKits() {
+export default function EditarKits() {    
     
-    const dataWork = useLoaderData();     
+    const dataWork = useLoaderData();    
+    const kitEditado = useActionData();
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+
+        if(kitEditado){
+            const subidaKit = FormEditKit(kitEditado.id,kitEditado);            
+            subidaKit.then((state)=> {
+                if(state){
+                    navigate(`/kits/${kitEditado.id}`);                
+                }
+            })
+        }        
+        
+      }, [kitEditado]);
     
     const [checkedItemsEdit, setCheckedItemsEdit] = useState({});    
     const [checkedItemsEdit2, setCheckedItemsEdit2] = useState({});    
     const [cantItemsEdit, setCantItemsEdit] = useState({});
+    
 
     // manejador eventos checkbox
 
@@ -62,9 +78,9 @@ export default function EditarKits() {
 
     const dirAccionEditKit = `/kits/${useParams().kitId}/editarkits`;    
 
-    return (
+    return (       
 
-        <>
+        <>            
 
             <Modal         
                 title="Editar Kits"
@@ -126,7 +142,17 @@ export default function EditarKits() {
                             id="fecha_in_kit" 
                             defaultValue={dataWork.kit.fecha_in}                           
                             readOnly                            
-                        />                              
+                        /> 
+
+                        <input 
+                            type="number" 
+                            className="form-control"
+                            name="disponible" 
+                            id="disponible"                             
+                            defaultValue={dataWork.kit.disponible}
+                            style={{display: 'none'}}
+                            readOnly
+                        />                                     
 
                     </div>             
 
@@ -222,9 +248,9 @@ export default function EditarKits() {
             
             </Modal>
 
-            <Outlet />
+            <Outlet />                    
 
-        </>
+        </>                   
 
     ) 
 }
@@ -268,7 +294,7 @@ export const EditarKitsAction = async ({ request }) => {
 
     edit_kits.forEach((value, key) => { 
         const tool = {} ;
-        if(key !== 'name_kit' && key !== 'rol_kit' && key !== 'tools_kits' && key !== 'id' && key !== 'fecha_in_kit'){
+        if(key !== 'name_kit' && key !== 'rol_kit' && key !== 'tools_kits' && key !== 'id' && key !== 'fecha_in_kit' && key !== 'disponible'){
             tool['id'] = key;
             tool['cantidad'] = value;  
             packEdit.push(tool);                   
@@ -278,17 +304,16 @@ export const EditarKitsAction = async ({ request }) => {
 
     // creacion de objeto
     
-    const kitDataEdit = {    
+    const kitDataEdit = {  
+    id: formKitsEdit['id'],      
     nombre : formKitsEdit['name_kit'],
     rol : formKitsEdit['rol_kit'],
-    herramientas : packEdit
-    }
+    herramientas : packEdit,
+    disponible: Number(formKitsEdit['disponible'])
+    }    
 
-    console.log("recibido del formulario",kitDataEdit); 
-    
-    
-    FormEditKit(formKitsEdit['id'], kitDataEdit);     
+    console.log("recibido del formulario",kitDataEdit);     
 
     // redirect the user
-    return redirect(`/kits/${formKitsEdit['id']}`);
+    return kitDataEdit;
 }

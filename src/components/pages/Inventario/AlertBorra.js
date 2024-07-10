@@ -1,10 +1,12 @@
 import './AlertBorra.css';
 import * as Icons from '../../Iconos/IndexIcons';
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link, Navigate, useLoaderData } from "react-router-dom";
 import ReactDOM from 'react-dom';
 import { useState } from 'react';
 
 function AlertBorra () {
+
+    const toolData = useLoaderData();
 
     const idTool = useParams().toolId;
 
@@ -63,14 +65,21 @@ function AlertBorra () {
    
     const HandleronClickEliminar = () => {
 
-        const borraIMG = EliminaImagen();
-        borraIMG.then((state) => {
-            if(state){
-                EliminaTool();                
-            }else{
-                EliminaTool();
-            }
-        })        
+        if(toolData.cantidad === toolData.cantidad_disponible){
+
+            const borraIMG = EliminaImagen();
+            borraIMG.then((state) => {
+                if(state){
+                    EliminaTool();                
+                }else{
+                    EliminaTool();
+                }
+            })
+        }else{
+            alert(`La herramienta con el ID: ${idTool} tiene operaciones pendientes y no puede ser eliminada.`);
+            setRndrModal(false);
+        }
+                
     }; 
     
     const Backdrop = () => {
@@ -133,3 +142,14 @@ function AlertBorra () {
 }
 
 export default AlertBorra;
+
+export const alertBorraLoader = async ({params}) => {        
+    
+    const detailTool = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`)           
+
+    if (!detailTool.ok) {
+        throw Error('No se pudo cargar la herramienta indicada')
+      }
+    
+      return detailTool.json()
+}

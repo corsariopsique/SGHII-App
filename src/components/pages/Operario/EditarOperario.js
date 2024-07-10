@@ -1,12 +1,21 @@
 import './EditarOperario.css';
-import { Form, useParams, useLoaderData, redirect, Outlet} from "react-router-dom";
-import { useState } from "react";
+import { Form, useParams, useLoaderData, useActionData, useNavigate, Outlet} from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Modal } from '../../IndexComponents';
 
 
 function EditarOperario(){     
     
-    const operarioToMod = useLoaderData();      
+    const operarioToMod = useLoaderData();   
+    const verificaOperario = useActionData();
+    const idOperario = useParams().workerId;
+    const navigate = useNavigate();
+    
+    useEffect(() => {     
+        if(verificaOperario){
+            navigate(`/operarios/${idOperario}`);
+        }        
+      }, [verificaOperario]);
     
     //control previsualizacion imagen
 
@@ -229,7 +238,7 @@ export const EditarOperarioAction = async ({ request, params}) => {
               throw new Error('Fallo la actualizacion del registro');
             }else{
                 console.log('Actualizacion de registro se realizo correctamente');
-                return redirect(`/operarios/${params.workerId}`);
+                return response.ok;
             }        
 
         } catch (error) {

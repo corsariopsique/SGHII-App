@@ -1,8 +1,12 @@
-const FormAddKit = async (props) => {  
+const FormAddKit = async (props) => {
+
+  const token = localStorage.getItem('token');    
+
   try{
     const response = await fetch('http://localhost:8081/api/kits', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
+    headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
     body: JSON.stringify(props)
   })
   const result = response.ok;  

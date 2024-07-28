@@ -2,6 +2,7 @@ import './TraerImagenes.css';
 import React, { useEffect, useState } from 'react';
 import {Tool1Icono, OperRolIcono} from './Iconos/IndexIcons';
 
+
 const TraerImagenes = ( props ) => {
     const [imageSrc, setImageSrc] = useState(null);
     const [activaIco, setactivaIco] = useState(false);    
@@ -27,8 +28,12 @@ const TraerImagenes = ( props ) => {
         const fetchImage = async () => {    
 
             try {
-                const response = await fetch(useDir);
-                                
+                const response = await fetch(useDir,{
+                    method: 'GET',
+                    headers: {'Content-Type': 'application/json',
+                                'Authorization': `Bearer ${localStorage.getItem('token')}`}
+                });
+                                                
                 if(!response.ok){
                     setactivaIco(true);
                     console.log('Respuesta del servidor:', response.ok);                    

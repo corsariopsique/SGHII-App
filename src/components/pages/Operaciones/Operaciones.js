@@ -134,8 +134,14 @@ export default function Operaciones(){
 
 
 export const operacionesLoader = async () => {
+
+    const token = localStorage.getItem('token'); 
     
-    const operacionesLista = await fetch('http://localhost:8081/api/operaciones');       
+    const operacionesLista = await fetch('http://localhost:8081/api/operaciones',{
+        method:'GET',
+        headers: {'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`}
+    });                 
 
     if (!operacionesLista.ok) {
         throw Error('No se pudo cargar el listado de operaciones')

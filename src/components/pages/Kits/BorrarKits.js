@@ -10,15 +10,18 @@ function BorrarKits () {
 
     const enlaceCancelarKit = `/kits/${idKit}/editarkits`;    
 
-    const urlDeleteItemKit = `http://localhost:8081/api/kits/${idKit}`;    
-
+    const urlDeleteItemKit = `http://localhost:8081/api/kits/${idKit}`;  
+    
+    const token = localStorage.getItem('token'); 
 
     const [rndrmodalKit, setRndrModalKit] = useState(true);
 
     const EliminaKit = async () => {
 
         fetch(urlDeleteItemKit, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
         })
 
         .then(response => {

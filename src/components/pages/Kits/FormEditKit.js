@@ -1,8 +1,12 @@
-const FormEditKit = async (id,data) => {  
+const FormEditKit = async (id,data) => {
+  
+  const token = localStorage.getItem('token'); 
+  
     try{
       const response = await fetch(`http://localhost:8081/api/kits/${id}`, {
       method: 'PUT',
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
       body: JSON.stringify(data)
     })
     const result = response.ok;  

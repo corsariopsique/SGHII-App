@@ -1,5 +1,5 @@
 import './EditarKits.css';
-import {Modal,TraerImagenes} from '../../IndexComponents';
+import { Modal, TraerImagenes } from '../../IndexComponents';
 import FormEditKit from './FormEditKit';
 import {Form, useActionData, useLoaderData, useParams, Outlet, useNavigate} from 'react-router-dom';
 import { useState, useEffect } from "react";
@@ -258,11 +258,23 @@ export default function EditarKits() {
 // trae listado de herramientas e informacion kit
 
 export const EditarKitsLoader = async ({params}) => {
+
+    const token = localStorage.getItem('token'); 
     
-    const kittraer = await fetch(`http://localhost:8081/api/kits/${params.kitId}`);   
+    const kittraer = await fetch(`http://localhost:8081/api/kits/${params.kitId}`,{
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    }); 
+
     const kit = await kittraer.json();    
     
-    const tools = await fetch('http://localhost:8081/api/herramientas'); 
+    const tools = await fetch('http://localhost:8081/api/herramientas', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    });
+
     const data = await tools.json();        
 
     if (!tools.ok) {

@@ -120,9 +120,15 @@ export default function InfoKit(){
     );
 }
 
-export const InfoKitLoader = async ({params}) => {        
+export const InfoKitLoader = async ({params}) => {  
     
-    const detailKit = await fetch(`http://localhost:8081/api/kits/${params.kitId}`)           
+    const token = localStorage.getItem('token'); 
+    
+    const detailKit = await fetch(`http://localhost:8081/api/kits/${params.kitId}`, {
+        method:'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    })           
 
     if (!detailKit.ok) {
         throw Error('No se pudo cargar el kit indicado')

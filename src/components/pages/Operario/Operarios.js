@@ -90,8 +90,14 @@ export default function Operarios(){
 
 
 export const operariosLoader = async () => {
+
+    const token = localStorage.getItem('token'); 
     
-    const workers = await fetch('http://localhost:8081/api/operarios')   
+    const workers = await fetch('http://localhost:8081/api/operarios', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    })      
     
 
     if (!workers.ok) {

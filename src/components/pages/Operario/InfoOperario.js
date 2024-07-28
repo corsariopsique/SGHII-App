@@ -117,12 +117,18 @@ export default function InfoOperario(){
     );
 }
 
-export const InfoOperarioLoader = async ({params}) => {        
+export const InfoOperarioLoader = async ({params}) => { 
     
-    const trabajador = await fetch(`http://localhost:8081/api/operarios/${params.workerId}`)           
+    const token = localStorage.getItem('token'); 
+    
+    const trabajador = await fetch(`http://localhost:8081/api/operarios/${params.workerId}`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    })              
 
     if (!trabajador.ok) {
-        throw Error('No se pudo cargar la herramienta indicada')
+        throw Error('No se pudo cargar el operador indicado')
       }
     
       return trabajador.json()

@@ -2,7 +2,6 @@ import './InfoHerramienta.css';
 import {Modal, Tablas, TraerImagenes} from '../../IndexComponents';
 import { useLoaderData, useParams } from 'react-router-dom'
 
-
 export default function InfoHerramienta(){       
      
     const data_infoTool = useLoaderData()
@@ -123,9 +122,15 @@ export default function InfoHerramienta(){
     );
 }
 
-export const InfoherramientaLoader = async ({params}) => {        
+export const InfoherramientaLoader = async ({params}) => { 
     
-    const detail = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`)           
+    const token = localStorage.getItem('token');
+
+    const detail = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`,{
+        method:'GET',
+        headers: {'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`}
+    });               
 
     if (!detail.ok) {
         throw Error('No se pudo cargar la herramienta indicada')

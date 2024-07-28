@@ -1,12 +1,18 @@
 import {
   createBrowserRouter,  
-  createRoutesFromElements,  
+  createRoutesFromElements,      
   Route,
-  RouterProvider    
+  RouterProvider  
 } from "react-router-dom";
 
+//componente sesion de usuario
+import { useContext } from "react";
+import AutenticacionContexto from "./components/authentication/AutenticacionContexto";
+import Login from "./components/authentication/Login";
+import Logout from "./components/authentication/Logout";
+
 // componentes iniciales SGHII
-import Login from "./components/pages/Login";
+
 import PanelPrincipal from "./components/pages/PanelPrincipal";
 
 //componentes inventario
@@ -35,139 +41,148 @@ import Operaciones, {operacionesLoader} from "./components/pages/Operaciones/Ope
 import AgregarOperacion, { AgregarOperacionAction, agregarOperacionLoader } from "./components/pages/Operaciones/AgregarOperacion";
 import InfoOperacion, { InfoOperacionLoader } from "./components/pages/Operaciones/InfoOperacion";
 
-
 // Layouts
-import RootLayout from './components/Layouts/RootLayout';
+import HomeLayout from './components/Layouts/HomeLayout';
 import InventarioLayout from "./components/Layouts/InventarioLayout";
 import KitsLayout from "./components/Layouts/KitsLayout";
 import OperariosLayout from './components/Layouts/OperariosLayout';
 import OperacionesLayout from "./components/Layouts/OperacionesLayout";
 
 
+export default function App() {
 
-
-
+  const auteCtx = useContext(AutenticacionContexto);    
 
    const router = createBrowserRouter(
     
     createRoutesFromElements(      
 
       // Gestor de rutas
-      
-      <Route path="/" element={<RootLayout />}>          
-        
-        <Route path="panelprincipal" element={<PanelPrincipal />} />  
 
-        <Route path="inventario" element={<InventarioLayout />}>
-          <Route
-            index
-            element={<Inventario />}
-            loader={inventarioLoader} />                           
-         
-         <Route 
-            path=":toolId"
-            element={<InfoHerramienta />}   
-            loader ={InfoherramientaLoader}/>
+      <Route path="/" element={<HomeLayout />}>
+
+        <Route path="/login" element={<Login />}/>        
+
+        {auteCtx.isLoggedIn && (            
+          <>
           
-          <Route
-            path="agregarherramienta"  
-            element={<AgregarHerramienta />}                                     
-            action={AgregarHerrramientaAction} />    
-          
-          <Route
-            path=":toolId/editarherramienta"
-            element={<EditarHerramienta />}
-            action={EditarHerrramientaAction} 
-            loader={editarherramientaLoader}>  
-            <Route
-              path="deleteherramienta"
-              element={<AlertBorra />} 
-              loader={alertBorraLoader}/>
-          </Route>          
-          
-        </Route>
+            <Route path="panelprincipal" element={<PanelPrincipal />} />  
 
-        <Route path="kits" element={<KitsLayout />}>
+            <Route path="inventario" element={<InventarioLayout />}>
+              <Route
+                index
+                element={<Inventario />}
+                loader={inventarioLoader} />                           
+            
+            <Route 
+                path=":toolId"
+                element={<InfoHerramienta />}   
+                loader ={InfoherramientaLoader}/>
+              
+              <Route
+                path="agregarherramienta"  
+                element={<AgregarHerramienta />}                                     
+                action={AgregarHerrramientaAction} />    
+              
+              <Route
+                path=":toolId/editarherramienta"
+                element={<EditarHerramienta />}
+                action={EditarHerrramientaAction} 
+                loader={editarherramientaLoader}>  
+                <Route
+                  path="deleteherramienta"
+                  element={<AlertBorra />} 
+                  loader={alertBorraLoader}/>
+              </Route>          
+              
+            </Route>
 
-          <Route
-            index
-            element={<Kits />}
-            loader={kitsLoader} />
-          
-          <Route
-            path="agregarkits"
-            element={<AgregarKits />}
-            loader={agregarKitsLoader} 
-            action={AgregarKitsAction}/>
+            <Route path="kits" element={<KitsLayout />}>
 
-          <Route 
-            path=":kitId"
-            element={<InfoKit />}   
-            loader ={InfoKitLoader}/>
+              <Route
+                index
+                element={<Kits />}
+                loader={kitsLoader} />
+              
+              <Route
+                path="agregarkits"
+                element={<AgregarKits />}
+                loader={agregarKitsLoader} 
+                action={AgregarKitsAction}/>
 
-          <Route
-            path=":kitId/editarkits"
-            element={<EditarKits />}
-            action={EditarKitsAction} 
-            loader={EditarKitsLoader}>
-            <Route
-              path="deletekits"
-              element={<BorrarKits />} />            
-          </Route>          
+              <Route 
+                path=":kitId"
+                element={<InfoKit />}   
+                loader ={InfoKitLoader}/>
 
-        </Route>
+              <Route
+                path=":kitId/editarkits"
+                element={<EditarKits />}
+                action={EditarKitsAction} 
+                loader={EditarKitsLoader}>
+                <Route
+                  path="deletekits"
+                  element={<BorrarKits />} />            
+              </Route>          
 
-        <Route path="operarios" element={<OperariosLayout />}>
-          <Route 
-            index
-            element={<Operarios />}
-            loader={operariosLoader}/>
+            </Route>
 
-          <Route
-            path="agregaroperario"
-            element={<AgregarOperario />}
-            action={AgregarOperarioAction}/>
+            <Route path="operarios" element={<OperariosLayout />}>
+              <Route 
+                index
+                element={<Operarios />}
+                loader={operariosLoader}/>
 
-          <Route 
-            path=":workerId"
-            element={<InfoOperario />}   
-            loader ={InfoOperarioLoader}/>
+              <Route
+                path="agregaroperario"
+                element={<AgregarOperario />}
+                action={AgregarOperarioAction}/>
 
-          <Route
-            path=":workerId/editaroperario"
-            element={<EditarOperario />}
-            action={EditarOperarioAction}
-            loader={editarOperarioLoader}>
-            <Route
-              path="deleteoperario"
-              element={<BorrarOperario />}/>            
-          </Route>
+              <Route 
+                path=":workerId"
+                element={<InfoOperario />}   
+                loader ={InfoOperarioLoader}/>
 
-        </Route>
+              <Route
+                path=":workerId/editaroperario"
+                element={<EditarOperario />}
+                action={EditarOperarioAction}
+                loader={editarOperarioLoader}>
+                <Route
+                  path="deleteoperario"
+                  element={<BorrarOperario />}/>            
+              </Route>
 
-        <Route path="operaciones" element={<OperacionesLayout />}>
-          <Route 
-            index
-            element={<Operaciones />}
-            loader={operacionesLoader}/>
+            </Route>
 
-          <Route
-            path="agregaroperacion"
-            element={<AgregarOperacion />}
-            loader={agregarOperacionLoader}
-            action={AgregarOperacionAction} />
+            <Route path="operaciones" element={<OperacionesLayout />}>
+              <Route 
+                index
+                element={<Operaciones />}
+                loader={operacionesLoader}/>
 
-          <Route
-            path= ":operId"
-            element={<InfoOperacion />}
-            loader={InfoOperacionLoader}/>
+              <Route
+                path="agregaroperacion"
+                element={<AgregarOperacion />}
+                loader={agregarOperacionLoader}
+                action={AgregarOperacionAction} />
 
-        </Route>
+              <Route
+                path= ":operId"
+                element={<InfoOperacion />}
+                loader={InfoOperacionLoader}/> 
 
-      </Route>      
+            </Route>
+
+            <Route path="logout" element={<Logout />} />
+
+          </>
+        )} 
+
+        </Route>          
     )
   )
 
-  export default function App() {
-    return <RouterProvider router={router} />;
-  }
+  return <RouterProvider router={router} />;
+
+}

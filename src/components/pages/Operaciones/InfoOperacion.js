@@ -130,9 +130,15 @@ export default function InfoOperacion(){
     );
 }
 
-export const InfoOperacionLoader = async ({params}) => {        
+export const InfoOperacionLoader = async ({params}) => {       
     
-    const detailoper = await fetch(`http://localhost:8081/api/operaciones/${params.operId}`)           
+    const token = localStorage.getItem('token'); 
+    
+    const detailoper = await fetch(`http://localhost:8081/api/operaciones/${params.operId}`,{
+        method:'GET',
+        headers: {'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`}
+    });                      
 
     if (!detailoper.ok) {
         throw Error('No se pudo cargar la operación indicada')

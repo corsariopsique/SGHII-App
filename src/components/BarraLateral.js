@@ -9,7 +9,9 @@ import OperarioIcono from './Iconos/OperarioIcono';
 import ReportesIcono from './Iconos/ReportesIcono';
 import SettingsIcono from './Iconos/SettingsIcono';
 import LogoutIcono from './Iconos/LogoutIcono';
+import ProveedorIcono from './Iconos/ProveedorIcono';
 import Card from './Card';
+
 
 function BarraLateral(){
 
@@ -56,6 +58,12 @@ function BarraLateral(){
                 </li>
             
                 <li className="nav-item contitembar">
+                    <ItemMenuLateral textitem = "Proveedores" enlace="/proveedores">
+                        <ProveedorIcono fill="#1570EF" />
+                    </ItemMenuLateral>
+                </li>
+
+                <li className="nav-item contitembar">
                     <ItemMenuLateral textitem = "Reportes" enlace="/reportes">
                         <ReportesIcono fill="#1570EF" stroke='#5D667'/>
                     </ItemMenuLateral>
@@ -68,7 +76,7 @@ function BarraLateral(){
                 </li>
             
                 <li className="nav-item contitembar">
-                    <ItemMenuLateral textitem = "Cerrar Sesión" enlace="/">
+                    <ItemMenuLateral textitem = "Cerrar Sesión" enlace="/logout">
                         <LogoutIcono fill="#1570EF" stroke='#5D667'/>
                     </ItemMenuLateral>
                 </li>

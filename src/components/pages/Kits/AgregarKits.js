@@ -6,11 +6,12 @@ import {Form, useNavigate, useLoaderData, useActionData} from 'react-router-dom'
 import { useState, useEffect } from "react";
 
 
+
 function AgregarKits() {
 
     const dataNewKit = useActionData();    
     const listado_Herramienta = useLoaderData();    
-    const navigate = useNavigate();
+    const navigate = useNavigate();    
     
     const [checkedItems, setCheckedItems] = useState({});    
     const [cantItems, setCantItems] = useState({});
@@ -167,8 +168,14 @@ export default AgregarKits;
 // trae listado de herramientas disponibles
 
 export const agregarKitsLoader = async () => {
+
+    const token = localStorage.getItem('token'); 
     
-    const tools = await fetch('http://localhost:8081/api/herramientas')   
+    const tools = await fetch('http://localhost:8081/api/herramientas',{
+        method:'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    })              
     
 
     if (!tools.ok) {

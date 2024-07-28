@@ -3,14 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { AutenticadorContextoProvider } from './components/authentication/AutenticacionContexto';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-  <React.StrictMode>   
-    <App />       
-  </React.StrictMode>
+  <AutenticadorContextoProvider>
+    <React.StrictMode>   
+      <App />       
+    </React.StrictMode>
+  </AutenticadorContextoProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

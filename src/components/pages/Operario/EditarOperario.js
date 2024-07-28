@@ -223,15 +223,16 @@ export const EditarOperarioAction = async ({ request, params}) => {
 
     const FormEditWorker = async (props) => {
 
+        const token = localStorage.getItem('token'); 
+
         const urlData = `http://localhost:8081/api/operarios/${params.workerId}`;
     
         try {
             const response = await fetch(urlData, {
               method: 'PUT',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(props),
+              headers: {'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`},
+              body: JSON.stringify(props)
             });
             
             if (!response.ok) {
@@ -248,10 +249,13 @@ export const EditarOperarioAction = async ({ request, params}) => {
     
     const EnvioDatosImagen = async (props) => {
 
+        const token = localStorage.getItem('token');         
+
         try{
             const response = await fetch('http://localhost:8081/api/imagesworker', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: {'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`},
                 body: JSON.stringify(props)
             });
             
@@ -265,10 +269,14 @@ export const EditarOperarioAction = async ({ request, params}) => {
     }
 
     const EnvioImagen = async (props) => {
+
+        const token = localStorage.getItem('token');
+
         try{
             const response = fetch(`http://localhost:8081/api/imagesworker/${params.workerId}`, {
               method: 'PUT',
-              headers: {'Content-Type': 'application/octet-stream'},        
+              headers: {'Content-Type': 'application/octet-stream',  
+                        'Authorization': `Bearer ${token}`},      
               body: props
             });
       
@@ -284,8 +292,14 @@ export const EditarOperarioAction = async ({ request, params}) => {
 
     const EnvioImagenCompleta = async (datos,imagen) => {
 
+        const token = localStorage.getItem('token');
+
         try {
-            const response = await fetch(`http://localhost:8081/api/imagesworker/${params.workerId}`);
+            const response = await fetch(`http://localhost:8081/api/imagesworker/${params.workerId}`, {
+                method: 'GET',
+                headers: {'Content-Type': 'application/json',
+                      'Authorization': `Bearer ${token}`},
+            });   
                             
             if(!response.ok){
                 const nuevaImagen = EnvioDatosImagen(datos);
@@ -312,9 +326,15 @@ export const EditarOperarioAction = async ({ request, params}) => {
 
 // funcion para buscar datos de la herramienta a editar
 
-export const editarOperarioLoader = async ({params}) => {        
+export const editarOperarioLoader = async ({params}) => {  
     
-    const detail = await fetch(`http://localhost:8081/api/operarios/${params.workerId}`)           
+    const token = localStorage.getItem('token'); 
+    
+    const detail = await fetch(`http://localhost:8081/api/operarios/${params.workerId}`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    })              
 
     if (!detail.ok) {
         throw Error('No se pudo cargar el operario indicada')

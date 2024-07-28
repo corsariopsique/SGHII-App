@@ -23,7 +23,7 @@ a.tittlesel{
 .iconitem{
     display: flex;
     width: 2.8rem;
-    height: 2.8rem;
+    height: 1cap;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;

@@ -8,6 +8,8 @@ function BorrarOperario () {
 
     const idWorker = useParams().workerId;
 
+    const token = localStorage.getItem('token');
+
     const enlaceCancelar = `/operarios/${idWorker}/editaroperario`;    
 
     const urlDeleteItem = `http://localhost:8081/api/operarios/${idWorker}`;
@@ -18,29 +20,26 @@ function BorrarOperario () {
     const [rndrmodal, setRndrModal] = useState(true);
 
     const EliminaImagen = async () => {
-        fetch(urlDeleteImage, {
-            method: 'DELETE'
+        
+        const response = await fetch(urlDeleteImage, {
+            method: 'DELETE',
+            headers: {'Authorization': `Bearer ${token}`}
         })
 
-        .then(response => {
-            if (response.ok) {    
-                return response.ok;
-            } else {
-                // Manejar errores de respuesta
-                throw new Error('Error al eliminar la imagen');
-            }
-        })
-
-        .catch(error => {
-            // Manejar el error
-            console.error('Error al eliminar la imagen:', error);
-        });
+        const result = response.ok;
+        if (response.ok) {    
+            return response.ok;
+        } else {
+            // Manejar errores de respuesta
+            throw new Error('Error al eliminar la imagen');
+        }        
     }
 
     const EliminaOperario = async () => {
 
         fetch(urlDeleteItem, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {'Authorization': `Bearer ${token}`}
         })
 
         .then(response => {
@@ -65,7 +64,7 @@ function BorrarOperario () {
 
         const borraIMG = EliminaImagen();
         borraIMG.then((state) => {
-            if(state){
+            if(state.ok){
                 EliminaOperario();                
             }else{
                 EliminaOperario();

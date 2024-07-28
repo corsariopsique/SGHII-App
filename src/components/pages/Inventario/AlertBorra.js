@@ -2,13 +2,15 @@ import './AlertBorra.css';
 import * as Icons from '../../Iconos/IndexIcons';
 import { useParams, Link, Navigate, useLoaderData } from "react-router-dom";
 import ReactDOM from 'react-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function AlertBorra () {
 
     const toolData = useLoaderData();
 
     const idTool = useParams().toolId;
+
+    const token = localStorage.getItem('token');
 
     const enlaceCancelar = `/inventario/${useParams().toolId}/editarherramienta`;    
 
@@ -17,37 +19,34 @@ function AlertBorra () {
     const urlDeleteImage = `http://localhost:8081/api/images/${useParams().toolId}`;
 
 
-    const [rndrmodal, setRndrModal] = useState(true);
+    const [rndrmodal, setRndrModal] = useState(true);   
 
     const EliminaImagen = async () => {
-        fetch(urlDeleteImage, {
-            method: 'DELETE'
+        
+        const response = await fetch(urlDeleteImage, {
+            method: 'DELETE',
+            headers: {'Authorization': `Bearer ${token}`}
         })
 
-        .then(response => {
-            if (response.ok) {    
-                return response.ok;
-            } else {
-                // Manejar errores de respuesta
-                throw new Error('Error al eliminar la imagen');
-            }
-        })
-
-        .catch(error => {
-            // Manejar el error
-            console.error('Error al eliminar la imagen:', error);
-        });
+        const result = response.ok;
+        if (response.ok) {    
+            return response.ok;
+        } else {
+            // Manejar errores de respuesta
+            throw new Error('Error al eliminar la imagen');
+        }        
     }
 
     const EliminaTool = async () => {
 
         fetch(urlDeleteItem, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {'Authorization': `Bearer ${token}` }
         })
 
-        .then(response => {
-            if (response.ok) {    
-                console.log("Respuesta del servidor",response.ok);                                       
+        .then(res => {
+            if (res.ok) {    
+                console.log("Respuesta del servidor",res.ok);                                       
                 alert(`La herramienta con el ID: ${idTool} ha sido eliminada con exito`);
                 setRndrModal(false);                                 
             } else {
@@ -61,15 +60,17 @@ function AlertBorra () {
             console.error('Error al eliminar el registro:', error);
         });
 
-    }
-   
+    };    
+
     const HandleronClickEliminar = () => {
 
         if(toolData.cantidad === toolData.cantidad_disponible){
 
             const borraIMG = EliminaImagen();
+            console.log(borraIMG);
+
             borraIMG.then((state) => {
-                if(state){
+                if(state.ok){                    
                     EliminaTool();                
                 }else{
                     EliminaTool();
@@ -78,9 +79,8 @@ function AlertBorra () {
         }else{
             alert(`La herramienta con el ID: ${idTool} tiene operaciones pendientes y no puede ser eliminada.`);
             setRndrModal(false);
-        }
-                
-    }; 
+        }                    
+    };       
     
     const Backdrop = () => {
         return <div className="backdrop-root" />;
@@ -143,9 +143,15 @@ function AlertBorra () {
 
 export default AlertBorra;
 
-export const alertBorraLoader = async ({params}) => {        
+export const alertBorraLoader = async ({params}) => {    
+
+    const token = localStorage.getItem('token'); 
     
-    const detailTool = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`)           
+    const detailTool = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`,{
+        method:'GET',
+        headers: {'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`}
+    })           
 
     if (!detailTool.ok) {
         throw Error('No se pudo cargar la herramienta indicada')

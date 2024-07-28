@@ -307,6 +307,8 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
     
     // funcion que envia los cambios al servidor
 
+    const token = localStorage.getItem('token');
+
     const FormEditTool = async (props) => {
 
         const urlData = `http://localhost:8081/api/herramientas/${params.toolId}`;
@@ -314,9 +316,8 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
         try {
             const response = await fetch(urlData, {
               method: 'PUT',
-              headers: {
-                'Content-Type': 'application/json',
-              },
+              headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
               body: JSON.stringify(props),
             });
 
@@ -337,7 +338,8 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
         try{
             const response = await fetch('http://localhost:8081/api/images', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
                 body: JSON.stringify(props)
             });
             
@@ -354,7 +356,8 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
         try{
             const response = fetch(`http://localhost:8081/api/images/${params.toolId}`, {
               method: 'PUT',
-              headers: {'Content-Type': 'application/octet-stream'},        
+              headers: {'Content-Type': 'application/octet-stream',
+              'Authorization': `Bearer ${token}`},        
               body: props
             });
 
@@ -371,7 +374,11 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
     const EnvioImagenCompleta = async (datos,imagen) => {
 
         try {
-            const response = await fetch(`http://localhost:8081/api/images/${params.toolId}`);
+            const response = await fetch(`http://localhost:8081/api/images/${params.toolId}`,{
+                method:'GET',
+                headers: {'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`}
+            });
                             
             if(!response.ok){
                 const nuevaImagen = EnvioDatosImagen(datos);
@@ -398,9 +405,15 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
 
 // funcion para buscar datos de la herramienta a editar
 
-export const editarherramientaLoader = async ({params}) => {        
+export const editarherramientaLoader = async ({params}) => {
     
-    const detail = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`)           
+    const token = localStorage.getItem('token');
+    
+    const detail = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`, {
+        method:'GET',
+        headers: {'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`}
+    });
 
     if (!detail.ok) {
         throw Error('No se pudo cargar la herramienta indicada')

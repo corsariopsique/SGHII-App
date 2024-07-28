@@ -10,6 +10,7 @@ function AgregarOperacion () {
     const operaciones = useActionData();    
     const recursos_Operaciones = useLoaderData();    
     const navigate= useNavigate();
+    const token = localStorage.getItem('token'); 
     const enlaceCancelarOperacion = '/operaciones'; 
     const manejoBotonForm = "btn botonOperacion btn-primary disabled-button";    
     
@@ -40,7 +41,11 @@ function AgregarOperacion () {
             const ListarToolsPrestamoActivo = async (idWorker) => {
 
                 setData_Prestamo(null);
-                const listaTools = await fetch(`http://localhost:8081/api/operarios/prestamo/${idWorker}`);
+                const listaTools = await fetch(`http://localhost:8081/api/operarios/prestamo/${idWorker}`,{
+                    method:'GET',
+                    headers: {'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`}
+                });
                 const result = await listaTools.json();                
                 setData_Prestamo(result);                
                 
@@ -510,14 +515,28 @@ export const AgregarOperacionAction = async ({ request }) => {
 }
 
 export const agregarOperacionLoader = async () => {
+
+    const token = localStorage.getItem('token'); 
     
-    const listaKits = await fetch(`http://localhost:8081/api/kits`);   
+    const listaKits = await fetch(`http://localhost:8081/api/kits`,{
+        method:'GET',
+        headers: {'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`}
+    });   
     const kitData = await listaKits.json();    
     
-    const listaTools = await fetch('http://localhost:8081/api/herramientas'); 
+    const listaTools = await fetch('http://localhost:8081/api/herramientas',{
+        method:'GET',
+        headers: {'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`}
+    }); 
     const toolsData = await listaTools.json();        
 
-    const listaWorkers = await fetch('http://localhost:8081/api/operarios'); 
+    const listaWorkers = await fetch('http://localhost:8081/api/operarios',{
+        method:'GET',
+        headers: {'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`}
+    }); 
     const workersData = await listaWorkers.json();    
 
     if (!listaTools.ok) {

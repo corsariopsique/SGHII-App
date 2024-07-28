@@ -91,8 +91,14 @@ export default function Inventario(){
 
 export const inventarioLoader = async () => {
     
-    const itms = await fetch('http://localhost:8081/api/herramientas')   
-    
+    const token = localStorage.getItem('token');  
+
+    const itms = await fetch('http://localhost:8081/api/herramientas',{
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`}
+    });
+        
 
     if (!itms.ok) {
         throw Error('No se pudo cargar el listado de herramientas')

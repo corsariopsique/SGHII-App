@@ -8,6 +8,7 @@ function AgregarOperario () {
 
     const operario = useActionData();    
     const enlaceCancelarOperario = `/operarios`;    
+    const token = localStorage.getItem('token');
 
     const [img_preWorker, setImg_PreWorker] = useState(null);
     const [tipo_imgWorker, setTipo_ImgWorker] = useState(null);
@@ -83,7 +84,8 @@ function AgregarOperario () {
         try{
             const response = await fetch('http://localhost:8081/api/operarios', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`},
             body: JSON.stringify(operario.entrada)
             });
             
@@ -101,7 +103,8 @@ function AgregarOperario () {
         try{
             const response = await fetch('http://localhost:8081/api/imagesworker', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: {'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`},
                 body: JSON.stringify(operario.image_in)
             });
             
@@ -119,7 +122,8 @@ function AgregarOperario () {
         try{
             const response = await fetch(`http://localhost:8081/api/imagesworker/${operario.entrada.id}`, {
               method: 'PUT',
-              headers: {'Content-Type': 'application/octet-stream'},        
+              headers: {'Content-Type': 'application/octet-stream',
+              'Authorization': `Bearer ${token}`},        
               body: operario.image_binary
             });
       

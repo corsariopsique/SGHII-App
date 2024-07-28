@@ -90,8 +90,14 @@ export default function Kits(){
 
 
 export const kitsLoader = async () => {
+
+    const token = localStorage.getItem('token'); 
     
-    const kitsLista = await fetch('http://localhost:8081/api/kits')   
+    const kitsLista = await fetch('http://localhost:8081/api/kits', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    })   
     
 
     if (!kitsLista.ok) {

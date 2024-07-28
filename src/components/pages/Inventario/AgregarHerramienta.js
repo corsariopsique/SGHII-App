@@ -2,11 +2,14 @@ import './AgregarHerramienta.css';
 import * as Icons from '../../Iconos/IndexIcons';
 import {Modal} from '../../IndexComponents';
 import {Form, Link, Navigate, useActionData} from 'react-router-dom';
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import AutenticacionContexto from '../../authentication/AutenticacionContexto';
+
 
 function AgregarHerramienta () {
 
     const herramienta = useActionData();    
+    const auteCtx = useContext(AutenticacionContexto);
     const enlaceCancelar = `/inventario`;    
 
     const [img_pre, setImg_Pre] = useState(null);
@@ -83,7 +86,8 @@ function AgregarHerramienta () {
         try{
             const response = await fetch('http://localhost:8081/api/herramientas', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json',
+            'Authorization': `Bearer ${auteCtx.token}`},
             body: JSON.stringify(herramienta.entrada)
             });
             
@@ -101,7 +105,8 @@ function AgregarHerramienta () {
         try{
             const response = await fetch('http://localhost:8081/api/images', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: {'Content-Type': 'application/json',
+                'Authorization': `Bearer ${auteCtx.token}`},
                 body: JSON.stringify(herramienta.image_in)
             });
             
@@ -119,7 +124,8 @@ function AgregarHerramienta () {
         try{
             const response = await fetch(`http://localhost:8081/api/images/${herramienta.entrada.id}`, {
               method: 'PUT',
-              headers: {'Content-Type': 'application/octet-stream'},        
+              headers: {'Content-Type': 'application/octet-stream',
+              'Authorization': `Bearer ${auteCtx.token}`},        
               body: herramienta.image_binary
             });
       

@@ -34,22 +34,25 @@ export default function ListarElementosOperaciones(props) {
 
             { !props.tipoElemento &&
 
-                <div className='listaHerramientaKits'>                    
-                        
-                    <Link to={`/kits/${props.kit.id}`} className='itemHerramientaOper rounded'>                                                      
-                        
-                        <label> 
-                            ID: <h6 className='fw-bold text-dark control_TextoOper'>{props.kit.id}</h6> 
-                            Nombre: <h6 className='text-success control_TextoOper'>{props.kit.nombre}</h6> 
-                            Rol: <h6 className='text-secondary control_TextoOper'>{props.kit.rol}</h6>
-                        </label>                                               
+                <div className='listaHerramientaKits'>  
 
-                        <Tool1Icono width='125px' height='125px' className='img_info size_Img'/>
+                    {props.kit.map((itemOper,index) => (
 
-                    </Link>                    
+                        <Link to={`/kits/${itemOper.id}`} className='itemHerramientaOper rounded' key={index}>                                                      
+                                                
+                            <label> 
+                                ID: <h6 className='fw-bold text-dark control_TextoOper'>{itemOper.id}</h6> 
+                                Nombre: <h6 className='text-success control_TextoOper'>{itemOper.nombre}</h6> 
+                                Rol: <h6 className='text-secondary control_TextoOper'>{itemOper.rol}</h6>
+                            </label>                                               
 
-                </div>
-            
+                            <Tool1Icono width='125px' height='125px' className='img_info size_Img'/>
+
+                        </Link>
+
+                    ))}                        
+                    
+                </div>                            
             }
 
         </>

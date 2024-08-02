@@ -1,0 +1,58 @@
+.formularioAgregarProveedor{     
+    display: flex;
+    flex-direction: column;  
+    position: absolute; 
+    top: 15%;
+    left:2%;
+    right: 2%;        
+}
+
+.inputNoCheckbox{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap:1rem;
+    padding-bottom: 5rem;
+}
+
+.listaHerramienta{
+    justify-content: center;
+    display:flex;    
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;    
+}
+
+.itemHerramienta {
+    display: flex;
+    flex-direction: row;
+    background-color:white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 20%; 
+    max-height: 10rem;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;    
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;   
+    padding-left: 0.6rem;
+    border: #a8d1eb;
+    border-width: 0.1px;
+    border-style:double;
+    font-size: 12px;
+}
+
+.itemHerramienta:hover {
+    background-color:white;
+    transform: scale(1.08);
+}
+
+.control_Texto{
+    width: 5rem; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sizeLabel{
+    width: 5.4rem;
+}

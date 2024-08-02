@@ -54,7 +54,7 @@
    font-family: "Verdana", Sans-serif;
     font-size: 0.875rem;
     font-style: normal;
-    font-weight: 500;   
+    font-weight: 500;       
  }
 
  th {
@@ -65,8 +65,14 @@
     vertical-align:middle;    
  }
  
- tr {
+ tbody > tr {
     min-height: 10px;
+    cursor:pointer; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+ }
+
+ tbody > tr:hover{
+   transform: scale(1.005);
  }
 
 

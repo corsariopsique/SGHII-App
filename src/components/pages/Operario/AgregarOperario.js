@@ -273,7 +273,33 @@ function AgregarOperario () {
                         maxLength ='25'
                         minLength ='3'
                         required
-                    />                            
+                    />      
+
+                    <label htmlFor="telefono" className="form-label">Telefono:</label>
+
+                    <input 
+                        type="text" 
+                        className="form-control inputs_Add_Worker"
+                        name="telefono" 
+                        id="telefono" 
+                        placeholder='Ingrese rol de herramienta'
+                        maxLength ='15'
+                        minLength ='7'
+                        required
+                    />        
+
+                    <label htmlFor="email" className="form-label">E-mail:</label>
+
+                    <input 
+                        type="email" 
+                        className="form-control inputs_Add_Worker"
+                        name="email" 
+                        id="email" 
+                        placeholder='Ingrese rol de herramienta'
+                        maxLength ='30'
+                        minLength ='10'
+                        required
+                    />                           
 
                 </div>
 
@@ -309,6 +335,9 @@ export const AgregarOperarioAction = async ({ request }) => {
       id: dataWorker.get('id'),
       nombre: dataWorker.get('nombre'),      
       rol: dataWorker.get('rol'),
+      telefono: dataWorker.get('telefono'),
+      email: dataWorker.get('email'),
+      estado: 0,
       fecha_in: fechaActual()            
     }
 

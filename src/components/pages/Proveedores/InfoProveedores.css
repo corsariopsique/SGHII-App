@@ -1,0 +1,73 @@
+#nav-tabSuplier{
+    position: absolute;
+    top:4rem;
+    left:2.1rem;
+}
+
+#nav-tabContentSuplier{
+    position: absolute;
+    top:8rem;
+    left:2rem;
+}
+
+.valor_atributo{
+    font-weight: lighter;    
+}
+
+.atributo_lista{
+    display: flex;
+    font-weight: bolder;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tarjeta_Suplier{
+    width: 30rem;
+}
+
+.last_oper{
+    margin-top: 2rem;
+    width: 30rem;
+    max-height: 18.3rem;
+    overflow: auto;
+}
+
+.tarjeta_img_kit{    
+    position: absolute;
+    top: 0rem;
+    left:32rem;
+    width: 63rem;
+    height:39.7rem;  
+    overflow: auto;  
+}
+.proveedor{
+    position: absolute;
+    top: 0rem;
+    left:69rem;
+    width: 26rem;
+}
+
+#icobtn{
+    align-self: center;       
+}
+
+.btn_ModalIntermedio{
+    position:absolute;
+    top: 0.8rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: row;        
+    width: max-content;    
+}
+
+#icobtnEditSuplier{
+    align-self: center;       
+}
+
+.botonEditSuplier{ 
+    display:flex;        
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    width:max-content;    
+}

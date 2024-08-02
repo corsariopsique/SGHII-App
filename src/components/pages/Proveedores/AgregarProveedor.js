@@ -1,40 +1,29 @@
-import './AgregarKits.css';
+import './AgregarProveedor.css';
 import {Modal,TraerImagenes} from '../../IndexComponents';
-import FormAddKit from './FormAddKit';
-import FormAddToolKit from './FormAddToolKit';
 import {Form, useNavigate, useLoaderData, useActionData} from 'react-router-dom';
+import FormAddProveedor from './FormAddProveedor';
 import { useState, useEffect } from "react";
 
+function AgregarProveedor() {
 
-
-function AgregarKits() {
-
-    const dataNewKit = useActionData();    
+    const dataNewProveedor = useActionData();    
     const listado_Herramienta = useLoaderData();    
     const navigate = useNavigate();    
     
-    const [checkedItems, setCheckedItems] = useState({});    
-    const [cantItems, setCantItems] = useState({});
+    const [checkedItems, setCheckedItems] = useState({});        
 
     useEffect(() => {
 
-        if(dataNewKit){
-            const nuevoKit = FormAddKit(dataNewKit.kitData);
+        if(dataNewProveedor){
+            const nuevoKit = FormAddProveedor(dataNewProveedor);
             nuevoKit.then((state) => {
-                if(state){
-                    const kitWImage = FormAddToolKit(dataNewKit.kitData.id,dataNewKit.herramientas);   
-                    if(kitWImage){
-                        kitWImage.then((kitFull)=> {
-                            if(kitFull){
-                                navigate(`/kits/${dataNewKit.kitData.id}`);
-                            }
-                        });
-                    }                    
+                if(state){                    
+                    navigate(`/proveedores/${dataNewProveedor.id}`);
                 }
-            });
+            });            
         }
 
-      }, [dataNewKit]);
+      }, [dataNewProveedor]);
 
     // manejador eventos checkbox
 
@@ -43,22 +32,16 @@ function AgregarKits() {
         ...checkedItems,
         [e.target.id]: e.target.checked
       });
-    };    
+    };
 
-    // arreglo herramientas - cantidades
+    // arreglo herramientas - cantidades   
 
-    const handleChangeCantidades = () => {
-        setCantItems({
-          ...cantItems          
-        });
-    };    
-
-    const btnsAgregarKit = [
+    const btnsAgregarProveedor = [
         {
             btnname:"Registar",
-            icobtn:"Tool2Icono",
+            icobtn:"ProveedorIcono",
             estiloBoton:"btn-primary",
-            formulario:"add_kit",            
+            formulario:"add_Proveedor",            
             tipo:"submit", 
             accion:"null",                                         
         },
@@ -67,7 +50,7 @@ function AgregarKits() {
             btnname:"Cancelar",
             icobtn:"CancelIcono",
             estiloBoton:"btn-secondary",            
-            accion:"/kits"
+            accion:"/proveedores"
         }        
     ]; 
     
@@ -75,41 +58,54 @@ function AgregarKits() {
     return (
 
         <Modal         
-            title="Agregar Kits"
+            title="Agregar Proveedor"
             estiloModal="modal_completo"
             botoncss="btn_ModalIntermedio"
-            botones={btnsAgregarKit}
+            botones={btnsAgregarProveedor}
             >
 
-            <Form className='formularioAgregarKits' id="add_kit" name="add_kit" action="/kits/agregarkits" method='post'>
+            <Form className='formularioAgregarProveedor' id="add_Proveedor" name="add_Proveedor" action="/proveedores/agregarproveedor" method='post'>
 
                 <div className='inputNoCheckbox'>
 
-                    <label htmlFor="name_kit" className="form-label">Nombre:</label>
+                    <label htmlFor="name_Proveedor" className="form-label">Nombre:</label>
 
                     <input 
                         type='text' 
                         className="form-control"
-                        name="name_kit" 
-                        id="name_kit" 
-                        placeholder='Ingrese nombre del kit'
+                        name="name_Proveedor" 
+                        id="name_Proveedor" 
+                        placeholder='Ingrese nombre del proveedor'
                         maxLength ='25'
                         minLength ='3'                        
                         required
                     />                      
 
-                    <label htmlFor="rol_kit" className="form-label">Rol:</label>
+                    <label htmlFor="phone_Proveedor" className="form-label">Telefono:</label>
 
                     <input 
                         type='text' 
                         className="form-control"
-                        name="rol_kit" 
-                        id="rol_kit" 
-                        placeholder='Ingrese rol del kit'
+                        name="phone_Proveedor" 
+                        id="phone_Proveedor" 
+                        placeholder='Ingrese telefono del proveedor'
                         maxLength ='25'
                         minLength ='3'     
                         required
-                    />                      
+                    />           
+
+                     <label htmlFor="city_Proveedor" className="form-label">Ciudad:</label>
+
+                    <input 
+                        type='text' 
+                        className="form-control"
+                        name="city_Proveedor" 
+                        id="city_Proveedor" 
+                        placeholder='Ingrese ciudad del proveedor'
+                        maxLength ='25'
+                        minLength ='3'     
+                        required
+                    />                 
 
                 </div>             
 
@@ -122,35 +118,19 @@ function AgregarKits() {
                             <input
                                 type="checkbox"
                                 id={opcion.id}                                                                
-                                name='tools_kits'
+                                name='tool'
+                                value={opcion.id}
                                 checked={checkedItems[opcion.id] || false}
                                 onChange={handleChangeCheckbox}
-                            />
-
-                            { checkedItems[opcion.id] &&
-
-                            <input
-                                type="number"
-                                id={opcion.id}
-                                className="form-control-sm inputCantidad"
-                                name={opcion.id}
-                                placeholder='Cant..' 
-                                defaultValue={1}     
-                                min={1}
-                                max={Number(opcion.cantidad_disponible)}                                  
-                                onChange={handleChangeCantidades}
-                                required
-                            /> }                                                   
+                            />                                                                          
                             
                             <label className='sizeLabel'> 
                                 ID: <h6 className='fw-bold control_Texto'>{opcion.id}</h6> 
                                 Nombre: <h6 className='text-primary control_Texto'>{opcion.nombre}</h6> 
-                                Cantidad disponible: <h6 className='text-success control_Texto'>{opcion.cantidad_disponible}</h6>
-                            </label>  
+                                Marca: <h6 className='text-success control_Texto'>{opcion.marca}</h6>
+                            </label>                            
 
-                            { !checkedItems[opcion.id] &&
-
-                            <TraerImagenes tipo='1' ancho='125px' alto='125px' imageId={opcion.id} /> }
+                            <TraerImagenes tipo='1' ancho='125px' alto='125px' imageId={opcion.id} /> 
 
                         </div>                        
                     ))}  
@@ -162,12 +142,12 @@ function AgregarKits() {
         </Modal>
     ) 
 }
-export default AgregarKits;
+export default AgregarProveedor;
 
 
 // trae listado de herramientas disponibles
 
-export const agregarKitsLoader = async () => {
+export const agregarProveedorLoader = async () => {
 
     const token = localStorage.getItem('token'); 
     
@@ -187,7 +167,7 @@ export const agregarKitsLoader = async () => {
 
 // manejo data formulario
 
-export const AgregarKitsAction = async ({ request }) => {
+export const AgregarProveedorAction = async ({ request }) => {
 
     // funcion que genera el id
 
@@ -220,41 +200,39 @@ export const AgregarKitsAction = async ({ request }) => {
 
     //recibir los datos del formulario
 
-    const kits = await request.formData()
+    const proveedor = await request.formData()
 
     // definicion de arreglos de manejo
     
-    const formKits = {};
+    const formProveedor = {};
     const pack = [];
 
     //extraccion de datos del formData
 
-    kits.forEach((value, key) => { 
+    proveedor.forEach((value, key) => { 
         const tool = {} ;
-        if(key !== 'name_kit' && key !== 'rol_kit' && key !== 'tools_kits'){
-            tool['id'] = key;
-            tool['cantidad'] = value;  
+        if(key === 'tool'){
+            tool['id'] = value;            
             pack.push(tool);                   
         }        
-        else{ formKits[key]=value; }        
+        else{ formProveedor[key]=value; }        
     }); 
     
     const herramientas = pack;
 
     // creacion de objeto
     
-    const kitData = {
+    const proveedorData = {
     id : generateRandomId(5),
-    nombre : formKits['name_kit'],
-    rol : formKits['rol_kit'],
+    nombre : formProveedor['name_Proveedor'],
+    telefono : formProveedor['phone_Proveedor'],
+    ciudad: formProveedor['city_Proveedor'],
     fecha_in : fechaActual(),
-    disponible: 0,
-    estado: 0    
-    };    
+    estado: 0,
+    herramientas:herramientas    
+    };
 
-    const totalData ={ kitData, herramientas };
-
-    console.log("recibido del formulario",totalData);    
+    console.log("recibido del formulario",proveedorData);    
     
-    return totalData;
+    return proveedorData;
 }

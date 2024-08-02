@@ -11,10 +11,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- Schema SGHII
 -- -----------------------------------------------------
 
--- -----------------------------------------------------
--- Schema SGHII
--- -----------------------------------------------------
-
 CREATE SCHEMA IF NOT EXISTS `SGHII` DEFAULT CHARACTER SET utf8 ;
 USE `SGHII` ;
 
@@ -33,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `SGHII`.`herramienta` (
   `cantidad` INT NOT NULL,
   `cantidad_disponible` INT,
   `cantidad_kits` INT,
+  `estado` BOOLEAN DEFAULT FALSE,
 
   PRIMARY KEY (`idherramienta`))  
 ENGINE = InnoDB;
@@ -68,6 +65,7 @@ CREATE TABLE IF NOT EXISTS `SGHII`.`kit` (
   `fecha_in` DATE NOT NULL,
   `fecha_out` DATE,
   `disponible` BOOLEAN,
+  `estado` BOOLEAN DEFAULT FALSE,
   
   PRIMARY KEY (`idkit`))
 ENGINE = InnoDB;
@@ -81,8 +79,12 @@ CREATE TABLE IF NOT EXISTS `SGHII`.`operario` (
   `id_worker` VARCHAR(15) NOT NULL,
   `nombre` VARCHAR(50) NOT NULL,
   `rol` VARCHAR(20) NOT NULL,
+  `telefono` VARCHAR(15) NOT NULL,
+  `email` VARCHAR(50),
   `fecha_in` DATE NOT NULL,
   `fecha_out` DATE,
+  `estado` BOOLEAN DEFAULT FALSE,
+
   PRIMARY KEY (`id_worker`))
 ENGINE = InnoDB;
 
@@ -117,6 +119,8 @@ CREATE TABLE IF NOT EXISTS `SGHII`.`proveedor` (
   `ciudad` VARCHAR(15) NOT NULL,
   `fecha_in` DATE NOT NULL,
   `fecha_out` DATE,
+  `estado` BOOLEAN DEFAULT FALSE,
+
   PRIMARY KEY (`id_prove`))
 ENGINE = InnoDB;
 

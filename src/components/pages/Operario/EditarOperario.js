@@ -166,7 +166,35 @@ function EditarOperario(){
                             maxLength ='25'
                             minLength ='3'
                             required
-                        />                          
+                        />  
+
+                        <label htmlFor="telefono" className="form-label">Telefono:</label>  
+
+                        <input 
+                            type="text" 
+                            className="form-control inputs_Edit_Eworker"
+                            name="telefono" 
+                            id="telefono" 
+                            placeholder={operarioToMod.telefono}
+                            defaultValue={operarioToMod.telefono}
+                            maxLength ='15'
+                            minLength ='7'
+                            required
+                        />        
+
+                        <label htmlFor="email" className="form-label">E-mail:</label>
+
+                        <input 
+                            type="email" 
+                            className="form-control inputs_Edit_Eworker"
+                            name="email" 
+                            id="email" 
+                            placeholder={operarioToMod.email}
+                            defaultValue={operarioToMod.email}
+                            maxLength ='30'
+                            minLength ='10'
+                            required
+                        />                                        
 
                         <label htmlFor="fecha_in" className="form-label">Fecha Ingreso:</label>
 
@@ -207,7 +235,10 @@ export const EditarOperarioAction = async ({ request, params}) => {
         id: data.get('id'),
         nombre: data.get('nombre'),        
         rol: data.get('rol'),
-        fecha_in: data.get('fecha_in')
+        fecha_in: data.get('fecha_in'),
+        telefono: data.get('telefono'),
+        email: data.get('email'),
+        estado: 0
     }
 
     const image_in = {

@@ -25,12 +25,14 @@ function AgregarOperacion () {
 
     useEffect(() => {
 
-        const subida = FormAddOperacion(operaciones);
-        subida.then((state)=> {
-            if(state){
-                navigate(`/operaciones/${operaciones.id}`);                
-            }
-        })
+        if(operaciones){
+            const subida = FormAddOperacion(operaciones);
+            subida.then((state)=> {
+                if(state){
+                    navigate(`/operaciones/${operaciones.id}`);                
+                }
+            })
+        }        
         
       }, [operaciones]);
     
@@ -53,7 +55,7 @@ function AgregarOperacion () {
 
             ListarToolsPrestamoActivo(checkedOperario);
         }
-      }, [checkedOperario]);
+      }, [checkedOperario,checkedTipo,checkedTOK]);
 
     const handleChangeCheckedOperario = (e) => {
         setCheckedOperario(e);

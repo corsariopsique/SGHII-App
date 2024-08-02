@@ -5,7 +5,7 @@ import { useLoaderData, useParams } from 'react-router-dom'
 
 export default function InfoOperario(){       
      
-    const data_infoWorker = useLoaderData()
+    const data_infoWorker = useLoaderData()    
     const idImagenWorker = useParams().workerId;    
 
     const btnsInfoOperarios = [
@@ -58,15 +58,17 @@ export default function InfoOperario(){
                         <div className="card tarjeta_tool text-secondary">
                             <div className="card-header bg-transparent text-primary">Detalles Primarios</div>
                             <div className="card-body">
-                                <h5 className="card-title text-primary text-center">{data_infoWorker.nombre}</h5>
+                                <h5 className="card-title text-primary text-center">{data_infoWorker.dataWorker.nombre}</h5>
                                 <ul className="list-group list-group-flush">
-                                    <li className="list-group-item atributo_lista text-secondary">Cédula: <span className='valor_atributo'>{data_infoWorker.id}</span></li>                                    
-                                    <li className="list-group-item atributo_lista text-secondary">Rol: <span className='valor_atributo'>{data_infoWorker.rol}</span></li>
-                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoWorker.fecha_in}</span></li>
-                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>---</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Cédula: <span className='valor_atributo'>{data_infoWorker.dataWorker.id}</span></li>                                    
+                                    <li className="list-group-item atributo_lista text-secondary">Rol: <span className='valor_atributo'>{data_infoWorker.dataWorker.rol}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Telefono: <span className='valor_atributo'>{data_infoWorker.dataWorker.telefono}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Email: <span className='valor_atributo'>{data_infoWorker.dataWorker.email}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoWorker.dataWorker.fecha_in}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>{data_infoWorker.dataWorker.fecha_out}</span></li>
                                 </ul>
                             </div>
-                            <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad Total Operaciones: <span></span></li></div>
+                            <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad Total Operaciones:<span className='valor_atributo'>{data_infoWorker.operWorker.length}</span></li></div>
                         </div> 
 
 
@@ -125,11 +127,37 @@ export const InfoOperarioLoader = async ({params}) => {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
-    })              
+    })   
+    
+    const operacionesPendientesTrabajador = await fetch(`http://localhost:8081/api/operarios/prestamo/${params.workerId}`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    })  
+
+    const operacionesTrabajador = await fetch(`http://localhost:8081/api/operarios/operaciones/${params.workerId}`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    })  
 
     if (!trabajador.ok) {
         throw Error('No se pudo cargar el operador indicado')
-      }
+    }
+
+    if (!operacionesTrabajador.ok) {
+        throw Error('No se pudo cargar las operaciones del operador indicado')
+    }
+
+    if (!operacionesPendientesTrabajador.ok) {
+        throw Error('No se pudo cargar las operaciones pendientes del operador indicado')
+    }
+
+    const dataWorker = await trabajador.json();
+    const operWorker = await operacionesTrabajador.json();
+    const operPendientesWorker = await operacionesPendientesTrabajador.json();
+
+    const totalData = {dataWorker,operWorker,operPendientesWorker};
     
-      return trabajador.json()
+    return totalData;
 }

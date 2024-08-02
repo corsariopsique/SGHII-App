@@ -354,6 +354,7 @@ export const AgregarHerrramientaAction = async ({ request }) => {
       cantidad_kits: 0,   
       categoria: data.get('categoria'),      
       rol: data.get('rol'),
+      estado: 0,
       fecha_in: fechaActual()            
     }
 

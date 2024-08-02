@@ -1,12 +1,16 @@
 import './BorrarOperario.css';
 import * as Icons from '../../Iconos/IndexIcons';
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Link, Navigate, useLoaderData, useNavigate } from "react-router-dom";
 import ReactDOM from 'react-dom';
 import { useState } from 'react';
 
 function BorrarOperario () {
 
     const idWorker = useParams().workerId;
+
+    const dataOper= useLoaderData();    
+
+    const navigate = useNavigate();
 
     const token = localStorage.getItem('token');
 
@@ -62,14 +66,19 @@ function BorrarOperario () {
    
     const HandleronClickEliminar = () => {
 
-        const borraIMG = EliminaImagen();
-        borraIMG.then((state) => {
-            if(state.ok){
-                EliminaOperario();                
-            }else{
-                EliminaOperario();
-            }
-        })        
+        if(dataOper.herramientas.length === 0 && dataOper.kits.length === 0){
+            const borraIMG = EliminaImagen();
+            borraIMG.then((state) => {
+                if(state.ok){
+                    EliminaOperario();                
+                }else{
+                    EliminaOperario();
+                }
+            })            
+        }else{
+            alert(`El operario con el ID: ${idWorker} tiene operaciones pendientes y no puede ser eliminado.`);
+            navigate(enlaceCancelar);
+        }        
     }; 
     
     const Backdrop = () => {
@@ -132,3 +141,20 @@ function BorrarOperario () {
 }
 
 export default BorrarOperario;
+
+export const BorrarOperarioLoader = async ({params}) => { 
+    
+    const token = localStorage.getItem('token');    
+    
+    const operacionesPendientesTrabajador = await fetch(`http://localhost:8081/api/operarios/prestamo/${params.workerId}`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    })          
+
+    if (!operacionesPendientesTrabajador.ok) {
+        throw Error('No se pudo cargar las operaciones pendientes del operador indicado')
+    }   
+    
+    return operacionesPendientesTrabajador.json();    
+}

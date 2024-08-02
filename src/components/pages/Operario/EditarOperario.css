@@ -36,10 +36,10 @@
     padding-bottom: 1.5rem;       
     flex-direction: column;  
     position: absolute; 
-    top: 5rem;
+    top: 5%;
     left:55%;
     right: 2%;  
-    max-height: 30rem;       
+    max-height: 40rem;       
 }
 
 .error-formEworker{

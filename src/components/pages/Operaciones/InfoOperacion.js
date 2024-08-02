@@ -32,9 +32,7 @@ export default function InfoOperacion(){
         }else{            
             return '1';
         }      
-    }
-
-    console.log(numElement());
+    }    
 
     const columns = [
         { key: 'id', title: 'ID' },

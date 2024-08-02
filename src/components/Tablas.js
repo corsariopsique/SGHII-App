@@ -1,11 +1,17 @@
 import React from 'react';
 import './Tablas.css';
-import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
-function Tablas (props) {       
+function Tablas (props) {   
+    
+    const navigate= useNavigate();
     
     const l_clases = "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover";        
     const clases = "tabla table table-striped table-hover" 
+
+    const manejarClick = (e) => {
+        navigate(e);
+    }
    
     return (
 
@@ -25,15 +31,15 @@ function Tablas (props) {
 
                 <tbody>
                 
-                    {props.data.map((row, index) => (                                   
+                    {props.data.map((row, index) => (                        
                     
-                        <tr key={index}>           
+                        <tr key={index} onClick={() => manejarClick(row.id.toString())}>           
 
                             {props.columns.map(column => (
-                            <td key={column.key}><Link className={l_clases} to={row.id.toString()}>{row[column.key]}</Link></td>
-                            ))}
-                            
-                        </tr>                     
+                            <td className={l_clases} key={column.key}>{row[column.key]}</td>
+                            ))}                            
+                        
+                        </tr>
                     ))}
 
                 </tbody>

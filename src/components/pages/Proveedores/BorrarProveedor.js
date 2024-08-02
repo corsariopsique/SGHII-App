@@ -1,26 +1,24 @@
-import './BorrarKits.css';
+import './BorrarProveedor.css';
 import * as Icons from '../../Iconos/IndexIcons';
-import { useParams, Link, Navigate, useNavigate } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import ReactDOM from 'react-dom';
 import { useState } from 'react';
 
-function BorrarKits () {
+function BorrarProveedor () {
 
-    const idKit = useParams().kitId;
+    const idSuplier = useParams().suplierId;    
 
-    const navigate = useNavigate();
+    const enlaceCancelarSuplier = `/proveedores/${idSuplier}/editarproveedor`;    
 
-    const enlaceCancelarKit = `/kits/${idKit}/editarkits`;    
-
-    const urlDeleteItemKit = `http://localhost:8081/api/kits/${idKit}`;  
+    const urlDeleteItemSuplier = `http://localhost:8081/api/proveedores/${idSuplier}`;  
     
     const token = localStorage.getItem('token'); 
 
-    const [rndrmodalKit, setRndrModalKit] = useState(true);
+    const [rndrmodalSuplier, setRndrModalSuplier] = useState(true);
 
-    const EliminaKit = async () => {
+    const EliminaSuplier = async () => {
 
-        fetch(urlDeleteItemKit, {
+        fetch(urlDeleteItemSuplier, {
             method: 'DELETE',
             headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
@@ -29,8 +27,8 @@ function BorrarKits () {
         .then(response => {
             if (response.ok) {    
                 console.log("Respuesta del servidor",response.ok);                                       
-                alert(`El kit con el ID: ${idKit} ha sido eliminado con exito`);
-                setRndrModalKit(false);                                 
+                alert(`El proveedor con el ID: ${idSuplier} ha sido eliminado con exito`);
+                setRndrModalSuplier(false);                                 
             } else {
                 // Manejar errores de respuesta
                 throw new Error('Error al eliminar el registro');
@@ -44,37 +42,34 @@ function BorrarKits () {
 
     }
    
-    const HandleronClickEliminarKit = () => {
-
-        EliminaKit(); 
-        navigate('/kits');
-        
+    const HandleronClickEliminarSuplier = () => {
+        EliminaSuplier();                 
     } 
     
-    const BackdropKit = () => {
+    const BackdropSuplier = () => {
         return <div className="backdrop-root" />;
     };
 
-    const ModalEliminarKit = () => {
+    const ModalEliminarSuplier = () => {
 
         return (
             
             <div className="card text-white bg-danger modal-root delete_alert">
-                <div className="card-header">Eliminar Kit</div>
+                <div className="card-header">Eliminar Proveedor</div>
                 <div className="card-body verificacion">                    
-                    <p className="card-text text-start">¿Esta usted segur@ de eliminar este kit?</p>
+                    <p className="card-text text-start">¿Esta usted segur@ de eliminar este proveedor?</p>
                     <div className="btn-group" role="group" aria-label="Large button group">
 
                         <button  
                             type="button" 
                             className="btn boton btn-danger"                                                                                             
-                            onClick={HandleronClickEliminarKit}        
+                            onClick={HandleronClickEliminarSuplier}        
                         >                
                             <Icons.EliminarIcono id="icobtn"/>Eliminar              
                     
                         </button> 
 
-                        <Link to={enlaceCancelarKit}>
+                        <Link to={enlaceCancelarSuplier}>
                             <button  
                                 type="button" 
                                 className="btn boton btn-secondary"                                                                                   
@@ -93,15 +88,15 @@ function BorrarKits () {
 
         <>            
 
-            {!rndrmodalKit && (<Navigate to="/kits" replace={true} />)}
+            {!rndrmodalSuplier && (<Navigate to="/proveedores" replace={true} />)}
 
-            {rndrmodalKit && ReactDOM.createPortal(
-                <BackdropKit />,
+            {rndrmodalSuplier && ReactDOM.createPortal(
+                <BackdropSuplier />,
                 document.getElementById('backdrop-root')
             )} 
 
-            {rndrmodalKit && ReactDOM.createPortal(
-                <ModalEliminarKit />,
+            {rndrmodalSuplier && ReactDOM.createPortal(
+                <ModalEliminarSuplier />,
                 document.getElementById('overlay-root')
             )}
 
@@ -110,4 +105,4 @@ function BorrarKits () {
     );
 }
 
-export default BorrarKits;
+export default BorrarProveedor;

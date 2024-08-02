@@ -321,7 +321,8 @@ export const EditarKitsAction = async ({ request }) => {
     nombre : formKitsEdit['name_kit'],
     rol : formKitsEdit['rol_kit'],
     herramientas : packEdit,
-    disponible: Number(formKitsEdit['disponible'])
+    disponible: Number(formKitsEdit['disponible']),
+    estado: 0
     }    
 
     console.log("recibido del formulario",kitDataEdit);     

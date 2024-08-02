@@ -293,6 +293,7 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
         cantidad_kits: data.get('cantidad_kits'),
         categoria: data.get('categoria'),      
         rol: data.get('rol'),
+        estado: 0,
         fecha_in: data.get('fecha_in')
     }
 

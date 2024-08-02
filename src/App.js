@@ -34,12 +34,19 @@ import AgregarOperario, { AgregarOperarioAction } from "./components/pages/Opera
 import InfoOperario, { InfoOperarioLoader } from "./components/pages/Operario/InfoOperario";
 import Operarios, { operariosLoader } from "./components/pages/Operario/Operarios";
 import EditarOperario, { EditarOperarioAction, editarOperarioLoader } from "./components/pages/Operario/EditarOperario";
-import BorrarOperario from "./components/pages/Operario/BorrarOperario";
+import BorrarOperario, {BorrarOperarioLoader} from "./components/pages/Operario/BorrarOperario";
 
 // componentes Operaciones
 import Operaciones, {operacionesLoader} from "./components/pages/Operaciones/Operaciones";
 import AgregarOperacion, { AgregarOperacionAction, agregarOperacionLoader } from "./components/pages/Operaciones/AgregarOperacion";
 import InfoOperacion, { InfoOperacionLoader } from "./components/pages/Operaciones/InfoOperacion";
+
+// componente Proveedores
+import Proveedores, { proveedoresLoader } from "./components/pages/Proveedores/Proveedores";
+import AgregarProveedor, { AgregarProveedorAction, agregarProveedorLoader } from "./components/pages/Proveedores/AgregarProveedor";
+import InfoProveedores, {InfoSuplierLoader} from "./components/pages/Proveedores/InfoProveedores";
+import EditarProveedor, {EditarProveedorLoader, EditarProveedorAction} from "./components/pages/Proveedores/EditarProveedor";
+import BorrarProveedor from "./components/pages/Proveedores/BorrarProveedor";
 
 // Layouts
 import HomeLayout from './components/Layouts/HomeLayout';
@@ -47,7 +54,7 @@ import InventarioLayout from "./components/Layouts/InventarioLayout";
 import KitsLayout from "./components/Layouts/KitsLayout";
 import OperariosLayout from './components/Layouts/OperariosLayout';
 import OperacionesLayout from "./components/Layouts/OperacionesLayout";
-
+import ProveedoresLayout from "./components/Layouts/ProveedoresLayout";
 
 export default function App() {
 
@@ -150,7 +157,8 @@ export default function App() {
                 loader={editarOperarioLoader}>
                 <Route
                   path="deleteoperario"
-                  element={<BorrarOperario />}/>            
+                  element={<BorrarOperario />}
+                  loader={BorrarOperarioLoader}/>            
               </Route>
 
             </Route>
@@ -171,6 +179,36 @@ export default function App() {
                 path= ":operId"
                 element={<InfoOperacion />}
                 loader={InfoOperacionLoader}/> 
+
+            </Route>
+
+            <Route path="proveedores" element={<ProveedoresLayout />}>
+              <Route
+                index
+                element={<Proveedores />}
+                loader={proveedoresLoader}/>
+
+              <Route 
+                path="agregarproveedor"
+                element={<AgregarProveedor/>}
+                loader={agregarProveedorLoader}
+                action={AgregarProveedorAction} />
+
+              <Route
+                path= ":suplierId"
+                element={<InfoProveedores />}
+                loader={InfoSuplierLoader}/> 
+
+              <Route
+                path=":suplierId/editarproveedor"
+                element={<EditarProveedor />}
+                action={EditarProveedorAction}
+                loader={EditarProveedorLoader}> 
+                <Route
+                  path="deleteproveedor"
+                  element={<BorrarProveedor />} />  
+
+              </Route>
 
             </Route>
 

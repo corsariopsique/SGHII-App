@@ -12,22 +12,17 @@ export default function InfoProveedores(){
     const numTool_Suplier = data_infoProveedor.herramientas.length; 
     const enlaceEditarProveedor = `/proveedores/${useParams().suplierId}/editarproveedor`;   
 
+    const suplier_Estado = (estado) => {
+        if(!estado){
+            return 'Activo'
+        }else{
+            return 'Dado de baja'
+        }
+    };
+
     const handlerClickButton = () => {
         navigate(enlaceEditarProveedor);        
-    }    
-
-    const columns = [
-        { key: 'id', title: 'ID' },
-        { key: 'name', title: 'Nombre Operario' },        
-        { key: 'date',title: 'Fecha Operación'},
-    ];      
-      
-    const data = [
-        { id: 'S1', name: 'Jose', date:"2024-02-15"},
-        { id: 'A3', name: 'Carlos', date:"2024-01-25"},
-        { id: 'S8', name: 'Roberto', date:"2023-12-21"},
-        { id: 'D5', name: 'Jose Maria', date:"2024-01-09"},
-    ];           
+    }          
 
     return(
         <div>
@@ -73,28 +68,16 @@ export default function InfoProveedores(){
                                     <li className="list-group-item atributo_lista text-secondary">ID: <span className='valor_atributo'>{data_infoProveedor.id}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Telefono: <span className='valor_atributo'>{data_infoProveedor.telefono}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Ciudad: <span className='valor_atributo'>{data_infoProveedor.ciudad}</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Estado: <span className='valor_atributo'>{suplier_Estado(data_infoProveedor.estado)}</span></li>
                                     <li className="list-group-item atributo_lista text-secondary">Fecha de Ingreso: <span className='valor_atributo'>{data_infoProveedor.fecha_in}</span></li>
-                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>---</span></li>
+                                    <li className="list-group-item atributo_lista text-secondary">Fecha de Baja: <span className='valor_atributo'>{data_infoProveedor.fecha_out}</span></li>
                                 </ul>
                             </div>
                             
                             <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad total de herramientas : <span>{numTool_Suplier}</span></li></div>
-                        </div> 
+                        </div>                        
 
-
-                        <div className="card text-secondary last_oper">
-                            <div className="card-header bg-transparent text-primary">Ultimas Operaciones</div>
-                            <div className="card-body">
-                                <Tablas
-                                listado='transaccion'
-                                estiloTabla="tabla_info_tool"
-                                columns={columns}
-                                data={data}
-                                />                                
-                            </div>
-                        </div>   
-
-                        <div className="card tarjeta_img_kit">
+                        <div className="card tarjeta_img_suplier">
                             <div className="card-header bg-transparent text-primary">Listado Herramientas</div>
                             <ListarToolSuplier herramientas={data_infoProveedor.herramientas} />                                                                 
                         </div>                                        

@@ -120,7 +120,8 @@ export default function Operaciones(){
             botoncss="btn_ModalIntermedio"
             botones={btnsOperaciones}
             >                         
-                <Tablas                    
+                <Tablas  
+                    listado='operaciones'                  
                     estiloTabla='tabla_Inventario'
                     columns={col_data} 
                     data={lista_Operaciones}

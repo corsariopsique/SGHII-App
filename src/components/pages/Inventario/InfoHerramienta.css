@@ -6,7 +6,7 @@
 
 #nav-tabContent{
     position: absolute;
-    top:8rem;
+    top:10rem;
     left:2rem;
 }
 
@@ -41,9 +41,9 @@
     overflow: auto;   
 }
 
-.proveedor{
+.operaciones_Tool{
     position: absolute;
-    top: 0rem;
-    left:69rem;
-    width: 26rem;
+    width: 85rem; 
+    top:2rem;
+    left:4.5rem;
 }

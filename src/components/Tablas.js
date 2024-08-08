@@ -8,9 +8,10 @@ function Tablas (props) {
     
     const l_clases = "link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover";        
     const clases = "tabla table table-striped table-hover" 
+    const enlace = props.listado;
 
     const manejarClick = (e) => {
-        navigate(e);
+        navigate(`/${enlace}/${e}`);
     }
    
     return (

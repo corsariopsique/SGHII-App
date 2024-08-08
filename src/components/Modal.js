@@ -12,7 +12,7 @@ function Modal(props){
     return (
         <Card className={modal_clase} id={props.id}>            
             
-            <p className='titlepanel text-wrap badge bg-primary'>{props.title}</p> 
+            <p className='titlepanel text-wrap badge bg-secondary'>{props.title}</p> 
 
             { props.botones!=null &&           
 

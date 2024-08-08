@@ -43,7 +43,7 @@ function AgregarOperacion () {
             const ListarToolsPrestamoActivo = async (idWorker) => {
 
                 setData_Prestamo(null);
-                const listaTools = await fetch(`http://localhost:8081/api/operarios/prestamo/${idWorker}`,{
+                const listaTools = await fetch(`http://localhost:8081/api/operarios/${idWorker}/prestamo`,{
                     method:'GET',
                     headers: {'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`}

@@ -1,0 +1,54 @@
+.control_TextoItem{
+    width: 5rem; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.listaToolsWorker{   
+    justify-content:flex-start;
+    display:flex;    
+    flex-wrap: wrap;
+    padding-bottom: 1%;       
+    flex-direction: row;  
+    position: relative; 
+    top: 0.5%;
+    left:1%;
+    right: 1%;        
+}
+
+.itemToolsWorker {
+    display: flex;
+    flex-direction: row;
+    background-color:white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 20%;  
+    max-height: 20%;  
+    gap: 0.1rem;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;    
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;   
+    padding-left: 0.6rem;
+    border: #a8d1eb;
+    border-width: 0.1px;
+    border-style:double;
+    font-size: 13px;
+}
+
+.itemToolsWorker:hover{
+    background-color: white;
+    transform: scale(1.05);
+}
+
+.img_infoWorker{
+    padding-top: 3%;
+    max-height: max-content; 
+    align-self: center;   
+}
+
+.size_ImgWorker{
+    width: 60%;
+    height: 60%;
+}
+

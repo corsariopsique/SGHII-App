@@ -6,7 +6,7 @@
 
 #nav-tabContentKit{
     position: absolute;
-    top:8rem;
+    top:10rem;
     left:2rem;
 }
 
@@ -37,7 +37,7 @@
     top: 0rem;
     left:32rem;
     width: 63rem;
-    height:39.7rem;  
+    height: 37rem;  
     overflow: auto;  
 }
 .proveedor{

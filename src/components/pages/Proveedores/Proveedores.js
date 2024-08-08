@@ -87,7 +87,8 @@ export default function Proveedores(){
             botoncss="btn_ModalIntermedio"
             botones={btnsProveedores}
             >                         
-                <Tablas                    
+                <Tablas  
+                    listado='proveedores'                  
                     estiloTabla='tabla_Inventario'
                     columns={col_data} 
                     data={data_Proveedores}

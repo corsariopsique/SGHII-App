@@ -1,13 +1,26 @@
 #nav-tab{
     position: absolute;
-    top:4rem;
+    top:5rem;
     left:2.1rem;
 }
 
 #nav-tabContent{
     position: absolute;
-    top:8rem;
+    top:10rem;
     left:2rem;
+}
+
+#nav-tabContentTop{
+    position: absolute;
+    top:2.6rem;
+    left:0rem;
+}
+
+#nav-tab-top{
+    position: absolute;
+    top: 0rem;
+    left:69rem;
+    width: 25rem;        
 }
 
 .valor_atributo{
@@ -21,8 +34,15 @@
     justify-content: space-between;
 }
 
+.atributo_listaOpers{
+    display: flex;
+    font-weight: bolder;
+    flex-direction: row;
+    justify-content:baseline;
+}
+
 .tarjeta_tool{
-    width: 30rem;
+    width: 25rem;
 }
 
 .last_oper_tool{
@@ -35,15 +55,17 @@
 .tarjeta_img_tool{    
     position: absolute;
     top: 0rem;
-    left:32rem;
-    width: 35rem;
+    left:27rem;
+    width: 40rem;
     max-height:39.57rem;   
     overflow: auto;   
 }
 
-.proveedor{
+.tarjeta_Top_Tools{
     position: absolute;
     top: 0rem;
     left:69rem;
-    width: 26rem;
+    width: 25rem;
+    max-height:35.6rem;   
+    overflow: auto;
 }

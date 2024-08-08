@@ -48,7 +48,7 @@ export default function InfoOperacion(){
     ];           
 
     return(
-        <div>
+        <>
             <Modal 
             title="Información Operaciones"
             estiloModal="modal_completo"            
@@ -124,7 +124,7 @@ export default function InfoOperacion(){
 
             </Modal>
                                     
-        </div>
+        </>
     );
 }
 

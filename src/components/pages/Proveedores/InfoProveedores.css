@@ -6,7 +6,7 @@
 
 #nav-tabContentSuplier{
     position: absolute;
-    top:8rem;
+    top:10rem;
     left:2rem;
 }
 
@@ -32,12 +32,12 @@
     overflow: auto;
 }
 
-.tarjeta_img_kit{    
+.tarjeta_img_suplier{    
     position: absolute;
     top: 0rem;
     left:32rem;
     width: 63rem;
-    height:39.7rem;  
+    height:37rem;  
     overflow: auto;  
 }
 .proveedor{

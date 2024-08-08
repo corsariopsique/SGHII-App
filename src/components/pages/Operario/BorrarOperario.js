@@ -146,7 +146,7 @@ export const BorrarOperarioLoader = async ({params}) => {
     
     const token = localStorage.getItem('token');    
     
-    const operacionesPendientesTrabajador = await fetch(`http://localhost:8081/api/operarios/prestamo/${params.workerId}`, {
+    const operacionesPendientesTrabajador = await fetch(`http://localhost:8081/api/operarios/${params.workerId}/prestamo`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},

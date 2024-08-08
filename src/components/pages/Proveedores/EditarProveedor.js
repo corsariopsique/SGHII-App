@@ -23,8 +23,7 @@ export default function EditarProveedor() {
         
       }, [suplierEditado]);
     
-    const [checkedItemsEdit, setCheckedItemsEdit] = useState({});    
-    const [checkedItemsEdit2, setCheckedItemsEdit2] = useState({});    
+    const [checkedItemsEdit, setCheckedItemsEdit] = useState({});
 
     // manejador eventos checkbox
 
@@ -33,14 +32,7 @@ export default function EditarProveedor() {
         ...checkedItemsEdit,
         [e.target.id]: e.target.checked
       });
-    };    
-
-    const handleChangeCheckboxSuplierEdit2 = (e) => {
-        setCheckedItemsEdit2({
-          ...checkedItemsEdit2,
-          [e.target.id]: e.target.checked
-        });
-    };    
+    };   
 
     const btnsEditarSuplier = [
         {
@@ -160,10 +152,10 @@ export default function EditarProveedor() {
 
                                 <input
                                     type="checkbox"
-                                    id={index}                                                                
-                                    name='tool'
+                                    id={opcionEdit.id}                                                                
+                                    name='toolBase'
                                     value={opcionEdit.id}
-                                    checked={ checkedItemsEdit[index] || false }
+                                    checked={ checkedItemsEdit[opcionEdit.id] || false }
                                     onChange={handleChangeCheckboxSuplierEdit}                                                                        
                                 />                                                                                
                                 
@@ -190,11 +182,11 @@ export default function EditarProveedor() {
 
                                 <input
                                     type="checkbox"
-                                    id={index}                                                                
+                                    id={opcionEdit.id}                                                                
                                     name='tool'
                                     value={opcionEdit.id}
-                                    checked={checkedItemsEdit2[index] || false}
-                                    onChange={handleChangeCheckboxSuplierEdit2}
+                                    checked={checkedItemsEdit[opcionEdit.id] || false}
+                                    onChange={handleChangeCheckboxSuplierEdit}
                                 />                                                                         
                                 
                                 <label className='sizeLabel'> 
@@ -266,7 +258,7 @@ export const EditarProveedorAction = async ({ request }) => {
     // definicion de arreglos de manejo
     
     const formSuplierEdit = {};
-    const packEdit = [];
+    const packEdit = [];    
 
     //extraccion de datos del formData
 

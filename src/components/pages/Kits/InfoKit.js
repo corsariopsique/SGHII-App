@@ -131,8 +131,7 @@ export default function InfoKit(){
 
                         <div className="card text-secondary operaciones_Tool">
                             <div className="card-header bg-transparent text-primary">Operaciones</div>
-                            <div className="card-body">
-                                <h5 className="card-title text-primary text-center">ID Kit: {data_infoKit.kitDetail.id}</h5>
+                            <div className="card-body">                                
                                 <Tablas
                                 listado='operaciones'
                                 estiloTabla="tabla_info_tool"

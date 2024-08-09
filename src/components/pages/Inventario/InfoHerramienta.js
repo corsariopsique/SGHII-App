@@ -119,6 +119,57 @@ export default function InfoHerramienta(){
                             </div>
                         </div>
 
+                        <nav class="nav nav-tabs" id="nav-tab-top" role="tablist">
+                            <a class="nav-link active" id="nav-tools-tab" data-bs-toggle="tab" href="#nav-tools" role="tab" aria-controls="nav-tools" aria-selected="true">Top - Operarios</a>
+                            <a class="nav-link" id="nav-kits-tab" data-bs-toggle="tab" href="#nav-kits" role="tab" aria-controls="nav-kits" aria-selected="false">Top - Kits</a>                            
+                        </nav>      
+
+                        <div class="tab-content" id="nav-tabContentTop">                        
+
+                            <div className="card tarjeta_Top_Tools tab-pane fade show active" id="nav-tools" role="tabpanel" aria-labelledby="nav-tools-tab">                            
+                                <div className="card-body">
+                                <h5 className="card-header bg-transparent text-primary">Top - Operarios</h5>
+                                    {data_infoTool.herramientaResumen.listaUsoOperarios.map((item,index)=> (
+
+                                        <>
+                                            <div className="card-header bg-transparent text-success">
+                                                <li className="list-group-item atributo_listaOpers text-secondary" >Top # =  [ <span className='valor_atributo text-secondary'>{index+1}</span> ]</li>
+                                                <li className="list-group-item atributo_listaOpers text-secondary" >ID Operario =  [ <span className='valor_atributo text-secondary'>{item.operario.id}</span> ]</li>
+                                                <li className="list-group-item atributo_listaOpers text-secondary" >Nombre = [<span className='valor_atributo text-secondary'>{item.operario.nombre}</span>]</li>    
+                                                <li className="list-group-item atributo_listaOpers text-secondary" >Rol = [<span className='valor_atributo text-secondary'>{item.operario.rol}</span>]</li>    
+                                                <li className="list-group-item atributo_listaOpers text-secondary" >Cantidad de prestamos = [<span className='valor_atributo text-secondary'>{item.cantidad}</span>]</li>                                            
+                                            </div>
+
+                                            <div className='card-footer' key={index}></div>                                        
+                                        </>
+                                    ))}
+
+                                </div>
+                            </div>
+
+                            <div className="card tarjeta_Top_Tools tab-pane fade show" id="nav-kits" role="tabpanel" aria-labelledby="nav-kits-tab">                            
+                                <div className="card-body">
+                                <h5 className="card-header bg-transparent text-primary">Top - Kits</h5>
+                                    {data_infoTool.herramientaResumen.listaUsoKits.map((item,index)=> (
+
+                                        <>
+                                            <div className="card-header bg-transparent text-success">
+                                                <li className="list-group-item atributo_listaOpers text-secondary" >Top # =  [ <span className='valor_atributo text-secondary'>{index+1}</span> ]</li>
+                                                <li className="list-group-item atributo_listaOpers text-secondary" >ID Kit =  [ <span className='valor_atributo text-secondary'>{item.kit.id}</span> ]</li>
+                                                <li className="list-group-item atributo_listaOpers text-secondary" >Nombre = [<span className='valor_atributo text-secondary'>{item.kit.nombre}</span>]</li>    
+                                                <li className="list-group-item atributo_listaOpers text-secondary" >Rol = [<span className='valor_atributo text-secondary'>{item.kit.rol}</span>]</li>    
+                                                <li className="list-group-item atributo_listaOpers text-secondary" >Cantidad de piezas = [<span className='valor_atributo text-secondary'>{item.cantidad}</span>]</li>                                            
+                                            </div>
+
+                                            <div className='card-footer' key={index}></div>                                        
+                                        </>
+                                    ))}
+
+                                </div>
+                            </div>
+
+                        </div>          
+
                     </div>
 
 
@@ -185,6 +236,12 @@ export const InfoherramientaLoader = async ({params}) => {
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });  
+
+    const resumenHerramienta = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}/resumen`, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    })  
     
     const infoTool = await detail.json();
 
@@ -204,7 +261,13 @@ export const InfoherramientaLoader = async ({params}) => {
         throw Error('No se pudo cargar los proveedores de la herramienta indicada')
     }
 
-    const dataTool = {infoTool,toolOper,toolSuplier};    
+    if (!resumenHerramienta.ok) {
+        throw Error('No se pudo cargar el resumen de la herramienta indicada')
+    }
+
+    const herramientaResumen = await resumenHerramienta.json();
+
+    const dataTool = {infoTool,toolOper,toolSuplier,herramientaResumen};    
     
     return dataTool;
 }

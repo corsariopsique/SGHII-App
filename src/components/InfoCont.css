@@ -7,7 +7,7 @@
 }
 
 .titletextpanel{    
-    font-family: "Verdana", Sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1rem;
     font-style: normal;
     font-weight: 600;
@@ -33,20 +33,4 @@
     font-weight: 400;
     line-height: 1.25rem;
     text-align: center;
-}
-
-#total_Kits{
-    color:#1570EF;
-}
-
-#total_Tools{
-    color: #E19133;
-}
-
-#total_Out{
-    color: #845EBC;
-}
-
-#bajos_Inven{
-    color: #F36960;
 }

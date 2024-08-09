@@ -32,36 +32,51 @@ export default function Proveedores(){
         }
       ];
 
-      const datos = [
+      const datos = [      
 
         {
-            titulo: "Kits",
-            cantidad: 14,
-            periodo: 7,
-            estiloItemInfo: "total_Kits"
+            titulo: "Herramientas Activas",
+            cantidad: `${data_Proveedores.herramientasResumen.piezasActivas}`,
+            periodo: '--',
+            estiloItemInfo: "text-success"
         },
 
         {
-            titulo: "Herramientas Total",
-            cantidad: 622,
-            periodo: 7,
-            estiloItemInfo: "total_Tools"
+            titulo: "Operaciones Herramientas",
+            cantidad: `${data_Proveedores.operacionesResumen.operL30dTools}`,
+            periodo: 30,
+            estiloItemInfo: "text-primary"
         },
 
         {
-            titulo: "Top Salidas",
-            cantidad: 5,
-            periodo: 7,
-            estiloItemInfo: "total_Out"
+            titulo: "Herramientas Disponibles",
+            cantidad: `${data_Proveedores.herramientasResumen.piezasDisponibles}`,
+            periodo: '--',
+            estiloItemInfo: "text-success"
         },
 
         {
-            titulo: "Inventarios Bajos",
-            cantidad: 7,
-            periodo: 7,
-            estiloItemInfo: "bajos_Inven"
+            titulo: "Herramientas en Prestamo",
+            cantidad: `${data_Proveedores.herramientasResumen.piezasPrestamo}`,
+            periodo: '--',
+            estiloItemInfo: "text-primary"
+        },
+
+        {
+            titulo: "Herramientas Escasas ",
+            cantidad: `${data_Proveedores.herramientasResumen.herramientaEscasa.length}`,
+            periodo: '--',
+            estiloItemInfo: "text-danger"
+        },
+
+        {
+            titulo: "Ultimos Ingresos",
+            cantidad: `${data_Proveedores.herramientasResumen.ingresosL30d.length}`,
+            periodo: 30,
+            estiloItemInfo: "text-success"
         }
-    ];    
+
+    ];          
 
     const col_data = [
         { key: 'id', title: 'ID Proveedor' },        
@@ -76,7 +91,7 @@ export default function Proveedores(){
         <>
 
             <PanelInfoText
-             title ="Inventario General" 
+             title ="Resumen Herramientas" 
              estiloPanelInfoText ="panelinv" 
              info={datos}
             />
@@ -91,7 +106,7 @@ export default function Proveedores(){
                     listado='proveedores'                  
                     estiloTabla='tabla_Inventario'
                     columns={col_data} 
-                    data={data_Proveedores}
+                    data={data_Proveedores.listaProveedores}
                 />   
 
             </Modal>                       
@@ -109,11 +124,37 @@ export const proveedoresLoader = async () => {
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
-    });                 
+    });     
+    
+    const resumenHerramientas = await fetch('http://localhost:8081/api/herramientas/resumen',{
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`}
+    });
+
+    const resumenOperaciones = await fetch('http://localhost:8081/api/operaciones/resumen',{
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`}
+    });
+
+    if (!resumenHerramientas.ok) {
+        throw Error('No se pudo cargar el resumen de herramientas')
+    }
+
+    if (!resumenOperaciones.ok) {
+        throw Error('No se pudo cargar el resumen de operaciones')
+    }
 
     if (!proveedoresLista.ok) {
         throw Error('No se pudo cargar el listado de proveedores')
-    }     
+    }   
     
-    return await proveedoresLista.json();
+    const herramientasResumen = await resumenHerramientas.json();
+    const operacionesResumen = await resumenOperaciones.json();
+    const listaProveedores = await proveedoresLista.json();
+
+    const totalData = {listaProveedores,herramientasResumen,operacionesResumen}
+    
+    return totalData;
 };

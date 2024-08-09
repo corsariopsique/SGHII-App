@@ -33,43 +33,58 @@ export default function Kits(){
         }
       ];
 
-      const datos = [
+      const datos = [      
 
         {
-            titulo: "Kits",
-            cantidad: 14,
-            periodo: 7,
-            estiloItemInfo: "total_Kits"
+            titulo: "Kits Activos",
+            cantidad: `${data_kits.kitsResumen.kitsActivos}`,
+            periodo: '--',
+            estiloItemInfo: "text-success"
         },
 
         {
-            titulo: "Herramientas Total",
-            cantidad: 622,
-            periodo: 7,
-            estiloItemInfo: "total_Tools"
+            titulo: "Operaciones Kits",
+            cantidad: `${data_kits.operacionesResumen.operL30dKits}`,
+            periodo: 30,
+            estiloItemInfo: "text-primary"
         },
 
         {
-            titulo: "Top Salidas",
-            cantidad: 5,
-            periodo: 7,
-            estiloItemInfo: "total_Out"
+            titulo: "Kits Disponibles",
+            cantidad: `${data_kits.kitsResumen.kitsDisponibles}`,
+            periodo: '--',
+            estiloItemInfo: "text-success"
         },
 
         {
-            titulo: "Inventarios Bajos",
-            cantidad: 7,
-            periodo: 7,
-            estiloItemInfo: "bajos_Inven"
+            titulo: "Kits en Prestamo",
+            cantidad: `${data_kits.kitsResumen.kitsPrestados}`,
+            periodo: '--',
+            estiloItemInfo: "text-primary"
+        },
+
+        {
+            titulo: "Total Herramientas en Kits ",
+            cantidad: `${data_kits.kitsResumen.totalPiezasKits}`,
+            periodo: '--',
+            estiloItemInfo: "text-info"
+        },
+
+        {
+            titulo: "Operaciones Totales Kits",
+            cantidad: `${data_kits.operacionesResumen.operKit}`,
+            periodo: '∞',
+            estiloItemInfo: "text-primary"
         }
-    ];      
+
+    ];          
 
     return(
 
         <>
 
             <PanelInfoText
-             title ="Inventario General" 
+             title ="Resumen Kits" 
              estiloPanelInfoText ="panelinv" 
              info={datos}
             />
@@ -80,7 +95,7 @@ export default function Kits(){
             botoncss="btn_ModalIntermedio"
             botones={btnsKits}
             >                         
-                <ListarKits tipo = '2' kitsLista={data_kits} />
+                <ListarKits tipo = '2' kitsLista={data_kits.listaKits} />
 
             </Modal>                       
 
@@ -98,11 +113,39 @@ export const kitsLoader = async () => {
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
     })   
+
+    const resumenKits = await fetch('http://localhost:8081/api/kits/resumen',{
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`}
+    });
+
+    const resumenOperaciones = await fetch('http://localhost:8081/api/operaciones/resumen',{
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`}
+    });
+
+    if (!resumenKits.ok) {
+        throw Error('No se pudo cargar el resumen de kits')
+    }
+
+    if (!resumenOperaciones.ok) {
+        throw Error('No se pudo cargar el resumen de operaciones')
+    }
     
 
     if (!kitsLista.ok) {
         throw Error('No se pudo cargar el listado de Kits')
     }
+
+    const listaKits = await kitsLista.json();
+
+    const operacionesResumen = await resumenOperaciones.json();
+
+    const kitsResumen = await resumenKits.json();
+
+    const totalData = {listaKits,operacionesResumen,kitsResumen};
     
-    return await kitsLista.json()
+    return totalData;
 };

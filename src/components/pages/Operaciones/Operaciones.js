@@ -25,7 +25,7 @@ export default function Operaciones(){
         }
     }   
 
-    data_Operaciones.map((item) => {
+    data_Operaciones.listaOperaciones.map((item) => {
                 
         const oper = {
             id : item.id,  
@@ -64,36 +64,51 @@ export default function Operaciones(){
         }
       ];
 
-      const datos = [
+      const datos = [      
 
         {
-            titulo: "Kits",
-            cantidad: 14,
-            periodo: 7,
-            estiloItemInfo: "total_Kits"
+            titulo: "Total Operaciones",
+            cantidad: `${data_Operaciones.operacionesResumen.totalOperaciones}`,
+            periodo: '∞',
+            estiloItemInfo: "text-success"
         },
 
         {
-            titulo: "Herramientas Total",
-            cantidad: 622,
-            periodo: 7,
-            estiloItemInfo: "total_Tools"
+            titulo: "Operaciones de Prestamo",
+            cantidad: `${data_Operaciones.operacionesResumen.prestamos}`,
+            periodo: '∞',
+            estiloItemInfo: "text-primary"
         },
 
         {
-            titulo: "Top Salidas",
-            cantidad: 5,
-            periodo: 7,
-            estiloItemInfo: "total_Out"
+            titulo: "Operaciones de Devolución",
+            cantidad: `${data_Operaciones.operacionesResumen.devoluciones}`,
+            periodo: '∞',
+            estiloItemInfo: "text-primary"
         },
 
         {
-            titulo: "Inventarios Bajos",
-            cantidad: 7,
-            periodo: 7,
-            estiloItemInfo: "bajos_Inven"
+            titulo: "Operaciones de Herramientas",
+            cantidad: `${data_Operaciones.operacionesResumen.operL30dTools}`,
+            periodo: 30,
+            estiloItemInfo: "text-secondary"
+        },
+
+        {
+            titulo: "Operaciones de Kits ",
+            cantidad: `${data_Operaciones.operacionesResumen.operL30dKits}`,
+            periodo: 30,
+            estiloItemInfo: "text-secondary"
+        },
+
+        {
+            titulo: "Promedio Operaciones por Operario",
+            cantidad: `${data_Operaciones.operacionesResumen.promedioOperWorker.toFixed(2)}`,
+            periodo:'∞',
+            estiloItemInfo: "text-info"
         }
-    ];    
+
+    ];          
 
     const col_data = [
         { key: 'id', title: 'ID Operación' },
@@ -109,7 +124,7 @@ export default function Operaciones(){
         <>
 
             <PanelInfoText
-             title ="Inventario General" 
+             title ="Resumen Operaciones" 
              estiloPanelInfoText ="panelinv" 
              info={datos}
             />
@@ -142,11 +157,27 @@ export const operacionesLoader = async () => {
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
-    });                 
+    });    
+    
+    const resumenOperaciones = await fetch('http://localhost:8081/api/operaciones/resumen',{
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`}
+    });
+
+    if (!resumenOperaciones.ok) {
+        throw Error('No se pudo cargar el resumen de operaciones')
+    }
 
     if (!operacionesLista.ok) {
         throw Error('No se pudo cargar el listado de operaciones')
-    }     
+    } 
+
+    const operacionesResumen = await resumenOperaciones.json();
+
+    const listaOperaciones = await operacionesLista.json();    
     
-    return await operacionesLista.json();
+    const totalData = { operacionesResumen,listaOperaciones};
+    
+    return totalData;
 };

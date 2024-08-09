@@ -1,10 +1,12 @@
 import './InfoCont.css';
-function InfoCont (props) {    
+function InfoCont (props) {   
+    
+    const clases = 'titletextpanel ' + props.estiloItemInfo
 
     return (
         
         <div className='textinfopanel'>
-            <p className='titletextpanel' id={props.estiloItemInfo}>{props.titulo}</p>
+            <p className={clases}>{props.titulo}</p>
             <p className='canttextpanel'>{props.cantidad}</p>
             <p className='periotextpanel'>Ultimos {props.periodo} días</p>                
         </div>            

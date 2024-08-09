@@ -33,35 +33,50 @@ export default function Inventario(){
         }
       ];
 
-      const datos = [
+      const datos = [      
 
         {
-            titulo: "Kits",
-            cantidad: 14,
-            periodo: 7,
-            estiloItemInfo: "total_Kits"
+            titulo: "Herramientas Activas",
+            cantidad: `${data_inventario.herramientasResumen.piezasActivas}`,
+            periodo: '--',
+            estiloItemInfo: "text-success"
         },
 
         {
-            titulo: "Herramientas Total",
-            cantidad: 622,
-            periodo: 7,
-            estiloItemInfo: "total_Tools"
+            titulo: "Operaciones Herramientas",
+            cantidad: `${data_inventario.operacionesResumen.operL30dTools}`,
+            periodo: 30,
+            estiloItemInfo: "text-primary"
         },
 
         {
-            titulo: "Top Salidas",
-            cantidad: 5,
-            periodo: 7,
-            estiloItemInfo: "total_Out"
+            titulo: "Herramientas Disponibles",
+            cantidad: `${data_inventario.herramientasResumen.piezasDisponibles}`,
+            periodo: '--',
+            estiloItemInfo: "text-success"
         },
 
         {
-            titulo: "Inventarios Bajos",
-            cantidad: 7,
-            periodo: 7,
-            estiloItemInfo: "bajos_Inven"
+            titulo: "Herramientas en Prestamo",
+            cantidad: `${data_inventario.herramientasResumen.piezasPrestamo}`,
+            periodo: '--',
+            estiloItemInfo: "text-primary"
+        },
+
+        {
+            titulo: "Herramientas Escasas ",
+            cantidad: `${data_inventario.herramientasResumen.herramientaEscasa.length}`,
+            periodo: '--',
+            estiloItemInfo: "text-danger"
+        },
+
+        {
+            titulo: "Ultimos Ingresos",
+            cantidad: `${data_inventario.herramientasResumen.ingresosL30d.length}`,
+            periodo: 30,
+            estiloItemInfo: "text-success"
         }
+
     ];          
 
     return(
@@ -69,7 +84,7 @@ export default function Inventario(){
         <>
 
             <PanelInfoText
-             title ="Inventario General" 
+             title ="Resumen Herramientas" 
              estiloPanelInfoText ="panelinv" 
              info={datos}
             />
@@ -80,7 +95,7 @@ export default function Inventario(){
             botoncss="btn_ModalIntermedio"
             botones={btnsInventario}
             >                         
-               <ListarHerramientas herramientas={data_inventario} />
+               <ListarHerramientas herramientas={data_inventario.listaTools} />
 
             </Modal>                      
 
@@ -98,12 +113,38 @@ export const inventarioLoader = async () => {
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}
     });
+
+    const resumenHerramientas = await fetch('http://localhost:8081/api/herramientas/resumen',{
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`}
+    });
+
+    const resumenOperaciones = await fetch('http://localhost:8081/api/operaciones/resumen',{
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`}
+    });
         
 
     if (!itms.ok) {
         throw Error('No se pudo cargar el listado de herramientas')
-      }
+    }
+
+    if (!resumenHerramientas.ok) {
+        throw Error('No se pudo cargar el resumen de herramientas')
+    }
+
+    if (!resumenOperaciones.ok) {
+        throw Error('No se pudo cargar el resumen de operaciones')
+    }
+
+    const listaTools = await itms.json();
+    const herramientasResumen = await resumenHerramientas.json();
+    const operacionesResumen = await resumenOperaciones.json();
+
+    const totalData = {listaTools,herramientasResumen,operacionesResumen}
     
-      return itms.json()
+    return totalData;
 };
 

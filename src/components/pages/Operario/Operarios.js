@@ -33,43 +33,58 @@ export default function Operarios(){
         }
       ];
 
-      const datos = [
+      const datos = [      
 
         {
-            titulo: "Kits",
-            cantidad: 14,
-            periodo: 7,
-            estiloItemInfo: "total_Kits"
+            titulo: "Total Operarios Registrados",
+            cantidad: `${data_Operarios.operariosResumen.operariosReg}`,
+            periodo: '∞',
+            estiloItemInfo: "text-success"
         },
 
         {
-            titulo: "Herramientas Total",
-            cantidad: 622,
-            periodo: 7,
-            estiloItemInfo: "total_Tools"
+            titulo: "Operarios Activos",
+            cantidad: `${data_Operarios.operariosResumen.operariosActivos}`,
+            periodo: '--',
+            estiloItemInfo: "text-primary"
         },
 
         {
-            titulo: "Top Salidas",
-            cantidad: 5,
-            periodo: 7,
-            estiloItemInfo: "total_Out"
+            titulo: "Operarios Inactivos ",
+            cantidad: `${data_Operarios.operariosResumen.operariosDeBaja}`,
+            periodo: '--',
+            estiloItemInfo: "text-secondary"
         },
 
         {
-            titulo: "Inventarios Bajos",
-            cantidad: 7,
-            periodo: 7,
-            estiloItemInfo: "bajos_Inven"
+            titulo: "Roles de Operarios",
+            cantidad: `${data_Operarios.operariosResumen.operariosRoles}`,
+            periodo: '∞',
+            estiloItemInfo: "text-info"
+        },
+
+        {
+            titulo: "Promedio Operaciones por Operario",
+            cantidad: `${data_Operarios.operacionesResumen.promedioOperWorker.toFixed(2)}`,
+            periodo: '--',
+            estiloItemInfo: "text-secondary"
+        },       
+
+        {
+            titulo: "Ultimas Operaciones",
+            cantidad: `${data_Operarios.operacionesResumen.operMonth}`,
+            periodo:'30',
+            estiloItemInfo: "text-info"
         }
-    ];   
+
+    ];          
 
     return(
 
         <>
 
             <PanelInfoText
-             title ="Inventario General" 
+             title ="Resumen Operarios" 
              estiloPanelInfoText ="panelinv" 
              info={datos}
             />
@@ -80,7 +95,7 @@ export default function Operarios(){
             botoncss="btn_ModalIntermedio"
             botones={btnsOperarios}
             >                         
-               <ListarOperarios operarios={data_Operarios} />
+               <ListarOperarios operarios={data_Operarios.trabajadores} />
 
             </Modal>                      
 
@@ -97,13 +112,38 @@ export const operariosLoader = async () => {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
-    })      
+    });
     
+    const resumenOperaciones = await fetch('http://localhost:8081/api/operaciones/resumen',{
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`}
+    });
+
+    const resumenOperarios = await fetch('http://localhost:8081/api/operarios/resumen',{
+        method: 'GET',
+        headers: {'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`}
+    });
+
+    if (!resumenOperaciones.ok) {
+        throw Error('No se pudo cargar el resumen de operaciones')
+    }
+
+    if (!resumenOperarios.ok) {
+        throw Error('No se pudo cargar el resumen de operarios')
+    }    
 
     if (!workers.ok) {
         throw Error('No se pudo cargar el listado de operarios')
-      }
+    }
+
+    const operacionesResumen = await resumenOperaciones.json();
+    const operariosResumen = await resumenOperarios.json();
+    const trabajadores = await workers.json();
+
+    const totalData = {operacionesResumen,operariosResumen,trabajadores};
     
-      return workers.json()
+    return totalData;
 };
 

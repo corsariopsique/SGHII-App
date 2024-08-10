@@ -25,3 +25,7 @@ export { default as EditarIcono} from './EditarIcono';
 export { default as EliminarIcono} from './EliminarIcono';
 export { default as PazYSalvoIcono} from './PazYSalvoIcono';
 export { default as ProveedorIcono} from './ProveedorIcono';
+export { default as Tool3Icono} from './Tool3Icono';
+export { default as Tool4Icono} from './Tool4Icono';
+export { default as OperarioActivoIcono} from './OperarioActivoIcono';
+export { default as OperarioBajaIcono} from './OperarioBajaIcono';

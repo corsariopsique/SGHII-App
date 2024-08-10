@@ -108,7 +108,7 @@ export default function InfoHerramienta(){
 
 
                         <div className="card tarjeta_img_tool">
-                            <TraerImagenes tipo='1' ancho='450px' alto='450px' imageId={idImagen} />                            
+                            <TraerImagenes size='sizeInfoImg' tipo='1' ancho='450px' alto='450px' imageId={idImagen} />                            
                             <div className="card-body">
                                 <ul className="list-group list-group-flush">
                                     <li className="list-group-item atributo_lista text-secondary">En prestamo: <span className='valor_atributo'>{tool_prestamo}</span></li>

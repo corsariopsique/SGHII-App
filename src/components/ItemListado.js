@@ -1,23 +1,22 @@
 import './ItemListado.css'
+import TraerImagenes from './TraerImagenes';
 
-function ItemListado(props) {
-
-    const textAlarm = props.tipo;  
-    var marcador = false;
-    if (textAlarm==="pocos") {marcador=true};     
-    const imagen = require('./images/'+ props.imagen + ".png"); 
+function ItemListado(props) {    
 
     return (
-        <div className='item_Lista'>            
-            <img className='item_Foto' src={imagen} alt="tool"></img>       
+        <div className='item_Lista'>
+
+            <div className='imagenLista'>            
+                <TraerImagenes tipo='1' imageId={props.imagen} /> 
+            </div>           
 
             <div className='text_Name_Cant'>
                 <p className='item_Name'>{props.nombre}</p>
-                <p className='item_Cant'>Cantidad disponible: {props.cant}</p>
+                <p className='item_Cant'>Cant. Disponible: {props.cant}</p>
             </div>
 
-            <div className={textAlarm}>
-                <p className={textAlarm}>{marcador ? "Baja" : "Alta"}</p>
+            <div className='pocos'>
+                <p className='pocosTexto'>Baja</p>
             </div>
 
         </div>

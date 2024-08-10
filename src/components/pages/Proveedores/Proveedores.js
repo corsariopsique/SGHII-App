@@ -39,14 +39,7 @@ export default function Proveedores(){
             cantidad: `${data_Proveedores.herramientasResumen.piezasActivas}`,
             periodo: '--',
             estiloItemInfo: "text-success"
-        },
-
-        {
-            titulo: "Operaciones Herramientas",
-            cantidad: `${data_Proveedores.operacionesResumen.operL30dTools}`,
-            periodo: 30,
-            estiloItemInfo: "text-primary"
-        },
+        },       
 
         {
             titulo: "Herramientas Disponibles",
@@ -131,30 +124,20 @@ export const proveedoresLoader = async () => {
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}
     });
-
-    const resumenOperaciones = await fetch('http://localhost:8081/api/operaciones/resumen',{
-        method: 'GET',
-        headers: {'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${token}`}
-    });
+   
 
     if (!resumenHerramientas.ok) {
         throw Error('No se pudo cargar el resumen de herramientas')
-    }
-
-    if (!resumenOperaciones.ok) {
-        throw Error('No se pudo cargar el resumen de operaciones')
-    }
+    }    
 
     if (!proveedoresLista.ok) {
         throw Error('No se pudo cargar el listado de proveedores')
     }   
     
-    const herramientasResumen = await resumenHerramientas.json();
-    const operacionesResumen = await resumenOperaciones.json();
+    const herramientasResumen = await resumenHerramientas.json();    
     const listaProveedores = await proveedoresLista.json();
 
-    const totalData = {listaProveedores,herramientasResumen,operacionesResumen}
+    const totalData = {listaProveedores,herramientasResumen}
     
     return totalData;
 };

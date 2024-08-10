@@ -40,14 +40,7 @@ export default function Kits(){
             cantidad: `${data_kits.kitsResumen.kitsActivos}`,
             periodo: '--',
             estiloItemInfo: "text-success"
-        },
-
-        {
-            titulo: "Operaciones Kits",
-            cantidad: `${data_kits.operacionesResumen.operL30dKits}`,
-            periodo: 30,
-            estiloItemInfo: "text-primary"
-        },
+        },       
 
         {
             titulo: "Kits Disponibles",
@@ -68,14 +61,7 @@ export default function Kits(){
             cantidad: `${data_kits.kitsResumen.totalPiezasKits}`,
             periodo: '--',
             estiloItemInfo: "text-info"
-        },
-
-        {
-            titulo: "Operaciones Totales Kits",
-            cantidad: `${data_kits.operacionesResumen.operKit}`,
-            periodo: '∞',
-            estiloItemInfo: "text-primary"
-        }
+        },       
 
     ];          
 
@@ -118,34 +104,21 @@ export const kitsLoader = async () => {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}
-    });
-
-    const resumenOperaciones = await fetch('http://localhost:8081/api/operaciones/resumen',{
-        method: 'GET',
-        headers: {'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${token}`}
-    });
+    });   
 
     if (!resumenKits.ok) {
         throw Error('No se pudo cargar el resumen de kits')
-    }
-
-    if (!resumenOperaciones.ok) {
-        throw Error('No se pudo cargar el resumen de operaciones')
-    }
-    
+    }    
 
     if (!kitsLista.ok) {
         throw Error('No se pudo cargar el listado de Kits')
     }
 
-    const listaKits = await kitsLista.json();
-
-    const operacionesResumen = await resumenOperaciones.json();
+    const listaKits = await kitsLista.json();    
 
     const kitsResumen = await resumenKits.json();
 
-    const totalData = {listaKits,operacionesResumen,kitsResumen};
+    const totalData = {listaKits,kitsResumen};
     
     return totalData;
 };

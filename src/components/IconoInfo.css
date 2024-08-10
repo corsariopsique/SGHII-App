@@ -5,28 +5,28 @@
 
 .iconoinfo{
     display: flex;
-    position:relative;
-    margin-left: 20px;
-    margin-top: 40px;
+    position:relative;    
+    margin-top: 2.5rem;
     width: 7.25rem;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;    
+    gap: 0.7rem;
 }
 
 .iconopanel{       
     display: flex;
     align-items: center;
-    width: 30px;
-    height: 30px;    
+    width: 1.875rem;
+    height: 1.875rem;    
 }
 
 .texticopanel{    
-    width:max-content;
+    width:fit-content;
     display: flex;
-    padding: 0.125rem 0.875rem;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 0.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
 }
 
 .canttextpanel{
@@ -34,15 +34,17 @@
     font-family: "Verdana", Sans-serif;
     font-size: 0.9rem;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.5rem;
+    margin-bottom: 0rem;
 }
 
 .nametextpanel{
     color: var(--Grey-grey-500, #667085);
-    font-family: "Verdana", Sans-serif;    
-    font-size: 0.75rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    font-size: 0.76rem;
     font-style: normal;
     font-weight: 500;
     line-height: 1.25rem;
+    margin-bottom: 0rem;
 }

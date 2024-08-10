@@ -8,7 +8,7 @@ function PanelListado(props) {
 
     return(
         <Card className ="panelListaP">
-            <p className='titlepanel'>{props.title}</p>   
+            <p className='titlepanelL text-wrap badge bg-light text-info'>{props.title}</p>   
             {props.tool_list.map((item) => (
                 <ItemListado
                 imagen={item.imagen}

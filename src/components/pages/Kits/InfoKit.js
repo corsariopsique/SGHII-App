@@ -118,7 +118,28 @@ export default function InfoKit(){
                             </div>
                             
                             <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad total de herramientas : <span>{numTool}</span></li></div>
-                        </div>                         
+                        </div> 
+
+                        <div className="card tarjeta_Top_Workers tab-pane fade show active" >                            
+                            <div className="card-body">
+                            <h5 className="card-header bg-transparent text-primary">Top - Operarios</h5>
+                                {data_infoKit.resumenKits.listaUsoOperarios.map((item,index)=> (
+
+                                    <>
+                                        <div className="card-header bg-transparent text-success">
+                                            <li className="list-group-item atributo_listaOpers text-secondary" >Top # =  [ <span className='valor_atributo text-secondary'>{index+1}</span> ]</li>
+                                            <li className="list-group-item atributo_listaOpers text-secondary" >ID Operario =  [ <span className='valor_atributo text-secondary'>{item.operario.id}</span> ]</li>
+                                            <li className="list-group-item atributo_listaOpers text-secondary" >Nombre = [<span className='valor_atributo text-secondary'>{item.operario.nombre}</span>]</li>    
+                                            <li className="list-group-item atributo_listaOpers text-secondary" >Rol = [<span className='valor_atributo text-secondary'>{item.operario.rol}</span>]</li>    
+                                            <li className="list-group-item atributo_listaOpers text-secondary" >Cantidad de prestamos = [<span className='valor_atributo text-secondary'>{item.cantidad}</span>]</li>                                            
+                                        </div>
+
+                                        <div className='card-footer' key={index}></div>                                        
+                                    </>
+                                ))}
+
+                            </div>
+                        </div>                                         
 
                         <div className="card tarjeta_img_kit">
                             <div className="card-header bg-transparent text-primary">Listado Herramientas</div>
@@ -166,10 +187,20 @@ export const InfoKitLoader = async ({params}) => {
         method:'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
-    })     
+    })    
+    
+    const kitResumen = await fetch(`http://localhost:8081/api/kits/${params.kitId}/resumen`, {
+        method:'GET',
+        headers: {'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`},
+    })   
 
     if (!detailKit.ok) {
         throw Error('No se pudo cargar el kit indicado')
+    }
+
+    if (!kitResumen.ok) {
+        throw Error('No se pudo cargar el resumen del kit indicado')
     }
 
     if (!kitOper.ok) {
@@ -180,7 +211,9 @@ export const InfoKitLoader = async ({params}) => {
 
     const operKit = await kitOper.json();
 
-    const totalData = {kitDetail,operKit};
+    const resumenKits =  await kitResumen.json();
+
+    const totalData = {kitDetail,operKit,resumenKits};
     
     return totalData;
 }

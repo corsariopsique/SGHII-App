@@ -7,20 +7,19 @@
     align-items: center;
     width: 33.65rem;
     height: 20.9rem;
-    overflow: hidden;        
+    overflow: auto;        
     flex-shrink: 0;        
 }
 
-.titlepanel{
+.titlepanelL{
     position: absolute;
     margin-top: 6px;
     width:max-content;
-    height: 30px;
+    height: max-content;
     top: 5px;
-    left: 16px;    
-    color: var(--Grey-grey-800, #383E49);    
-    font-family: "Verdana", Sans-serif;
-    font-size: 1rem;
+    left: 16px;           
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.9rem;
     font-style: normal;
     font-weight: 500;
     line-height: 1.875rem;

@@ -61,22 +61,8 @@ export default function Operarios(){
             cantidad: `${data_Operarios.operariosResumen.operariosRoles}`,
             periodo: '∞',
             estiloItemInfo: "text-info"
-        },
-
-        {
-            titulo: "Promedio Operaciones por Operario",
-            cantidad: `${data_Operarios.operacionesResumen.promedioOperWorker.toFixed(2)}`,
-            periodo: '--',
-            estiloItemInfo: "text-secondary"
-        },       
-
-        {
-            titulo: "Ultimas Operaciones",
-            cantidad: `${data_Operarios.operacionesResumen.operMonth}`,
-            periodo:'30',
-            estiloItemInfo: "text-info"
         }
-
+               
     ];          
 
     return(
@@ -112,23 +98,13 @@ export const operariosLoader = async () => {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
-    });
-    
-    const resumenOperaciones = await fetch('http://localhost:8081/api/operaciones/resumen',{
-        method: 'GET',
-        headers: {'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${token}`}
-    });
+    });  
 
     const resumenOperarios = await fetch('http://localhost:8081/api/operarios/resumen',{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}
-    });
-
-    if (!resumenOperaciones.ok) {
-        throw Error('No se pudo cargar el resumen de operaciones')
-    }
+    });    
 
     if (!resumenOperarios.ok) {
         throw Error('No se pudo cargar el resumen de operarios')
@@ -137,12 +113,11 @@ export const operariosLoader = async () => {
     if (!workers.ok) {
         throw Error('No se pudo cargar el listado de operarios')
     }
-
-    const operacionesResumen = await resumenOperaciones.json();
+    
     const operariosResumen = await resumenOperarios.json();
     const trabajadores = await workers.json();
 
-    const totalData = {operacionesResumen,operariosResumen,trabajadores};
+    const totalData = {operariosResumen,trabajadores};
     
     return totalData;
 };

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { redirect } from 'react-router';
 
 let logoutTimer;
 
@@ -53,11 +54,14 @@ export const AutenticadorContextoProvider = (props) => {
     const logoutHandler = useCallback(() => {
       setToken(null);
       localStorage.removeItem('token');   
-      localStorage.removeItem('expirationTime');   
+      localStorage.removeItem('expirationTime');        
   
       if (logoutTimer) {
         clearTimeout(logoutTimer);
       }
+
+      redirect('/');
+
     }, []);
   
     const loginHandler = (token, expirationTime) => {

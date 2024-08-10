@@ -13,7 +13,7 @@ import Logout from "./components/authentication/Logout";
 
 // componentes iniciales SGHII
 
-import PanelPrincipal from "./components/pages/PanelPrincipal";
+import PanelPrincipal, { dataResumen } from "./components/pages/PanelPrincipal";
 
 //componentes inventario
 import Inventario, { inventarioLoader } from "./components/pages/Inventario/Inventario";
@@ -73,7 +73,9 @@ export default function App() {
         {auteCtx.isLoggedIn && (            
           <>
           
-            <Route path="panelprincipal" element={<PanelPrincipal />} />  
+            <Route path="panelprincipal" 
+            element={<PanelPrincipal />}
+            loader={dataResumen} />  
 
             <Route path="inventario" element={<InventarioLayout />}>
               <Route

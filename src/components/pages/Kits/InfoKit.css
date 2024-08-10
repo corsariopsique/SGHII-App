@@ -71,3 +71,14 @@
     gap: 1rem;
     width:max-content;    
 }
+
+.tarjeta_Top_Workers{
+    position: absolute;
+    top: 24rem;
+    left:0rem;
+    width: 30rem;
+    max-height: 12.9rem;
+    height: 15rem;  
+    overflow: auto;  
+
+}

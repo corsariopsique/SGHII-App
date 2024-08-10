@@ -7,14 +7,15 @@
     position: absolute;
     top: 7.3rem;
     left:21.5rem;    
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    justify-content: space-between;
     align-items: center;
-    width: 43.125rem;
+    width: 31.625rem;
     height: 10.1875rem;
     overflow: hidden;
     border-radius: 0.8rem;
-    background: #FFF;
-    flex-shrink: 0;    
-    gap: 6.5%;   
+    background: #FFF;    
 }
 
 .panelinfo2{
@@ -23,13 +24,14 @@
     top: 18rem;
     left:21.5rem;    
     align-items: center;
-    width: 43.125rem;
+    justify-content: space-between;
+    width: 31.625rem;
     height: 10.1875rem;
     overflow: hidden;
     border-radius: 0.8rem;
-    background: #FFF;
-    flex-shrink: 0;    
-    gap: 6.5%;   
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
+    background: #FFF;    
 }
 
 .panelres1{
@@ -37,14 +39,17 @@
     flex-direction: row;      
     position: absolute;
     top: 7.3rem;
-    left: 65.2em;    
+    left: 53.698rem;    
     align-items: center;
-    width: 20.125rem;
+    justify-content: space-between;
+    width: 31.625rem;
     height: 10.1875rem;
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;
     overflow: hidden;
     border-radius: 0.8rem;
     background: #FFF;    
-    gap: 6.5%;   
+    
 }
 
 .panelres2{
@@ -52,27 +57,28 @@
     flex-direction: row;      
     position: absolute;
     top: 18rem;
-    left: 65.2em;    
+    left: 53.698rem;    
     align-items: center;
-    width: 20.125rem;
+    justify-content: space-between;
+    width: 31.625rem;
     height: 10.1875rem;
     overflow: hidden;
     border-radius: 0.8rem;
-    background: #FFF;    
-    gap: 6.5%;   
+    background: #FFF;   
+    padding-left: 0.3rem;
+    padding-right: 0.3rem;     
 }
 
 
-.titlepanel{
+.titlepanelPanelInfo{
     position: absolute;
-    margin-top: 6px;
-    width: 220px;
-    height: 30px;
-    top: 5px;
-    left: 16px;    
-    color: var(--Grey-grey-800, #383E49);    
-    font-family: "Verdana", Sans-serif;
-    font-size: 1rem;
+    margin-top: 0.375rem;
+    width: max-content;
+    height: max-content;
+    top: 0.313rem;
+    left: 1rem;           
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.9rem;
     font-style: normal;
     font-weight: 500;
     line-height: 1.875rem;

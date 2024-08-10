@@ -88,7 +88,7 @@ export default function InfoOperario(){
                         </div>                        
 
                         <div className="card tarjeta_img_tool">
-                            <TraerImagenes tipo='2' ancho='450px' alto='450px' imageId={idImagenWorker} />                            
+                            <TraerImagenes size='sizeInfoImg' tipo='2' ancho='450px' alto='450px' imageId={idImagenWorker} />                            
                             <div className="card-body">
                                 <ul className="list-group list-group-flush">                                    
                                     <li className="list-group-item atributo_lista text-secondary">Operaciones de prestamo: <span className='valor_atributo'>{data_infoWorker.resumenWorker.prestamos}</span></li>
@@ -256,8 +256,7 @@ export const InfoOperarioLoader = async ({params}) => {
     const pendientesWorker = await operacionesPendientesTrabajador.json();
     const resumenWorker = await resumenTrabajador.json();
 
-    const totalData = {dataWorker,operWorker,pendientesWorker,resumenWorker};
-    console.log(resumenWorker.listaUsoTools);
+    const totalData = {dataWorker,operWorker,pendientesWorker,resumenWorker};    
     
     return totalData;
 }

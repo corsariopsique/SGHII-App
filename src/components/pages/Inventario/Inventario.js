@@ -40,14 +40,7 @@ export default function Inventario(){
             cantidad: `${data_inventario.herramientasResumen.piezasActivas}`,
             periodo: '--',
             estiloItemInfo: "text-success"
-        },
-
-        {
-            titulo: "Operaciones Herramientas",
-            cantidad: `${data_inventario.operacionesResumen.operL30dTools}`,
-            periodo: 30,
-            estiloItemInfo: "text-primary"
-        },
+        },       
 
         {
             titulo: "Herramientas Disponibles",
@@ -118,14 +111,7 @@ export const inventarioLoader = async () => {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}
-    });
-
-    const resumenOperaciones = await fetch('http://localhost:8081/api/operaciones/resumen',{
-        method: 'GET',
-        headers: {'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${token}`}
-    });
-        
+    });        
 
     if (!itms.ok) {
         throw Error('No se pudo cargar el listado de herramientas')
@@ -133,17 +119,12 @@ export const inventarioLoader = async () => {
 
     if (!resumenHerramientas.ok) {
         throw Error('No se pudo cargar el resumen de herramientas')
-    }
-
-    if (!resumenOperaciones.ok) {
-        throw Error('No se pudo cargar el resumen de operaciones')
-    }
+    }   
 
     const listaTools = await itms.json();
-    const herramientasResumen = await resumenHerramientas.json();
-    const operacionesResumen = await resumenOperaciones.json();
+    const herramientasResumen = await resumenHerramientas.json();    
 
-    const totalData = {listaTools,herramientasResumen,operacionesResumen}
+    const totalData = {listaTools,herramientasResumen}
     
     return totalData;
 };

@@ -53,11 +53,11 @@
 }
 
 .tarjeta_img_tool{    
-    position: absolute;
+    position: absolute;    
     top: 0rem;
     left:27rem;
     width: 40rem;
-    max-height:39.57rem;   
+    max-height:36.57rem;   
     overflow: auto;   
 }
 

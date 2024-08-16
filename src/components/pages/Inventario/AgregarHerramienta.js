@@ -1,14 +1,15 @@
 import './AgregarHerramienta.css';
 import * as Icons from '../../Iconos/IndexIcons';
 import {Modal} from '../../IndexComponents';
-import {Form, Link, Navigate, useActionData} from 'react-router-dom';
+import {Form, Link, useActionData, useNavigate} from 'react-router-dom';
 import { useState, useEffect, useContext } from "react";
 import AutenticacionContexto from '../../authentication/AutenticacionContexto';
 
 
 function AgregarHerramienta () {
 
-    const herramienta = useActionData();    
+    const herramienta = useActionData();   
+    const navigate = useNavigate(); 
     const auteCtx = useContext(AutenticacionContexto);
     const enlaceCancelar = `/inventario`;    
 
@@ -52,12 +53,14 @@ function AgregarHerramienta () {
                     data3.then((state) => {
                         if(state){
                             setCtrlEnvio(true);
+                            let timeRedir = setTimeout(redireccionar,1500);                            
                         }
                     })
                 }   
                 
                 if(loading && data && !data2 && !data3 && !dataHook.image_binary && !ctrlEnvio){
                     setCtrlEnvio(true);
+                    let timeRedir = setTimeout(redireccionar,1500);
                 }
                
                 if(loading && ctrlEnvio){
@@ -66,7 +69,7 @@ function AgregarHerramienta () {
 
             };      
           fetchData();
-        }, [dataHook,data,data2,data3,loading,ctrlEnvio]);
+        }, [dataHook,data,data2,data3,loading]);
       
         return { data, data2, data3, loading };
     };
@@ -80,6 +83,10 @@ function AgregarHerramienta () {
             console.log("Subida imagen:", data3);            
         }                
     }, [loading, data, data2]);
+
+    const redireccionar = () => {
+        navigate(`/inventario/${herramienta.entrada.id}`);
+    }
 
     const  EnvioHerramienta = async () => {                
 
@@ -173,9 +180,7 @@ function AgregarHerramienta () {
         <Modal         
             title="Agregar Herramienta"
             estiloModal="modal_completo"            
-            > 
-
-            { ctrlEnvio && (<Navigate to={`/inventario/${herramienta.entrada.id}`} replace={true} />) }
+            >             
              
             <div className="btn-group btn_ModalIntermedio" role="group" aria-label="Large button group">
 

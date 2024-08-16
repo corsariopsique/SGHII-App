@@ -146,7 +146,7 @@ function PanelPrincipal () {
       cantidad: item.cantidad_disponible
     }
     lista.push(tool);
-  });  
+  });
   
   return (
     <>   
@@ -174,7 +174,12 @@ function PanelPrincipal () {
       <PanelListado
       title="Cantidades bajas en inventario"
       tool_list={lista}/>   
-      
+
+      <Graficos
+      type = 'line'            
+      data = {data_Dashboard.dataSetOper}
+      id = 'grafico' />
+
       <Tablas
       listado='inventario'
       estiloTabla='tabla_Panel'
@@ -211,7 +216,17 @@ export const dataResumen = async () => {
     headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`}
   });
-  
+
+  const operDataSet = await fetch('http://localhost:8081/api/operaciones/data/oper7d',{
+      method: 'GET',
+      headers: {'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`}
+  });
+
+ 
+  if (!operDataSet.ok) {
+    throw Error('No se pudo cargar data de prestamos')
+  } 
 
   if (!resumenOperaciones.ok) {
       throw Error('No se pudo cargar el resumen de operaciones')
@@ -231,7 +246,9 @@ export const dataResumen = async () => {
 
   const herramientasResumen = await resumenHerramientas.json();
 
-  const totalData = {operacionesResumen,operariosResumen,herramientasResumen};
+  const dataSetOper = await operDataSet.json();  
+
+  const totalData = {operacionesResumen,operariosResumen,herramientasResumen, dataSetOper};
 
   return totalData;      
 

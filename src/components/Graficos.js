@@ -10,16 +10,7 @@ const DynamicChart = (props) => {
 
     const myChart = new Chart(ctx, {
       type: props.type,
-      data: {
-            labels:props.labels.map(row => row.labels),
-            datasets: [{
-                label: props.label,
-                data: props.data.map(row => row.data),
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-                }]
-            },
+      data:props.data,
         options: {
             responsive: true,
             maintainAspectRatio: false

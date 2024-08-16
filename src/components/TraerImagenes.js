@@ -10,11 +10,20 @@ const TraerImagenes = ( props ) => {
 
     let clases = '';
 
-    if (props.size !== undefined){
+    if (props.size !== undefined && !activaIco){
         clases = props.size + ' img_info';
-    }else{
+    }
+    if(!activaIco && props.size === undefined){
         clases = 'size_Img img_info';
     }    
+
+    if(props.size !== undefined && activaIco){
+        clases = props.size + ' img_info card-img-top';
+    }
+
+    if(activaIco && props.size === undefined){
+        clases = 'img_info card-img-top';
+    }
 
     const toolDir = `http://localhost:8081/api/images/${id}`;
     const workerDir = `http://localhost:8081/api/imagesworker/${id}`;    
@@ -69,8 +78,8 @@ const TraerImagenes = ( props ) => {
     return (
         <>
             {imageSrc && !activaIco && (<img id='foto' className={clases} src={imageSrc} alt="Fetched from server" />)}  
-            {(!imageSrc) || (activaIco) && (props.tipo === '1') && (<Tool1Icono className="card-img-top img_info size_Img" width={props.ancho} height={props.alto} viewBox ="0 0 16 16" fill="#cec8c6"/>)} 
-            {(!imageSrc) || (activaIco) && (props.tipo === '2') && (<OperRolIcono className="card-img-top img_info size_Img" width={props.ancho} height={props.alto} viewBox ="0 0 16 16" fill="#cec8c6"/>)} 
+            {(!imageSrc) || (activaIco) && (props.tipo === '1') && (<Tool1Icono className={clases} width={props.ancho} height={props.alto} viewBox ="0 0 16 16" fill="#cec8c6"/>)} 
+            {(!imageSrc) || (activaIco) && (props.tipo === '2') && (<OperRolIcono className={clases} width={props.ancho} height={props.alto} viewBox ="0 0 16 16" fill="#cec8c6"/>)} 
         </>
     );
         

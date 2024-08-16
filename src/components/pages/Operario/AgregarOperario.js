@@ -1,12 +1,13 @@
 import './AgregarOperario.css';
 import * as Icons from '../../Iconos/IndexIcons';
 import {Modal} from '../../IndexComponents';
-import {Form, Link, Navigate, useActionData} from 'react-router-dom';
+import {Form, Link, useNavigate, useActionData} from 'react-router-dom';
 import { useState, useEffect } from "react";
 
 function AgregarOperario () {
 
-    const operario = useActionData();    
+    const operario = useActionData();   
+    const navigate = useNavigate(); 
     const enlaceCancelarOperario = `/operarios`;    
     const token = localStorage.getItem('token');
 
@@ -50,12 +51,14 @@ function AgregarOperario () {
                     data3Worker.then((state) => {
                         if(state){
                             setCtrlEnvioWorker(true);
+                            let timeRedir = setTimeout(redireccionar,1500);
                         }
                     })
                 }   
                 
                 if(loadingWorker && dataWorker && !data2Worker && !data3Worker && !dataHookWorker.image_binary && !ctrlEnvioWorker){
                     setCtrlEnvioWorker(true);
+                    let timeRedir = setTimeout(redireccionar,1500);
                 }
                
                 if(loadingWorker && ctrlEnvioWorker){
@@ -64,7 +67,7 @@ function AgregarOperario () {
 
             };      
           fetchDataWorker();
-        }, [dataHookWorker,dataWorker,data2Worker,data3Worker,loadingWorker,ctrlEnvioWorker]);
+        }, [dataHookWorker,dataWorker,data2Worker,data3Worker,loadingWorker]);
       
         return { dataWorker, data2Worker, data3Worker, loadingWorker };
     };
@@ -78,6 +81,10 @@ function AgregarOperario () {
             console.log("Subida imagen:", data3Worker);            
         }                
     }, [loadingWorker, dataWorker, data2Worker]);
+
+    const redireccionar = () => {
+        navigate(`/operarios/${operario.entrada.id}`);
+    }
 
     const  EnvioOperario = async () => {                
 
@@ -171,9 +178,7 @@ function AgregarOperario () {
         <Modal         
             title="Agregar Operario"
             estiloModal="modal_completo"            
-            > 
-
-            { ctrlEnvioWorker && (<Navigate to={`/operarios/${operario.entrada.id}`} replace={true} />) }
+            >            
              
             <div className="btn-group btn_ModalIntermedio" role="group" aria-label="Large button group">
 

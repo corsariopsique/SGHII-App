@@ -7,7 +7,7 @@ function ItemListado(props) {
         <div className='item_Lista'>
 
             <div className='imagenLista'>            
-                <TraerImagenes alto='75px' ancho= '75px' tipo='1' imageId={props.imagen} /> 
+                <TraerImagenes alto='73px' ancho= '73px' tipo='1' imageId={props.imagen} /> 
             </div>           
 
             <div className='text_Name_Cant'>

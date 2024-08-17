@@ -31,7 +31,7 @@ export default function ListarElementos(props) {
                             Marca: <p className='text-secondary control_TextoItem'>{opcion.marca}</p>
                         </label>                                               
 
-                        <TraerImagenes tipo = '1' ancho='10px' alto='10px' imageId={opcion.id} className='img_infoWorker size_ImgWorker' />                
+                        <TraerImagenes tipo = '1' ancho='125px' alto='125px' imageId={opcion.id} className='img_infoWorker size_ImgWorker' />                
 
                     </Link>    
 
@@ -54,7 +54,7 @@ export default function ListarElementos(props) {
                             Estado: <p className='text-secondary control_TextoKits'>{kit_Estado(itemKit.disponible)}</p>
                         </label>                                               
 
-                        <Tool1Icono width='10px' height='10px' className='img_infoWorker size_ImgWorker'/>
+                        <Tool1Icono width='125px' height='125px' className='img_infoWorker size_ImgWorker'/>
 
                     </Link>
 

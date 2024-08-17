@@ -42,6 +42,7 @@ const TraerImagenes = ( props ) => {
 
 
     useEffect(() => {
+        
         const fetchImage = async () => {    
 
             try {

@@ -1,0 +1,15 @@
+.boton{ 
+    display:flex;        
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    width:max-content;       
+}
+
+a{
+    text-decoration: none;
+}
+
+#icobtn{
+    align-self: center;    
+}

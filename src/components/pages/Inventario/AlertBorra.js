@@ -2,7 +2,7 @@ import './AlertBorra.css';
 import * as Icons from '../../Iconos/IndexIcons';
 import { useParams, Link, Navigate, useLoaderData } from "react-router-dom";
 import ReactDOM from 'react-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function AlertBorra () {
 
@@ -16,26 +16,7 @@ function AlertBorra () {
 
     const urlDeleteItem = `http://localhost:8081/api/herramientas/${useParams().toolId}`;
 
-    const urlDeleteImage = `http://localhost:8081/api/images/${useParams().toolId}`;
-
-
-    const [rndrmodal, setRndrModal] = useState(true);   
-
-    const EliminaImagen = async () => {
-        
-        const response = await fetch(urlDeleteImage, {
-            method: 'DELETE',
-            headers: {'Authorization': `Bearer ${token}`}
-        })
-
-        const result = response.ok;
-        if (response.ok) {    
-            return response.ok;
-        } else {
-            // Manejar errores de respuesta
-            throw new Error('Error al eliminar la imagen');
-        }        
-    }
+    const [rndrmodal, setRndrModal] = useState(true);       
 
     const EliminaTool = async () => {
 
@@ -65,17 +46,7 @@ function AlertBorra () {
     const HandleronClickEliminar = () => {
 
         if(toolData.cantidad === toolData.cantidad_disponible){
-
-            const borraIMG = EliminaImagen();
-            console.log(borraIMG);
-
-            borraIMG.then((state) => {
-                if(state.ok){                    
-                    EliminaTool();                
-                }else{
-                    EliminaTool();
-                }
-            })
+            EliminaTool();
         }else{
             alert(`La herramienta con el ID: ${idTool} tiene operaciones pendientes y no puede ser eliminada.`);
             setRndrModal(false);

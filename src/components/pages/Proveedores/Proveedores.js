@@ -35,21 +35,28 @@ export default function Proveedores(){
       const datos = [      
 
         {
-            titulo: "Herramientas Activas",
-            cantidad: `${data_Proveedores.herramientasResumen.piezasActivas}`,
+            titulo: "Herramientas registradas",
+            cantidad: `${data_Proveedores.herramientasResumen.herramientasReg}`,
             periodo: '--',
-            estiloItemInfo: "text-success"
-        },       
-
+            estiloItemInfo: "text-secondary"
+        },   
+        
         {
-            titulo: "Herramientas Disponibles",
-            cantidad: `${data_Proveedores.herramientasResumen.piezasDisponibles}`,
+            titulo: "Herramientas activas ",
+            cantidad: `${data_Proveedores.herramientasResumen.herramientasActivas}`,
             periodo: '--',
             estiloItemInfo: "text-success"
         },
 
         {
-            titulo: "Herramientas en Prestamo",
+            titulo: "Herramientas Inactivas",
+            cantidad: `${data_Proveedores.herramientasResumen.herramientasDeBaja}`,
+            periodo: '--',
+            estiloItemInfo: "text-danger"
+        },
+
+        {
+            titulo: "Items en Prestamo",
             cantidad: `${data_Proveedores.herramientasResumen.piezasPrestamo}`,
             periodo: '--',
             estiloItemInfo: "text-primary"

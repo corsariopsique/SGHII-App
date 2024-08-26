@@ -1,5 +1,5 @@
 import './ListarElementos.css';
-import TraerImagenes from '../../TraerImagenes';
+import TraerImagenes from '../../generalUseComponents/TraerImagenes';
 import Tool1Icono from '../../Iconos/Tool1Icono';
 import {Link} from 'react-router-dom';
 
@@ -23,15 +23,15 @@ export default function ListarElementos(props) {
 
                 {props.herramientas.map((opcion,index) => (      
                     
-                    <Link to={`/inventario/${opcion.id}`} className='itemToolsWorker rounded' key={index}>                                                      
+                    <Link to={`/inventario/${opcion.herramienta.id}`} className='itemToolsWorker rounded' key={index}>                                                      
                         
-                        <label> 
-                            ID: <p className='fw-bold text-dark control_TextoItem'>{opcion.id}</p> 
-                            Nombre: <p className='text-success control_TextoItem'>{opcion.nombre}</p> 
-                            Marca: <p className='text-secondary control_TextoItem'>{opcion.marca}</p>
+                        <label>                             
+                            ID: <p className='fw-bold text-dark control_TextoItem'>{opcion.herramienta.id}</p> 
+                            ID Item: <p className='fw-bold text-secondary control_TextoItem'>{opcion.id}</p> 
+                            Nombre: <p className='text-success control_TextoItem'>{opcion.herramienta.nombre}</p>                             
                         </label>                                               
 
-                        <TraerImagenes tipo = '1' ancho='125px' alto='125px' imageId={opcion.id} className='img_infoWorker size_ImgWorker' />                
+                        <TraerImagenes tipo = '1' ancho='125px' alto='125px' imageId={opcion.herramienta.id} className='img_infoWorker size_ImgWorker' />                
 
                     </Link>    
 

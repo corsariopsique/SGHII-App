@@ -178,20 +178,20 @@ export default function EditarKits() {
                                     type="number"
                                     id={index}
                                     className="form-control-sm inputCantidadEdit"
-                                    name={opcionEdit.id}
+                                    name={opcionEdit.herramienta.id}
                                     value={1}                               
                                     required
                                 /> }                                                   
                                 
                                 <label className='sizeLabel'> 
-                                    ID: <h6 className='fw-bold control_Texto'>{opcionEdit.id}</h6> 
-                                    Nombre: <h6 className='text-primary control_Texto'>{opcionEdit.nombre}</h6> 
+                                    ID: <h6 className='fw-bold control_Texto'>{opcionEdit.herramienta.id}</h6> 
+                                    Nombre: <h6 className='text-primary control_Texto'>{opcionEdit.herramienta.nombre}</h6> 
                                     Cantidad disponible: <h6 className='text-success control_Texto'>1</h6>
                                 </label>  
 
                                 { !checkedItemsEdit[index] &&
 
-                                <TraerImagenes tipo='1' ancho='125px' alto='125px' imageId={opcionEdit.id} /> }
+                                <TraerImagenes tipo='1' ancho='125px' alto='125px' imageId={opcionEdit.herramienta.id} /> }
 
                             </div>                        
                         ))}  

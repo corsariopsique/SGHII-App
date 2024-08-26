@@ -1,5 +1,5 @@
 import './ListarToolSuplier.css';
-import TraerImagenes from '../../TraerImagenes';
+import TraerImagenes from '../../generalUseComponents/TraerImagenes';
 import {Link} from 'react-router-dom';
 
 export default function ListarToolSuplier(props) {

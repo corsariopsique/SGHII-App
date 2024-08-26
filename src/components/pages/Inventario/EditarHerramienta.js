@@ -213,7 +213,17 @@ function EditarHerramienta(){
                             defaultValue={itemToMod.cantidad_kits}
                             style={{display: 'none'}}
                             readOnly
-                        />                                
+                        />    
+
+                        <input 
+                            type="text" 
+                            className="form-control inputs_Edit_Tool"
+                            name="estado" 
+                            id="estado"                             
+                            defaultValue={itemToMod.estado}
+                            style={{display: 'none'}}
+                            readOnly
+                        />                                                
 
                         <label htmlFor="rol" className="form-label">Rol:</label>
 
@@ -251,9 +261,19 @@ function EditarHerramienta(){
                             name="fecha_in" 
                             id="fecha_in" 
                             placeholder={itemToMod.fecha_in}
-                            defaultValue={itemToMod.fecha_in}                            
+                            defaultValue={itemToMod.fecha_in}                                                        
                             readOnly
-                        />                  
+                        />       
+
+                        <input 
+                            type="text" 
+                            className="form-control inputs_Edit_Tool"
+                            name="fecha_out" 
+                            id="fecha_out"                             
+                            defaultValue={itemToMod.fecha_out}   
+                            style={{display: 'none'}}                         
+                            readOnly
+                        />                 
 
                     </div>                   
 
@@ -290,11 +310,12 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
         marca: data.get('marca'),         
         cantidad: nueva_cantidad,   
         cantidad_disponible: nueva_cant_disponible,
-        cantidad_kits: data.get('cantidad_kits'),
+        cantidad_kits: Number(data.get('cantidad_kits')),
         categoria: data.get('categoria'),      
         rol: data.get('rol'),
-        estado: 0,
-        fecha_in: data.get('fecha_in')
+        estado: data.get('estado'),
+        fecha_in: data.get('fecha_in'),
+        fecha_out: data.get('fecha_out')
     }
 
     const image_in = {

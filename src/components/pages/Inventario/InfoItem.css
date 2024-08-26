@@ -1,0 +1,49 @@
+#nav-tab{
+    position: absolute;
+    top:4rem;
+    left:2.1rem;
+}
+
+#nav-tabContent{
+    position: absolute;
+    top:10rem;
+    left:2rem;
+}
+
+.valor_atributo{
+    font-weight: lighter;    
+}
+
+.atributo_lista{
+    display: flex;
+    font-weight: bolder;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.tarjeta_tool{
+    width: 30rem;
+}
+
+.last_oper_tool{
+    margin-top: 2rem;
+    width: 30rem;
+    max-height: 13rem;
+    overflow: auto;
+}
+
+.tarjeta_img_tool{    
+    position: absolute;
+    top: 0rem;
+    left:32rem;
+    width: 30rem;
+    max-height:30.57rem;   
+    overflow: auto;   
+}
+
+.operaciones_Tool{
+    position: absolute;
+    width: 85rem; 
+    top:2rem;
+    left:4.5rem;
+}

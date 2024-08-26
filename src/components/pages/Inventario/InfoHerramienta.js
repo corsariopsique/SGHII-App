@@ -1,6 +1,7 @@
 import './InfoHerramienta.css';
 import {Modal, Tablas, TraerImagenes} from '../../IndexComponents';
 import { useLoaderData, useParams } from 'react-router-dom'
+import ListarHerramientas from './ListarHerramientas';
 
 export default function InfoHerramienta(){       
      
@@ -84,7 +85,10 @@ export default function InfoHerramienta(){
                     </li>
                     <li class="nav-item" role="presentation">
                         <button className="nav-link" id="nav-suplier-tab" data-bs-toggle="pill" data-bs-target="#nav-suplier" type="button" role="tab" aria-controls="nav-suplier-tab" aria-selected="false">Proveedores</button>
-                    </li>                   
+                    </li>    
+                    <li class="nav-item" role="presentation">
+                        <button className="nav-link" id="nav-items-tab" data-bs-toggle="pill" data-bs-target="#nav-items" type="button" role="tab" aria-controls="nav-items-tab" aria-selected="false">Items Herramienta</button>
+                    </li>                 
                 </ul>
 
                 <div className="tab-content" id="nav-tabContent">
@@ -204,6 +208,17 @@ export default function InfoHerramienta(){
                                 />                 
                                 
                             </div>                            
+                        </div>
+
+                    </div>
+
+                    <div className="tab-pane fade show " id="nav-items" role="tabpanel" aria-labelledby="nav-items-tab">
+
+                        <div className="card text-secondary operaciones_Tool">
+                                <div className="card-header bg-transparent text-primary">Items Herramienta</div>
+                                <div className="card-body">
+                                    <ListarHerramientas tipo = '2' herramientas={data_infoTool.herramientaResumen.itemsTool} />
+                                </div>                            
                         </div>
 
                     </div>

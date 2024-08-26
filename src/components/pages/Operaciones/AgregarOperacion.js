@@ -336,9 +336,9 @@ function AgregarOperacion () {
                                 type="number"
                                 id={index}
                                 className="form-control-sm inputCantToolOper"
-                                name={toolItem.id}
+                                name={toolItem.herramienta.id}
                                 placeholder='Cant..'
-                                defaultValue={1}      
+                                defaultValue={toolItem.id}      
                                 readOnly
                                 onChange={handleChangeCantToolOper}
                                 onMouseLeave={handleMouseLeaveCheckedTools}                                
@@ -346,13 +346,13 @@ function AgregarOperacion () {
                             /> }                                                   
                             
                             <label className='sizeLabel'> 
-                                ID: <h6 className='fw-bold control_Texto'>{toolItem.id}</h6> 
-                                Nombre: <h6 className='text-primary control_Texto'>{toolItem.nombre}</h6> 
-                                En prestamo: <h6 className='text-success control_Texto'>1</h6>
+                                ID: <h6 className='text-dark fw-bold control_Texto'>{toolItem.herramienta.id}</h6> 
+                                ID Item: <h6 className='text-secondary fw-bold control_Texto'>{toolItem.id}</h6>                                 
+                                Nombre: <h6 className='text-primary control_Texto'>{toolItem.herramienta.nombre}</h6>                                 
                             </label>  
 
                             { !checkedTools[index] &&
-                                <TraerImagenes tipo='1' ancho='125px' alto='125px' imageId={toolItem.id} />                                 
+                                <TraerImagenes tipo='1' ancho='125px' alto='125px' imageId={toolItem.herramienta.id} />                                 
                             }                            
 
                         </div>

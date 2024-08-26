@@ -36,6 +36,27 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `SGHII`.`itemherramienta`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `SGHII`.`itemherramienta` (
+  `id` INT AUTO_INCREMENT NOT NULL,
+  `idherramienta` VARCHAR(5) NOT NULL,    
+  `fecha_in` DATE NOT NULL,
+  `fecha_out` DATE,  
+  `estado` BOOLEAN DEFAULT FALSE,
+
+  PRIMARY KEY (`id`),
+  INDEX `id_herramienta_item` (`idherramienta` ASC) VISIBLE,
+  CONSTRAINT `id_herramienta_item`
+    FOREIGN KEY (`idherramienta`)
+    REFERENCES `SGHII`.`herramienta` (`idherramienta`)
+    ON DELETE RESTRICT
+    ON UPDATE RESTRICT)  
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `SGHII`.`ImagenHerramienta`
 -- -----------------------------------------------------
 
@@ -151,7 +172,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `SGHII`.`asg_dev_tool` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_operacion_tool` VARCHAR(5) NOT NULL,
-  `id_tool` VARCHAR(5) NOT NULL,
+  `id_tool` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `id_herramienta_idx` (`id_operacion_tool` ASC) VISIBLE,
   CONSTRAINT `id_operacion_tool`
@@ -159,9 +180,9 @@ CREATE TABLE IF NOT EXISTS `SGHII`.`asg_dev_tool` (
     REFERENCES `SGHII`.`asignacion_devolucion` (`id_operaciones`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
-  CONSTRAINT `id_herramienta`
+  CONSTRAINT `id_itemherramienta`
     FOREIGN KEY (`id_tool`)
-    REFERENCES `SGHII`.`herramienta` (`idherramienta`)
+    REFERENCES `SGHII`.`itemherramienta` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT)
 ENGINE = InnoDB;
@@ -196,13 +217,13 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `SGHII`.`tool_Kit` (
   `id_reg` INT NOT NULL AUTO_INCREMENT,
-  `id_tool` VARCHAR(5),
+  `id_tool` INT,
   `id_kit` VARCHAR(5) NOT NULL,  
   PRIMARY KEY (`id_reg`),
   INDEX `id-kit_idx` (`id_kit` ASC) VISIBLE,
   CONSTRAINT `id-tool`
     FOREIGN KEY (`id_tool`)
-    REFERENCES `SGHII`.`herramienta` (`idherramienta`)
+    REFERENCES `SGHII`.`itemherramienta` (`id`)
     ON DELETE RESTRICT
     ON UPDATE RESTRICT,
   CONSTRAINT `id-kit`
@@ -236,34 +257,33 @@ ENGINE = InnoDB;
 -- Tabla usuarios SGHII
 -- -----------------------------------------------------
 
-CREATE TABLE users (
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password VARCHAR(100) NOT NULL,
-    enabled BOOLEAN NOT NULL,
-    PRIMARY KEY (username))
-ENGINE = InnoDB;
+--    CREATE TABLE users (
+  --      username VARCHAR(50) NOT NULL UNIQUE,
+    --    password VARCHAR(100) NOT NULL,
+      --  enabled BOOLEAN NOT NULL,
+        --PRIMARY KEY (username))
+    --ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Tabla roles usuarios SGHII
 -- -----------------------------------------------------
 
-CREATE TABLE authorities (
-    username VARCHAR(50) NOT NULL,
-    authority VARCHAR(50) NOT NULL,
-    FOREIGN KEY (username) REFERENCES users(username))
-ENGINE = InnoDB;
+--    CREATE TABLE authorities (
+  --    username VARCHAR(50) NOT NULL,
+    --  authority VARCHAR(50) NOT NULL,
+      -- FOREIGN KEY (username) REFERENCES users(username))
+    -- ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Tabla auxiliar logs SGHII
 -- -----------------------------------------------------
 
-CREATE TABLE IF NOT EXISTs `SGHII`.`logs`(
-  `log_id` INT AUTO_INCREMENT PRIMARY KEY,
-  `log_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  `log_event` VARCHAR(255),
-  `log_message` TEXT)
-ENGINE = InnoDB;
-
+--      CREATE TABLE IF NOT EXISTs `SGHII`.`logs`(
+  --      `log_id` INT AUTO_INCREMENT PRIMARY KEY,
+    --    `log_time` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+      --  `log_event` VARCHAR(255),
+        --`log_message` TEXT)
+      -- ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Trigger control kits-herramientas
@@ -414,6 +434,62 @@ CREATE TRIGGER control_oper_kits
     SET MESSAGE_TEXT = 'Este kit no se encuentra en estado de prestamo';
   END IF;  
 
+END $$
+
+---------------------------------------------------------------
+--Trigger insertar items herramientas itemherramienta newtool
+---------------------------------------------------------------
+
+DELIMITER $$
+
+CREATE TRIGGER reg_items_new_tool
+AFTER INSERT ON herramienta
+FOR EACH ROW
+BEGIN
+    DECLARE i INT DEFAULT 1;    
+    
+    WHILE i <= NEW.cantidad DO
+        INSERT INTO itemherramienta (idherramienta,fecha_in,estado) VALUES (NEW.idherramienta, CURDATE(),0);
+        SET i = i + 1;
+    END WHILE;
+
+END $$
+
+---------------------------------------------------------------
+--Trigger insertar items herramientas itemherramienta updatetool
+---------------------------------------------------------------
+
+DELIMITER $$
+
+CREATE TRIGGER reg_items_update_tool
+AFTER UPDATE ON herramienta
+FOR EACH ROW
+BEGIN
+    IF OLD.cantidad < NEW.cantidad THEN
+        DECLARE i INT;
+        SET i = NEW.cantidad - OLD.cantidad;        
+        
+        WHILE i <= NEW.campo_x DO
+            INSERT INTO itemherramienta (idherramienta,fecha_in,estado) VALUES (NEW.idherramienta, CURDATE(),0);
+            SET i = i + 1;
+        END WHILE;
+    END IF;
+
+    IF OLD.cantidad > NEW.cantidad THEN
+        DECLARE ultimo_id INT;
+        DECLARE i INT;
+        SET i = OLD.cantidad - NEW.cantidad;
+
+        WHILE i > 0 DO
+            SELECT MAX(id) INTO ultimo_id FROM itemherramienta WHERE idherramienta = OLD.idherramienta;
+
+            UPDATE itemherramienta
+                SET estado = 1, fecha_out = CURDATE()
+                WHERE id = ultimo_id AND idherramienta = OLD.idherramienta;
+
+            SET i = i - 1;
+        END WHILE;
+    END IF;
 END $$
 
 ---------------------------------------------------------------

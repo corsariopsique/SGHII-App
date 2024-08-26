@@ -1,5 +1,5 @@
 import './ListarElementosOperaciones.css';
-import TraerImagenes from '../../TraerImagenes';
+import TraerImagenes from '../../generalUseComponents/TraerImagenes';
 import Tool1Icono from '../../Iconos/Tool1Icono';
 import {Link} from 'react-router-dom';
 
@@ -15,15 +15,15 @@ export default function ListarElementosOperaciones(props) {
 
                     {props.herramientas.map((itemOper,index) => (      
                         
-                        <Link to={`/inventario/${itemOper.id}`} className='itemHerramientaOper rounded' key={index}>                                                      
+                        <Link to={`/inventario/${itemOper.herramienta.id}`} className='itemHerramientaOper rounded' key={index}>                                                      
                             
                             <label> 
-                                ID: <h6 className='fw-bold text-dark control_TextoOper'>{itemOper.id}</h6> 
-                                Nombre: <h6 className='text-success control_TextoOper'>{itemOper.nombre}</h6> 
-                                Marca: <h6 className='text-secondary control_TextoOper'>{itemOper.marca}</h6>
+                                ID: <h6 className='fw-bold text-dark control_TextoOper'>{itemOper.herramienta.id}</h6>                                 
+                                ID Item: <h6 className='fw-bold text-secondary control_TextoOper'>{itemOper.id}</h6>                                 
+                                Nombre: <h6 className='text-success control_TextoOper'>{itemOper.herramienta.nombre}</h6>                                 
                             </label>                                               
 
-                            <TraerImagenes tipo = '1' ancho='125px' alto='125px' imageId={itemOper.id} />                
+                            <TraerImagenes tipo = '1' ancho='125px' alto='125px' imageId={itemOper.herramienta.id} />                
 
                         </Link>    
 

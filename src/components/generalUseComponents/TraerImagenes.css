@@ -1,0 +1,18 @@
+.img_info{
+    padding-right: 0.3rem;
+    padding-left: 0.3rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    max-height: max-content; 
+    align-self: center;   
+}
+
+.size_Img{
+    width: 100%;
+    height: 100%;
+}
+
+.sizeInfoImg{
+    width: 70%;
+    height: 70%;
+}

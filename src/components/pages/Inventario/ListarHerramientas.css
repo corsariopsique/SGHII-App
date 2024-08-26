@@ -17,6 +17,18 @@
     right: 2%;        
 }
 
+.listaHerramientaItems{   
+    justify-content:center;
+    display:flex;    
+    flex-wrap: wrap;
+    padding-bottom: 1.5rem;       
+    flex-direction: row;  
+    position: relative; 
+    top: 15%;
+    left:2%;
+    right: 2%;        
+}
+
 .itemHerramientaInventario {
     display: flex;
     flex-direction: row;

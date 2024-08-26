@@ -33,28 +33,28 @@ export default function Inventario(){
         }
       ];
 
-      const datos = [      
-
+      const datos = [   
+        
         {
-            titulo: "Herramientas Activas",
-            cantidad: `${data_inventario.herramientasResumen.piezasActivas}`,
-            periodo: '--',
-            estiloItemInfo: "text-success"
-        },       
-
-        {
-            titulo: "Herramientas Disponibles",
-            cantidad: `${data_inventario.herramientasResumen.piezasDisponibles}`,
-            periodo: '--',
+            titulo: "Total items",
+            cantidad: `${data_inventario.herramientasResumen.totalPiezas}`,
+            periodo: 30,
             estiloItemInfo: "text-success"
         },
 
         {
-            titulo: "Herramientas en Prestamo",
+            titulo: "en Prestamo (Items)",
             cantidad: `${data_inventario.herramientasResumen.piezasPrestamo}`,
             periodo: '--',
             estiloItemInfo: "text-primary"
         },
+
+        {
+            titulo: "Disponibles (Items)",
+            cantidad: `${data_inventario.herramientasResumen.piezasDisponibles}`,
+            periodo: '--',
+            estiloItemInfo: "text-success"
+        },        
 
         {
             titulo: "Herramientas Escasas ",
@@ -64,11 +64,18 @@ export default function Inventario(){
         },
 
         {
-            titulo: "Ultimos Ingresos",
-            cantidad: `${data_inventario.herramientasResumen.ingresosL30d.length}`,
-            periodo: 30,
+            titulo: "Items Activos",
+            cantidad: `${data_inventario.herramientasResumen.piezasActivas}`,
+            periodo: '--',
             estiloItemInfo: "text-success"
-        }
+        },    
+        
+        {
+            titulo: "Items Inactivos ",
+            cantidad: `${data_inventario.herramientasResumen.totalPiezas - data_inventario.herramientasResumen.piezasActivas}`,
+            periodo: '--',
+            estiloItemInfo: "text-secondary"
+        }       
 
     ];          
 
@@ -88,7 +95,7 @@ export default function Inventario(){
             botoncss="btn_ModalIntermedio"
             botones={btnsInventario}
             >                         
-               <ListarHerramientas herramientas={data_inventario.listaTools} />
+               <ListarHerramientas tipo = '1' herramientas={data_inventario.listaTools} />
 
             </Modal>                      
 

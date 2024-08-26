@@ -13,7 +13,7 @@ import Logout from "./components/authentication/Logout";
 
 // componentes iniciales SGHII
 
-import PanelPrincipal, { dataResumen } from "./components/pages/PanelPrincipal";
+import PanelPrincipal, { dataResumen } from "./components/pages/Dashboard/PanelPrincipal";
 
 //componentes inventario
 import Inventario, { inventarioLoader } from "./components/pages/Inventario/Inventario";
@@ -21,6 +21,8 @@ import InfoHerramienta, {InfoherramientaLoader} from "./components/pages/Inventa
 import EditarHerramienta, { editarherramientaLoader, EditarHerrramientaAction } from "./components/pages/Inventario/EditarHerramienta";
 import AgregarHerramienta, {AgregarHerrramientaAction} from "./components/pages/Inventario/AgregarHerramienta";
 import AlertBorra, { alertBorraLoader } from "./components/pages/Inventario/AlertBorra";
+import InfoItem, { InfoItemLoader } from "./components/pages/Inventario/InfoItem";
+import BajaItem, {bajaItemLoader} from "./components/pages/Inventario/BajaItem";
 
 //componentes Kits
 import Kits, { kitsLoader } from "./components/pages/Kits/Kits";
@@ -56,6 +58,8 @@ import OperariosLayout from './components/Layouts/OperariosLayout';
 import OperacionesLayout from "./components/Layouts/OperacionesLayout";
 import ProveedoresLayout from "./components/Layouts/ProveedoresLayout";
 
+
+
 export default function App() {
 
   const auteCtx = useContext(AutenticacionContexto);    
@@ -81,18 +85,18 @@ export default function App() {
               <Route
                 index
                 element={<Inventario />}
-                loader={inventarioLoader} />                           
-            
-            <Route 
-                path=":toolId"
-                element={<InfoHerramienta />}   
-                loader ={InfoherramientaLoader}/>
-              
+                loader={inventarioLoader} /> 
+
               <Route
-                path="agregarherramienta"  
-                element={<AgregarHerramienta />}                                     
-                action={AgregarHerrramientaAction} />    
-              
+                  path="agregarherramienta"  
+                  element={<AgregarHerramienta />}                                     
+                  action={AgregarHerrramientaAction} />  
+            
+              <Route 
+                  path=":toolId"
+                  element={<InfoHerramienta />}   
+                  loader ={InfoherramientaLoader}/>                  
+                
               <Route
                 path=":toolId/editarherramienta"
                 element={<EditarHerramienta />}
@@ -102,8 +106,18 @@ export default function App() {
                   path="deleteherramienta"
                   element={<AlertBorra />} 
                   loader={alertBorraLoader}/>
-              </Route>          
-              
+              </Route>
+
+              <Route
+              path="items/:itemId"
+              element={<InfoItem />}
+              loader={InfoItemLoader}>
+                <Route
+                path="deleteitem"
+                element={<BajaItem />}
+                loader={bajaItemLoader} />
+              </Route>               
+
             </Route>
 
             <Route path="kits" element={<KitsLayout />}>

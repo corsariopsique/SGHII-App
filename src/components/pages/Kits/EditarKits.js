@@ -1,5 +1,5 @@
 import './EditarKits.css';
-import { Modal, TraerImagenes } from '../../IndexComponents';
+import { Modal, TraerImagenes, BarraDeCarga } from '../../IndexComponents';
 import FormEditKit from './FormEditKit';
 import {Form, useActionData, useLoaderData, useParams, Outlet, useNavigate} from 'react-router-dom';
 import { useState, useEffect } from "react";
@@ -9,24 +9,45 @@ export default function EditarKits() {
     const dataWork = useLoaderData();    
     const kitEditado = useActionData();
     const navigate = useNavigate();
+    const [progress, setProgress] = useState(0);
+    const [subidaState, setSubidaState] = useState(null);
     
     useEffect(() => {
 
         if(kitEditado){
+
             const subidaKit = FormEditKit(kitEditado.id,kitEditado);            
+
             subidaKit.then((state)=> {
                 if(state){
-                    navigate(`/kits/${kitEditado.id}`);                
-                }
+                    setSubidaState(state);
+                }                
             })
         }        
         
-      }, [kitEditado]);
+    }, [kitEditado]);
+
+    useEffect(()=>{
+
+        if(kitEditado){
+
+            const interval = setTimeout(() => {
+                if (progress < 100) {
+                  setProgress(prev => prev + 10);
+                }
+            }, 150);
+    
+            if(subidaState && progress===100){
+                navigate(`/kits/${kitEditado.id}`);                
+            }
+    
+            return () => clearTimeout(interval);
+        }
+    },[kitEditado, progress])
     
     const [checkedItemsEdit, setCheckedItemsEdit] = useState({});    
     const [checkedItemsEdit2, setCheckedItemsEdit2] = useState({});    
-    const [cantItemsEdit, setCantItemsEdit] = useState({});
-    
+    const [cantItemsEdit, setCantItemsEdit] = useState({});    
 
     // manejador eventos checkbox
 
@@ -88,6 +109,8 @@ export default function EditarKits() {
                 botoncss="btn_ModalIntermedio"
                 botones={btnsEditarKit}
                 >
+
+                {kitEditado && <BarraDeCarga progress={progress}/>}
 
                 <Form className='formularioEditarKits' id="edit_kit" name="edit_kit" action={dirAccionEditKit} method='post'>
 

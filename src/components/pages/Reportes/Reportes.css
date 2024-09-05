@@ -1,0 +1,43 @@
+.grafico1{
+    display: grid;    
+    position: absolute;
+    top:5rem;
+    left: 8rem;
+    width: 40rem;    
+    height: 30rem;
+}
+
+.grafico2R{
+    display: grid;    
+    position: absolute;
+    top:5rem;
+    left: 50rem;
+    width: 40rem;    
+    height: 30rem;
+}
+
+.grafico3R{
+    display: grid;    
+    position: absolute;
+    top:37rem;
+    left: 8rem;
+    width: 40rem;    
+    height: 30rem;    
+}
+
+.grafico4R{
+    display: grid;    
+    position: absolute;
+    top:37rem;
+    left: 50rem;
+    width: 40rem;    
+    height: 30rem;    
+}
+
+
+.dropdown_Reportes{
+    position: absolute;
+    top:1rem;
+    left: 92%;
+}
+

@@ -1,7 +1,7 @@
 import './EditarOperario.css';
 import { Form, useParams, useLoaderData, useActionData, useNavigate, Outlet} from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Modal } from '../../IndexComponents';
+import { Modal, BarraDeCarga } from '../../IndexComponents';
 
 
 function EditarOperario(){     
@@ -10,12 +10,26 @@ function EditarOperario(){
     const verificaOperario = useActionData();
     const idOperario = useParams().workerId;
     const navigate = useNavigate();
-    
-    useEffect(() => {     
+    const [progress, setProgress] = useState(0);      
+
+    useEffect(() => {
+
         if(verificaOperario){
-            navigate(`/operarios/${idOperario}`);
-        }        
-      }, [verificaOperario]);
+
+            const interval = setTimeout(() => {
+                if (progress < 100) {
+                  setProgress(prev => prev + 10);  
+                }
+            }, 150);
+            
+            if(progress===100){
+                navigate(`/operarios/${idOperario}`);
+            }
+
+            return () => clearTimeout(interval);            
+        }
+    },[progress,verificaOperario])    
+    
     
     //control previsualizacion imagen
 
@@ -89,7 +103,9 @@ function EditarOperario(){
                 estiloModal="modal_completo"
                 botoncss="btn_ModalIntermedio"
                 botones={btnsEditarOperario}
-                >              
+                >   
+
+                {verificaOperario && <BarraDeCarga progress={progress}/>}           
 
                 <Form id="edit_worker" className="formularioEditEworker" name="edit_worker" action={dirFormEdit} method='post'>
 

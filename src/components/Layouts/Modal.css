@@ -19,7 +19,7 @@
     height: 48.88rem;    
     border-radius: 0.5rem;
     background: #FFF;        
-    overflow: auto;
+    overflow: auto;    
 }
 
 .btn_ModalIntermedio{
@@ -62,7 +62,7 @@
     position: absolute;    
     width:max-content;
     height:max-content;
-    top: 0.5rem;
+    top: 0.7rem;
     left: 1rem;          
     font-family: "Verdana", Sans-serif;
     font-size: 0.8rem;

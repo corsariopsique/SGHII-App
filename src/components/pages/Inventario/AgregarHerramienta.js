@@ -1,10 +1,9 @@
 import './AgregarHerramienta.css';
 import * as Icons from '../../Iconos/IndexIcons';
-import {Modal} from '../../IndexComponents';
+import { Modal, BarraDeCarga } from '../../IndexComponents';
 import {Form, Link, useActionData, useNavigate} from 'react-router-dom';
 import { useState, useEffect, useContext } from "react";
 import AutenticacionContexto from '../../authentication/AutenticacionContexto';
-
 
 function AgregarHerramienta () {
 
@@ -16,8 +15,27 @@ function AgregarHerramienta () {
     const [img_pre, setImg_Pre] = useState(null);
     const [tipo_img, setTipo_Img] = useState(null);
     const [img_send, setImg_Send] = useState(undefined);  
-    const [ctrlEnvio, setCtrlEnvio] = useState(null);
+    const [progress, setProgress] = useState(0);      
+    const [ctrlEnvio, setCtrlEnvio] = useState(null);  
     
+    useEffect(() => {
+
+        if(ctrlEnvio){
+
+            const interval = setTimeout(() => {
+                if (progress < 100) {
+                  setProgress(prev => prev + 10);
+                }
+            }, 150);
+
+            if(progress===100){
+                navigate(`/inventario/${herramienta.entrada.id}`);
+            }
+
+            return () => clearTimeout(interval);
+            
+        }
+    },[progress,ctrlEnvio])
     
     // Manejo de envio de datos al servidor
 
@@ -25,7 +43,8 @@ function AgregarHerramienta () {
         const [data, setData] = useState(null);
         const [data2, setData2] = useState(null);
         const [data3, setData3] = useState(null);
-        const [loading, setLoading] = useState(true);        
+        const [loading, setLoading] = useState(true);    
+          
       
         useEffect(() => {
           const fetchData = async () => {
@@ -52,29 +71,26 @@ function AgregarHerramienta () {
                 if(loading && data3 && !ctrlEnvio){
                     data3.then((state) => {
                         if(state){
-                            setCtrlEnvio(true);
-                            let timeRedir = setTimeout(redireccionar,1500);                            
+                            setCtrlEnvio(true);                                                      
                         }
                     })
                 }   
                 
                 if(loading && data && !data2 && !data3 && !dataHook.image_binary && !ctrlEnvio){
-                    setCtrlEnvio(true);
-                    let timeRedir = setTimeout(redireccionar,1500);
+                    setCtrlEnvio(true);                   
                 }
                
                 if(loading && ctrlEnvio){
                     setLoading(false);
                 }
-
             };      
           fetchData();
-        }, [dataHook,data,data2,data3,loading]);
+        }, [dataHook,data,data2,data3,loading,progress]);
       
-        return { data, data2, data3, loading };
+        return { data, data2, data3, loading};
     };
 
-    const { data, data2, data3, loading } = useFetchData(herramienta);
+    const { data, data2, data3, loading} = useFetchData(herramienta);
     
     useEffect(() => {
         if (!loading && data && data2 && data3) {
@@ -82,11 +98,7 @@ function AgregarHerramienta () {
             console.log("Subida datos imagen:", data2);
             console.log("Subida imagen:", data3);            
         }                
-    }, [loading, data, data2]);
-
-    const redireccionar = () => {
-        navigate(`/inventario/${herramienta.entrada.id}`);
-    }
+    }, [loading, data, data2]);    
 
     const  EnvioHerramienta = async () => {                
 
@@ -145,8 +157,7 @@ function AgregarHerramienta () {
         }
     }    
     
-    // manejo preview imagen formulario    
-        
+    // manejo preview imagen formulario        
 
     const handleronChange = (event) => {        
 
@@ -180,7 +191,9 @@ function AgregarHerramienta () {
         <Modal         
             title="Agregar Herramienta"
             estiloModal="modal_completo"            
-            >             
+            >   
+
+            {ctrlEnvio && <BarraDeCarga progress={progress}/>}          
              
             <div className="btn-group btn_ModalIntermedio" role="group" aria-label="Large button group">
 
@@ -202,9 +215,7 @@ function AgregarHerramienta () {
 
                     </button>            
                 </Link>
-            </div> 
-
-
+            </div>
             
             <Form id="add_tool" name="add_tool" className="formulario" action="/inventario/agregarherramienta" method='post'>                                       
 

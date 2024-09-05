@@ -1,11 +1,9 @@
 import './AgregarKits.css';
-import {Modal,TraerImagenes} from '../../IndexComponents';
+import {Modal,TraerImagenes, BarraDeCarga} from '../../IndexComponents';
 import FormAddKit from './FormAddKit';
 import FormAddToolKit from './FormAddToolKit';
 import {Form, useNavigate, useLoaderData, useActionData} from 'react-router-dom';
 import { useState, useEffect } from "react";
-
-
 
 function AgregarKits() {
 
@@ -15,26 +13,49 @@ function AgregarKits() {
     
     const [checkedItems, setCheckedItems] = useState({});    
     const [cantItems, setCantItems] = useState({});
+    const [progress, setProgress] = useState(0);
+    const [subidaState, setSubidaState] = useState(null);      
 
     useEffect(() => {
 
         if(dataNewKit){
             const nuevoKit = FormAddKit(dataNewKit.kitData);
+
             nuevoKit.then((state) => {
                 if(state){
                     const kitWImage = FormAddToolKit(dataNewKit.kitData.id,dataNewKit.herramientas);   
                     if(kitWImage){
                         kitWImage.then((kitFull)=> {
                             if(kitFull){
-                                navigate(`/kits/${dataNewKit.kitData.id}`);
+                                setSubidaState(kitFull);                                
                             }
                         });
                     }                    
                 }
-            });
+            });            
         }
 
-      }, [dataNewKit]);
+    }, [dataNewKit]); 
+    
+    useEffect(()=>{
+
+        if(dataNewKit){
+
+            const interval = setTimeout(() => {
+                if (progress < 100) {
+                  setProgress(prev => prev + 10);
+                }
+            }, 150);
+    
+            if(subidaState && progress===100){
+                navigate(`/kits/${dataNewKit.kitData.id}`);
+            }
+    
+            return () => clearTimeout(interval);
+
+        }        
+
+    },[dataNewKit,progress])      
 
     // manejador eventos checkbox
 
@@ -80,6 +101,8 @@ function AgregarKits() {
             botoncss="btn_ModalIntermedio"
             botones={btnsAgregarKit}
             >
+
+            {dataNewKit && <BarraDeCarga progress={progress}/>}
 
             <Form className='formularioAgregarKits' id="add_kit" name="add_kit" action="/kits/agregarkits" method='post'>
 

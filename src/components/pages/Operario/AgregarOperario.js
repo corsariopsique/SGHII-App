@@ -1,6 +1,6 @@
 import './AgregarOperario.css';
 import * as Icons from '../../Iconos/IndexIcons';
-import {Modal} from '../../IndexComponents';
+import { Modal, BarraDeCarga } from '../../IndexComponents';
 import {Form, Link, useNavigate, useActionData} from 'react-router-dom';
 import { useState, useEffect } from "react";
 
@@ -15,6 +15,26 @@ function AgregarOperario () {
     const [tipo_imgWorker, setTipo_ImgWorker] = useState(null);
     const [img_sendWorker, setImg_SendWorker] = useState(undefined);  
     const [ctrlEnvioWorker, setCtrlEnvioWorker] = useState(null);
+    const [progress, setProgress] = useState(0);      
+
+    useEffect(() => {
+
+        if(ctrlEnvioWorker){
+
+            const interval = setTimeout(() => {
+                if (progress < 100) {
+                  setProgress(prev => prev + 10);
+                }
+            }, 150);
+
+            if(progress===100){
+                navigate(`/operarios/${operario.entrada.id}`);
+            }
+
+            return () => clearTimeout(interval);
+            
+        }
+    },[progress,ctrlEnvioWorker])
     
     
     // Manejo de envio de datos al servidor
@@ -50,15 +70,13 @@ function AgregarOperario () {
                 if(loadingWorker && data3Worker && !ctrlEnvioWorker){
                     data3Worker.then((state) => {
                         if(state){
-                            setCtrlEnvioWorker(true);
-                            let timeRedir = setTimeout(redireccionar,1500);
+                            setCtrlEnvioWorker(true);                            
                         }
                     })
                 }   
                 
                 if(loadingWorker && dataWorker && !data2Worker && !data3Worker && !dataHookWorker.image_binary && !ctrlEnvioWorker){
-                    setCtrlEnvioWorker(true);
-                    let timeRedir = setTimeout(redireccionar,1500);
+                    setCtrlEnvioWorker(true);                    
                 }
                
                 if(loadingWorker && ctrlEnvioWorker){
@@ -80,11 +98,7 @@ function AgregarOperario () {
             console.log("Subida datos imagen:", data2Worker);
             console.log("Subida imagen:", data3Worker);            
         }                
-    }, [loadingWorker, dataWorker, data2Worker]);
-
-    const redireccionar = () => {
-        navigate(`/operarios/${operario.entrada.id}`);
-    }
+    }, [loadingWorker, dataWorker, data2Worker]);    
 
     const  EnvioOperario = async () => {                
 
@@ -178,7 +192,9 @@ function AgregarOperario () {
         <Modal         
             title="Agregar Operario"
             estiloModal="modal_completo"            
-            >            
+            >      
+
+            {ctrlEnvioWorker && <BarraDeCarga progress={progress}/>}                
              
             <div className="btn-group btn_ModalIntermedio" role="group" aria-label="Large button group">
 

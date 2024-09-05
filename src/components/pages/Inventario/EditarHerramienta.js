@@ -1,8 +1,7 @@
 import './EditarHerramienta.css';
 import { Form, useParams, useLoaderData, useActionData, useNavigate, Outlet} from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Modal } from '../../IndexComponents';
-
+import { Modal, BarraDeCarga } from '../../IndexComponents';
 
 function EditarHerramienta(){     
     
@@ -10,14 +9,26 @@ function EditarHerramienta(){
     const idTool = useParams().toolId;
     const verificacion = useActionData();    
     const navigate = useNavigate();
-    
+    const [progress, setProgress] = useState(0);      
+
     useEffect(() => {
 
-        if(verificacion){             
-            navigate(`/inventario/${idTool}`);            
-        }        
-        
-    }, [verificacion]);
+        if(verificacion){
+
+            const interval = setTimeout(() => {
+                if (progress < 100) {
+                  setProgress(prev => prev + 10);  
+                }
+            }, 150);
+            
+            if(progress===100){
+                navigate(`/inventario/${idTool}`);
+            }
+
+            return () => clearTimeout(interval);            
+        }
+    },[progress,verificacion])    
+    
     
     //control previsualizacion imagen
 
@@ -91,7 +102,9 @@ function EditarHerramienta(){
                 estiloModal="modal_completo"
                 botoncss="btn_ModalIntermedio"
                 botones={btnsEditarHerramienta}
-                >              
+                >    
+
+                {verificacion && <BarraDeCarga progress={progress}/>}           
 
                 <Form id="edit_tool" className="formularioEdit" name="edit_tool" action={dirFormEdit} method='post'>
 

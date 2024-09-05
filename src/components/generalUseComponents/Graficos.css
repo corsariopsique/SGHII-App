@@ -9,3 +9,39 @@
     background: #FFF;
     flex-shrink: 0;    
 }
+
+#grafico1R{
+    position:absolute;    
+    width: 95%;
+    min-height: 85%;
+    border-radius: 0.8rem;
+    box-shadow: 0.5rem 0.5rem 0.25rem lightblue;
+    background: #FFF;    
+}
+
+#grafico1RH{
+    position: absolute;    
+    width: 95%;
+    min-height: 89%;
+    border-radius: 0.8rem;
+    box-shadow: 0.5rem 0.5rem 0.25rem lightblue;
+    background: #FFF;     
+}
+
+#grafico3R{
+    position: absolute;    
+    width: 95%;
+    min-height: 84%;
+    border-radius: 0.8rem;
+    box-shadow: 0.5rem 0.5rem 0.25rem lightblue;
+    background: #FFF;     
+}
+
+#grafico4R{
+    position: absolute;    
+    width: 95%;
+    min-height: 85%;
+    border-radius: 0.8rem;
+    box-shadow: 0.5rem 0.5rem 0.25rem lightblue;
+    background: #FFF;    
+}

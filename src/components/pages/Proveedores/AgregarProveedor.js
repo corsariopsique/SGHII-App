@@ -1,5 +1,5 @@
 import './AgregarProveedor.css';
-import {Modal,TraerImagenes} from '../../IndexComponents';
+import {Modal,TraerImagenes, BarraDeCarga} from '../../IndexComponents';
 import {Form, useNavigate, useLoaderData, useActionData} from 'react-router-dom';
 import FormAddProveedor from './FormAddProveedor';
 import { useState, useEffect } from "react";
@@ -10,20 +10,43 @@ function AgregarProveedor() {
     const listado_Herramienta = useLoaderData();    
     const navigate = useNavigate();    
     
-    const [checkedItems, setCheckedItems] = useState({});        
+    const [checkedItems, setCheckedItems] = useState({});   
+    const [subidaState, setSubidaState] = useState(null);
+    const [progress, setProgress] = useState(0);           
 
     useEffect(() => {
 
         if(dataNewProveedor){
             const nuevoKit = FormAddProveedor(dataNewProveedor);
             nuevoKit.then((state) => {
-                if(state){                    
-                    navigate(`/proveedores/${dataNewProveedor.id}`);
+                if(state){
+                    setSubidaState(state);                    
                 }
             });            
         }
 
-      }, [dataNewProveedor]);
+    }, [dataNewProveedor]);
+
+    useEffect(() => {
+
+        if(dataNewProveedor){
+
+            const interval = setTimeout(() => {
+                if (progress < 100) {
+                  setProgress(prev => prev + 10);  
+                }
+            }, 150);
+    
+            if(subidaState && progress===100){
+                navigate(`/proveedores/${dataNewProveedor.id}`);                
+            }
+    
+            return () => clearTimeout(interval);
+        }
+                
+    },[dataNewProveedor,progress]);
+
+
 
     // manejador eventos checkbox
 
@@ -63,6 +86,8 @@ function AgregarProveedor() {
             botoncss="btn_ModalIntermedio"
             botones={btnsAgregarProveedor}
             >
+
+            {dataNewProveedor && <BarraDeCarga progress={progress}/>}
 
             <Form className='formularioAgregarProveedor' id="add_Proveedor" name="add_Proveedor" action="/proveedores/agregarproveedor" method='post'>
 

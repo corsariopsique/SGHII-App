@@ -1,5 +1,5 @@
 import './EditarProveedor.css';
-import { Modal, TraerImagenes } from '../../IndexComponents';
+import { Modal, TraerImagenes, BarraDeCarga } from '../../IndexComponents';
 import {Form, useActionData, useLoaderData, useParams, Outlet, useNavigate} from 'react-router-dom';
 import { useState, useEffect } from "react";
 import FormEditProveedor from './FormEditProveedor';
@@ -9,6 +9,9 @@ export default function EditarProveedor() {
     const dataSuplier = useLoaderData();    
     const suplierEditado = useActionData();
     const navigate = useNavigate();
+    const [subidaState, setSubidaState] = useState(null);
+    const [progress, setProgress] = useState(0);  
+
     
     useEffect(() => {
 
@@ -16,12 +19,32 @@ export default function EditarProveedor() {
             const subidaSuplier = FormEditProveedor(suplierEditado.id,suplierEditado);            
             subidaSuplier.then((state)=> {
                 if(state){
-                    navigate(`/proveedores/${suplierEditado.id}`);                
+                    setSubidaState(state);                    
                 }
             })
         }        
         
-      }, [suplierEditado]);
+    }, [suplierEditado]);
+
+    useEffect(() => {
+
+        if(suplierEditado){
+
+            const interval = setTimeout(() => {
+                if (progress < 100) {
+                  setProgress(prev => prev + 10);  
+                }
+            }, 150);
+    
+            if(subidaState && progress===100){
+                navigate(`/proveedores/${suplierEditado.id}`);                                
+            }
+    
+            return () => clearTimeout(interval);
+        }
+                
+    },[suplierEditado,progress]);
+
     
     const [checkedItemsEdit, setCheckedItemsEdit] = useState({});
 
@@ -70,6 +93,8 @@ export default function EditarProveedor() {
                 botoncss="btn_ModalIntermedio"
                 botones={btnsEditarSuplier}
                 >
+
+                {suplierEditado && <BarraDeCarga progress={progress}/>}
 
                 <Form className='formularioEditarSuplier' id="edit_suplier" name="edit_suplier" action={dirAccionEditSuplier} method='post'>
 

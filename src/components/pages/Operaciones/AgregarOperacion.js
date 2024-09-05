@@ -1,5 +1,5 @@
 import './AgregarOperacion.css';
-import {Modal, TraerImagenes} from '../../IndexComponents';
+import {Modal, TraerImagenes, BarraDeCarga} from '../../IndexComponents';
 import * as Icons from '../../Iconos/IndexIcons';
 import FormAddOperacion from './FormAddOperacion';
 import {Form, Link, useNavigate, useActionData, useLoaderData} from 'react-router-dom';
@@ -22,19 +22,42 @@ function AgregarOperacion () {
     const [checkedTools, setCheckedTools] = useState({});    
     const [checkedKit, setCheckedKit] = useState(null);    
     const [cantTools, setCantTools] = useState({});  
+    const [subidaState, setSubidaState] = useState(null);
+    const [progress, setProgress] = useState(0);      
 
     useEffect(() => {
 
         if(operaciones){
-            const subida = FormAddOperacion(operaciones);
+            const subida = FormAddOperacion(operaciones);            
+
             subida.then((state)=> {
                 if(state){
-                    navigate(`/operaciones/${operaciones.id}`);                
-                }
-            })
+                    setSubidaState(state);
+                }                
+            })            
         }        
         
       }, [operaciones]);
+
+    useEffect(() => {
+
+        if(operaciones){
+
+            const interval = setTimeout(() => {
+                if (progress < 100) {
+                  setProgress(prev => prev + 10);  
+                }
+            }, 150);
+    
+            if(subidaState && progress===100){
+                navigate(`/operaciones/${operaciones.id}`);                
+            }
+    
+            return () => clearTimeout(interval);
+        }
+                
+      },[operaciones,progress]);
+
     
     useEffect(() => {
 
@@ -139,6 +162,8 @@ function AgregarOperacion () {
         title="Agregar Operación"
         estiloModal="modal_completo"        
         >
+
+        {operaciones && <BarraDeCarga progress={progress}/>}
 
         <div className="btn-group btn_ModalIntermedio" role="group" aria-label="Large button group">
 
@@ -341,7 +366,8 @@ function AgregarOperacion () {
                                 defaultValue={toolItem.id}      
                                 readOnly
                                 onChange={handleChangeCantToolOper}
-                                onMouseLeave={handleMouseLeaveCheckedTools}                                
+                                onMouseLeave={handleMouseLeaveCheckedTools}
+                                style={{display: 'none'}}                                
                                 required
                             /> }                                                   
                             
@@ -351,9 +377,7 @@ function AgregarOperacion () {
                                 Nombre: <h6 className='text-primary control_Texto'>{toolItem.herramienta.nombre}</h6>                                 
                             </label>  
 
-                            { !checkedTools[index] &&
-                                <TraerImagenes tipo='1' ancho='125px' alto='125px' imageId={toolItem.herramienta.id} />                                 
-                            }                            
+                            <TraerImagenes tipo='1' ancho='125px' alto='125px' imageId={toolItem.herramienta.id} />                            
 
                         </div>
 

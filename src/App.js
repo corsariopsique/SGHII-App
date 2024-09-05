@@ -50,6 +50,12 @@ import InfoProveedores, {InfoSuplierLoader} from "./components/pages/Proveedores
 import EditarProveedor, {EditarProveedorLoader, EditarProveedorAction} from "./components/pages/Proveedores/EditarProveedor";
 import BorrarProveedor from "./components/pages/Proveedores/BorrarProveedor";
 
+// componentes Reportes
+import Reportes, { reportesLoader } from "./components/pages/Reportes/Reportes";
+import ReportesHerramientas, { reportesHerramientasLoader } from "./components/pages/Reportes/ReportesHerramientas";
+import ReportesOperarios, { reportesOperariosLoader } from "./components/pages/Reportes/ReportesOperarios";
+import ReportesKits, { reportesKitsLoader } from "./components/pages/Reportes/ReportesKits";
+
 // Layouts
 import HomeLayout from './components/Layouts/HomeLayout';
 import InventarioLayout from "./components/Layouts/InventarioLayout";
@@ -57,6 +63,8 @@ import KitsLayout from "./components/Layouts/KitsLayout";
 import OperariosLayout from './components/Layouts/OperariosLayout';
 import OperacionesLayout from "./components/Layouts/OperacionesLayout";
 import ProveedoresLayout from "./components/Layouts/ProveedoresLayout";
+import ReportesLayout from "./components/Layouts/ReportesLayout";
+
 
 
 
@@ -228,12 +236,36 @@ export default function App() {
 
             </Route>
 
+            <Route path="reportes" element={<ReportesLayout />}>
+
+              <Route
+              index
+              element={<Reportes />}
+              loader={reportesLoader} />
+
+              <Route
+              path="herramientas"
+              element={<ReportesHerramientas />}
+              loader={reportesHerramientasLoader}/>
+
+              <Route 
+              path="operarios"
+              element={<ReportesOperarios />}
+              loader={reportesOperariosLoader}/>
+
+              <Route 
+              path="kits"
+              element={<ReportesKits />}
+              loader={reportesKitsLoader}/>
+
+            </Route>
+
             <Route path="logout" element={<Logout />} />
 
           </>
         )} 
 
-        </Route>          
+      </Route>          
     )
   )
 

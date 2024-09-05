@@ -12,8 +12,14 @@ const DynamicChart = (props) => {
       type: props.type,
       data:props.data,
         options: {
+            indexAxis: props.indexAxis,
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            plugins:{
+              legend:{
+                position:props.position                
+              }
+            }
         }
     });
 
@@ -21,11 +27,13 @@ const DynamicChart = (props) => {
     myChart.destroy();
     };
 
-    }, []);
+    }, [props]);
 
-  return <div id={props.id}>
-    <canvas ref={chartRef} />
-    </div>;
+  return ( 
+      <div id={props.id}>      
+        <canvas ref={chartRef} />
+      </div>    
+    );
 };
 
 export default DynamicChart;

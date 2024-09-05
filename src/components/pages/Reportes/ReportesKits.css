@@ -1,0 +1,70 @@
+.grafico1RK{
+    display: grid;    
+    position: absolute;
+    top:11rem;
+    left: 8rem;
+    width: 40rem;    
+    height: 34rem;
+}
+
+.grafico2RK{
+    display: grid;    
+    position: absolute;
+    top:11rem;
+    left: 50rem;
+    width: 40rem;    
+    height: 34rem;
+}
+
+.grafico3RK{
+    display: grid;    
+    position: absolute;
+    top:10rem;
+    left: 26rem;
+    width: 48rem;    
+    height: 38rem;    
+}
+
+.grafico4{
+    display: grid;    
+    position: absolute;
+    top:37rem;
+    left: 50rem;
+    width: 40rem;    
+    height: 35rem;    
+}
+
+
+.dropdown_ReportesKits{
+    position: absolute;
+    top:1rem;
+    left: 95%;
+}
+
+.dropdown_ReportesKits > ul{
+    cursor:pointer; 
+}
+
+.tituloTool{
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap:1%;
+    top: 10%;
+    left: 8%;    
+}
+
+.tituloTool>p{
+    font-size: medium;
+}
+
+.contenidoHerramienta{
+    color:bisque;
+}
+
+.dropdown_Reportes_Kits{
+    position: absolute;
+    top:1rem;
+    left: 88%;
+}

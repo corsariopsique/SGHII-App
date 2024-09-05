@@ -36,7 +36,7 @@ export default function InfoItem(){
 
     const ubicacion = () => {
         if(data_infoItem.itemResumen.ubicacionWorker===null && data_infoItem.infoItem.estado===1 && data_infoItem.infoItem.fecha_out===null){
-            return `Kit ID: ${data_infoItem.itemResumen.ubicacionKit.id}`
+            return `Kit: ${data_infoItem.itemResumen.ubicacionKit.nombre}`
         }else if(data_infoItem.itemResumen.ubicacionKit===null && data_infoItem.infoItem.estado===1 && data_infoItem.infoItem.fecha_out===null){
             return `Operario ->  ${data_infoItem.itemResumen.ubicacionWorker.nombre}`
         }else if (data_infoItem.infoItem.estado===0){

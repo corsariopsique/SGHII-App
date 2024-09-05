@@ -217,7 +217,7 @@ export const dataResumen = async () => {
               'Authorization': `Bearer ${token}`}
   });
 
-  const operDataSet = await fetch('http://localhost:8081/api/operaciones/data/oper7d',{
+  const operDataSet = await fetch('http://localhost:8081/api/data/oper7d',{
       method: 'GET',
       headers: {'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`}

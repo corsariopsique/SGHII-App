@@ -2,6 +2,7 @@ import * as React from "react"
 
 const LogoCompletoIcono = (props) => (
   <svg
+    id="logo-completo"
     xmlns="http://www.w3.org/2000/svg"
     xmlSpace="preserve"
     width={806.665}

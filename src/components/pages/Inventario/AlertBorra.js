@@ -69,6 +69,7 @@ function AlertBorra () {
 
                         <button  
                             type="button" 
+                            id="delete_Confirm"
                             className="btn boton btn-danger"                                                                                             
                             onClick={HandleronClickEliminar}        
                         >                

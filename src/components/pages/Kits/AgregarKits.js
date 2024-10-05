@@ -76,7 +76,7 @@ function AgregarKits() {
 
     const btnsAgregarKit = [
         {
-            btnname:"Registar",
+            btnname:"Registrar",
             icobtn:"Tool2Icono",
             estiloBoton:"btn-primary",
             formulario:"add_kit",            

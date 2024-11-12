@@ -216,20 +216,21 @@ export default function InfoItem(){
 export const InfoItemLoader = async ({params}) => { 
     
     const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
 
-    const detailItem = await fetch(`http://localhost:8081/api/items/${params.itemId}`,{
+    const detailItem = await fetch(`${webServiceUrl}items/${params.itemId}`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     }); 
     
-    const operItem = await fetch(`http://localhost:8081/api/items/${params.itemId}/operaciones`,{
+    const operItem = await fetch(`${webServiceUrl}items/${params.itemId}/operaciones`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });      
 
-    const resumenItem = await fetch(`http://localhost:8081/api/items/${params.itemId}/resumen`, {
+    const resumenItem = await fetch(`${webServiceUrl}items/${params.itemId}/resumen`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},

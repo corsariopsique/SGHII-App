@@ -10,6 +10,7 @@ function AgregarOperario () {
     const navigate = useNavigate(); 
     const enlaceCancelarOperario = `/operarios`;    
     const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
 
     const [img_preWorker, setImg_PreWorker] = useState(null);
     const [tipo_imgWorker, setTipo_ImgWorker] = useState(null);
@@ -103,7 +104,7 @@ function AgregarOperario () {
     const  EnvioOperario = async () => {                
 
         try{
-            const response = await fetch('http://localhost:8081/api/operarios', {
+            const response = await fetch(`${webServiceUrl}operarios`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`},
@@ -122,7 +123,7 @@ function AgregarOperario () {
     const EnvioDatosImagen = async () => {
 
         try{
-            const response = await fetch('http://localhost:8081/api/imagesworker', {
+            const response = await fetch(`${webServiceUrl}imagesworker`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`},
@@ -141,7 +142,7 @@ function AgregarOperario () {
     const EnvioImagen = async () => {
 
         try{
-            const response = await fetch(`http://localhost:8081/api/imagesworker/${operario.entrada.id}`, {
+            const response = await fetch(`${webServiceUrl}imagesworker/${operario.entrada.id}`, {
               method: 'PUT',
               headers: {'Content-Type': 'application/octet-stream',
               'Authorization': `Bearer ${token}`},        

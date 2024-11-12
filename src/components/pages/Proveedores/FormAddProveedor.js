@@ -1,9 +1,10 @@
 const FormAddProveedor = async (data) => {
   
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
     
       try{
-        const response = await fetch(`http://localhost:8081/api/proveedores`, {
+        const response = await fetch(`${webServiceUrl}proveedores`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`},

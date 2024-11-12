@@ -7,15 +7,11 @@ import { useState } from 'react';
 function AlertBorra () {
 
     const toolData = useLoaderData();
-
     const idTool = useParams().toolId;
-
     const token = localStorage.getItem('token');
-
-    const enlaceCancelar = `/inventario/${useParams().toolId}/editarherramienta`;    
-
-    const urlDeleteItem = `http://localhost:8081/api/herramientas/${useParams().toolId}`;
-
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
+    const enlaceCancelar = `/inventario/${useParams().toolId}/editarherramienta`;
+    const urlDeleteItem = `${webServiceUrl}herramientas/${useParams().toolId}`;
     const [rndrmodal, setRndrModal] = useState(true);       
 
     const EliminaTool = async () => {
@@ -118,8 +114,9 @@ export default AlertBorra;
 export const alertBorraLoader = async ({params}) => {    
 
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
     
-    const detailTool = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`,{
+    const detailTool = await fetch(`${webServiceUrl}herramientas/${params.toolId}`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}

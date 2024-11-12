@@ -93,14 +93,15 @@ export default function Kits(){
 export const kitsLoader = async () => {
 
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
     
-    const kitsLista = await fetch('http://localhost:8081/api/kits', {
+    const kitsLista = await fetch(`${webServiceUrl}kits`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
     })   
 
-    const resumenKits = await fetch('http://localhost:8081/api/kits/resumen',{
+    const resumenKits = await fetch(`${webServiceUrl}kits/resumen`,{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}

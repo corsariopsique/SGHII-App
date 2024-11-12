@@ -68,7 +68,7 @@ import ReportesLayout from "./components/Layouts/ReportesLayout";
 
 
 
-export default function App() {
+export default function App() {  
 
   const auteCtx = useContext(AutenticacionContexto);    
 

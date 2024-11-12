@@ -107,14 +107,15 @@ export default function Inventario(){
 export const inventarioLoader = async () => {
     
     const token = localStorage.getItem('token');  
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
 
-    const itms = await fetch('http://localhost:8081/api/herramientas',{
+    const itms = await fetch(`${webServiceUrl}herramientas`,{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}
     });
 
-    const resumenHerramientas = await fetch('http://localhost:8081/api/herramientas/resumen',{
+    const resumenHerramientas = await fetch(`${webServiceUrl}herramientas/resumen`,{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}

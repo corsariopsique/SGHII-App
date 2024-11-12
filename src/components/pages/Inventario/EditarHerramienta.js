@@ -343,10 +343,11 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
     // funcion que envia los cambios al servidor
 
     const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
 
     const FormEditTool = async (props) => {
 
-        const urlData = `http://localhost:8081/api/herramientas/${params.toolId}`;
+        const urlData = `${webServiceUrl}herramientas/${params.toolId}`;
     
         try {
             const response = await fetch(urlData, {
@@ -371,7 +372,7 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
     const EnvioDatosImagen = async (props) => {
 
         try{
-            const response = await fetch('http://localhost:8081/api/images', {
+            const response = await fetch(`${webServiceUrl}images`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
@@ -389,7 +390,7 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
 
     const EnvioImagen = async (props) => {
         try{
-            const response = fetch(`http://localhost:8081/api/images/${params.toolId}`, {
+            const response = fetch(`${webServiceUrl}images/${params.toolId}`, {
               method: 'PUT',
               headers: {'Content-Type': 'application/octet-stream',
               'Authorization': `Bearer ${token}`},        
@@ -409,7 +410,7 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
     const EnvioImagenCompleta = async (datos,imagen) => {
 
         try {
-            const response = await fetch(`http://localhost:8081/api/images/${params.toolId}`,{
+            const response = await fetch(`${webServiceUrl}images/${params.toolId}`,{
                 method:'GET',
                 headers: {'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`}
@@ -443,8 +444,9 @@ export const EditarHerrramientaAction = async ({ request, params}) => {
 export const editarherramientaLoader = async ({params}) => {
     
     const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
     
-    const detail = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`, {
+    const detail = await fetch(`${webServiceUrl}herramientas/${params.toolId}`, {
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}

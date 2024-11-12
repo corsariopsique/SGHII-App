@@ -7,7 +7,7 @@ import { AutenticadorContextoProvider } from './components/authentication/Autent
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+root.render(  
 
   <AutenticadorContextoProvider>    
       <App />           

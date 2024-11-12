@@ -1,0 +1,275 @@
+Commit: 97e55d301ca178108ddca64a84fb21f87eae39eb
+Author: corsariopsique <maordo16@gmail.com>
+Date: Sat Oct 5 08:17:42 2024 -0500
+Message: correciones adaptacion plan de pruebas
+
+
+Commit: e1b20486160fd4621e954ae93e1d93850d2d54d6
+Author: corsariopsique <maordo16@gmail.com>
+Date: Thu Oct 3 17:09:20 2024 -0500
+Message: anexo logo completo identificacion
+
+
+Commit: e7b8f868b8b0e61e5d79a9e9666f2f2f043aa3cf
+Author: corsariopsique <maordo16@gmail.com>
+Date: Thu Sep 5 18:58:18 2024 -0500
+Message: implementacion reportes, implementacion barras de carga, correcciones, adaptaciones, fotos operarios.
+
+
+Commit: a8be52b589d88e24d7266d8054c9f9651712588f
+Author: corsariopsique <maordo16@gmail.com>
+Date: Mon Aug 26 11:47:43 2024 -0500
+Message: implementacion entidad itemherramienta, visualizacion, info, dar de baja, adaptacion con herramienta, orden paquetes componentes
+
+
+Commit: fd0b924878757b73deaee9c3a9c337fcfcf16793
+Author: corsariopsique <maordo16@gmail.com>
+Date: Sat Aug 17 00:28:48 2024 -0500
+Message: correcciones imagenes listados
+
+
+Commit: d24647435b6aefc05c55cd16651e4fee2b3b6bf8
+Author: corsariopsique <maordo16@gmail.com>
+Date: Fri Aug 16 12:47:25 2024 -0500
+Message: Cambios servicio autenticacion, correcion add tool - worker, correcciones imagenes, inicio implementacion graficos
+
+
+Commit: 9cb2f55a317f59e411d66c547e4f505ad335ccaf
+Author: corsariopsique <maordo16@gmail.com>
+Date: Fri Aug 9 19:56:53 2024 -0500
+Message: conexion dashboard y paneles al servidor, correcciones paneles, correciones imagenes, arreglos estilos. se remueve modo estricto (doble renderizacion, ojo)
+
+
+Commit: 963635573a309fcb71869187e509083567fc3ab7
+Author: corsariopsique <maordo16@gmail.com>
+Date: Thu Aug 8 22:34:46 2024 -0500
+Message: Conexion panel resumen base modulos, correcciones algunas
+
+
+Commit: 98e9432a5fd9fcc9d315bc812a15a49bec3f4932
+Author: corsariopsique <maordo16@gmail.com>
+Date: Thu Aug 8 16:33:20 2024 -0500
+Message: Implementacion parcial informacion relacionada elementos, resumenes (parcial), correcciones
+
+
+Commit: 169f13f923698ef80f575acd2bc00e4fad968ac7
+Author: corsariopsique <maordo16@gmail.com>
+Date: Fri Aug 2 10:52:31 2024 -0500
+Message: implementacion proveedores, manejo de bajas por marcador, correciones varias, cambios DB SQL, mejora tablas
+
+
+Commit: df435859bc7afaa7f7d887dcd30d81037f6827ce
+Author: corsariopsique <maordo16@gmail.com>
+Date: Sun Jul 28 13:37:05 2024 -0500
+Message: Implementacion gestion de sesiones de usuario (solicitudes, contexto global, enrutador), correciones.
+
+
+Commit: 74b902855de41a04c704430eb3e2e3fb030302f2
+Author: corsariopsique <maordo16@gmail.com>
+Date: Wed Jul 10 00:20:48 2024 -0500
+Message: implementacion modulo operaciones, correciones, adecuacion DB, mejoras varias
+
+
+Commit: fbb77a502deaeca0ce363b301774817b326ddfda
+Author: corsariopsique <maordo16@gmail.com>
+Date: Thu Jun 27 00:13:32 2024 -0500
+Message: Arreglos cantidad_disponible + sghii.sql al dia
+
+
+Commit: 931ec8eb196b7923483bd35d9dc4286fbd04aab9
+Author: corsariopsique <maordo16@gmail.com>
+Date: Mon Jun 24 22:41:18 2024 -0500
+Message: implementacion operario, correciones menu y listados, ruteados y otros
+
+
+Commit: befdccbf0939746cd8f14bf03d7fd19eb0d84d2c
+Author: corsariopsique <maordo16@gmail.com>
+Date: Sun Jun 23 01:25:06 2024 -0500
+Message: Arreglo menu de navegacion barra lateral
+
+
+Commit: 3ce91d61e0950ab8124ff6cefe90d30e3868fc5b
+Author: corsariopsique <maordo16@gmail.com>
+Date: Sat Jun 22 20:50:31 2024 -0500
+Message: Implementacion crud kits - enrutamiento - algunas correciones varias
+
+
+Commit: a911a8e36348305ce04ca1c07536d1b2f565e5fb
+Author: corsariopsique <maordo16@gmail.com>
+Date: Tue Jun 18 23:58:01 2024 -0500
+Message: Correciones ubicacion formularios add - edit tool
+
+
+Commit: 0267450ce46d3e72bc4a94faf95e6d9da2c36f94
+Author: corsariopsique <maordo16@gmail.com>
+Date: Tue Jun 18 22:32:56 2024 -0500
+Message: Conexion backend kits addkits infokits - listados con imagen - correciones varias
+
+
+Commit: f95bf148e25bf12e7bd451407ed8cc9125894c7b
+Author: corsariopsique <maordo16@gmail.com>
+Date: Mon Jun 17 20:33:21 2024 -0500
+Message: Conexion backend Editarherramienta, AlertBorra, correciones algunas.
+
+
+Commit: df01c51f662d2a5747756396844604d79d34397d
+Author: corsariopsique <maordo16@gmail.com>
+Date: Mon Jun 17 17:31:51 2024 -0500
+Message: Correcion agregar herramienta y traer imagenes.
+
+
+Commit: c83d3f561f397bacdcb427e54d210ae70f5b5328
+Author: corsariopsique <maordo16@gmail.com>
+Date: Tue Jun 11 01:39:10 2024 -0500
+Message: envio y solicitud de imagenes al servidor, correcion herramienta, arreglos css
+
+
+Commit: 89d7d69bb3339ab8e24e6769fb590b048f126452
+Author: corsariopsique <maordo16@gmail.com>
+Date: Sat May 25 19:45:03 2024 -0500
+Message: info kits correciones
+
+
+Commit: 6c4391eb42e7811080ddbb4267603bc036ca179e
+Author: corsariopsique <maordo16@gmail.com>
+Date: Sat May 11 12:38:34 2024 -0500
+Message: listado kits
+
+
+Commit: f9edc21b98213df6bc68d3c150123d223bf85d7f
+Author: corsariopsique <maordo16@gmail.com>
+Date: Wed May 8 14:27:48 2024 -0500
+Message:  componente agregar kits, rutas respectivas
+
+
+Commit: 9bdb9add0fbc4095d1df6397d72f4eeac874fad0
+Author: corsariopsique <maordo16@gmail.com>
+Date: Thu May 2 13:47:16 2024 -0500
+Message: terminacion alertborra, reubicacion paginas inventario
+
+
+Commit: f5f7961d49c9b2b89b25af4454e1610147601846
+Author: corsariopsique <maordo16@gmail.com>
+Date: Thu May 2 00:27:39 2024 -0500
+Message: editar y eliminar herramienta falta manejo modal
+
+
+Commit: b32d456124e3bf95f1e6d096d344270add4e4b0f
+Author: corsariopsique <maordo16@gmail.com>
+Date: Tue Apr 30 21:10:06 2024 -0500
+Message:  correccion keys componentes
+
+
+Commit: cc600e9315d084094546fc5d570ab705354def83
+Author: corsariopsique <maordo16@gmail.com>
+Date: Tue Apr 30 19:42:41 2024 -0500
+Message: Funcionalidad add-tool, correcion infotool, key elements
+
+
+Commit: 472726d95c808f64ddb1acbc8bcc57efc505c0b2
+Author: corsariopsique <maordo16@gmail.com>
+Date: Thu Apr 25 11:31:53 2024 -0500
+Message: Nueva conexion repo remoto, correccion formularios
+
+
+Commit: c54426508174b7fd935e972cefabfa7265c060d7
+Author: corsariopsique <maordo16@gmail.com>
+Date: Mon Apr 8 15:35:43 2024 -0500
+Message: imagenes info herramienta, actualizacion db, pequeñas correciones
+
+
+Commit: fb177758e5fa9b9cb28599ea3077bfe466de858c
+Author: corsariopsique <maordo16@gmail.com>
+Date: Sun Apr 7 16:05:46 2024 -0500
+Message: Correcion: ruta loader, class-className, condicionales componentes, otros
+
+
+Commit: 8f6b4eabc3840e9a306fba36a02dab382297cb74
+Author: corsariopsique <maordo16@gmail.com>
+Date: Fri Apr 5 01:34:23 2024 -0500
+Message: datos nuevos - intento typescript - problema paramas undefined
+
+
+Commit: 3d8672ffed1dd6b77a7a57824cfb1098519d1d2a
+Author: corsariopsique <maordo16@gmail.com>
+Date: Wed Apr 3 21:08:52 2024 -0500
+Message: inicio rama adaptacion react-router-dom
+
+
+Commit: 1e32703165df773d700e358779b7708549e1eb72
+Author: corsariopsique <maordo16@gmail.com>
+Date: Wed Apr 3 15:04:09 2024 -0500
+Message: Info herramienta - editar herramienta- alertaborrar - trabajado en el enrutado
+
+
+Commit: f03214961718b2795293cc2952b3205ca02bebd1
+Author: corsariopsique <maordo16@gmail.com>
+Date: Mon Apr 1 22:52:07 2024 -0500
+Message: detalle herramienta navs enlace tabla, preview imagen agregar herramienta
+
+
+Commit: 922d9b6089c63fd06e75e229503b2f52e0c5f74c
+Author: corsariopsique <maordo16@gmail.com>
+Date: Mon Apr 1 13:16:15 2024 -0500
+Message: correcion Modal, botones, rutas, agregar herramienta como modal
+
+
+Commit: a91d7605479aacccb683e29e103add96f2e9ad81
+Author: corsariopsique <maordo16@gmail.com>
+Date: Sat Mar 30 21:38:11 2024 -0500
+Message: agregar herramienta mejora botones modal - indexado componentes
+
+
+Commit: 8551ca1cba05df294a663d08572ad3b3aae862e6
+Author: corsariopsique <maordo16@gmail.com>
+Date: Tue Mar 26 23:45:28 2024 -0500
+Message: login conecta panel principal
+
+
+Commit: 06c0f20aa6139ec9e6ab9816a45043eab8291fa8
+Author: corsariopsique <maordo16@gmail.com>
+Date: Tue Mar 26 23:41:24 2024 -0500
+Message: Botones modal inventario iconos - etapa informe
+
+
+Commit: e004ac8b66b827e157a51186adfc50a79197e3ee
+Author: corsariopsique <maordo16@gmail.com>
+Date: Mon Mar 25 16:44:12 2024 -0500
+Message: Adelanto inventario, correcion tablas, botones, creacion modal
+
+
+Commit: ab0e36e5a5ef73d5b535e6429156318852c0e94d
+Author: corsariopsique <maordo16@gmail.com>
+Date: Sat Mar 23 00:29:53 2024 -0500
+Message: Iniciando Inventario
+
+
+Commit: 9088f9a3befe1928d803125f6892e85625fd9394
+Author: corsariopsique <maordo16@gmail.com>
+Date: Fri Mar 22 17:58:10 2024 -0500
+Message: creando pagina del Login
+
+
+Commit: 9a160c0da0556363060e61f14e581296278de9f7
+Author: corsariopsique <maordo16@gmail.com>
+Date: Fri Mar 22 15:31:20 2024 -0500
+Message: creando estructura de paginas-PanelPrincipal
+
+
+Commit: 54c029ff3b10371fbbc2acf6fe3a3c409ba070ec
+Author: corsariopsique <maordo16@gmail.com>
+Date: Thu Mar 21 22:42:39 2024 -0500
+Message: Envio 21 de marzo - Panel Principal elimina componente no utilizado
+
+
+Commit: f42e08137a900e64e63d9d51ec7a5d6465321e4c
+Author: corsariopsique <maordo16@gmail.com>
+Date: Thu Mar 21 22:16:34 2024 -0500
+Message: Envio 21 de marzo - Panel Principal
+
+
+Commit: 80354f16de704a34c5b1f605cdcfa4dd70400275
+Author: corsariopsique <maordo16@gmail.com>
+Date: Thu Mar 21 14:31:15 2024 -0500
+Message: iniciando repo
+

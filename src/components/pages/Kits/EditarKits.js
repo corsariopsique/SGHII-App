@@ -283,8 +283,9 @@ export default function EditarKits() {
 export const EditarKitsLoader = async ({params}) => {
 
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
     
-    const kittraer = await fetch(`http://localhost:8081/api/kits/${params.kitId}`,{
+    const kittraer = await fetch(`${webServiceUrl}kits/${params.kitId}`,{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
@@ -292,7 +293,7 @@ export const EditarKitsLoader = async ({params}) => {
 
     const kit = await kittraer.json();    
     
-    const tools = await fetch('http://localhost:8081/api/herramientas', {
+    const tools = await fetch(`${webServiceUrl}herramientas`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},

@@ -152,14 +152,15 @@ export default function Operaciones(){
 export const operacionesLoader = async () => {
 
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
     
-    const operacionesLista = await fetch('http://localhost:8081/api/operaciones',{
+    const operacionesLista = await fetch(`${webServiceUrl}operaciones`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });    
     
-    const resumenOperaciones = await fetch('http://localhost:8081/api/operaciones/resumen',{
+    const resumenOperaciones = await fetch(`${webServiceUrl}operaciones/resumen`,{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}

@@ -233,26 +233,27 @@ export default function InfoHerramienta(){
 export const InfoherramientaLoader = async ({params}) => { 
     
     const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
 
-    const detail = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}`,{
+    const detail = await fetch(`${webServiceUrl}herramientas/${params.toolId}`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     }); 
     
-    const operTool = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}/operaciones`,{
+    const operTool = await fetch(`${webServiceUrl}herramientas/${params.toolId}/operaciones`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });  
 
-    const suplierTool = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}/proveedores`,{
+    const suplierTool = await fetch(`${webServiceUrl}herramientas/${params.toolId}/proveedores`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });  
 
-    const resumenHerramienta = await fetch(`http://localhost:8081/api/herramientas/${params.toolId}/resumen`, {
+    const resumenHerramienta = await fetch(`${webServiceUrl}herramientas/${params.toolId}/resumen`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},

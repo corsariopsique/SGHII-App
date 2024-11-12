@@ -7,13 +7,10 @@ import { useState } from 'react';
 function BorrarProveedor () {
 
     const idSuplier = useParams().suplierId;    
-
-    const enlaceCancelarSuplier = `/proveedores/${idSuplier}/editarproveedor`;    
-
-    const urlDeleteItemSuplier = `http://localhost:8081/api/proveedores/${idSuplier}`;  
-    
     const token = localStorage.getItem('token'); 
-
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
+    const enlaceCancelarSuplier = `/proveedores/${idSuplier}/editarproveedor`;
+    const urlDeleteItemSuplier = `${webServiceUrl}proveedores/${idSuplier}`;
     const [rndrmodalSuplier, setRndrModalSuplier] = useState(true);
 
     const EliminaSuplier = async () => {

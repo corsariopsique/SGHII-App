@@ -92,15 +92,16 @@ export default function Operarios(){
 
 export const operariosLoader = async () => {
 
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl');  
     
-    const workers = await fetch('http://localhost:8081/api/operarios', {
+    const workers = await fetch(`${webServiceUrl}operarios`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
     });  
 
-    const resumenOperarios = await fetch('http://localhost:8081/api/operarios/resumen',{
+    const resumenOperarios = await fetch(`${webServiceUrl}operarios/resumen`,{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}

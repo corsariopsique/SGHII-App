@@ -7,15 +7,11 @@ import { useState } from 'react';
 function BajaItem () {
 
     const dataItem = useLoaderData();
-
     const idItem = useParams().itemId;    
-
-    const enlaceCancelarItem = `/inventario/items/${idItem}`;    
-
-    const urlDeleteItem = `http://localhost:8081/api/items/${idItem}`;  
-    
+    const enlaceCancelarItem = `/inventario/items/${idItem}`; 
     const token = localStorage.getItem('token'); 
-
+    const webServiceUrl = localStorage.getItem('webServiceUrl');    
+    const urlDeleteItem = `${webServiceUrl}items/${idItem}`;
     const [rndrmodalItem, setRndrModalItem] = useState(true);
 
     const EliminaItem = async () => {
@@ -117,8 +113,9 @@ export default BajaItem;
 export const bajaItemLoader = async ({params}) => {    
 
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
     
-    const detailItem = await fetch(`http://localhost:8081/api/items/${params.itemId}`,{
+    const detailItem = await fetch(`${webServiceUrl}items/${params.itemId}`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}

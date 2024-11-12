@@ -18,14 +18,15 @@ const ReportesHerramientas = () => {
             const FetchData = async () => {
 
                 const token = localStorage.getItem('token');
+                const webServiceUrl = localStorage.getItem('webServiceUrl');
                 
-                const dataTool = await fetch(`http://localhost:8081/api/data/radarTool/${idtool}`,{
+                const dataTool = await fetch(`${webServiceUrl}data/radarTool/${idtool}`,{
                     method:'GET',
                     headers: {'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`}
                 }); 
     
-                const dataToolItems = await fetch(`http://localhost:8081/api/data/indicesTool/${idtool}`,{
+                const dataToolItems = await fetch(`${webServiceUrl}data/indicesTool/${idtool}`,{
                     method:'GET',
                     headers: {'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`}
@@ -170,26 +171,27 @@ export default ReportesHerramientas;
 export const reportesHerramientasLoader = async () => { 
     
     const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
 
-    const itms = await fetch('http://localhost:8081/api/herramientas',{
+    const itms = await fetch(`${webServiceUrl}herramientas`,{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}
     });
 
-    const resumenHerramientas = await fetch('http://localhost:8081/api/herramientas/resumen',{
+    const resumenHerramientas = await fetch(`${webServiceUrl}herramientas/resumen`,{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}
     });      
     
-    const dataFreqTools = await fetch(`http://localhost:8081/api/data/freqtools`,{
+    const dataFreqTools = await fetch(`${webServiceUrl}data/freqtools`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });  
 
-    const dataIndexWasted = await fetch(`http://localhost:8081/api/data/indicesAllTools`,{
+    const dataIndexWasted = await fetch(`${webServiceUrl}data/indicesAllTools`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}

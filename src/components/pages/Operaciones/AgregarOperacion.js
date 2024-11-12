@@ -11,6 +11,7 @@ function AgregarOperacion () {
     const recursos_Operaciones = useLoaderData();    
     const navigate= useNavigate();
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
     const enlaceCancelarOperacion = '/operaciones'; 
     const manejoBotonForm = "btn botonOperacion btn-primary disabled-button";    
     
@@ -66,7 +67,7 @@ function AgregarOperacion () {
             const ListarToolsPrestamoActivo = async (idWorker) => {
 
                 setData_Prestamo(null);
-                const listaTools = await fetch(`http://localhost:8081/api/operarios/${idWorker}/prestamo`,{
+                const listaTools = await fetch(`${webServiceUrl}operarios/${idWorker}/prestamo`,{
                     method:'GET',
                     headers: {'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`}
@@ -543,22 +544,23 @@ export const AgregarOperacionAction = async ({ request }) => {
 export const agregarOperacionLoader = async () => {
 
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
     
-    const listaKits = await fetch(`http://localhost:8081/api/kits`,{
+    const listaKits = await fetch(`${webServiceUrl}kits`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });   
     const kitData = await listaKits.json();    
     
-    const listaTools = await fetch('http://localhost:8081/api/herramientas',{
+    const listaTools = await fetch(`${webServiceUrl}herramientas`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     }); 
     const toolsData = await listaTools.json();        
 
-    const listaWorkers = await fetch('http://localhost:8081/api/operarios',{
+    const listaWorkers = await fetch(`${webServiceUrl}operarios`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}

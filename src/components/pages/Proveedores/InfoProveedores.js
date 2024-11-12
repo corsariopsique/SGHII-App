@@ -1,5 +1,5 @@
 import './InfoProveedores.css';
-import {Modal, Tablas} from '../../IndexComponents';
+import {Modal} from '../../IndexComponents';
 import * as Icons from '../../Iconos/IndexIcons';
 import { useLoaderData, useParams, useNavigate } from 'react-router-dom'
 import ListarToolSuplier from './ListarToolSuplier';
@@ -94,8 +94,9 @@ export default function InfoProveedores(){
 export const InfoSuplierLoader = async ({params}) => {  
     
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
     
-    const detailSuplier = await fetch(`http://localhost:8081/api/proveedores/${params.suplierId}`, {
+    const detailSuplier = await fetch(`${webServiceUrl}proveedores/${params.suplierId}`, {
         method:'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
@@ -103,7 +104,7 @@ export const InfoSuplierLoader = async ({params}) => {
 
     if (!detailSuplier.ok) {
         throw Error('No se pudo cargar el kit indicado')
-      }
+    }
     
-      return detailSuplier.json()
+    return detailSuplier.json()
 }

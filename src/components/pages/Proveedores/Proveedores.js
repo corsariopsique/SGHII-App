@@ -119,14 +119,15 @@ export default function Proveedores(){
 export const proveedoresLoader = async () => {
 
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
     
-    const proveedoresLista = await fetch('http://localhost:8081/api/proveedores',{
+    const proveedoresLista = await fetch(`${webServiceUrl}proveedores`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });     
     
-    const resumenHerramientas = await fetch('http://localhost:8081/api/herramientas/resumen',{
+    const resumenHerramientas = await fetch(`${webServiceUrl}herramientas/resumen`,{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}

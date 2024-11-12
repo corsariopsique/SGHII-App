@@ -131,8 +131,9 @@ export default function InfoOperacion(){
 export const InfoOperacionLoader = async ({params}) => {       
     
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
     
-    const detailoper = await fetch(`http://localhost:8081/api/operaciones/${params.operId}`,{
+    const detailoper = await fetch(`${webServiceUrl}operaciones/${params.operId}`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}

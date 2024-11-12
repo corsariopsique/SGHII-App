@@ -10,7 +10,8 @@ function AgregarHerramienta () {
     const herramienta = useActionData();   
     const navigate = useNavigate(); 
     const auteCtx = useContext(AutenticacionContexto);
-    const enlaceCancelar = `/inventario`;    
+    const enlaceCancelar = `/inventario`;  
+    const webServiceUrl = localStorage.getItem('webServiceUrl');   
 
     const [img_pre, setImg_Pre] = useState(null);
     const [tipo_img, setTipo_Img] = useState(null);
@@ -103,7 +104,7 @@ function AgregarHerramienta () {
     const  EnvioHerramienta = async () => {                
 
         try{
-            const response = await fetch('http://localhost:8081/api/herramientas', {
+            const response = await fetch(`${webServiceUrl}herramientas`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json',
             'Authorization': `Bearer ${auteCtx.token}`},
@@ -122,7 +123,7 @@ function AgregarHerramienta () {
     const EnvioDatosImagen = async () => {
 
         try{
-            const response = await fetch('http://localhost:8081/api/images', {
+            const response = await fetch(`${webServiceUrl}images`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json',
                 'Authorization': `Bearer ${auteCtx.token}`},
@@ -141,7 +142,7 @@ function AgregarHerramienta () {
     const EnvioImagen = async () => {
 
         try{
-            const response = await fetch(`http://localhost:8081/api/images/${herramienta.entrada.id}`, {
+            const response = await fetch(`${webServiceUrl}images/${herramienta.entrada.id}`, {
               method: 'PUT',
               headers: {'Content-Type': 'application/octet-stream',
               'Authorization': `Bearer ${auteCtx.token}`},        

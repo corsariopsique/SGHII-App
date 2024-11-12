@@ -243,8 +243,9 @@ export default function EditarProveedor() {
 export const EditarProveedorLoader = async ({params}) => {
 
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
     
-    const supliertraer = await fetch(`http://localhost:8081/api/proveedores/${params.suplierId}`,{
+    const supliertraer = await fetch(`${webServiceUrl}proveedores/${params.suplierId}`,{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
@@ -252,7 +253,7 @@ export const EditarProveedorLoader = async ({params}) => {
 
     const suplier = await supliertraer.json();    
     
-    const tools = await fetch('http://localhost:8081/api/herramientas', {
+    const tools = await fetch(`${webServiceUrl}herramientas`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},

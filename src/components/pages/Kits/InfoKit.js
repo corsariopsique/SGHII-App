@@ -176,20 +176,21 @@ export default function InfoKit(){
 export const InfoKitLoader = async ({params}) => {  
     
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
     
-    const detailKit = await fetch(`http://localhost:8081/api/kits/${params.kitId}`, {
+    const detailKit = await fetch(`${webServiceUrl}kits/${params.kitId}`, {
         method:'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
     })     
     
-    const kitOper = await fetch(`http://localhost:8081/api/kits/${params.kitId}/operaciones`, {
+    const kitOper = await fetch(`${webServiceUrl}kits/${params.kitId}/operaciones`, {
         method:'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
     })    
     
-    const kitResumen = await fetch(`http://localhost:8081/api/kits/${params.kitId}/resumen`, {
+    const kitResumen = await fetch(`${webServiceUrl}kits/${params.kitId}/resumen`, {
         method:'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},

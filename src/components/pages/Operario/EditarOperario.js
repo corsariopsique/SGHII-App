@@ -270,9 +270,10 @@ export const EditarOperarioAction = async ({ request, params}) => {
 
     const FormEditWorker = async (props) => {
 
-        const token = localStorage.getItem('token'); 
+        const token = localStorage.getItem('token');
+        const webServiceUrl = localStorage.getItem('webServiceUrl');  
 
-        const urlData = `http://localhost:8081/api/operarios/${params.workerId}`;
+        const urlData = `${webServiceUrl}operarios/${params.workerId}`;
     
         try {
             const response = await fetch(urlData, {
@@ -296,10 +297,11 @@ export const EditarOperarioAction = async ({ request, params}) => {
     
     const EnvioDatosImagen = async (props) => {
 
-        const token = localStorage.getItem('token');         
+        const token = localStorage.getItem('token'); 
+        const webServiceUrl = localStorage.getItem('webServiceUrl');        
 
         try{
-            const response = await fetch('http://localhost:8081/api/imagesworker', {
+            const response = await fetch(`${webServiceUrl}imagesworker`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`},
@@ -318,9 +320,10 @@ export const EditarOperarioAction = async ({ request, params}) => {
     const EnvioImagen = async (props) => {
 
         const token = localStorage.getItem('token');
+        const webServiceUrl = localStorage.getItem('webServiceUrl');
 
         try{
-            const response = fetch(`http://localhost:8081/api/imagesworker/${params.workerId}`, {
+            const response = fetch(`${webServiceUrl}imagesworker/${params.workerId}`, {
               method: 'PUT',
               headers: {'Content-Type': 'application/octet-stream',  
                         'Authorization': `Bearer ${token}`},      
@@ -340,9 +343,10 @@ export const EditarOperarioAction = async ({ request, params}) => {
     const EnvioImagenCompleta = async (datos,imagen) => {
 
         const token = localStorage.getItem('token');
+        const webServiceUrl = localStorage.getItem('webServiceUrl');
 
         try {
-            const response = await fetch(`http://localhost:8081/api/imagesworker/${params.workerId}`, {
+            const response = await fetch(`${webServiceUrl}imagesworker/${params.workerId}`, {
                 method: 'GET',
                 headers: {'Content-Type': 'application/json',
                       'Authorization': `Bearer ${token}`},
@@ -375,9 +379,10 @@ export const EditarOperarioAction = async ({ request, params}) => {
 
 export const editarOperarioLoader = async ({params}) => {  
     
-    const token = localStorage.getItem('token'); 
+    const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
     
-    const detail = await fetch(`http://localhost:8081/api/operarios/${params.workerId}`, {
+    const detail = await fetch(`${webServiceUrl}operarios/${params.workerId}`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},

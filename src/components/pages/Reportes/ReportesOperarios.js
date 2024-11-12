@@ -18,14 +18,15 @@ const ReportesOperarios = () => {
             const FetchData = async () => {
 
                 const token = localStorage.getItem('token');
+                const webServiceUrl = localStorage.getItem('webServiceUrl');
                 
-                const dataWorkerTool = await fetch(`http://localhost:8081/api/data/prestamosToolWorker/${idWorker}`,{
+                const dataWorkerTool = await fetch(`${webServiceUrl}data/prestamosToolWorker/${idWorker}`,{
                     method:'GET',
                     headers: {'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`}
                 }); 
     
-                const dataWorkerKit = await fetch(`http://localhost:8081/api/data/prestamosKitWorker/${idWorker}`,{
+                const dataWorkerKit = await fetch(`${webServiceUrl}data/prestamosKitWorker/${idWorker}`,{
                     method:'GET',
                     headers: {'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`}
@@ -167,26 +168,27 @@ export default ReportesOperarios;
 export const reportesOperariosLoader = async () => { 
     
     const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
 
-    const dataWorkers = await fetch(`http://localhost:8081/api/operarios`,{
+    const dataWorkers = await fetch(`${webServiceUrl}operarios`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     }); 
   
-    const dataPrestamosWorker = await fetch(`http://localhost:8081/api/data/prestamosWorkerTotales`,{
+    const dataPrestamosWorker = await fetch(`${webServiceUrl}data/prestamosWorkerTotales`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });  
 
-    const dataResumenWorkers = await fetch(`http://localhost:8081/api/operarios/resumen`,{
+    const dataResumenWorkers = await fetch(`${webServiceUrl}operarios/resumen`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     }); 
 
-    const workersByRole = await fetch(`http://localhost:8081/api/data/workersByRole`,{
+    const workersByRole = await fetch(`${webServiceUrl}data/workersByRole`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}

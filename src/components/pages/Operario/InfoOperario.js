@@ -210,26 +210,27 @@ export default function InfoOperario(){
 export const InfoOperarioLoader = async ({params}) => { 
     
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
     
-    const trabajador = await fetch(`http://localhost:8081/api/operarios/${params.workerId}`, {
+    const trabajador = await fetch(`${webServiceUrl}operarios/${params.workerId}`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
     })   
     
-    const operacionesPendientesTrabajador = await fetch(`http://localhost:8081/api/operarios/${params.workerId}/prestamo`, {
+    const operacionesPendientesTrabajador = await fetch(`${webServiceUrl}operarios/${params.workerId}/prestamo`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
     })  
 
-    const operacionesTrabajador = await fetch(`http://localhost:8081/api/operarios/${params.workerId}/operaciones`, {
+    const operacionesTrabajador = await fetch(`${webServiceUrl}operarios/${params.workerId}/operaciones`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},
     })  
 
-    const resumenTrabajador = await fetch(`http://localhost:8081/api/operarios/${params.workerId}/resumen`, {
+    const resumenTrabajador = await fetch(`${webServiceUrl}operarios/${params.workerId}/resumen`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},

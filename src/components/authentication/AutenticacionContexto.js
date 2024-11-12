@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { redirect } from 'react-router';
+import config from '../../config';
 
 let logoutTimer;
 
@@ -60,7 +61,7 @@ export const AutenticadorContextoProvider = (props) => {
         clearTimeout(logoutTimer);
       }
 
-      redirect('/');
+      redirect('/login');
 
     }, []);
   
@@ -68,7 +69,8 @@ export const AutenticadorContextoProvider = (props) => {
       setToken(token);
       localStorage.setItem('token', token);      
       localStorage.setItem('expirationTime', expirationTime);
-  
+      localStorage.setItem('webServiceUrl', config.webServiceUrl);
+
       const remainingTime = calculateRemainingTime(expirationTime);
   
       logoutTimer = setTimeout(logoutHandler, remainingTime);

@@ -1,9 +1,10 @@
 const FormEditKit = async (id,data) => {
   
   const token = localStorage.getItem('token'); 
+  const webServiceUrl = localStorage.getItem('webServiceUrl'); 
   
     try{
-      const response = await fetch(`http://localhost:8081/api/kits/${id}`, {
+      const response = await fetch(`${webServiceUrl}kits/${id}`, {
       method: 'PUT',
       headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},

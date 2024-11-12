@@ -1,9 +1,10 @@
 const FormAddToolKit = async (id,tools) => {
 
-  const token = localStorage.getItem('token');    
+  const token = localStorage.getItem('token'); 
+  const webServiceUrl = localStorage.getItem('webServiceUrl');   
 
   try{
-    const response = await fetch(`http://localhost:8081/api/kits/${id}/herramientas`, {
+    const response = await fetch(`${webServiceUrl}kits/${id}/herramientas`, {
     method: 'POST',
     headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},

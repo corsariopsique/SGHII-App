@@ -175,8 +175,9 @@ export default AgregarProveedor;
 export const agregarProveedorLoader = async () => {
 
     const token = localStorage.getItem('token'); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
     
-    const tools = await fetch('http://localhost:8081/api/herramientas',{
+    const tools = await fetch(`${webServiceUrl}herramientas`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},

@@ -76,26 +76,27 @@ export default Reportes;
 export const reportesLoader = async () => { 
     
     const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
 
-    const dataItemsFree = await fetch(`http://localhost:8081/api/data/disponiblesByTool`,{
+    const dataItemsFree = await fetch(`${webServiceUrl}data/disponiblesByTool`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });   
 
-    const dataToolsByCat = await fetch(`http://localhost:8081/api/data/toolsByCat`,{
+    const dataToolsByCat = await fetch(`${webServiceUrl}data/toolsByCat`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });   
 
-    const dataToolsByRole = await fetch(`http://localhost:8081/api/data/toolsByRole`,{
+    const dataToolsByRole = await fetch(`${webServiceUrl}data/toolsByRole`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });
     
-    const dataBajasByTool = await fetch(`http://localhost:8081/api/data/bajasByTool`,{
+    const dataBajasByTool = await fetch(`${webServiceUrl}data/bajasByTool`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}

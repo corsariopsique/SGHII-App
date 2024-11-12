@@ -197,27 +197,28 @@ export default PanelPrincipal;
 export const dataResumen = async () => {
 
   const token = localStorage.getItem('token'); 
+  const webServiceUrl = localStorage.getItem('webServiceUrl'); 
  
 
-  const resumenOperaciones = await fetch('http://localhost:8081/api/operaciones/resumen',{
+  const resumenOperaciones = await fetch(`${webServiceUrl}operaciones/resumen`,{
       method: 'GET',
       headers: {'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`}
   });
 
-  const resumenOperarios = await fetch('http://localhost:8081/api/operarios/resumen',{
+  const resumenOperarios = await fetch(`${webServiceUrl}operarios/resumen`,{
     method: 'GET',
     headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`}
   });
 
-  const resumenHerramientas = await fetch('http://localhost:8081/api/herramientas/resumen',{
+  const resumenHerramientas = await fetch(`${webServiceUrl}herramientas/resumen`,{
     method: 'GET',
     headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`}
   });
 
-  const operDataSet = await fetch('http://localhost:8081/api/data/oper7d',{
+  const operDataSet = await fetch(`${webServiceUrl}data/oper7d`,{
       method: 'GET',
       headers: {'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`}

@@ -7,20 +7,13 @@ import { useState } from 'react';
 function BorrarOperario () {
 
     const idWorker = useParams().workerId;
-
-    const dataOper= useLoaderData();    
-
+    const dataOper= useLoaderData();
     const navigate = useNavigate();
-
     const token = localStorage.getItem('token');
-
-    const enlaceCancelar = `/operarios/${idWorker}/editaroperario`;    
-
-    const urlDeleteItem = `http://localhost:8081/api/operarios/${idWorker}`;
-
-    const urlDeleteImage = `http://localhost:8081/api/imagesworker/${idWorker}`;
-
-
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
+    const enlaceCancelar = `/operarios/${idWorker}/editaroperario`;
+    const urlDeleteItem = `${webServiceUrl}operarios/${idWorker}`;
+    const urlDeleteImage = `${webServiceUrl}imagesworker/${idWorker}`;
     const [rndrmodal, setRndrModal] = useState(true);
 
     const EliminaImagen = async () => {
@@ -144,9 +137,10 @@ export default BorrarOperario;
 
 export const BorrarOperarioLoader = async ({params}) => { 
     
-    const token = localStorage.getItem('token');    
+    const token = localStorage.getItem('token');  
+    const webServiceUrl = localStorage.getItem('webServiceUrl');  
     
-    const operacionesPendientesTrabajador = await fetch(`http://localhost:8081/api/operarios/${params.workerId}/prestamo`, {
+    const operacionesPendientesTrabajador = await fetch(`${webServiceUrl}operarios/${params.workerId}/prestamo`, {
         method: 'GET',
         headers: {'Content-Type': 'application/json',
               'Authorization': `Bearer ${token}`},

@@ -5,7 +5,8 @@ import {Tool1Icono, OperRolIcono} from '../Iconos/IndexIcons';
 
 const TraerImagenes = ( props ) => {
     const [imageSrc, setImageSrc] = useState(null);
-    const [activaIco, setactivaIco] = useState(false);    
+    const [activaIco, setactivaIco] = useState(false); 
+    const webServiceUrl = localStorage.getItem('webServiceUrl');   
     const id = props.imageId;
 
     let clases = '';
@@ -25,8 +26,8 @@ const TraerImagenes = ( props ) => {
         clases = 'img_info card-img-top';
     }
 
-    const toolDir = `http://localhost:8081/api/images/${id}`;
-    const workerDir = `http://localhost:8081/api/imagesworker/${id}`;    
+    const toolDir = `${webServiceUrl}images/${id}`;
+    const workerDir = `${webServiceUrl}imagesworker/${id}`;    
 
     const handlerTipo = (tipoImagen) => {
         if(tipoImagen === '1') {

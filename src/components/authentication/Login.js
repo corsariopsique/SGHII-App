@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useRef } from 'react';
 import AutenticacionContexto from './AutenticacionContexto';
 import { DecodificadorJWT } from './DecodificadorJWT';
+import config from '../../config';
 
 function Login () {
 
     const auteCtx = useContext(AutenticacionContexto);    
     const navigate = useNavigate(); 
     const usuarioReferenciado = useRef();
-    const constraseñaReferenciado = useRef();    
+    const constraseñaReferenciado = useRef();
 
     const manejoEnvio = (event) => {        
         event.preventDefault();
@@ -18,7 +19,7 @@ function Login () {
         const usuario = usuarioReferenciado.current.value;
         const contraseña = constraseñaReferenciado.current.value;
 
-        fetch('http://localhost:1535/api/auth/login', {
+        fetch(`${config.accountServiceUrl}auth/login`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({

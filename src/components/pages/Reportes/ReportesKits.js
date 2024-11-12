@@ -17,8 +17,9 @@ const ReportesKits = () => {
             const FetchData = async () => {
 
                 const token = localStorage.getItem('token');
+                const webServiceUrl = localStorage.getItem('webServiceUrl');
                 
-                const dataRadarKit = await fetch(`http://localhost:8081/api/data/radarKit/${idKit}`,{
+                const dataRadarKit = await fetch(`${webServiceUrl}data/radarKit/${idKit}`,{
                     method:'GET',
                     headers: {'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`}
@@ -145,26 +146,27 @@ export default ReportesKits;
 export const reportesKitsLoader = async () => { 
     
     const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
 
-    const itemsKits = await fetch('http://localhost:8081/api/kits',{
+    const itemsKits = await fetch(`${webServiceUrl}kits`,{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}
     });
 
-    const resumenKits = await fetch('http://localhost:8081/api/kits/resumen',{
+    const resumenKits = await fetch(`${webServiceUrl}kits/resumen`,{
         method: 'GET',
         headers: {'Content-Type': 'application/json',
                   'Authorization': `Bearer ${token}`}
     });      
     
-    const dataPrestamosKits = await fetch(`http://localhost:8081/api/data/prestamosByKit`,{
+    const dataPrestamosKits = await fetch(`${webServiceUrl}data/prestamosByKit`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}
     });  
 
-    const dataIndexWastedKits = await fetch(`http://localhost:8081/api/data/indicesKit`,{
+    const dataIndexWastedKits = await fetch(`${webServiceUrl}data/indicesKit`,{
         method:'GET',
         headers: {'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`}

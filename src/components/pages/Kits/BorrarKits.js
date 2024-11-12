@@ -7,15 +7,11 @@ import { useState } from 'react';
 function BorrarKits () {
 
     const idKit = useParams().kitId;
-
     const navigate = useNavigate();
-
-    const enlaceCancelarKit = `/kits/${idKit}/editarkits`;    
-
-    const urlDeleteItemKit = `http://localhost:8081/api/kits/${idKit}`;  
-    
-    const token = localStorage.getItem('token'); 
-
+    const token = localStorage.getItem('token');
+    const webServiceUrl = localStorage.getItem('webServiceUrl');
+    const enlaceCancelarKit = `/kits/${idKit}/editarkits`;
+    const urlDeleteItemKit = `${webServiceUrl}kits/${idKit}`;
     const [rndrmodalKit, setRndrModalKit] = useState(true);
 
     const EliminaKit = async () => {

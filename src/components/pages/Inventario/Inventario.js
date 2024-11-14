@@ -106,7 +106,7 @@ export default function Inventario(){
 
 export const inventarioLoader = async () => {
     
-    const token = localStorage.getItem('token');  
+    const token = localStorage.getItem('token');      
     const webServiceUrl = localStorage.getItem('webServiceUrl'); 
 
     const itms = await fetch(`${webServiceUrl}herramientas`,{

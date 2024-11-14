@@ -39,7 +39,7 @@ function Login () {
             })
             .then((data) => {
                 const infoToken = DecodificadorJWT(data.token);
-                auteCtx.login(data.token,infoToken.sessionEnd.toISOString());                
+                auteCtx.login(data.token,infoToken.userRole,infoToken.sessionEnd.toISOString());                
                 navigate(`/`);
             })                
             .catch((err) => {

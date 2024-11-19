@@ -56,6 +56,10 @@ import ReportesHerramientas, { reportesHerramientasLoader } from "./components/p
 import ReportesOperarios, { reportesOperariosLoader } from "./components/pages/Reportes/ReportesOperarios";
 import ReportesKits, { reportesKitsLoader } from "./components/pages/Reportes/ReportesKits";
 
+// componentes Configuracion
+import Configuracion, { ConfiguracionAction, configuracionLoader } from "./components/pages/Configuracion/Configuracion";
+import ModificarUsuario, { ModificarUserAction } from "./components/pages/Configuracion/ModificarUsuario";
+
 // Layouts
 import HomeLayout from './components/Layouts/HomeLayout';
 import InventarioLayout from "./components/Layouts/InventarioLayout";
@@ -64,6 +68,11 @@ import OperariosLayout from './components/Layouts/OperariosLayout';
 import OperacionesLayout from "./components/Layouts/OperacionesLayout";
 import ProveedoresLayout from "./components/Layouts/ProveedoresLayout";
 import ReportesLayout from "./components/Layouts/ReportesLayout";
+import ConfiguracionLayout from "./components/Layouts/ConfiguracionLayout";
+import BorrarUsuario from "./components/pages/Configuracion/BorrarUsuario";
+import RegistrarUsuario, { RegistrarUserAction } from "./components/pages/Configuracion/RegistrarUsuario";
+
+
 
 
 
@@ -86,8 +95,8 @@ export default function App() {
           <>
           
             <Route path="panelprincipal" 
-            element={<PanelPrincipal />}
-            loader={dataResumen} />  
+              element={<PanelPrincipal />}
+              loader={dataResumen} />  
 
             <Route path="inventario" element={<InventarioLayout />}>
               <Route
@@ -239,26 +248,55 @@ export default function App() {
             <Route path="reportes" element={<ReportesLayout />}>
 
               <Route
-              index
-              element={<Reportes />}
-              loader={reportesLoader} />
+                index
+                element={<Reportes />}
+                loader={reportesLoader} />
 
               <Route
-              path="herramientas"
-              element={<ReportesHerramientas />}
-              loader={reportesHerramientasLoader}/>
+                path="herramientas"
+                element={<ReportesHerramientas />}
+                loader={reportesHerramientasLoader}/>
 
               <Route 
-              path="operarios"
-              element={<ReportesOperarios />}
-              loader={reportesOperariosLoader}/>
+                path="operarios"
+                element={<ReportesOperarios />}
+                loader={reportesOperariosLoader}/>
 
               <Route 
-              path="kits"
-              element={<ReportesKits />}
-              loader={reportesKitsLoader}/>
+                path="kits"
+                element={<ReportesKits />}
+                loader={reportesKitsLoader}/>
 
+            </Route>           
+
+            <Route path="configuracion" element={<ConfiguracionLayout />}>
+
+              <Route
+                index
+                element={<Configuracion />}
+                loader={configuracionLoader}/>  
+
+              <Route
+                path="registrar"
+                element={<RegistrarUsuario />}
+                action={RegistrarUserAction} />
+
+              <Route
+                path="changePass"
+                element={<Logout />}
+                action={ConfiguracionAction}/>
+
+              <Route
+                path=":username/update"
+                element={<ModificarUsuario />}
+                action={ModificarUserAction} />
+
+              <Route
+                path=":username/delete"
+                element={<BorrarUsuario />} />                         
+            
             </Route>
+             
 
             <Route path="logout" element={<Logout />} />
 

@@ -1,0 +1,29 @@
+.form_EditarUser{     
+    display: flex;
+    flex-direction: column;  
+    position: absolute; 
+    width: 85%;
+    top: 12%;
+    left:40%;        
+}
+
+#changePasswordSubmit{
+    width: fit-content;
+    margin-top: 1rem;
+}
+
+#messageInitial{
+    font-weight: 400;
+    font-size: large;
+    font-style: oblique;
+    width:fit-content;
+    margin-bottom: 1.5rem;
+}
+
+.radioContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;    
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+}

@@ -1,5 +1,12 @@
 .card_User{
-    height: min-content;    
+    height: min-content; 
+    background-color:white;
+    transition: background-color 0.3s ease, transform 0.3s ease;   
+}
+
+.card_User:hover{
+    background-color:white;
+    transform: scale(1.05);
 }
 
 .contenedor_Users{

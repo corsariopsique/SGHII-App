@@ -47,3 +47,15 @@
     top:2rem;
     left:4.5rem;
 }
+
+#btnDownloadItem{
+    position: absolute;
+    top:1.6%;
+    left:82.5%;
+    display:flex;        
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.5rem;
+    width:min-content; 
+}
+

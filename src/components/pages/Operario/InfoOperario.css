@@ -69,3 +69,14 @@
     max-height:35.6rem;   
     overflow: auto;
 }
+
+#btnDownloadWorker{
+    position: absolute;
+    top:1.6%;
+    left:77.5%;
+    display:flex;        
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.5rem;
+    width:min-content; 
+}

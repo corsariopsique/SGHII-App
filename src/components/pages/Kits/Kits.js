@@ -22,14 +22,6 @@ export default function Kits(){
             estiloBoton:"btn-outline-primary",
             tipo:"button",   
             accion:"null"         
-        },
-
-        {
-            btnname:"Descargar",
-            icobtn:"DownloadIcono",
-            estiloBoton:"btn-outline-primary",
-            tipo:"button",            
-            accion:"null"
         }
       ];
 

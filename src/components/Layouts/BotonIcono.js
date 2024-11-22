@@ -12,6 +12,7 @@ function BotonIcono (props){
         return true;
     }
 
+    const id = props.id;
     const name = props.btnname;
     const iconame = props.icobtn;
     const clasebtn = "btn boton " + props.estiloBoton;
@@ -26,8 +27,9 @@ function BotonIcono (props){
             <Link to={props.accion}>
 
                 <button form={props.formulario} 
+                id={id}
                 type={tipo}        
-                className={clasebtn}         
+                className={clasebtn}                  
                 data-bs-toggle={props.d_toggle}   
                 data-bs-target={props.d_target}      
                 data-bs-dismiss={props.d_dismiss}                                                                                  
@@ -46,6 +48,7 @@ function BotonIcono (props){
         return (
 
             <button form={props.formulario} 
+            id={id}            
             type={tipo} 
             className={clasebtn}                         
             data-bs-toggle={props.d_toggle}   

@@ -16,5 +16,6 @@ export { default as Tablas} from './generalUseComponents/Tablas';
 export { default as IDGenerator} from './generalUseComponents/IDGenerator';
 export { default as TraerImagenes} from './generalUseComponents/TraerImagenes';
 export { default as BarraDeCarga } from './generalUseComponents/BarraDeCarga';
+export { default as generatePDF} from './generalUseComponents/PdfGenerator';
 
 

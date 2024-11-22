@@ -1,5 +1,5 @@
 import './InfoProveedores.css';
-import {Modal} from '../../IndexComponents';
+import { Modal, generatePDF } from '../../IndexComponents';
 import * as Icons from '../../Iconos/IndexIcons';
 import { useLoaderData, useParams, useNavigate } from 'react-router-dom'
 import ListarToolSuplier from './ListarToolSuplier';
@@ -7,7 +7,8 @@ import ListarToolSuplier from './ListarToolSuplier';
 export default function InfoProveedores(){       
      
     const data_infoProveedor = useLoaderData(); 
-    const navigate = useNavigate();   
+    const navigate = useNavigate();  
+    const idProve = useParams().suplierId; 
     
     const numTool_Suplier = data_infoProveedor.herramientas.length; 
     const enlaceEditarProveedor = `/proveedores/${useParams().suplierId}/editarproveedor`;   
@@ -22,16 +23,30 @@ export default function InfoProveedores(){
 
     const handlerClickButton = () => {
         navigate(enlaceEditarProveedor);        
-    }          
+    }
+    
+    const handlerButtonDownload = () => {
+        generatePDF('info_Proveedor',`info_Proveedor_${idProve}`,'landscape');
+    }  
 
     return(
         <div>
             <Modal 
             title="Información Proveedores"
-            estiloModal="modal_completo"            
+            estiloModal="modal_completo"   
+            id='info_Proveedor'         
             >
 
                 <div className="btn-group btn_ModalIntermedio" role="group" aria-label="Large button group">                    
+
+                    <button  
+                        type="button" 
+                        className="btn botonEditKit btn-outline-secondary" 
+                        onClick={handlerButtonDownload}                                                                                  
+                    >                
+                        <Icons.DownloadIcono id="icobtnEditSuplier"/>Descargar              
+
+                    </button>  
 
                     <button                              
                         type="button" 
@@ -40,15 +55,7 @@ export default function InfoProveedores(){
                     >                
                         <Icons.EditarIcono id="icobtnEditSuplier"/>Editar              
 
-                    </button>                    
-                    
-                    <button  
-                        type="button" 
-                        className="btn botonEditKit btn-outline-secondary"                                                                                   
-                    >                
-                        <Icons.DownloadIcono id="icobtnEditKit"/>Descargar              
-
-                    </button>            
+                    </button>                              
 
                 </div> 
 

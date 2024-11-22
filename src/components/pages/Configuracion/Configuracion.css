@@ -46,6 +46,11 @@
 .botonReg{ 
     position: absolute;   
     top:2%;
-    left:91%;        
-    height: fit-content;    
+    left:89%;        
+    height: fit-content; 
+    display:flex;        
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.5rem;
+    width:max-content;    
 }

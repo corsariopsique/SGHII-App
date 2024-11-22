@@ -37,6 +37,7 @@ import InfoOperario, { InfoOperarioLoader } from "./components/pages/Operario/In
 import Operarios, { operariosLoader } from "./components/pages/Operario/Operarios";
 import EditarOperario, { EditarOperarioAction, editarOperarioLoader } from "./components/pages/Operario/EditarOperario";
 import BorrarOperario, {BorrarOperarioLoader} from "./components/pages/Operario/BorrarOperario";
+import PazYsalvo, { PazYSalvoLoader } from "./components/pages/Operario/PazYSalvo";
 
 // componentes Operaciones
 import Operaciones, {operacionesLoader} from "./components/pages/Operaciones/Operaciones";
@@ -59,6 +60,8 @@ import ReportesKits, { reportesKitsLoader } from "./components/pages/Reportes/Re
 // componentes Configuracion
 import Configuracion, { ConfiguracionAction, configuracionLoader } from "./components/pages/Configuracion/Configuracion";
 import ModificarUsuario, { ModificarUserAction } from "./components/pages/Configuracion/ModificarUsuario";
+import BorrarUsuario from "./components/pages/Configuracion/BorrarUsuario";
+import RegistrarUsuario, { RegistrarUserAction } from "./components/pages/Configuracion/RegistrarUsuario";
 
 // Layouts
 import HomeLayout from './components/Layouts/HomeLayout';
@@ -69,10 +72,6 @@ import OperacionesLayout from "./components/Layouts/OperacionesLayout";
 import ProveedoresLayout from "./components/Layouts/ProveedoresLayout";
 import ReportesLayout from "./components/Layouts/ReportesLayout";
 import ConfiguracionLayout from "./components/Layouts/ConfiguracionLayout";
-import BorrarUsuario from "./components/pages/Configuracion/BorrarUsuario";
-import RegistrarUsuario, { RegistrarUserAction } from "./components/pages/Configuracion/RegistrarUsuario";
-
-
 
 
 
@@ -181,7 +180,13 @@ export default function App() {
               <Route 
                 path=":workerId"
                 element={<InfoOperario />}   
-                loader ={InfoOperarioLoader}/>
+                loader ={InfoOperarioLoader}>
+
+                  <Route
+                  path="pazysalvo"
+                  element={<PazYsalvo />}
+                  loader={PazYSalvoLoader}/>
+              </Route>
 
               <Route
                 path=":workerId/editaroperario"

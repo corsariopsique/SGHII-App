@@ -1,5 +1,6 @@
 import './InfoHerramienta.css';
-import {Modal, Tablas, TraerImagenes} from '../../IndexComponents';
+import {Modal, Tablas, TraerImagenes, generatePDF} from '../../IndexComponents';
+import { DownloadIcono } from '../../Iconos/IndexIcons';
 import { useLoaderData, useParams } from 'react-router-dom'
 import ListarHerramientas from './ListarHerramientas';
 
@@ -8,7 +9,11 @@ export default function InfoHerramienta(){
     const data_infoTool = useLoaderData();
     const idImagen = useParams().toolId;    
     const tool_prestamo = data_infoTool.infoTool.cantidad - data_infoTool.infoTool.cantidad_disponible - data_infoTool.infoTool.cantidad_kits;
-    const lista_Oper = [];
+    const lista_Oper = []; 
+    
+    const handlerButton = () => {
+        generatePDF('info_herramienta',`info_Tool_${idImagen}`,'landscape');
+    }    
 
     function textTipo (tipo) {
         if(tipo === 1){
@@ -55,16 +60,9 @@ export default function InfoHerramienta(){
             estiloBoton:"btn-outline-secondary",
             tipo:"button",  
             accion:`/inventario/${useParams().toolId}/editarherramienta`
-        },
+        }        
+    ];
 
-        {
-            btnname:"Descargar",
-            icobtn:"DownloadIcono",
-            estiloBoton:"btn-outline-secondary",
-            accion:"null",
-            tipo:"button",            
-        }
-    ];     
 
     return(
 
@@ -74,7 +72,10 @@ export default function InfoHerramienta(){
             estiloModal="modal_completo"
             botoncss="btn_ModalIntermedio"
             botones={btnsInfoHerramienta}
-            >               
+            id="info_herramienta"
+            >
+
+                <button id='btnDownloadTool' className='btn btn-outline-primary' onClick={handlerButton}><DownloadIcono id='icobtn'/>Descargar</button>                
 
                 <ul class="nav nav-pills mb-3" id="nav-tab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -88,7 +89,7 @@ export default function InfoHerramienta(){
                     </li>    
                     <li class="nav-item" role="presentation">
                         <button className="nav-link" id="nav-items-tab" data-bs-toggle="pill" data-bs-target="#nav-items" type="button" role="tab" aria-controls="nav-items-tab" aria-selected="false">Items Herramienta</button>
-                    </li>                 
+                    </li>                                      
                 </ul>
 
                 <div className="tab-content" id="nav-tabContent">
@@ -225,7 +226,8 @@ export default function InfoHerramienta(){
 
                 </div>
 
-            </Modal>                                    
+            </Modal>   
+
         </>
     );
 }

@@ -19,7 +19,8 @@ function Modal(props){
                 <div className={boton_Clase} role="group" aria-label="Large button group">
 
                     {props.botones.map((btninv) => (
-                        <BotonIcono 
+                        <BotonIcono
+                            id={btninv.id}                             
                             btnname={btninv.btnname}
                             icobtn={btninv.icobtn}
                             estiloBoton={btninv.estiloBoton}

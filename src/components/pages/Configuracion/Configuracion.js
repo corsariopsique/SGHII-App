@@ -4,6 +4,7 @@ import AutenticacionContexto from "../../authentication/AutenticacionContexto";
 import { Modal } from '../../IndexComponents';
 import { useLoaderData, Outlet, Form, Link } from 'react-router-dom';
 import validatorPassword from './ValidarPassword';
+import { OperarioActivoIcono } from '../../Iconos/IndexIcons';
 import config from '../../../config';
 
 const Configuracion = () => {
@@ -95,7 +96,7 @@ const Configuracion = () => {
                     <>
 
                         <Link to={`/configuracion/registrar`}>
-                            <button type='button' className='btn botonReg btn-primary'>Nuevo usuario</button>
+                            <button type='button' className='btn botonReg btn-outline-primary'><OperarioActivoIcono id='icobtn'/>Nuevo usuario</button>
                         </Link>
                         
                         <div className='contenedor_Users'>

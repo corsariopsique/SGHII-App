@@ -1,10 +1,13 @@
 import './InfoItem.css';
-import {Modal, Tablas, TraerImagenes} from '../../IndexComponents';
-import { useLoaderData, useParams, Outlet } from 'react-router-dom'
+import {Modal, Tablas, TraerImagenes, generatePDF} from '../../IndexComponents';
+import { useLoaderData, useParams, Outlet } from 'react-router-dom';
+import { DownloadIcono } from '../../Iconos/IndexIcons';
+
 
 export default function InfoItem(){       
      
     const data_infoItem = useLoaderData();
+    const idItem = useParams().itemId
     const idImagen = data_infoItem.infoItem.herramienta.id;
     const lista_Oper = [];
 
@@ -46,6 +49,10 @@ export default function InfoItem(){
         }
     };
 
+    const handlerButton = () => {
+        generatePDF('info_item',`info_Item_${idItem}`,'landscape');
+    } 
+
     data_infoItem.itemOper.map((item) => {
 
         const oper = {
@@ -74,15 +81,7 @@ export default function InfoItem(){
             estiloBoton:"btn-outline-danger",
             tipo:"button",  
             accion:`/inventario/items/${useParams().itemId}/deleteitem`
-        },
-
-        {
-            btnname:"Descargar",
-            icobtn:"DownloadIcono",
-            estiloBoton:"btn-outline-secondary",
-            accion:"null",
-            tipo:"button",            
-        }
+        }        
     ];     
 
     return(
@@ -90,10 +89,13 @@ export default function InfoItem(){
         <>
             <Modal 
             title="Información Item"
+            id='info_item'
             estiloModal="modal_completo"
             botoncss="btn_ModalIntermedio"
             botones={btnsInfoItem}
-            >               
+            > 
+
+                <button id='btnDownloadItem' className='btn btn-outline-primary' onClick={handlerButton}><DownloadIcono id='icobtn'/>Descargar</button>
 
                 <ul class="nav nav-pills mb-3" id="nav-tab" role="tablist">
                     <li class="nav-item" role="presentation">

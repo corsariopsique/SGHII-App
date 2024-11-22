@@ -1,12 +1,13 @@
 import './InfoOperacion.css';
-import {Modal, Tablas} from '../../IndexComponents';
-import * as Icons from '../../Iconos/IndexIcons';
+import { Modal, generatePDF } from '../../IndexComponents';
+import { DownloadIcono } from '../../Iconos/IndexIcons';
 import ListarElementosOperaciones from './ListarElementosOperaciones';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 
 export default function InfoOperacion(){     
         
     const data_infoOperacion = useLoaderData();    
+    const idOper = useParams().operId;
 
     const oper_Estado = (estado) => {
         if(estado === 1){
@@ -32,25 +33,17 @@ export default function InfoOperacion(){
         }else{            
             return '1';
         }      
-    }    
-
-    const columns = [
-        { key: 'id', title: 'ID' },
-        { key: 'name', title: 'Nombre Operario' },        
-        { key: 'date',title: 'Fecha Operación'},
-    ];      
-      
-    const data = [
-        { id: 'S1', name: 'Jose', date:"2024-02-15"},
-        { id: 'A3', name: 'Carlos', date:"2024-01-25"},
-        { id: 'S8', name: 'Roberto', date:"2023-12-21"},
-        { id: 'D5', name: 'Jose Maria', date:"2024-01-09"},
-    ];           
+    }  
+    
+    const handlerButton = () => {
+        generatePDF('info_Operaciones',`info_Operacion_${idOper}`,'landscape');
+    }            
 
     return(
         <>
             <Modal 
             title="Información Operaciones"
+            id='info_Operaciones'
             estiloModal="modal_completo"            
             >
 
@@ -58,9 +51,10 @@ export default function InfoOperacion(){
                     
                     <button  
                         type="button" 
-                        className="btn botonOperInfo btn-outline-secondary"                                                                                   
+                        className="btn botonOperInfo btn-outline-secondary" 
+                        onClick={handlerButton}                                                                                  
                     >                
-                        <Icons.DownloadIcono id="icobtnOper"/>Descargar              
+                        <DownloadIcono id="icobtnOper"/>Descargar              
 
                     </button>            
 
@@ -87,20 +81,9 @@ export default function InfoOperacion(){
                             </div>
                             
                             <div className="card-footer bg-transparent"><li className="list-group-item atributo_lista">Cantidad total de elementos : <span>{numElement()}</span></li></div>
-                        </div> 
 
-
-                        <div className="card text-secondary last_oper">
-                            <div className="card-header bg-transparent text-primary">Ultimas Operaciones</div>
-                            <div className="card-body">
-                                <Tablas
-                                listado='transaccion'
-                                estiloTabla="tabla_info_tool"
-                                columns={columns}
-                                data={data}
-                                />                                
-                            </div>
-                        </div> 
+                        </div>
+                       
 
                         { tipoArticulo() &&  
 

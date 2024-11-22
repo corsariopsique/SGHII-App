@@ -1,14 +1,18 @@
 import './InfoOperario.css';
-import { Modal, TraerImagenes} from '../../IndexComponents';
-import { useLoaderData, useParams } from 'react-router-dom'
+import { Modal, TraerImagenes, generatePDF} from '../../IndexComponents';
+import { DownloadIcono } from '../../Iconos/IndexIcons';
+import { Outlet, useLoaderData, useParams } from 'react-router-dom'
 import ListarElementos from './ListarElementos';
 
 
 export default function InfoOperario(){       
      
     const data_infoWorker = useLoaderData()    
-    const idImagenWorker = useParams().workerId;       
+    const idImagenWorker = useParams().workerId;  
     
+    const handlerButton = () => {
+        generatePDF('info_worker',`info_Worker_${idImagenWorker}`,'landscape');
+    }    
 
     function textTipo (tipo) {
         if(tipo === 1){
@@ -40,19 +44,23 @@ export default function InfoOperario(){
             btnname:"Paz y Salvo",
             icobtn:"PazYSalvoIcono",
             estiloBoton:"btn-outline-success",
-            accion:"null",
+            accion:`/operarios/${useParams().workerId}/pazysalvo`,
             tipo:"button",            
         }
       ];     
 
     return(
-        <div>
+
+        <>        
             <Modal 
             title="Información Operario"
             estiloModal="modal_completo"
             botoncss="btn_ModalIntermedio"
             botones={btnsInfoOperarios}
+            id="info_worker"
             >
+
+                <button id='btnDownloadWorker' className='btn btn-outline-primary' onClick={handlerButton}><DownloadIcono id='icobtn'/>Descargar</button>
 
                 <ul className="nav nav-pills mb-6" id="nav-tab" role="tablist">
 
@@ -202,8 +210,10 @@ export default function InfoOperario(){
                 </div>
 
             </Modal>
+
+            <Outlet />
                                     
-        </div>
+        </>
     );
 }
 

@@ -17,17 +17,17 @@
     overflow: hidden;
 }
 
-.delete_alert{
+.checkedWorker{
     position: absolute;
     top:22rem; 
     left:43rem;   
 }
 
-.boton{ 
+.botonWorker{ 
     display:flex;        
     flex-direction: row;
     justify-content: space-between;
-    gap: 0.5rem;
+    gap: 1rem;
     width:max-content;    
 }
 
@@ -35,9 +35,15 @@
     align-self: center;       
 }
 
-.verificacion{    
+.verificacionWorker{    
     display: flex;   
     flex-direction: column;
     height: 7.5rem;   
     align-items: center;    
+}
+
+.ok_Btn{
+    position: relative;
+    left: 48%;
+    width:auto;
 }

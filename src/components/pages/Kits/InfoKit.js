@@ -1,5 +1,5 @@
 import './InfoKit.css';
-import {Modal, Tablas} from '../../IndexComponents';
+import {Modal, Tablas, generatePDF} from '../../IndexComponents';
 import * as Icons from '../../Iconos/IndexIcons';
 import ListarKits from './ListarKits';
 import { useLoaderData, useParams, useNavigate } from 'react-router-dom'
@@ -52,6 +52,7 @@ export default function InfoKit(){
 
     const numTool = data_infoKit.kitDetail.herramientas.length; 
     const enlaceEditarKit = `/kits/${useParams().kitId}/editarkits`;   
+    const idKit = useParams().kitId;
 
     const handlerClickButton = () => {
         if(!data_infoKit.kitDetail.disponible){
@@ -60,15 +61,29 @@ export default function InfoKit(){
             alert(`El kit con id ${data_infoKit.id} no es editable porque se encuentra en prestamo`);            
         }
     };
+
+    const handlerButtonDownload = () => {
+        generatePDF('info_kits',`info_Kit_${idKit}`,'landscape');
+    };  
    
     return(
         <div>
             <Modal 
             title="Información Kits"
+            id='info_kits'
             estiloModal="modal_completo"            
             >
 
                 <div className="btn-group btn_ModalIntermedio" role="group" aria-label="Large button group">                    
+
+                    <button  
+                        type="button" 
+                        className="btn botonEditKit btn-outline-primary"
+                        onClick={handlerButtonDownload}                                                                                   
+                    >                
+                        <Icons.DownloadIcono id="icobtnEditKit"/>Descargar              
+
+                    </button>    
 
                     <button                              
                         type="button" 
@@ -77,15 +92,7 @@ export default function InfoKit(){
                     >                
                         <Icons.EditarIcono id="icobtnEditKit"/>Editar              
 
-                    </button>                    
-                    
-                    <button  
-                        type="button" 
-                        className="btn botonEditKit btn-outline-secondary"                                                                                   
-                    >                
-                        <Icons.DownloadIcono id="icobtnEditKit"/>Descargar              
-
-                    </button>            
+                    </button>                            
 
                 </div> 
 

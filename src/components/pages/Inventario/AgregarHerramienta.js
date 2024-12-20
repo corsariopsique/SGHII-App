@@ -11,7 +11,8 @@ function AgregarHerramienta () {
     const navigate = useNavigate(); 
     const auteCtx = useContext(AutenticacionContexto);
     const enlaceCancelar = `/inventario`;  
-    const webServiceUrl = localStorage.getItem('webServiceUrl');   
+    const webServiceUrl = localStorage.getItem('webServiceUrl'); 
+    const MAX_FILE_SIZE = 70 * 1024;          
 
     const [img_pre, setImg_Pre] = useState(null);
     const [tipo_img, setTipo_Img] = useState(null);
@@ -163,8 +164,7 @@ function AgregarHerramienta () {
     const handleronChange = (event) => {        
 
         const file = event.target.files[0];
-        const reader = new FileReader();           
-        
+        const reader = new FileReader();       
 
         reader.onloadend = () => {    
             const base64String = reader.result.split(',')[1];
@@ -173,8 +173,8 @@ function AgregarHerramienta () {
         }       
         
         
-        if (file && file.type !== 'image/png') {
-            setTipo_Img ("Tipo de imagen no valido, por favor ingrese un archivo tipo PNG"); 
+        if (file && file.type !== 'image/png' || file.size >= MAX_FILE_SIZE) {
+            setTipo_Img ("Tipo de imagen no valido o tamaño de imagen superado, por favor ingrese un archivo tipo PNG mas pequeño, max 70 Kb"); 
             setImg_Pre(null);
             return             
         }        

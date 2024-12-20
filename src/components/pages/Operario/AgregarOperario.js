@@ -11,6 +11,7 @@ function AgregarOperario () {
     const enlaceCancelarOperario = `/operarios`;    
     const token = localStorage.getItem('token');
     const webServiceUrl = localStorage.getItem('webServiceUrl');
+    const MAX_FILE_SIZE = 70 * 1024;                
 
     const [img_preWorker, setImg_PreWorker] = useState(null);
     const [tipo_imgWorker, setTipo_ImgWorker] = useState(null);
@@ -164,8 +165,7 @@ function AgregarOperario () {
     const handleronChange = (event) => {        
 
         const file = event.target.files[0];
-        const reader = new FileReader();           
-        
+        const reader = new FileReader();        
 
         reader.onloadend = () => {    
             const base64String = reader.result.split(',')[1];
@@ -174,8 +174,8 @@ function AgregarOperario () {
         }       
         
         
-        if (file && file.type !== 'image/png') {
-            setTipo_ImgWorker ("Tipo de imagen no valido, por favor ingrese un archivo tipo PNG"); 
+        if (file && file.type !== 'image/png' || file.size >= MAX_FILE_SIZE) {
+            setTipo_ImgWorker ("Tipo de imagen no valido o tamaño de imagen superado, por favor ingrese un archivo tipo PNG mas pequeño, max 70 Kb"); 
             setImg_PreWorker(null);
             return             
         }        

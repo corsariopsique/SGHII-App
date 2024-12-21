@@ -10,6 +10,12 @@ El frontend del SGHII se encarga de:
 - Ofrecer una barra de búsqueda para localizar herramientas rápidamente.
 - Conectar con el backend a través de una API REST para obtener y enviar datos.
 
+## SGHII en funcionamiento
+
+Puede acceder a una muestra del sistema en el siguiente enlace con los datos de usuario (**usuario:** invitado **contraseña:** sghii2024) PD. Tenga en cuenta que el sistema esta desplegado en un alojamiento gratuito (Render) el cual duerme los servicios despues de un periodo de inactividad por ende puede tomar hasta 5 minutos levantar el servicio y que funcione realmente lento al principio. Tener paciencia...
+
+**https://sghiiapp.vercel.app/**
+
 ## Tecnologías utilizadas
 
 - **React.js**: Framework para construir la interfaz de usuario.

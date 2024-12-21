@@ -5,12 +5,14 @@ import { Modal } from '../../IndexComponents';
 import { useLoaderData, Outlet, Form, Link } from 'react-router-dom';
 import validatorPassword from './ValidarPassword';
 import { OperarioActivoIcono } from '../../Iconos/IndexIcons';
+import { DecodificadorJWT } from '../../authentication/DecodificadorJWT';
 import config from '../../../config';
 
 const Configuracion = () => {
 
     const auteCtx = useContext(AutenticacionContexto);    
-    const data_Usuarios = useLoaderData();    
+    const data_Usuarios = useLoaderData(); 
+    const infoToken = DecodificadorJWT(auteCtx.token);
 
     const user_Estado = (estado) => {
         if(estado){
@@ -34,9 +36,9 @@ const Configuracion = () => {
             title="Configuración"
             estiloModal="modal_completo"            
             >
-                {auteCtx.role === 'ROLE_USER' &&
+                {auteCtx.role === 'ROLE_USER' && infoToken.username !== 'invitado' &&                  
 
-                    <div>
+                    <>
                         <Form id="changePass" className="form_changePass" name="changePass" action="/configuracion/changePass" method='put'>
 
                             <span id="messageInitial" className='badge bg-primary text-wrap'>Cambiar Contraseña Usuario</span>                                                        
@@ -87,7 +89,7 @@ const Configuracion = () => {
 
                         </Form>
 
-                    </div>
+                    </>
                         
                 }
 
@@ -120,8 +122,14 @@ const Configuracion = () => {
 
                         </div> 
 
-                    </>
-                    
+                    </>                    
+                }
+
+                { infoToken.username === 'invitado' &&
+
+                    <>
+                        <h2 className="mensaje_Negativa text-wrap badge bg-warning">Usuario invitado sin permisos para modificar cuentas de usuarios.</h2>                    
+                    </>                
                 }
 
             </Modal>

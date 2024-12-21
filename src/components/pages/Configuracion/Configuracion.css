@@ -54,3 +54,13 @@
     gap: 0.5rem;
     width:max-content;    
 }
+
+.mensaje_Negativa{
+    position: absolute;
+    top: 25%;
+    left: 22%;
+    font-family: 'Courier New', Courier, monospace; 
+    font-size:x-large;       
+    font-weight: bold;
+    color: black;
+}

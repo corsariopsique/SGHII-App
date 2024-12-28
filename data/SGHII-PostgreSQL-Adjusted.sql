@@ -544,12 +544,12 @@ begin
 	SELECT COUNT(*) INTO kit_prestadas
 	FROM asignacion_devolucion p
 	JOIN asg_dev_kit i ON p.id_operaciones = i.id_operacion_kit
-	WHERE i.id_kit = id_kit AND p.tipo = 1;
+	WHERE i.id_kit = id_kit_r AND p.tipo = 1;
 
 	SELECT COUNT(*) INTO kit_devueltas
 	FROM asignacion_devolucion p
 	JOIN asg_dev_kit i ON p.id_operaciones = i.id_operacion_kit
-	WHERE i.id_kit = id_kit AND p.tipo = 2;
+	WHERE i.id_kit = id_kit_r AND p.tipo = 2;
 
 	kit_conteo := kit_prestadas - kit_devueltas;
 

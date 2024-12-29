@@ -88,7 +88,7 @@ export default function App() {
 
       <Route path="/" element={<HomeLayout />}>
 
-        <Route path="/login" element={<Login />}/>        
+        <Route path="login" element={<Login />}/>        
 
         {auteCtx.isLoggedIn && (            
           <>
